@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="../css/M_style.css?ver=20200105" />
+		<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.1.0/css/bootstrap.min.css" />
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+		<style>
+			.noticemoreTable{
+				width: 794px;
+				margin: auto;
+				height: auto;
+				border: 1px solid #D6D6D6;
+				box-shadow: 0 0 8px 4px #d6d6d6;
+				margin-top: 10px;
+			}
+			.noticedcreateTime span{
+				text-align: right;
+			}
+		</style>
+	</head>
+	<body>
+				<div class="noticemoreTable" style="display: block;">
+						<p class="noticedName"> </p>
+						<br />
+						<p class="noticedTitle">
+							<span class="noticedCreater"> </span>
+							[
+							<span class="noticedYear"> </span>
+							]
+							<span class="noticedCode"> </span>
+							<span>签发人 :</span>
+							[
+							<span class="signer"> </span>
+							]
+						</p>
+						<div class="redxian"> </div>
+						<p class="noticedTheme"> </p>
+						<p class="noticedObj">
+							<span>致:</span>
+							<span class="noticedPeople"> </span>
+						</p>
+						<div class="noticedContent"> </div>
+							<p class="noticedcreateTime">
+								<span> </span>
+								<br />
+								<span> </span>
+							</p>
+				</div>
+	</body>
+	<script src="https://cdn.bootcss.com/jquery/2.2.3/jquery.min.js"></script>
+	<script type="text/javascript">
+		var EQD_url='http://47.94.173.253:8008'
+		var noticeid=window.location.href.split('=')[1]
+		console.log(noticeid)
+		$.post('' + EQD_url + '/Notices/Get_Notice_ById.ashx', {
+				"noticeId": noticeid,
+			}, function(data) {
+				// console.log( data )
+				var dataNoticed = JSON.parse(data)
+				var noticedyear = (dataNoticed.items.createTime).substring(0, 4);
+				var noticedyear2 = (dataNoticed.items.createTime).split("T")[0];
+				// var noticedLast = (dataNoticed.items.noticeCode).substring(4);
+				if (dataNoticed.items.objectType == 0) {
+					var noticedObj = "全体员工"
+				} else {
+					noticedObj = dataNoticed.items.department;
+				}
+				if (dataNoticed.items.noticeName == "公告") {
+					var thisType = "特此公告"
+				} else if (dataNoticed.items.noticeName == "通知") {
+					thisType = "特此通知"
+				} else {
+					thisType = "特此通告"
+				}
+				var NcreateTime = (noticedyear2).replace(/\//g, "-");
+				$('.noticemoreTable .noticedName').text(dataNoticed.items.noticeName);
+				$('.noticemoreTable .noticedCreater').text(dataNoticed.items.simpleCompanyName);
+				$('.noticemoreTable .noticedYear').text(noticedyear);
+				$('.noticemoreTable .noticedCode').text(dataNoticed.items.noticeCode);
+				$('.noticemoreTable .noticedTheme').text(dataNoticed.items.noticeTheme);
+				$('.noticemoreTable .noticedPeople').text(noticedObj);
+				$('.noticemoreTable .noticedContent').text(dataNoticed.items.noticeContent);
+				$('.noticemoreTable .signer').text(dataNoticed.items.checkerName);
+				$('.noticemoreTable .noticedcreateTime span').eq(1).text(NcreateTime);
+				$('.noticemoreTable .noticedcreateTime span').eq(0).text(thisType);
+			});
+	</script>
+</html>

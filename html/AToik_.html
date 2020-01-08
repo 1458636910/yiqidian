@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html ver="20200104">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" href="img/1.png" type="image/x-icon" />
+		<link href="https://unpkg.com/bootstrap-table@1.15.5/dist/bootstrap-table.min.css" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="https://www.layuicdn.com/layui-v2.5.5/css/layui.css" />
+		<link rel="stylesheet" type="text/css" href="css/Toik_.css" ver="20191129" />
+		<title>工作任务详情审批</title>
+		<style type="text/css" media="print">
+			.btn {
+				display: none;
+			}
+
+			@page {
+				size: auto;
+				margin: 0mm;
+			}
+		</style>
+	</head>
+	<body>
+
+		<!-- 头部 -->
+		<div class="box">
+			<div class="header">
+				<div class="title">
+					<p class="title_p"></p>
+					<p>《工作任务布置书》</p>
+				</div>
+				<!-- <div id="QR_Code"></div> -->
+			</div>
+
+			<div class="Task">
+				<div class="Task_div">
+					<div class="Task_div1">
+						<p>发布时间/部门/发布人： </p>
+					</div>
+					<div class="Task_div2">
+						<p> <i id="createTime"></i> <i id="InitiatorDepartName"></i> <i id="InitiatorName"></i></p>
+					</div>
+					<div class="Task_div1">
+						<p>关联父事项： </p>
+					</div>
+					<div class="Task_div2">
+						<p><i id="parentName"></i></p>
+					</div>
+					<div class="Task_div1">
+						<p>具体事项： </p>
+					</div>
+					<div class="Task_div2">
+						<p><i id="TaskDesc"></i></p>
+					</div>
+					<div class="Task_div1">
+						<p>执行部门/责任人： </p>
+					</div>
+					<div class="Task_div2">
+						<p><i id="recipientDepartName"></i> <i id="recipientName"></i></p>
+					</div>
+					<div class="Task_div1">
+						<p>协助部门/协助人： </p>
+					</div>
+					<div class="Task_div2">
+						<p><i id="AssistNum"></i></p>
+					</div>
+					<div class="Task_div1">
+						<p>验收部门/验收人： </p>
+					</div>
+					<div class="Task_div2">
+						<p><i id="CheckerDepartName"></i> <i id="CheckerName"></i></p>
+					</div>
+					<div class="Task_div1">
+						<p>验收标准： </p>
+					</div>
+					<div class="Task_div2">
+						<p><i id="CheckStandard"></i></p>
+					</div>
+					<div class="Task_div1">
+						<p>计划完成时间： </p>
+					</div>
+					<div class="Task_div2">
+						<p><i id="CompleteTime"></i></p>
+					</div>
+					<div class="Task_div1">
+						<p>注意事项： </p>
+					</div>
+					<div class="Task_div2">
+						<p><i id="Duty"></i></p>
+					</div>
+				</div>
+
+				<div class="dismiss">
+					<p class="dismiss_p1">结果：</p>
+					<p class="dismiss_p2" id="radio"></p>
+				</div>
+
+			</div>
+			<div class="Decision">
+				<form class="layui-form" action="">
+					<div class="layui-form-item">
+						<label class="layui-form-label">单选框</label>
+						<div class="layui-input-block">
+							<input type="radio" name="sex" value="ok" title="OK" lay-filter="filter" checked>
+							<input type="radio" name="sex" value="NG" title="待执行" lay-filter="filter">
+						</div>
+					</div>
+				</form>
+			</div>
+			<div class="btn" onclick='print_page()'>打印</div>
+		</div>
+		<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js"></script>
+		<script src="https://www.layuicdn.com/layui/layui.js"></script>
+		<!-- <script src="js/qrcode.js" type="text/javascript" charset="utf-8"></script> -->
+		<script type="text/javascript">
+			function print_page() {
+				if (!!window.ActiveXObject || "ActiveXObject" in window) { //是否ie
+					remove_ie_header_and_footer();
+				}
+				window.print();
+			}
+
+			$(document).ready(function() {
+				http: //127.0.0.1:8848/summary/Toik_.html?userGuid=4f47e8c7e40541d4a2f03c3c72304252&companyId=46&taskId=1134
+					//获取携带值:
+					function GetRequest() {
+						var url = location.search; //获取url中"?"符后的字串
+						var theRequest = new Object();
+						if (url.indexOf("?") != -1) { //判断是否含有'?'
+							var str = url.substr(1); //从字符中index为1开始抽取
+							strs = str.split("&"); //字符串分割成字符串数组
+							for (var i = 0; i < strs.length; i++) {
+								theRequest[strs[i].split("=")[0]] = decodeURIComponent(strs[i].split("=")[1]);
+							}
+						}
+						return theRequest;
+					}
+                var arr_3 = GetRequest().userGuid;
+				var arr_4 = GetRequest().companyId;
+				var taskId = GetRequest().taskId;
+				var Decision = 'ok';
+				console.log(arr_3)
+				layui.use('form', function() {
+					var form = layui.form;
+					form.on('radio(filter)', function(data) {
+						Decision = data.value;
+					});
+				});
+
+				// var qrcode = new QRCode(document.getElementById("QR_Code"), {
+				// 	text: "http://www.eqidd.com/html/Toik_.html?companyId=" + arr_4 + "&taskId=" + taskId + "",
+				// 	width: "70",
+				// 	height: "70"
+				// });
+
+				//获取公司信息
+				$.post('http://47.94.173.253:8008/Com_regiInfo.ashx', {
+					comId: arr_4
+				}, function(data) {
+					var data = JSON.parse(data);
+					//console.log(data)
+					$('.title_p').text(data.items.name)
+				});
+
+				Task();
+
+				function Task() {
+					setTimeout(function() {
+						$.post('http://47.94.173.253:8008/MyTask/Get_Task_Info.ashx', {
+							taskId: taskId
+						}, function(data) {
+							var data = JSON.parse(data);
+							console.log(data.items);
+							if (data.status == 200) {
+								var createTime = data.items.createTime.split(' ')[0];
+								if (data.items.parentName == '' || data.items.Duty == '') {
+									data.items.parentName = '无';
+									data.items.Duty = '无';
+								}
+								if (data.items.TaskDesc.length > 30) {
+									$('#TaskDesc').parent('p').css("text-indent", "2em");
+								}
+								if (data.items.Duty.length > 30) {
+									$('#Duty').parent('p').css("text-indent", "2em");
+								}
+
+								if (data.items.assitList == '') {
+									var ath = '无';
+									$('#AssistNum').text(ath); //协助人
+								} else {
+									$.each(data.items.assitList, function(index, item) {
+										item.upname + ' ' + item.recipientDepart;
+										var ath = item.recipientDepart + ' ' + item.upname + '&nbsp;&nbsp;&nbsp;';
+										$('#AssistNum').append(ath);
+									})
+								}
+								$('#createTime').text(createTime); //发布时间
+								$('#InitiatorDepartName').text(data.items.InitiatorDepartName); //发布人部门
+								$('#InitiatorName').text(data.items.InitiatorName); //发布人姓名
+								$('#parentName').text(data.items.parentName); //父事项
+								$('#TaskDesc').text(data.items.TaskDesc); //具体事项
+								$('#recipientDepartName').text(data.items.recipientDepartName); //执行部门
+								$('#recipientName').text(data.items.recipientName); //执行人
+								$('#CheckerDepartName').text(data.items.CheckerDepartName); //验收部门
+								$('#CheckerName').text(data.items.CheckerName); //验收部门
+								$('#CheckStandard').text(data.items.CheckStandard); //验收标准
+								$('#CompleteTime').text(data.items.CompleteTime); //计划完成时间
+								$('#Duty').text(data.items.Duty); //注意事项
+								if (data.items.IsCheck == false) {
+									$('.dismiss_p2').addClass('sample-red').text('待执行');
+								} else {
+									$('.dismiss_p2').addClass('sample-green').text('OK');
+								}
+							} else {
+								layer.msg(data.msg, {
+									time: 1000,
+								});
+							}
+						});
+					}, 300)
+				};
+
+				$('#radio').click(function() {
+					layer.open({
+						type: 1,
+						area: ['500px', '250px'],
+						title: ['选择判定结果', 'font-size:18px;'],
+						shadeClose: true, //点击遮罩关闭
+						content: $('.Decision'),
+						btn: '确定',
+						yes: function(index, layero) {
+							layer.closeAll();
+							data = {
+								"taskId": taskId,
+								"userGuid": arr_3,
+								"message": Decision
+							}
+							console.log(data)
+							$.post('http://47.94.173.253:8008/MyTask/Set_CheckTask.ashx', {
+								"taskId": taskId,
+								"userGuid": arr_3,
+								"message": Decision
+							}, function(data) {
+								var dataMeet = JSON.parse(data);
+								//console.log(dataMeet)
+								if (dataMeet.status == 200) {
+									layer.msg('验收成功！', {
+										time: 1000,
+									});
+									Task();
+								} else {
+									layer.msg(dataMeet.msg, {
+										time: 1000,
+									});
+								}
+							});
+						}
+					});
+				})
+
+
+
+			});
+		</script>
+	</body>
+</html>

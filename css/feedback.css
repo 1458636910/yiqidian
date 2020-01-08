@@ -1,0 +1,17 @@
+.nav{width: 100%;line-height: 60px;font-size: 40px;padding: 0 40px;background-color: #000;color: #fff;height: 60px;box-sizing: border-box;}
+.nav a{float: right;text-decoration: none;color: #fff;font-size: 20px;}
+h1{font-size: 50px;text-align: center;margin: 30px 0;}
+.feedback{width: 80%;margin: 0 auto;padding: 40px 0 40px 40px;}
+.feedback label span{display: inline-block;width: 100px;font-size: 20px;font-weight: bold;line-height: 80px;}
+.feedback label textarea{vertical-align: top;}
+.feedback .choose{line-height: 16px;font-size: 16px;margin: 8px 0 8px 100px;}
+.feedback .submit{margin: 20px auto;display: block;padding: 10px 45px;font-size: 20px;border-radius: 5px;border: none;background-color: #29e;outline: none;color: #fff;}
+@media (max-width: 500px){
+  .feedback .choose{margin: 4px 0 4px 1%;}
+  .feedback label{margin: 10px 0;}
+  .feedback{width: 100%;margin: 0 auto;padding: 20px;}
+  h1{font-size: 20px;text-align: center;margin: 10px 0;}
+  .feedback label span{font-size: 16px;font-weight: bold;line-height: 30px;width: auto;margin-right: 10px;}
+  .feedback .submit{margin: 20px auto;display: block;padding: 10px 85px;font-size: 16px;border-radius: 5px;border: none;background-color: #29e;outline: none;color: #fff;width: 50%;}
+  .nav{width: 100%;line-height: 40px;font-size: 20px;padding: 0 20px;background-color: #000;color: #fff;height: 40px;box-sizing: border-box;}
+}

@@ -1,0 +1,11 @@
+.contain{width: 1000px;margin: 50px auto;background-color: #eee;padding: 30px;}
+.teacherTable label{display: block;min-height: 40px;}
+.teacherTable label>span:nth-child(1){display: inline-block;width: 10px;color: #f00;}
+.teacherTable label>span:nth-child(2){display: inline-block;width: 100px;font-weight: 100;color: #969aa3}
+.teacherTable form p{height: 30px;line-height: 30px;border-bottom: 1px solid #888;font-size: 20px;font-weight: 600}
+.teacherTable form label>div{width: 300px;display: inline-block;}
+.subArea{width: 100%;text-align: center;}
+.subArea button{background-color: #29e;padding: 10px 30px;border: none;border-radius: 5px;outline: none;color: #fff;font-size: 16px;}
+.chooseApplyDiv,.choosePostDiv,.editNotice{display: none;margin: 20px;}
+#applyTable tr td{cursor: pointer;}
+.setLeaderDiv .searchInput{margin-right: 20px;height: 30px;padding-left: 10px;}

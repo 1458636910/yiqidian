@@ -1,0 +1,28 @@
+* {padding: 0;margin: 0	}
+body {background-color: #fff;font-family: "微软雅黑", "Microsoft Yahei", "Arial";
+	 font-size: 12px;line-height: 1.5;color: #333;overflow-x: hidden;}
+.clearfix::after {clear: both;content: "";display: block}
+.clearfix {zoom: 1;}
+a{text-decoration: none!important;color: #000;}
+ul,li{list-style: none;} 
+i{font-style: normal;color: red;}
+b{font-weight: normal;}
+.box{width: 210mm;height: 297mm;margin: 50px auto;}
+.header{width: 100%;height: 90px;position: relative;border-bottom: 1px solid #C0C0C0;}
+.title{color: #222222;text-align: center;font-size: 16px;}
+.title .title_p{font-size: 20px;font-weight: 600;padding-top: 10px;margin-bottom: 10px;}
+#QR_Code{position: absolute;top: 10px;right: 30px;}
+.weekday{width: 100;height: 45px;line-height: 45px;}
+.weekday p{float: left;font-size: 14px;font-weight: 600;margin-left: 20px;color: #999999;}
+.Last-week-title{display: inline-block;width: 100%;margin-top: 20px;}
+.Last-week-title h4{float: left;margin-left: 20px;background-color: #00A0EA;padding: 7px 20px;color: #fff;border-radius: 15px;font-size: 16px;}
+.Last-week-title p{font-size: 14px;float: left;margin-left: 27px;margin-top: 9px;}
+.ondx{font-size: 16px;color: #009CE8;font-weight: 600;margin: 20px 0 0 10px;}
+.EditText{width: 180mm;display: inline-block;margin-top: 20px;}
+.EditText textarea{width: 100%;height: 130px;padding: 5px 15px;margin-left: 60px;border: none;border-bottom: 1px solid #999999;}
+.Noesult{background-color: #FF0000;color: #fff;width: 60px;height: 25px;border-radius: 5px;margin: 0 auto;line-height: 25px;}
+.bootstrap-table .fixed-table-container .table thead th {width: 200px;text-align: center;}
+.bootstrap-table .fixed-table-container .table th, .bootstrap-table .fixed-table-container .table td {width: 200px;text-align: center;}
+.btn{width: 90px;height: 35px;background-color: #E0E0E0;text-align: center;line-height: 20px;cursor: pointer;margin: 50px auto;display: block;}
+.Release{width: 120px;height: 30px;background-color: #00A0EA;color: #fff;margin-bottom: 60px;
+    float: right;margin-top: 20px;font-size: 16px;text-align: center;line-height: 30px;border-radius: 3px;cursor: pointer;}

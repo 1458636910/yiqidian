@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html> 
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" href="img/1.png" type="image/x-icon" />
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/"
+		 crossorigin="anonymous">
+		<link rel="stylesheet" type="text/css" href="https://www.layuicdn.com/layui/css/layui.css" />
+		<link rel="stylesheet" type="text/css" href="//at.alicdn.com/t/font_1489406_b67qs5tcsfi.css" />
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css">
+		<link href="https://cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.1/bootstrap3-editable/css/bootstrap-editable.css" rel="stylesheet">
+		<link href="https://unpkg.com/bootstrap-table@1.15.5/dist/bootstrap-table.min.css" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="css/summary.css" ver="20191118"/>
+		<title>周总结</title>
+	</head>
+	<body>
+		<!-- 头部 -->
+		<div class="header">
+			<div class="w1200">
+				<img src="img/logo.png">
+				<div class="title">
+				<p class="title_p"></p>
+				<p class="title_p1"><b id="upname"></b> 第<b id="week"></b>周总结</p>
+				</div>
+			</div>
+		</div>
+		
+		<!-- 右侧时钟挂件 --> 
+		<div class="timg">
+			<img src="img/timg.png">
+		</div>
+		<form role="form" class="Ctime">
+			<div class="form-group">
+				<div style="display: inline-block;">
+					<div style="display: inline-block;">
+						<select class="form-control" id="_minute" style="width:70px">
+					</select>
+					</div>
+					&nbsp;<span style="color:white">分</span>
+					<div style="display: inline-block;">
+						<select class="form-control" id="_second" style="width:70px">
+					</select>
+					</div>
+					&nbsp;<span style="color:white">秒</span> </div>
+				<div style="display: inline-block;position: absolute;bottom: 30px;width: 130px;left: 85px;">
+					<button class="btn btn-success" type="button" id="start_">开始</button>
+					<button class="btn btn-danger" type="button" id="reset_">结束</button>
+				</div>
+			</div>
+		</form>
+		
+		<div class="time">
+			<div class="digit minutes">
+				<div class="segment"></div>
+				<div class="segment"></div>
+				<div class="segment"></div>
+				<div class="segment"></div>
+				<div class="segment"></div>
+				<div class="segment"></div>
+				<div class="segment"></div>
+			</div>
+			<div class="digit minutes">
+				<div class="segment"></div>
+				<div class="segment"></div>
+				<div class="segment"></div>
+				<div class="segment"></div>
+				<div class="segment"></div>
+				<div class="segment"></div>
+				<div class="segment"></div>
+			</div>
+			<div class="separator A1"></div>
+			<div class="separator A2"></div>
+			<div class="digit seconds">
+				<div class="segment"></div>
+				<div class="segment"></div>
+				<div class="segment"></div>
+				<div class="segment"></div>
+				<div class="segment"></div>
+				<div class="segment"></div>
+				<div class="segment"></div>
+			</div>
+			<div class="digit seconds">
+				<div class="segment"></div>
+				<div class="segment"></div>
+				<div class="segment"></div>
+				<div class="segment"></div>
+				<div class="segment"></div>
+				<div class="segment"></div>
+				<div class="segment"></div>
+			</div>
+		</div>
+		
+		
+		<!-- 上周总结 -->
+		<div class="w1200 Last-week">
+			
+			<!-- **********    数据汇报    ********** -->
+			<div class="Last-week-title">
+				<p>数据汇报</p>
+				<div class="termea" id="report">
+					<span class="iconfont icon-tianjia"></span>
+					<i>添加</i>
+				</div>
+			</div>
+			<table id="reporting"></table>
+			
+			
+			<!-- *****************       不达标指标         ********************* -->
+			<div class="Last-week-title">
+				<p>不达标指标：原因分析改善对策</p>
+				<div class="termea" id="Addtarget">
+					<span class="iconfont icon-tianjia"></span>
+					<i>添加</i>
+				</div>
+			</div>
+			<div id="target"></div>
+			<div class="targetFrom">
+				<form action="" class="layui-form" novalidate>
+					<div class="layui-form-item">
+						<div class="dismiss">不达标项</div>
+						<div class="layui-input-block tesk_2">
+						<textarea cols="70" rows="3" class="form-control" id="sub" placeholder="请输入不达标项" autocomplete="off" ></textarea>
+						</div>
+					</div>
+			
+					<div class="layui-form-item">
+						<div class="dismiss">执行人</div>
+						<div class="layui-input-block tesk_1">
+							<select name="city" id="ParentTask" lay-filter="ParentTask" lay-search>
+								<option value="">请选择</option>
+							</select>
+						</div>
+					</div>
+			
+					<div class="layui-form-item">
+						<div class="dismiss">关联执行人</div>
+						<div id="ParentTask1" class="xm-select-demo layui-input-block tesk_1"></div>
+						<div id="demo1-getValue" style="display: none;">获取选中值</div>
+					</div>
+			
+					<div class="layui-form-item">
+						<div class="dismiss">验收人</div>
+						<div class="layui-input-block tesk_1">
+							<select name="city" id="ParentTask2" lay-filter="ParentTask2" lay-search>
+								<option value="">请选择</option>
+							</select>
+						</div>
+					</div>
+			
+					<div class="layui-form-item">
+						<div class="dismiss">计划完成时间</div>
+						<div class="layui-input-block tesk_1">
+							<input type="text" class="form-control" id="time1" autocomplete="off" />
+						</div>
+					</div>
+			
+					<div class="layui-form-item">
+						<div class="dismiss">不达标项原因</div>
+						<div class="layui-input-block tesk_2">
+							<textarea cols="70" rows="3" class="form-control" id="subReason" placeholder="请输入不达标项原因"></textarea>
+						</div>
+					</div>
+			
+					<div class="layui-form-item">
+						<div class="dismiss">不达标项改进措施</div>
+						<div class="layui-input-block tesk_2">
+							<textarea cols="70" rows="3" class="form-control" id="subimprove" placeholder="请输入不达标项改进措施"></textarea>
+						</div>
+					</div>
+			
+					<!-- <div class="layui-form-item">
+						<div class="dismiss">下周计划目标</div>
+						<div class="layui-input-block tesk_2">
+							<textarea name="" cols="70" rows="3" class="form-control" placeholder="请输入下周计划目标"></textarea>
+						</div>
+					</div> -->
+				</form>
+			</div>
+			
+			<!-- <div id="ParentTask1" class="xm-select-demo layui-input-block tesk_1"></div>
+			<button class="btn" id="demo1-getValue">获取选中值</button> -->
+			
+			<!-- *****************       上周任务总结开始         ********************* -->
+			<div class="Last-week-title">
+				<p>上周任务总结</p>
+			</div>
+			<div id="table"></div>
+
+			<div class="Decision">
+				<form class="layui-form" action="">
+					<div class="layui-form-item">
+						<label class="layui-form-label">单选框</label>
+						<div class="layui-input-block">
+							<input type="radio" name="sex" value="已完成" title="已完成" lay-filter="filter" checked>
+							<input type="radio" name="sex" value="未完成" title="未完成" lay-filter="filter">
+							<input type="radio" name="sex" value="取消" title="取消" lay-filter="filter">
+						</div>
+					</div>
+				</form>
+			</div>
+
+
+			<div class="modal fade" role="dialog" id="abb">
+				<form class="layui-form" action="">
+					<div class="modal-dialog" role="document">
+						<div class="modal-content">
+							<div class="modal-header">
+								<h4 class="modal-title text-danger">成原因说明</h4>
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+							</div>
+							<form class="form-horizontal" method="" action="#">
+								<div class="modal-body">
+									<div class="layui-input-block atxe">
+										<textarea class="layui-textarea" lay-verify="required" id="regard1" lay-filter="filter"></textarea>
+									</div>
+								</div>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-default" data-dismiss="modal" id="affirm1" lay-submit="" lay-filter="demo">确定</button>
+									<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+								</div>
+							</form>
+						</div>
+					</div>
+				</form>
+			</div>
+
+			<!-- modal改善措施 -->
+			<div class="modal fade" role="dialog" id="abc">
+				<form class="layui-form" action="">
+					<div class="modal-dialog" role="document">
+						<div class="modal-content">
+							<div class="modal-header">
+								<h4 class="modal-title text-danger">改善措施</h4>
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+							</div>
+							<form class="form-horizontal" method="" action="#">
+								<div class="modal-body">
+									<div class="layui-input-block atxe">
+										<textarea class="layui-textarea" lay-verify="required" id="regard2" lay-filter="filter"></textarea>
+									</div>
+								</div>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-default" data-dismiss="modal" id="affirm2" lay-submit="" lay-filter="demo">确定</button>
+									<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+								</div>
+							</form>
+						</div>
+					</div>
+				</form>
+			</div><!-- /.modal改善措施end -->
+
+			<!-- modal完成时间 -->
+			<div class="modal fade" role="dialog" id="abd">
+				<form class="layui-form" action="">
+					<div class="modal-dialog" role="document">
+						<div class="modal-content">
+							<div class="modal-header">
+								<h4 class="modal-title text-danger">下次完成时间</h4>
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+							</div>
+							<form class="form-horizontal" method="" action="#">
+								<div class="modal-body">
+									<div class="layui-input-block atxe">
+										<input type="text" class="form-control" id="time4" autocomplete="off" />
+									</div>
+								</div>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-default" data-dismiss="modal" id="affirm3" lay-submit="" lay-filter="demo">确定</button>
+									<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+								</div>
+							</form>
+						</div>
+					</div>
+				</form>
+			</div><!-- /.modal改善措施end -->
+
+
+			<!-- *****************       下周工作计划开始         ********************* -->
+
+			<div class="Last-week-title">
+				<p>下周工作计划</p>
+				<div class="termea" id="Addschedule">
+					<span class="iconfont icon-tianjia"></span>
+					<i>添加</i>
+				</div>
+			</div>
+			<div id="schedule"></div>
+			<div class="scheduletFrom">
+				<form action="" class="layui-form" novalidate>
+					<div class="layui-form-item">
+						<div class="dismiss">工作事项</div>
+						<div class="layui-input-block tesk_2">
+							<textarea name="" cols="70" rows="3" class="form-control" id="workPlan" autocomplete="off" placeholder="请输入工作事项"></textarea>
+						</div>
+					</div>
+
+					<div class="layui-form-item">
+						<div class="dismiss">计划开始时间</div>
+						<div class="layui-input-block tesk_1">
+							<input type="text" class="form-control" id="time2" autocomplete="off" />
+						</div>
+					</div>
+
+					<div class="layui-form-item">
+						<div class="dismiss">计划结束时间</div>
+						<div class="layui-input-block tesk_1">
+							<input type="text" class="form-control" id="time3" autocomplete="off" />
+						</div>
+					</div>
+
+					<div class="layui-form-item">
+						<div class="dismiss">执行人</div>
+						<div class="layui-input-block tesk_1">
+							<select name="city" id="ParentTask4" lay-filter="ParentTask4" lay-search>
+								<option value="">请选择</option>
+							</select>
+						</div>
+					</div>
+
+					<div class="layui-form-item">
+						<div class="dismiss">关联执行人</div>
+						<div id="ParentTask3" class="xm-select-demo layui-input-block tesk_1"></div>
+						<div id="demo2-getValue" style="display: none;">获取选中值</div>
+					</div>
+
+					<div class="layui-form-item">
+						<div class="dismiss">验证人</div>
+						<div class="layui-input-block tesk_1">
+							<select name="city" id="ParentTask5" lay-filter="ParentTask5" lay-search>
+								<option value="">请选择</option>
+							</select>
+						</div>
+					</div>
+
+					<div class="layui-form-item">
+						<div class="dismiss">验证标准</div>
+						<div class="layui-input-block tesk_1">
+						<input type="text" class="form-control" autocomplete="off" id="standard" />
+						</div>
+					</div>
+
+				</form>
+			</div>
+
+
+			<!-- *****************       批评与自我评价         ********************* -->
+			<div class="Last-week-title">
+				<p>批评与自我评价</p>
+			</div>
+			
+			<div class="EditText">
+				<p>1.本人的不足</p>
+				<textarea id="EditText_1" readonly="readonly"></textarea>
+			</div>
+
+			<div class="EditText">
+				<p>2.某某同事在工作中值得我学习的优点</p>
+				<textarea id="EditText_2" readonly="readonly"></textarea>
+			</div>
+
+			<div class="EditText">
+				<p style="float: none;">3.好人好事</p>
+				<div class="uploadImg"></div>
+			</div>
+
+			<div class="EditText">
+				<p>4.工作中的心得感悟</p>
+				<textarea id="EditText_3" readonly="readonly"></textarea>
+			</div>
+
+			<div class="Last-week-title">
+				<p>领导批示</p>
+				<div class="termea" id="ctions"><strong>保存</strong></div>
+			</div>
+
+			<div class="EditText" style="margin-top: 0;">
+				<textarea id="EditText_4"></textarea>
+			</div>
+			
+			<div class="btnd">确认</div>
+              
+		</div>
+
+		<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
+		 crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.1/bootstrap3-editable/js/bootstrap-editable.min.js"></script>
+		<script src="https://unpkg.com/bootstrap-table@1.15.5/dist/bootstrap-table.min.js"></script>
+		<script src="https://unpkg.com/bootstrap-table@1.15.5/dist/extensions/editable/bootstrap-table-editable.min.js"></script>
+		<script src="https://www.layuicdn.com/layui/layui.js"></script>
+		<script src="js/xm-select.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/Personnel_summary.js" type="text/javascript" charset="utf-8" ver="20191118"></script>
+	</body>
+</html>

@@ -1,0 +1,128 @@
+* {padding: 0;margin: 0}
+body {background-color: #F0F0F0;font-family: "微软雅黑", "Microsoft Yahei", "Arial";font-size: 12px;line-height: 1.5;color: #333;}
+.clearfix::after {clear: both;content: "";display: block;}
+.clearfix {zoom: 1;}
+a{text-decoration: none;color: #000;}
+ul,li{list-style: none;}
+i{font-style: normal;font-size: 12px;}
+.header{width: 100%;height: 44px;display: flex;justify-content: space-around;align-items: center;background-color: #00A2EA;color: #fff;font-size: 18px;}
+.header span{font-size: 20px;}
+.on{color: #34AEEB;}
+.banner{width: 100%;height: 140px;background: url(../img/bj.png) no-repeat;background-size: 100% 100%;position: relative;}
+.banner .people{width: 95%;height: 78px;background-color: #fff;position: absolute;bottom: -27px;left: 11px;border-radius: 7px;box-shadow: 1px 0px 20px 10px rgba(0, 0, 0, 0.1);}
+.banner .people .img{width: 100%;}
+.banner .people .img img{width: 59px;height: 59px;border-radius: 100%;float: left;margin: 9px 12px 0 15px;}
+.banner .people .img p{font-size: 14px;color: #777777;}
+.w29{width: 100%;height: 29px;background-color: #F5F5F5;}
+.nav{width: 100%;height: 60px;background-color: #F5F5F5;font-size: 14px;overflow-y: hidden;}
+.nav ul{width: 153%;height: 60px;color: #333333;white-space: nowrap;overflow-y: hidden;}
+.nav ul li{float: left;height: 60px;line-height: 60px;margin: 0 20px;}
+.main{margin-top: 15px;background-color: #F5F5F5;display: inline-block;width: 100%;padding-bottom: 55px;}
+.tab{width: 198px;height: 32px;border-radius: 5px;line-height: 32px;text-align: center;border: 1px solid #00A3E9;margin: 20px auto;}
+.tab ul{width: 100%;height: 32px;}
+.tab ul li{width: 50%;height: 100%;float: left;}
+.tab_1{background-color: #00A3E9;color: #fff;}
+#tab_p1,#main1,#main2,#main3,#main4,#main5,#main6,#main7{display: none;}
+#tabs span{padding-right: 10px;}
+.main #tab_p0,.main #tab_p1{margin-left: 20px;line-height: 30px;color: #818181;margin-right: 20px;}
+.title{width: 100%;font-size: 14px;margin-top: 20px;padding-top: 20px;}
+.title img{margin: 0 5px 1px 20px;}
+.lims{width: 170px;margin: 15px auto;}
+.lims .btnd{width: 170px;height: 26px;border: 1px solid #00A0E9;border-radius: 5px;text-align: center;line-height: 24px;color: #55C0F0;background-color: #fff;font-size: 12px;}
+
+#main1 ul li{width: 90%;margin: 0 auto;height: 80px;background-color: #fff;margin-top: 10px;border-radius: 5px;}
+#main1 ul li img{width: 63px;height: 63px;border-radius: 5px;float: left;margin:8px 10px 0 15px;}
+#main1 ul li .main1_p0{margin-left: 15px;}
+#main1 ul li .main1_p1{font-size: 14px;font-weight: 600;padding-top: 7px;color: #333333;}
+#main1 ul li .main1_p2{overflow: hidden;text-overflow: ellipsis;white-space: nowrap;color: #C0C0C0;}
+#main1 ul li .main1_p3{margin-top: 3px;}
+#main1 ul li .main1_p3 #main1_p3_span1{color: #00A2EA;}/* #F0851A  */
+#main1 ul li .main1_p3 #main1_p3_span2{color: #B1B2B1;margin-right: 20px;float: right;}
+#main1 ul li .main1_p3 #main1_p3_span3{color: #B1B2B1;margin-right: 20px;float: right;}
+#main1 ul li .main1_p3 #main1_p3_span2 i,#main1 ul li .main1_p3 #main1_p3_span3 i{margin-left: 5px;margin-bottom: 2px;}
+
+#main2 ul{margin: 0 auto;width: 90%;display: flex;justify-content: space-between;flex-wrap: wrap;align-items: flex-start;}
+#main2 ul li{margin-top: 10px;position: relative;border-radius: 5px;overflow: hidden;width: 48%;height: 100px;}
+#main2 ul li img{width: 100%;border-radius: 5px;overflow: hidden;position: absolute;top: -21px;}
+#main2 ul li span{position: absolute;bottom: 0;width: 100%;height: 25px;background-color: #000;opacity: 0.5;display: inline-block;}
+#main2 ul li .main2_p{width: 100%;position: absolute;bottom: 0;z-index: 11;}
+#main2 ul li .main2_p p{text-align: center;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;color: #fff;line-height: 30px;}
+.box{width: 100%;height: 100%;}
+.box ul{width: 90%;margin: 20px auto;}
+.box ul li{width: 48%;height: 80px;float: left;margin-bottom: 40px;overflow: hidden;margin-left: 2%;}
+.box ul li img{width: 100%;}
+
+
+
+
+#main3 ul li{width: 93%;margin: 0 auto;height: 70px;background-color: #fff;margin-top: 10px;border-radius: 5px;}
+#main3 ul li img{width: 85px;height: 50px;border-radius: 5px;float: left;margin:10px 10px 0 15px;}
+#main3 ul li .main3_p1{padding-top: 7px;width: 66%;float: left;height: 19px;}
+#main3 ul li .main3_p1 .main3_p1_span_1{font-size: 14px;font-weight: 600;color: #333333;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;width: 50%;display: inline-block;}
+#main3 ul li .main3_p1 .main3_p1_span_2{color: #999999;float: right;display: inline-block;width: 40%;}
+#main3 ul li .main3_p2 span{color: #00A0E9;}
+#main3 ul li .main3_p3{color: #999999;}
+
+
+#main4 ul li{width: 93%;margin: 0 auto;height: 70px;background-color: #fff;margin-top: 10px;border-radius: 5px;}
+#main4 ul li img{width: 85px;height: 50px;border-radius: 5px;float: left;margin:10px 10px 0 15px;}
+#main4 ul li .main4_p0{margin-left: 15px;padding-top: 5px;}
+#main4 ul li .main4_p0 p{width: 100%!important;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;}
+#main4 ul li .main4_p1{padding-top: 7px;}
+#main4 ul li .main4_p1_span_1{font-size: 14px;font-weight: 600;color: #333333;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;width: 50%;display: inline-block;}
+#main4 ul li .main4_p1_span_2{color: #999999;float: right;display: inline-block;width: 40%;}
+#main4 ul li .main4_p1_span_3{color: #999999;float: right;margin-right: 34px;}
+#main4 ul li p{overflow: hidden;text-overflow: ellipsis;white-space: nowrap;width: 66%;float: left;height: 19px;}
+#main4 ul li .main4_p2 span{color: #00A0E9;}
+#main4 ul li .main4_p3{color: #999999;}
+#main4 ul li .main4_p4{width: 100%;height: 19px;}
+
+
+
+#main5 ul li{width: 93%;margin: 0 auto;height: 80px;background-color: #fff;margin-top: 10px;border-radius: 5px;}
+#main5 ul li img{width: 85px;height: 50px;border-radius: 5px;float: left;margin:10px 10px 0 8px;}
+#main5 ul li p{overflow: hidden;text-overflow: ellipsis;white-space: nowrap;width: 66%;float: left;height: 19px;}
+#main5 ul li .main5_p0{margin-left: 15px;padding-top: 5px;}
+#main5 ul li .main5_p1{padding-top: 7px;}
+#main5 ul li .main5_p1 .main5_p1_span_1{color: #333333;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;width: 50%;display: inline-block;}
+#main5 ul li .main5_p1 .main5_p1_span_2{float: right;background-color: #F08619;padding: 0px 4px;border-radius: 5px;color: #fff;}
+#main5 ul li .main5_p2 span{margin-left: 10px;}
+#main5 ul li .main5_p3{color: #999999;}
+#main5 ul li .main5_p3 span{margin-left: 20px;}
+#main5 ul li .main5_p3 i{color: #00A0E9;}
+
+
+
+#main6 ul li{width: 93%;margin: 0 auto;margin-top: 10px;}
+#main6 ul li .box{background-color: #fff;width: 100%;height: 100%;display: inline-block;border-radius: 5px;padding-bottom: 10px;}
+#main6 ul li img{width: 30px;height: 30px;border-radius: 100%;float: left;margin:10px 10px 0 8px;}
+#main6 ul li .main6_p1{padding-top: 14px;height: 19px;}
+#main6 ul li .main6_p1 .main6_p1_span_1{color: #333333;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;width: 60%;display: inline-block;font-size: 14px;}
+#main6 ul li .main6_p1 .main6_p1_span_2{float: right;color: #999999;margin-right:15px;}
+#main6 ul li .main6_p0{width: 80%;float: left;}
+#main6 ul li .main6_p2{color: #999999;width: 100%;margin-top: 5px;}
+#main6 ul li .main6_p2 b{font-weight: normal;color: #00A0E9;margin:  0 5px;}
+
+
+
+
+#main7 ul li{width: 93%;margin: 0 auto;height: 52px;background-color: #fff;margin-top: 10px;border-radius: 5px;}
+#main7 ul li img{width: 30px;height: 30px;border-radius: 100%;float: left;margin:10px 10px 0 8px;}
+#main7 ul li .main7_p1{padding-top: 7px;height: 19px;}
+#main7 ul li .main7_p1 .main7_p1_span_1{color: #333333;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;width: 60%;display: inline-block;font-size: 14px;}
+#main7 ul li .main7_p1 .main7_p1_span_2{float: right;color: #999999;margin-right:15px;}
+#main7 ul li .main7_p2{color: #999999;}
+
+
+
+
+
+
+
+
+.foot{position: fixed;bottom: 0;width: 100%;height: 43px;background-color: #FFFFFF;text-align: center;}
+.foot ul{width: 100%;height: 43px;padding-top: 3px;}
+.foot ul li{width: 25%;height: 43px;float: left;}
+
+
+ 

@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.1.0/css/bootstrap.min.css" />
+		<link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.14.2/dist/bootstrap-table.min.css" />
+		<link rel="stylesheet" type="text/css" href="js/layer/theme/default/layer.css"/>
+		
+		<script type="text/javascript">
+			;
+			(function(doc, win) {
+				var docEle = doc.documentElement,
+					dpr = Math.min(win.devicePixelRatio, 3),
+					scale = 1 / dpr,
+					resizeEvent = 'orientationchange' in window ? 'orientationchange' : 'resize';
+				var metaEle = doc.createElement('meta');
+				metaEle.name = 'viewport';
+				metaEle.content = 'initial-scale=' + 1 + ',maximum-scale=' + scale;
+				docEle.firstElementChild.appendChild(metaEle);
+				var recalCulate = function() {
+					var width = docEle.clientWidth;
+					docEle.style.fontSize = 10 * (width / 375) + 'px';
+				};
+				recalCulate();
+				if (!doc.addEventListener) return;
+				win.addEventListener(resizeEvent, recalCulate, false);
+			})(document, window);
+		</script>
+		<style type="text/css">
+			.content {
+				background-color: white;
+				width: 1200px;
+				margin: 30px auto;
+				padding: 3% 12%;
+			}
+			table{
+				table-layout:fixed;
+			}
+			td{
+				word-wrap:break-word
+			}
+			.mtable {
+				/*font-size: 14px;*/
+				
+				margin: 60px auto;
+				width: 80%;
+			}
+			.mtable1{
+				font-size: 14px;
+				/*font-size: 1.4rem;*/
+			}
+			.mtable2{
+				font-size: 1.4rem;
+			}
+			.mtable tbody tr td:nth-child(1) {
+				width: 160px;
+			}
+
+			.share {
+				width: 160px;
+				height: 160px;
+			}
+			.share2{
+				width: 260px;
+				height: 260px;
+			}
+			.share1{
+				width: 100px;
+				height: 100px;
+			}
+			.share2,.share canvas {
+				width: 100%;
+				height: 100%;
+			}
+
+			.foot span {
+				margin-right: 100px;
+			}
+
+			.foot span:nth-child(1) {
+				margin-left: 180px;
+			}
+
+			.middle {
+				position: relative;
+				width: 1200px;
+				margin: 0 auto;
+			}
+
+			.print {
+				position: absolute;
+				top: 70px;
+				right: 50px;
+				border: 1px solid #29e;
+				padding: 1px 10px;
+				border-radius: 5px;
+				font-size: 12px;
+				color: #29e;
+				cursor: pointer;
+			}
+
+			.t1 p {
+				margin: 0;
+				width: auto;
+			}
+
+			.qr {
+				width: 200px;
+				/*text-align: center;*/
+				float: left;
+			}
+			.qr span{
+				/*margin-left: 20px;*/
+			}
+			.meet {
+				font-weight: bold;
+				margin-left: 100px;
+				text-align: center;
+				margin-top: 20px;
+				float: left;
+			}
+			.meet1{
+				margin-left: 360px;
+			}
+			.lab {
+				margin-left: 10%;
+				padding-bottom: 10px;
+			}
+			.lab1{
+				font-size:1.6rem;
+			}
+			.signTable {
+				width: 80% !important;
+				margin: 0 auto;
+			}
+			.pageArea {
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				margin-top: 1rem;
+			}
+
+			.pageNext {
+				background-color: #29e;
+				color: white;
+				padding: 3px 15px;
+				font-size: 14px;
+				border-radius: 20px;
+			}
+			.left1{
+				width: 15%;
+			}
+			
+			.left2{
+				width: 85%;
+			}
+			.left3{
+				width: 20%;
+			}
+			.left4{
+				width: 80%;
+			}
+			.none{
+				display: none;
+			}
+			.canvas1{
+				width: 300px;
+				height: 300px;
+			}
+		</style>
+	</head>
+	<body>
+		<table class="table table-bordered mtable mtable1">
+			 <col class="left1" />
+          	 <col class="left2" />
+			<tbody>
+				<tr>
+					<td colspan="2" class="t1">
+						<div class="qr">
+							<div class="share"></div>
+							<div class="share2" style="display: none;"></div>
+							<span>扫码分享</span>
+						</div>
+						<div class="meet">
+							<p class="mName"></p>
+							<p class="mTime"></p>
+							<p class="mPlace"></p>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td>参会人员</td>
+					<td class="people"></td>
+				</tr>
+				<tr>
+					<td>书记员</td>
+					<td class="reco"></td>
+				</tr>
+				<tr>
+					<td>主持人</td>
+					<td class="compere"></td>
+				</tr>
+				<tr>
+					<td>参会人员会议准备</td>
+					<td class="ready"></td>
+				</tr>
+				<tr>
+					<td>注意事项</td>
+					<td class="notice"></td>
+				</tr>
+			</tbody>
+		</table>
+		<p class="lab">会议签到：</p>
+		<table class="signTable">
+			<thead>
+				<tr>
+					<th>姓名</th>
+					<th>状态</th>
+				</tr>
+			</thead>
+		</table>
+		<p class="pageArea">
+			<span class="pageNext">下一页</span>
+		</p>
+		<script src="https://cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+		<script src="js/layer/layer.js" type="text/javascript" charset="utf-8"></script>
+		<!--<script src="js/layer/mobile/layer.js" type="text/javascript" charset="utf-8"></script>-->
+		<script src="https://cdn.staticfile.org/twitter-bootstrap/4.1.0/js/bootstrap.min.js"></script>
+		<script src="https://unpkg.com/bootstrap-table@1.14.1/dist/bootstrap-table.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.12.1/locale/bootstrap-table-zh-CN.min.js"></script>
+		<script src="js/jquery.qrcode.min.js" type="text/javascript"></script>
+		
+		<script type="text/javascript">
+			function IsPC() {
+
+				var userAgentInfo = navigator.userAgent;
+				
+				var Agents = ["Android", "iPhone","SymbianOS", "Windows Phone","iPad", "iPod"];
+				
+				var flag = true;
+				
+				for (var v = 0; v < Agents.length; v++) {
+				
+				        if (userAgentInfo.indexOf(Agents[v]) > 0) {
+				
+				        flag = false;
+				
+				        break;
+				
+				        }
+				
+				}
+				
+				        return flag;
+				
+				}
+				
+				if(IsPC()){
+						$('.mtable,.signTable').addClass('mtable1')
+						$(".share").replaceWith('<div class="share share1"></div>')
+						$('.meet').addClass('meet1')
+						$('.share').click(function(){
+							$(".share2").replaceWith('<div class="share2 none" ></div>')
+							$('.share2').qrcode(window.location.href);
+							// 获取画布的对象(canvas)
+							var mycanvas = $(".share2 canvas")[0];
+							
+							// 获取画布的父对象(div)
+							 mycanvas.style.width = "300px";
+							 mycanvas.style.height = "300px";
+							console.log(mycanvas)
+							var parent = mycanvas.parentElement;
+							// 根据画布内容生成图片
+							var image = mycanvas.toDataURL("image/png");
+							// 创建一个img图片对象元素
+							var img = document.createElement("img");
+							// 将画布生成的图片内容给img图片对象元素
+							img.src = image;
+							
+							// // 将画布宽度给img图片对象元素宽度
+							// img.width = mycanvas.width;
+							// // 将画布高度给img图片对象元素高度
+							// img.height = mycanvas.height;
+			
+							img.width = "300";
+							img.height = "300";
+			
+							// 将生成的图片内容加载到画布所在父元素的内容里
+							parent.appendChild(img);
+							// 从画布所在的父元素里删除画布自己的内容
+							parent.removeChild(mycanvas);
+							// 开始打印
+							// $("#centerdiv").print();
+							// Print('.content')
+							// 回复画布的内容
+//							parent.appendChild(mycanvas);
+//							// 将生成的图片内容从到画布所在父元素的内容里删除
+//							parent.removeChild(img);
+								layer.open({
+								  type: 1,
+								  title: false,
+								  closeBtn: 1,
+								  area: ['300px','306px'],
+								  skin: 'layui-layer-nobg', //没有背景色
+								  shadeClose: true,
+								  content:$('.share2')
+								});
+						})
+						
+				}else{
+//						var src = 'js/layer/layer.js' 
+//					    new_element = $('<script>');
+//					    new_element.attr("type", "text/javascript");
+//					    new_element.attr("src", src); 
+//					    $('body').append(new_element);
+						$('.mtable,.signTable').addClass('mtable2')
+						$(".share").replaceWith('<div class="share "></div>')
+						$('.left1').attr('class','left3')
+						$('.left2').attr('class','left4')
+						$('.lab').addClass('lab1')
+						$('.share').click(function(){
+							$(".share2").replaceWith('<div class="share2 none" ></div>')
+							$('.share2').qrcode(window.location.href);
+							// 获取画布的对象(canvas)
+							var mycanvas = $(".share2 canvas")[0];
+							
+							// 获取画布的父对象(div)
+							 mycanvas.style.width = "600px";
+							 mycanvas.style.height = "600px";
+							console.log(mycanvas)
+							var parent = mycanvas.parentElement;
+							// 根据画布内容生成图片
+							var image = mycanvas.toDataURL("image/png");
+							// 创建一个img图片对象元素
+							var img = document.createElement("img");
+							// 将画布生成的图片内容给img图片对象元素
+							img.src = image;
+							
+							// // 将画布宽度给img图片对象元素宽度
+							// img.width = mycanvas.width;
+							// // 将画布高度给img图片对象元素高度
+							// img.height = mycanvas.height;
+			
+							img.width = "600";
+							img.height = "600";
+			
+							// 将生成的图片内容加载到画布所在父元素的内容里
+							parent.appendChild(img);
+							// 从画布所在的父元素里删除画布自己的内容
+							parent.removeChild(mycanvas);
+							// 开始打印
+							// $("#centerdiv").print();
+							// Print('.content')
+							// 回复画布的内容
+//							parent.appendChild(mycanvas);
+//							// 将生成的图片内容从到画布所在父元素的内容里删除
+//							parent.removeChild(img);
+								layer.open({
+								  type: 1,
+								  title: false,
+								  closeBtn: 1,
+								  area: ['600px','606px'],
+								  skin: 'layui-layer-nobg', //没有背景色
+								  shadeClose: true,
+								  content:$('.share2')
+								});
+						})
+				}
+			(function () {
+	            if (typeof WeixinJSBridge == "object" && typeof WeixinJSBridge.invoke == "function") {
+	                handleFontSize();
+	            } else {
+	                if (document.addEventListener) {
+	                    document.addEventListener("WeixinJSBridgeReady", handleFontSize, false);
+	                } else if (document.attachEvent) {
+	                    document.attachEvent("WeixinJSBridgeReady", handleFontSize);
+	                    document.attachEvent("onWeixinJSBridgeReady", handleFontSize);
+	                }
+	            }
+	            function handleFontSize() {
+	                WeixinJSBridge.invoke('setFontSizeCallback', { 'fontSize': 0 });
+	                WeixinJSBridge.on('menu:setfont', function () {
+	                    WeixinJSBridge.invoke('setFontSizeCallback', { 'fontSize': 0 });
+	                });
+	            }
+	        })();
+			$(document).ready(function() {
+				let http_head = "http://47.94.173.253:8008/";
+				let href = window.location.href;
+				//获取携带值:
+				function GetRequest() {
+				    var url = location.search; //获取url中"?"符后的字串
+				    var theRequest = new Object();
+				    if (url.indexOf("?") != -1) { //判断是否含有'?'
+				        var str = url.substr(1); //从字符中index为1开始抽取
+				        strs = str.split("&"); //字符串分割成字符串数组
+				        for (var i = 0; i < strs.length; i++) {
+				            theRequest[strs[i].split("=")[0]] = decodeURIComponent(strs[i].split("=")[1]);
+				        }
+				    }
+				    return theRequest;
+				}
+				
+				var userGuid = GetRequest().userGuid;
+				var companyId = GetRequest().companyId;
+				var noticeId = GetRequest().noticeId;
+				// 会议详情
+				setTimeout(function() {
+					$.post(http_head + 'Meeting/Get_metNoticeDe.ashx?rand=' + Math.random(), {
+						"userGuid": userGuid,
+						"comid": companyId,
+						"noticeId": noticeId
+					}, function(data) {
+						var data = JSON.parse(data)
+						//console.log(data)
+						$(".mName").text(data.items.type);
+						var time = data.items.startTime;
+						var y = time.substr(0, 4);
+						var m = parseInt(time.substr(5, 2));
+						var d = parseInt(time.substr(8, 2));
+						var t = time.substr(11, 5);
+						var mTime = y + "年" + m + "月" + d + "日" + " " + t;
+						$(".mTime").text(mTime);
+						$(".mPlace").text(data.items.place);
+
+						var peopleArr = data.items.attendees;
+						var name = [];
+						for (var i = 0; i < peopleArr.length; i++) {
+							name.push(peopleArr[i].realName)
+						}
+						var nameStr = name.join("、");
+						$(".people").text(nameStr);
+						$(".reco").text(data.items.recorder.realName);
+						$(".compere").text(data.items.compere.realName);
+						$(".ready").text(data.items.aim);
+						$(".notice").text(data.items.note)
+					})
+				}, 300)
+				// 生成二维码
+//				$(".share").replaceWith('<div class="share share1"></div>')
+				$('.share').qrcode(href);
+				// 获取画布的对象(canvas)
+				var mycanvas = $(".share canvas")[0];
+				// 获取画布的父对象(div)
+				var parent = mycanvas.parentElement;
+				
+				// 根据画布内容生成图片
+				var image = mycanvas.toDataURL("image/png");
+				// 创建一个img图片对象元素
+				var img = document.createElement("img");
+				// 将画布生成的图片内容给img图片对象元素
+				img.src = image;
+
+				// // 将画布宽度给img图片对象元素宽度
+				// img.width = mycanvas.width;
+				// // 将画布高度给img图片对象元素高度
+				// img.height = mycanvas.height;
+
+				img.width = "80";
+				img.height = "80";
+
+				// 将生成的图片内容加载到画布所在父元素的内容里
+				parent.appendChild(img);
+				// 从画布所在的父元素里删除画布自己的内容
+				parent.removeChild(mycanvas);
+				// 开始打印
+				// $("#centerdiv").print();
+				// Print('.content')
+				// 回复画布的内容
+				parent.appendChild(mycanvas);
+				// 将生成的图片内容从到画布所在父元素的内容里删除
+				parent.removeChild(img);
+				// 签到Table				
+				var pageNext = 0;
+				
+				function loadTable(data) {
+					$('.signTable').bootstrapTable({
+						data: data,
+						columns: [{
+							field: 'userName',
+							align: 'center',
+							valign: 'middle',
+						}, {
+							align: 'center',
+							valign: 'middle',
+							formatter: fun
+						}]
+					});
+
+					function fun(e, value, row, index) {
+						var status;
+						if (value.status === 1) {
+							status = "已到";
+						} else if (value.status === -2) {
+							status = "未到"
+						} else if (value.status === -1) {
+							status = "迟到"
+						}
+						return '<span class="status">' + status + '</span>'
+					}
+				};
+
+				function loadFirst(page) {
+					$.post(http_head + 'Meeting/Get_signDetails_meet.ashx', {
+						"page": page,
+						"comid": companyId,
+						"noticeId": noticeId
+					}, function(data) {
+						var data = JSON.parse(data);
+						//console.log(data.items)
+						loadTable(data.items);
+						$(".signTable").bootstrapTable('load', data.items);
+						pageNext = data.nextpage;
+						if (data.items.length >= 10) {
+							$('.pageArea').show()
+						} else {
+							$('.pageArea').hide()
+						}
+					});
+				};
+
+				function loadNext(page) {
+					$.post(http_head + 'Meeting/Get_signDetails_meet.ashx', {
+						"page": page,
+						"comid": companyId,
+						"noticeId": noticeId
+					}, function(data) {
+						var data = JSON.parse(data);
+						loadTable(data.items);
+						$(".signTable").bootstrapTable('append', data.items);
+						pageNext = data.nextpage;
+						if (data.items.length >= 10) {
+							$('.pageArea').show()
+						} else {
+							$('.pageArea').hide()
+						}
+					});
+				};
+				function  dianji(){
+//					$('.share').click(function(){
+					
+					$(".share2").replaceWith('<div class="share2 none" ></div>')
+					$('.share2').qrcode(href);
+					// 获取画布的对象(canvas)
+					var mycanvas = $(".share2 canvas")[0];
+					
+					// 获取画布的父对象(div)
+					 mycanvas.style.width = "500px";
+					 mycanvas.style.height = "500px";
+					console.log(mycanvas)
+					var parent = mycanvas.parentElement;
+					// 根据画布内容生成图片
+					var image = mycanvas.toDataURL("image/png");
+					// 创建一个img图片对象元素
+					var img = document.createElement("img");
+					// 将画布生成的图片内容给img图片对象元素
+					img.src = image;
+					
+					// // 将画布宽度给img图片对象元素宽度
+					// img.width = mycanvas.width;
+					// // 将画布高度给img图片对象元素高度
+					// img.height = mycanvas.height;
+	
+					img.width = "80";
+					img.height = "80";
+	
+					// 将生成的图片内容加载到画布所在父元素的内容里
+					parent.appendChild(img);
+					// 从画布所在的父元素里删除画布自己的内容
+					parent.removeChild(mycanvas);
+					// 开始打印
+					// $("#centerdiv").print();
+					// Print('.content')
+					// 回复画布的内容
+					parent.appendChild(mycanvas);
+					// 将生成的图片内容从到画布所在父元素的内容里删除
+					parent.removeChild(img);
+						layer.open({
+						  type: 1,
+						  title: false,
+						  closeBtn: 1,
+						  area: ['500px','506px'],
+						  skin: 'layui-layer-nobg', //没有背景色
+						  shadeClose: true,
+						  content:$('.share2')
+						});
+//					})
+				}
+				
+				loadFirst(pageNext);
+				$('.pageNext').click(function() {
+					loadNext(pageNext)
+				});
+			})
+		</script>
+	</body>
+</html>

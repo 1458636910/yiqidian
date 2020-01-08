@@ -1,0 +1,40 @@
+body {
+	font-family: "Microsoft YaHei";
+	height: 100%;
+	padding: 8px;
+	min-height: 100%;
+	font-size: 13px;
+	color: #444;
+}
+
+.title {
+	font-size: 18px;
+	text-align: center;
+	height: 20px;
+	line-height: 20px;
+	font-weight: 700;
+}
+
+p {
+	display: block;
+	letter-spacing: 3px;
+	text-indent: 2em;
+	font-size: 13.5px;
+	line-height: 22px;
+	margin: 0 0 10px;
+	word-wrap: break-word;
+	box-sizing: border-box;
+}
+
+h5 {
+	font-family: "Microsoft YaHei UI";
+	font-weight: 600;
+	font-size: 16px;
+}
+
+.content {
+	width: 80%;
+	box-shadow: 1px 3px 5px 1px rgba(0, 0, 0, 0.1);
+	margin: 30px auto;
+	padding: 30px 60px 60px;
+}

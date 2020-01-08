@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html ng-app="yqd">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link rel="icon" href="../img/13.png" type="image/x-icon" />
+		<link href="https://cdn.bootcss.com/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+		<link href="https://unpkg.com/bootstrap-table@1.14.2/dist/bootstrap-table.min.css" rel="stylesheet">
+		<title>会议签到</title>
+		<script type="text/javascript" src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+		<script src="https://cdn.bootcss.com/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+		<script src="https://unpkg.com/bootstrap-table@1.14.2/dist/bootstrap-table.min.js"></script>
+		<script type="text/javascript" src="https://cdn.bootcss.com/layer/3.1.0/layer.js"></script>
+		<style type="text/css">
+			.box {margin: 100px auto;text-align: center;padding: 2%;}
+			.tltle {font-size: 40px;color: #00A8FF;text-align: center;}
+			.left, .right {height: 100%;}
+			.center{margin: 0 auto;}
+			.box .submit {box-sizing: border-box;height: 50px;line-height: 50px;border-radius: 5px;background-color: #00A8FF;
+                 border: 2px solid #00A8FF;display: block;text-align: center;margin-top: 15px;width: 100%;color: #fff;text-decoration: none;font-size: 16px;cursor: pointer;}
+		</style>
+	</head>
+	<body>
+		<div class="box col-lg-offset-2 col-lg-8 col-md-offset-2 col-md-8 col-sm-offset-2 col-sm-8 col-xs-12">
+			<div class="tltle col-lg-12 col-md-12 col-sm-12 col-xs-12">会议签到</div>
+			<br />
+			<div class="left col-lg-3 col-md-3 col-sm-3 col-xs-12"> </div>
+			<div class="center col-lg-6 col-md-6 col-sm-6 col-xs-12 clearfix">
+				<form name="myForm" ng-model="myForm" novalidate>
+					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+						<input type="text" class="inputtel form-control" placeholder="请输入手机号" required style="height: 50px;"/>
+					</div>
+					<br />
+					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+						<div class="submit">确定</div>
+					</div>
+					<br />
+				</form>
+			</div>
+			<div class="right col-lg-3 col-md-3 col-sm-3 col-xs-12"> </div>
+			
+			<script type="text/javascript">
+				$(document).ready(function() {
+					//获取携带值:
+					function GetRequest() {
+					    var url = location.search; //获取url中"?"符后的字串
+					    var theRequest = new Object();
+					    if (url.indexOf("?") != -1) { //判断是否含有'?'
+					        var str = url.substr(1); //从字符中index为1开始抽取
+					        strs = str.split("&"); //字符串分割成字符串数组
+					        for (var i = 0; i < strs.length; i++) {
+					            theRequest[strs[i].split("=")[0]] = decodeURIComponent(strs[i].split("=")[1]);
+					        }
+					    }
+					    return theRequest;
+					}
+					
+					var noticeId = GetRequest().noticeId;
+					$('.submit').click(function() {
+						if(!(/^1[34578]\d{9}$/.test($('.inputtel').val()))){
+						layer.msg('手机号格式错误', {
+							time: 1000,
+						});
+						return;
+						} else {
+							$.post('http://47.94.173.253:8008/Meeting/Meeting_signIn.ashx', {
+								userGuid: ' ',//签到人
+								noticeId: noticeId,//会议通知的id
+								signInPosition: ' ',//手机位置
+								macAddress: ' ',//mac地址
+								wifiName: ' ',//wifi名称
+								phoneModel: ' ',//手机型号
+								uuid: ' ',//手机uuid
+								phone: $('.inputtel').val()
+							}, function(data) {
+								var data = JSON.parse(data); //转成json数据
+								if (data.status == 200) {
+									layer.msg('签到成功', {
+										time: 1000,
+									});
+								} else {
+									layer.msg(data.msg, {
+										time: 1000,
+									});
+								}
+							});
+						}
+					});
+				})
+				
+			</script>
+	</body>
+</html>

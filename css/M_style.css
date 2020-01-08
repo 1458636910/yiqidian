@@ -1,0 +1,5351 @@
+body {
+	font-family: "微软雅黑";
+	height: 100%;
+	min-width: 1200px
+}
+
+li {
+	list-style: none;
+}
+
+.nav {
+	height: 60px;
+	line-height: 60px;
+	background-color: #00a2ea;
+	z-index: 19;
+	width: 100%;
+}
+
+a {
+	color: #29e;
+	text-decoration: none;
+}
+
+a:hover {
+	color: #29e !important;
+	text-decoration: none;
+	background-color:#ededed !important;
+}
+.agree{color: #000;}
+.agree:hover{background:none;color: #333333;}
+
+.logo {
+	padding-left: 0 !important
+}
+
+.logo span {
+	display: inline-block;
+	overflow: hidden;
+	font-size: 12px !important;
+	font-family: "微软雅黑";
+	color: #fff;
+	height: 60px;
+	width: 200px;
+	text-align: center;
+	background-color: #00a2ea;
+	padding: 0 10px;
+}
+
+.titlelist {
+	box-sizing: border-box;
+	/*border-bottom: 2px solid #3a3d42;*/
+	height: 60px;
+}
+
+.titlelist ul li {
+	width: 14%;
+	/* margin-left: 3%; */
+	font-size: 16px;
+	font-family: "微软雅黑";
+	box-sizing: border-box;
+	text-align: center;
+	height: 60px;
+	color: #fff;
+	list-style: none;
+	cursor: pointer;
+}
+
+.active {
+	/*border-bottom: 4px solid #f08519;*/
+	background: url(../img/blue1.png);
+}
+
+.quitOut {
+	text-align: right;
+	font-family: "微软雅黑";
+	color: #ddd;
+}
+
+.quitOut a {
+	cursor: pointer;
+	cursor: pointer;
+	width: 45px;
+	height: 45px;
+	/*background-color: #29e;*/
+	display: inline-block;
+	text-align: center;
+	line-height: 45px;
+	border-radius: 50%;
+	margin-right: 300px;
+}
+.quitOut a:hover{
+	background:none !important;
+	color: #fff !important;
+}
+.depId {
+	display: none;
+}
+
+/**********************************************************企业信息CSS**************************************************/
+
+.qiyeOption {
+	display: none;
+}
+
+.qiyeLeft {
+	width: 200px;
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	top: 60px;
+	background-color: #444446;
+	padding-top: 30px;
+	color: white;
+}
+
+.qiyeLeft p {
+	font-size: 20px;
+	width: 100%;
+	padding: 10px 0;
+	/*padding-left: 20px;*/
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.pcheck {
+	color: #2299ee;
+	/*background-color: #00a2ea*/
+}
+.pcheck1 {
+	color: #fff;
+	/*background-color: #00a2ea*/
+}
+.qiyeRight {
+	position: absolute;
+	left: 220px;
+	top: 100px;
+	right: 0;
+	bottom: 0;
+	padding: 40px 20px;
+	font-family: "微软雅黑";
+	overflow: auto;
+}
+
+/*企业信息布局*/
+
+.imgLogo {
+	width: 100px;
+	height: 100px;
+	margin-right: 20px;
+	text-align: center;
+}
+
+.qiyeInfo img {
+	width: 60%;
+}
+
+.imgLogo button {
+	background: #2299ee;
+	font-size: 14px;
+	color: #fff;
+	line-height: 18px;
+	text-align: center;
+	border: none;
+	padding: 5px 10px;
+	border-radius: 3px;
+}
+
+.qiyeDet p {
+	font-size: 15px;
+	line-height: 30px;
+	margin-right: 10px;
+}
+
+.qiyeDet {
+	margin-top: 5px;
+}
+
+.qiyeName,
+.qiyeNum,
+.qiyePeo,
+.qiyeTim {
+	margin-left: 20px;
+	color: #828282;
+}
+
+.qiyeMore {
+	margin-top: 100px;
+}
+
+.qiyeMore ul li {
+	line-height: 50px;
+	font-size: 15px;
+}
+
+.qiyeMore ul li span {
+	margin-right: 20px;
+}
+
+.qiyeMore .right {
+	color: #828282;
+}
+
+.qiyeMore .isauthen {
+	color: #ff8800;
+	font-weight: bolder;
+}
+
+.qiyeMore ul li span i {
+	color: #f00;
+	margin-right: 5px;
+}
+a:not([href]):not([tabindex]){
+	/*color:#19e !important;*/
+}
+.table td a{
+	color: #1199EE !important;
+}
+.qiyeMore ul li button {
+	line-height: 40px;
+	font-size: 16px;
+	background-color: #2299ee;
+	color: #fff;
+	border-radius: 3px;
+	border: none;
+	box-sizing: border-box;
+	margin-left: 40px;
+	padding: 5px 30px;
+	margin-top: 30px;
+}
+
+.upLogo {
+	display: none;
+}
+
+.upLogo h2 {
+	font-size: 30px;
+	margin-bottom: 20px;
+}
+
+.upImg {
+	margin-top: 20px;
+	width: 80%;
+	margin-left: 10%;
+}
+
+/*企业认证布局*/
+
+.qiyeConfirm {
+	display: none;
+}
+
+.con2 ul li,
+.con3 ul li {
+	width: 47%;
+	padding: 10px 20px;
+	box-sizing: border-box;
+	text-align: center;
+	margin-bottom: 20px;
+	margin-left: 3%;
+}
+
+.con1 ul li {
+	width: 30%;
+	padding: 10px 20px;
+	box-sizing: border-box;
+	text-align: center;
+	margin-bottom: 20px;
+	margin-left: 3%;
+}
+
+.con1 ul li,
+.con2 ul li,
+.con3 ul li {
+	border: 1px solid #eee;
+}
+
+.con1 ul li>img,
+.con2 ul li>img,
+.con3 ul li>img {
+	border-radius: 10px;
+}
+
+.con1 ul li:first-child,
+.con2 ul li:first-child,
+.con3 ul li:first-child {
+	margin-left: 1.5%
+}
+
+.comDet {
+	margin-top: 40px;
+}
+
+.comDet .labelMin {
+	width: 40%;
+	margin-left: 100px;
+	height: 30px;
+	line-height: 30px;
+	margin-bottom: 30px;
+}
+
+.comDet .labelMin span {
+	width: 200px;
+	display: inline-block;
+}
+
+.comDet .labelMin input {
+	width: 60%;
+	height: 34px;
+	padding-left: 10px;
+}
+
+.comDet .labelMin select {
+	width: 60%;
+	height: 34px;
+	padding-left: 10px;
+}
+
+.comDet .left {
+	width: 40%;
+	margin-left: 3%;
+}
+
+.comDet .labelLar {
+	width: 80%;
+	height: 30px;
+	line-height: 30px;
+	margin-bottom: 30px;
+	margin-left: 50px;
+	margin-top: 0px;
+}
+
+.comDet .labelLar span {
+	width: 200px;
+	display: inline-block;
+}
+
+.comDet .labelLar input {
+	height: 34px;
+	width: 40%;
+	padding-left: 10px;
+}
+
+.comDet .labelLar select {
+	width: 20%;
+	height: 34px;
+	padding-left: 10px;
+}
+
+.detAddress input {
+	width: 45%;
+}
+
+.labelLar textarea {
+	width: 40%;
+	height: 100px;
+	overflow: hidden;
+	vertical-align: top;
+	padding: 0 10px;
+	box-sizing: border-box;
+}
+
+#makeSure {
+	margin-top: 40px;
+	margin-left: 20%;
+	line-height: 40px;
+	font-size: 16px;
+	background-color: #2299ee;
+	color: #fff;
+	border-radius: 3px;
+	border: none;
+	box-sizing: border-box;
+	padding: 5px 30px;
+}
+
+#pic1,
+#pic2,
+#pic3,
+#pic4,
+#pic5,
+#pic6,
+#pic7 {
+	width: 80%;
+	height: 80%;
+	margin: 20px 10%;
+	cursor: pointer;
+}
+
+.con1 p,
+.con2 p,
+.con3 p {
+	font-size: 16px;
+	font-weight: bolder;
+	color: grey;
+}
+
+.qiyeConfirming {
+	display: none;
+}
+
+.qiyeConfirming div {
+	margin: 0px auto;
+	font-size: 50px;
+	text-align: center;
+	color: green;
+}
+
+.qiyeConfirmed {
+	display: none;
+}
+
+.qiyeConfirmed ul li {
+	width: 30%;
+	padding: 10px 20px;
+	box-sizing: border-box;
+	text-align: center;
+	margin-bottom: 20px;
+	margin-left: 3%;
+	height: 500px;
+}
+
+.qiyeConfirmed ul li:nth-child(1),
+.qiyeConfirmed ul li:nth-child(4) {
+	margin-left: 1.5%
+}
+
+.qiyeConfirmed ul li img {
+	width: 80%;
+	height: 80%;
+	margin: 20px 10%;
+	border-radius: 10px;
+}
+
+.qiyeConfirmed ul li p {
+	font-size: 16px;
+	color: #828282;
+}
+
+.p1,
+.p2,
+.p3,
+.p4,
+.p5,
+.p6,
+.p7,
+.p8 {
+	width: 40%;
+	margin-left: 100px;
+	height: 30px;
+	line-height: 30px;
+	margin-bottom: 30px;
+	display: inline-block;
+	font-size: 15px;
+}
+
+.qiyeConfirmed .infoName {
+	width: 200px;
+	display: inline-block;
+}
+
+.qiyeConfirmed .infoVal {
+	width: 60%;
+	height: 34px;
+	color: #828282;
+}
+
+.infoLar1,
+.infoLar2,
+.infoLar3 {
+	width: 80%;
+	height: 30px;
+	line-height: 30px;
+	margin-bottom: 30px;
+	margin-left: 100px;
+	margin-top: 0px;
+}
+
+.qiyeConfirmed .infoLarname {
+	width: 200px;
+	display: inline-block;
+}
+
+.qiyeConfirmed .infoLarval {
+	height: 34px;
+	width: 40%;
+	color: #828282;
+}
+
+.infoLar3 {
+	margin-bottom: 50px;
+}
+
+.qiyeLeft p {
+	vertical-align: middle;
+	font-size: 16px;
+}
+
+.regTips1,
+.regTips2,
+.regTips3 {
+	text-align: center;
+	line-height: 30px;
+}
+
+#changePostTable tr th {
+	text-align: center;
+}
+
+#changePostTable tr td {
+	text-align: center;
+	cursor: pointer;
+}
+
+/**************************************企业设置CSS******************************************************************/
+
+#addr-show1 {
+	display: none;
+}
+
+.shezhiOption {
+	display: none;
+}
+
+
+.shezhiLeftPbg{
+	background: url(../img/listBg.png) 25px -1px no-repeat;
+	color: #fff;
+}
+.shezhiLeft .da2:hover,.shezhiLeft .da1:hover{
+	/*color: #4a4a4a*/
+	background: url(../img/listBg.png) 25px -1px no-repeat;
+	color: #fff;
+}
+.bt3icon {
+	font-size: 14px !important;
+	float: right;
+	right: 50px;
+	margin-right: 0 !important;
+	top: 5px;
+	-webkit-transform: scale(0.84, 0.84);
+}
+.shezhiLeft p img {
+	margin-right: 3px;
+	/* vertical-align: text-top */
+	margin-bottom: 3px;
+	margin-left: 8px;
+}
+
+.shezhiLeft .paibanguanli,
+.shezhiLeft .kaoqinguanli,
+.shezhiLeft .xitongguanli,
+.shezhiLeft .kaoqinbaobiao,
+.shezhiLeft .qiyewenhua,
+.peixunManger,
+.caiwuguanli,
+.comInfo,
+.comCon,
+.comReg,
+.courseManger,
+.huiyiguanli,
+.Work-plan,
+.yiqiSpace {
+	font-size: 16px;
+	width: 100%;
+	padding: 5px 0;
+	padding-left: 55px;
+	cursor: pointer;
+	height: 35px;
+}
+.shezhiLeft .paibanguanli span,
+.shezhiLeft .kaoqinguanli span,
+.shezhiLeft .xitongguanli span,
+.shezhiLeft .qiyewenhua span,
+.shezhiLeft .kaoqinbaobiao span,
+.shezhiLeft .peixunManger span,
+.shezhiLeft .wifimng span,
+.shezhiLeft .baoxiaoshezhi span,
+.qiyeLeft .comInfo span,
+.qiyeLeft .comCon span,
+.qiyeLeft .comReg span,
+.courseManger span,
+.huiyishezhi span,
+.huiyitongzhi span,
+.huiyijilu span,
+.renyuanshezhi span,
+.shoufeimokuai span,
+.Yearwork span,
+.Monthwork span,
+.Daywork span,
+.Journalwork span,
+.Weekwork span,
+.jiaofeijilv span {
+	font-size: 14px;
+	margin-right: 5px;
+}
+
+.shezhiLeft .bancishezhi,
+.shezhiLeft .banbieshezhi,
+.shezhiLeft .quanxianshezhi,.gongzuoshezhi,
+.shezhiLeft .qingjiashezhi,
+.shezhiLeft .chuchaishezhi,
+.shezhiLeft .kaoqinmingxi,
+.shezhiLeft .chaXun,
+.shezhiLeft .yuetongjibiao,
+.shezhiLeft .wenhuaxuanchuan,
+.shezhiLeft .xiaolaba,
+.shezhiLeft .qiyegonggao,
+.shezhiLeft .peixunPlan,
+.shezhiLeft .wifimng,
+.shezhiLeft .peixunAttention,
+.shezhiLeft .baoxiaoshezhi,
+.shezhiLeft .coursePlan,
+.qiyedream,
+.huiyishezhi,
+.huiyitongzhi,
+.huiyijilu,
+.renyuanshezhi,
+.shoufeimokuai,
+.jiaofeijilv,
+.Yearwork,
+.Monthwork,
+.Weekwork,
+.Daywork,
+.Journalwork,
+.peixunDemand {
+	padding-left: 65px;
+	line-height: 30px;
+	cursor: pointer;
+	display: none;
+}
+
+.shezhiLeft .bancishezhi,
+.shezhiLeft .banbieshezhi {
+	display: block;
+}
+
+.shezhiLeft .bancishezhi span,
+.shezhiLeft .banbieshezhi span,
+.shezhiLeft .quanxianshezhi span,
+.shezhiLeft .qingjiashezhi span,
+.shezhiLeft .chuchaishezhi span,
+.shezhiLeft .wenhuaxuanchuan span,
+.shezhiLeft .xiaolaba span,
+.shezhiLeft .qiyegonggao span,
+.shezhiLeft .peixunPlan span,
+.shezhiLeft .peixunAttention span,
+.shezhiLeft .coursePlan span,
+.shezhiLeft .wifimng span,
+.qiyedream span,
+.peixunDemand span {
+	margin-right: 5px;
+	font-size: 12px;
+}
+
+#kaoqinguanliTips {
+	margin-left: 70px;
+}
+
+/*#kaoqinguanliDown{display: none;}*/
+
+#renyuanchooseTable2 tr th {
+	height: 0;
+	display: none;
+}
+
+#renyuanchooseTable2 tr td {
+	cursor: pointer;
+}
+
+.shezhiRight {
+	position: absolute;
+	left: 200px;
+	top: 60px;
+	right: 0;
+	bottom: 0;
+	font-family: "微软雅黑";
+	overflow: auto;
+	min-width: 1150px;
+	padding-left: 0 20px 20px 0;
+}
+
+.banciShezhi,
+.banbieShezhi,
+.qingjiaShezhi,
+.chuchaiShezhi,
+.kaoqinMingxi,
+.addbanbieShezhi,
+.renyuanChakan,
+.renyuanChakan1,
+.quanxianShezhi,
+.gongzuoShezhi,
+.baoxiaoShezhi,
+.changebanbieShezhi,
+.huiyiGuanli,
+.huiyiNotice,
+.huiyiEcord,
+.Weekplan,
+.renyuanShezhi,
+.shoufeiMokuai,
+.jiaofeijilvDiv {
+	display: none;
+	margin: 28px 50px;
+}
+.banciShezhi .col-lg-12,
+.banbieShezhi .col-lg-12,
+.qingjiaShezhi .col-lg-12,
+.chuchaiShezhi .col-lg-12,
+.kaoqinMingxi .col-lg-12,
+.addbanbieShezhi .col-lg-12,
+.renyuanChakan .col-lg-12,
+.quanxianShezhi .col-lg-12,
+.baoxiaoShezhi .col-lg-12,
+.changebanbieShezhi .col-lg-12,
+.huiyiGuanli .col-lg-12,
+.huiyiNotice .col-lg-12,
+.huiyiEcord .col-lg-12,
+.Weekplan .col-lg-12,
+.renyuanShezhi .col-lg-12,
+.shoufeiMokuai .col-lg-12,
+.jiaofeijilvDiv .col-lg-12{
+	padding: 0 !important;
+}
+.kaoqinMingxi {
+	margin: 0
+}
+
+.addBanci {
+	background: #00a2e9;
+	font-size: 14px;
+	color: #fff;
+	line-height: 18px;
+	text-align: center;
+	border: none;
+	padding: 6px 10px 6px 10px;
+	border-radius: 15px;
+	margin-bottom: 25px;
+	cursor: pointer;
+}
+.btnMore{
+	margin-right: 6px;
+	-webkit-transform:scale(0.84, 0.84);
+}
+.addwifi {
+	background: #00a2e9;
+	font-size: 14px;
+	color: #fff;
+	line-height: 18px;
+	text-align: center;
+	border: none;
+	border-radius: 15px;
+	padding: 6px 10px 6px 10px;
+	margin:40px 0px;
+	display: block;
+	width: 120px;
+
+}
+.setwifi{
+	margin: 25px 50px;
+}
+#bancishezhiTable {
+	width: 100%;
+}
+
+#bancishezhiTable tr th {
+	width: 30%;
+	text-align: center;
+}
+
+#bancishezhiTable tr th:nth-child(2) {
+	width: 40%;
+	text-align: center;
+}
+
+#bancishezhiTable tr td {
+	width: 30%;
+	text-align: center;
+}
+
+#bancishezhiTable tr td:nth-child(2) {
+	width: 40%;
+	text-align: left;
+}
+
+.addBancitable {
+	display: none;
+	margin-top: 20px;
+	margin-left: 50px;
+}
+
+.addBancitable p {
+	font-size: 30px;
+	margin: 0 auto;
+	line-height: 40px;
+	text-align: center;
+	margin-bottom: 20px;
+}
+
+.tr1 .col-lg-12,
+.tr2,
+.tr3,
+.tr4,
+.tr51,
+.tr6{
+	height: 30px;
+	margin-bottom: 10px;
+}
+
+.tr2,
+.tr3,
+.tr4,
+.tr51,
+.tr6{
+	display: none;
+}
+
+.time-wrap1,
+.time-wrap2 {
+	width: 110px;
+	height: 26px;
+	border: 1px solid gray;
+	display: inline-block;
+}
+
+.time-wrap1 select,
+.time-wrap2 select {
+	border: none;
+	margin-top: 1.5px;
+}
+
+.time-wrap1 select:nth-child(1),
+.time-wrap2 select:nth-child(1) {
+	margin-left: 1px;
+}
+
+.maohao {
+	height: 30px;
+	display: inline-block;
+}
+
+.minite,
+.minite2 {
+	height: 20px;
+	display: inline-block;
+	width: 40px;
+}
+
+.qiandaoName {
+	width: 540px;
+}
+
+.qiandaoName span {
+	margin-right: 10px;
+	font-size: 16px;
+}
+
+.qiandaoName input {
+	width: 200px;
+	height: 26px;
+}
+
+.qianDao {
+	margin-right: 20px;
+}
+
+.qianTui {
+	margin-right: 30px;
+}
+
+.qianDao span,
+.qianTui span {
+	width: 60px;
+	display: inline-block;
+	margin-right: 10px;
+}
+
+.qianTui span {
+	width: 30px;
+}
+
+.addDate {
+	color: #29e;
+	cursor: pointer;
+}
+
+.delDate {
+	color: #29e;
+	cursor: pointer;
+	margin: 0 20px;
+}
+
+.tr5 {
+	/*line-height: 50px;*/
+	display: none;
+}
+
+.tr5 input {
+	/*height: 40px;
+	line-height: 40px;
+	margin-left: 10px;
+	width: 80px;
+	border: none;
+	border-radius: 3px;
+	background-color: #29c;
+	color: #fff;*/
+}
+
+/*删除班次CSS*/
+
+.delBanci {
+	display: none;
+	text-align: center;
+	margin-top: 20px;
+}
+
+.delBanci .delBanciname {
+	width: 100%;
+	font-size: 30px;
+	text-align: center;
+	margin-bottom: 20px;
+}
+
+.removeBanci {
+	color: #19e;
+	cursor: pointer;
+}
+
+.removeBanci:hover {
+	background-color: #fff;
+	color: blue;
+}
+
+.banci,
+.place,
+.noticeMore,
+.removeCulture,
+.addChild,
+.editorCulture,
+.lookChild {
+	color: #19e;
+	margin-right: 10px;
+	cursor: pointer;
+}
+
+.banci:hover,
+.place:hover {
+	background-color: #fff;
+	color: blue;
+}
+
+.editBanci {
+	display: none;
+	text-align: left;
+	margin-top: 20px;
+	margin-left: 80px;
+}
+
+.editName {
+	width: 100%;
+	margin-bottom: 20px;
+}
+
+.editName span {
+	margin-right: 20px;
+}
+
+.firstHour-input,
+.firstHour-select {
+	font-size: 100%
+}
+
+.firstHour {
+	position: relative;
+	font-size: 14px;
+}
+
+.firstHour-select {
+	position: absolute;
+	left: 0;
+	top: 0;
+	*top: 1px;
+	width: 50px;
+	clip: rect(0 auto auto 30px);
+	border: none;
+	margin-top: -3px;
+}
+
+.firstHour-text {
+	width: 30px;
+	*height: 18px;
+	*line-height: 18px;
+	border: none;
+	margin-top: 3px;
+}
+
+/*班别设置*/
+
+.addBanbie {
+	background: #00a2e9;
+	font-size: 14px;
+	color: #fff;
+	line-height: 18px;
+	text-align: center;
+	border: none;
+	padding: 6px 10px 6px 10px;
+	border-radius: 15px;
+	margin-bottom: 25px;
+	cursor: pointer;
+}
+
+#banbieshezhiTable {
+	width: 100%;
+}
+
+#banbieshezhiTable tr th,
+#banbieshezhiTable tr td {
+	text-align: center;
+	word-break: keep-all;
+white-space:nowrap;
+width: auto;
+}
+
+#banbieshezhiTable th:nth-child(1) {
+	width: 20%;
+}
+
+#banbieshezhiTable th:nth-child(2) {
+	width: 20%;
+}
+
+#banbieshezhiTable th:nth-child(4) {
+	width: 20%;
+}
+
+#banbieshezhiTable tr td:nth-child(1) {
+	width: 20%;
+}
+
+#banbieshezhiTable tr td:nth-child(2) {
+	width: 20%;
+}
+
+#banbieshezhiTable tr td:nth-child(4) {
+	width: 20%;
+}
+
+.banbie,
+.removeBanbie,
+.chakan,
+.removeBanbie1{
+	color: #19e;
+	margin-right: 10px;
+	cursor: pointer;
+}
+
+.banbie:hover {
+	background-color: #fff;
+	color: #00f;
+}
+
+.chakan:hover {
+	background-color: #fff;
+	color: #00f;
+}
+
+.removeBanbie:hover {
+	background-color: #fff;
+	color: #00f;
+}
+
+.removebanbieTable,.removerenyuanTable {
+	display: none;
+	margin-top: 20px;
+	text-align: center;
+}
+
+.delBanbiename {
+	width: 100%;
+	font-size: 30px;
+	text-align: center;
+	margin-bottom: 20px;
+}
+
+.removebanbieTable .d3 {
+	width: 100%;
+	text-align: center;
+}
+
+.removebanbieTable input {
+	height: 40px;
+	line-height: 40px;
+	margin-left: 10px;
+	width: 80px;
+	border: none;
+	border-radius: 3px;
+	background-color: #29c;
+	color: #fff;
+}
+
+.delbanbiename {
+	margin: 0 5px;
+	font-weight: bolder;
+	font-size: 18px;
+}
+
+.banzuName,
+.banzuNumber,
+.chooseBanci,
+.banzuNumber2 {
+	width: 100%;
+	font-size: 20px;
+	height: 40px;
+}
+
+.workDays {
+	height: 280px;
+	width: 100%;
+}
+
+.banzuNumber button,
+.chooseBanci button,
+.banzuNumber2 button {
+	font-size: 16px;
+	width: 90px;
+	border: none;
+	border-radius: 3px;
+	background-color: #29c;
+	color: #fff;
+	padding: 5px 10px;
+	outline: none;
+}
+
+.banzuName span,
+.banzuNumber span,
+.chooseBanci span,
+.banzuNumber2 span {
+	width: 100px;
+	display: inline-block;
+}
+
+.showNumber {
+	margin-left: 20px;
+	font-size: 14px;
+}
+
+.showNumber i {
+	margin: 0 3px;
+	font-size: 14px;
+}
+
+.workDays span {
+	width: 100px;
+	font-size: 20px;
+	height: 40px;
+}
+
+.workDays div {
+	width: 300px;
+}
+
+.workDays div p {
+	height: 40px;
+}
+
+.workDays div p input {
+	margin-right: 5px;
+}
+
+.save,
+.save2 {
+	line-height: 40px;
+	width: 150px;
+	border: none;
+	border-radius: 3px;
+	background-color: #29c;
+	color: #fff;
+	margin-top: 30px;
+	margin-left: 120px;
+}
+
+.save2 {
+	display: none;
+}
+
+#choosebanbieDiv {
+	display: none;
+	text-align: center;
+	padding: 20px 0;
+}
+
+#banbiechooseTable tr th {
+	text-align: center;
+}
+
+#banbiechooseTable tr td {
+	cursor: pointer;
+}
+
+.choosedPerson p {
+	height: 20px;
+}
+
+#bancichooseTable {
+	width: 100%;
+}
+
+#bancichooseTable tr th:nth-child(1) {
+	width: 15%;
+}
+
+#bancichooseTable tr th:nth-child(2) {
+	width: 15%;
+}
+
+#bancichooseTable tr td:nth-child(1) {
+	width: 15%;
+}
+
+#bancichooseTable tr td:nth-child(2) {
+	width: 15%;
+}
+
+.bancichoosed input {
+	height: 40px;
+	line-height: 40px;
+	margin-left: 10px;
+	width: 80px;
+	border: none;
+	border-radius: 3px;
+	background-color: #29c;
+	color: #fff;
+}
+
+.choosedbanciName {
+	margin-left: 20px;
+}
+
+.chooserenyuanDiv,.chooserenyuanDiv1,.chooserenyuanDiv2,.chooserenyuanDiv3{
+	display: none;
+	text-align: center;
+}
+.chooserenyuanDiv1 .layui-form-select{
+	margin-left: -70px;
+	margin-right: 30px;
+	
+}
+.chooserenyuanDiv2 .layui-form-select{
+	margin-left: -70px;
+	margin-right: 30px;
+	
+}
+.chooserenyuanDiv3 .layui-form-select{
+	margin-left: -70px;
+	margin-right: 30px;
+	
+}
+.chooserenyuanTable {
+	width: 90%;
+	margin: 20px 5%;
+}
+
+.tableLeft {
+	border: 1px solid #000;
+	width: 100%;
+}
+
+.tableLeft p {
+	height: 40px;
+	text-align: center;
+	line-height: 40px;
+}
+
+/* .tableLeft1, */
+/* .tableLeft2,
+.tableLeft3 {
+	width: 33.33%;
+	min-height: 400px;
+} */
+
+/* .tableLeft1 div, */
+.tableLeft2 .tableLeft2_top,
+.tableLeft3 .tableLeft3_top {
+	height: 40px;
+	width: 100%;
+	text-align: center;
+	padding: 10px;
+	box-sizing: border-box;
+	border-bottom: 1px solid #000
+}
+
+.tableLeft1 .ztree {
+	margin-left: 50px;
+	width: 218px;
+	top: 142px;
+	background-color: #fff;
+	height: 259px;
+}
+
+.tableLeft1 div input {
+	padding-left: 20px;
+}
+
+.tableLeft1 {
+	border-right: 1px solid #000;
+}
+
+.choosedPerson p span:nth-child(2) {
+	line-height: 40px;
+	padding-right: 20px;
+	cursor: pointer;
+}
+
+.renyuanchooseTable tr th {
+	width: 50%;
+}
+
+.renyuanchooseTable tr {
+	height: 20px;
+}
+
+.renyuanchooseTable tr td {
+	width: 50%;
+}
+
+#renyuanchooseTable tr td {
+	cursor: pointer;
+}
+
+#renyuanchooseTable tr th {
+	text-align: center;
+}
+
+.clearChoosed {
+	margin: 10px 0;
+	background-color: #29e;
+	border: none;
+	color: #fff;
+	padding: 5px 10px;
+	outline: none;
+	border-radius: 5px;
+}
+
+.daoRu {
+	height: 30px;
+	line-height: 30px;
+	margin-left: 195px;
+	width: 60px;
+	border: none;
+	border-radius: 3px;
+	background-color: #29c;
+	color: #fff;
+}
+
+.renyuanchoosed input {
+	height: 40px;
+	line-height: 40px;
+	margin-right: 10px;
+	width: 80px;
+	border: none;
+	border-radius: 3px;
+	background-color: #29c;
+	color: #fff;
+	margin-top: 20px;
+}
+#topPerson{
+	/*color: #000000;*/
+}
+#topPerson::-webkit-input-placeholder{
+	color:#aaa ;
+}
+#topPerson:-moz-placeholder{
+	color:#aaa ;
+}
+#topPerson:-ms-input-placeholder{
+	color:#aaa ;
+}
+.renyuanChakan p,.renyuanChakan1 p {
+	width: 100%;
+	text-align: center;
+	font-size: 20px;
+	margin-bottom: 20px;
+}
+.renyuanChakan1 p{
+	margin-top: 20px;
+	margin-bottom: 20px !important;
+}
+.examplerenyuanChakan .fixed-table-container{
+	border: none;
+}
+#renyuanchakanTable {
+	width: 80%;
+	border: 1px solid #e4eaec;
+}
+#renyuanchakanTable1{
+	width: 30%;
+	border: 1px solid #e4eaec;
+}
+#renyuanchakanTable tr th:nth-child(1) {
+	width: 15%;
+}
+
+#renyuanchakanTable tr th:nth-child(2) {
+	width: 15%;
+}
+
+#renyuanchakanTable tr td:nth-child(1) {
+	width: 15%;
+}
+
+#renyuanchakanTable tr td:nth-child(2) {
+	width: 15%;
+}
+
+#renyuanchakanTable tr td,
+#renyuanchakanTable tr th {
+	text-align: center;
+	width: auto;
+}
+
+#renyuanchakanTable tr td img {
+	width: 30px;
+	height: 30px;
+}
+
+/*****************************************************权限设置*************************************************************/
+
+.quanxianTitle {
+	width: 100%;
+	height: 40px;
+	font-size: 30px;
+	text-align: center;
+	line-height: 40px;
+	margin-bottom: 60px
+}
+
+.quanxianShezhi .ul3 {
+	margin-left: 326px;
+	margin-bottom: 20px;
+}
+
+.quanxianShezhi .ul3 li {
+	height: 31px;
+	line-height: 31px;
+	font-size: 15px;
+	display: flex;
+}
+
+.leaderName,
+.noticeName,
+.attentionName,
+.setHRName,
+.attention2Name {
+	width: 150px;
+	display: inline-block;
+}
+
+.showLeader,
+.showNotice,
+.showAttention,
+.showHR,
+.showAttention2 {
+	width: 200px;
+	display: inline-block;
+}
+
+.quanxianShezhi ul li input[type='button'],
+.addcheckerBtn,
+.HRBtn,
+.addJurisdiction,
+.attentionBtn2,
+.topLeaderBtn {
+	background: #00a2e9;
+	font-size: 14px;
+	color: #fff;
+	line-height: 18px;
+	text-align: center;
+	border: none;
+	padding: 6px 10px 6px 10px;
+	border-radius: 15px;
+	margin-bottom: 25px;
+	cursor: pointer;
+}
+.addJurisdiction{
+	display: none;
+}
+.topLeader {
+	margin-bottom: 20px;
+}
+
+.topLeader span {
+	font-size: 15px;
+}
+
+.addcheckerBtn {
+	margin: 0 0 20px 20px
+}
+
+#checkTable tr th,
+#checkTable tr td {
+	text-align: center;
+	width: 33.33%;
+}
+
+.check,
+.removeCheck,
+.changeCheck,
+.lookCheck,
+.planDet,
+.attentionDet,
+.courseDet,
+.courseDelete,
+.lookMeeting,
+.changeMeeting,
+.deleteMeeting,
+.lookMeetingNotice,
+.demandDetails {
+	color: #29e;
+	font-family: "微软雅黑";
+	margin: 0 5px;
+	cursor: pointer;
+}
+
+.courseDelete,
+.deleteMeeting {
+	color: #f00;
+}
+
+.addcheck,
+.checkdepChange,
+.checkRemove,
+.lookCheckTable {
+	display: none;
+	text-align: center;
+}
+
+.checkRemove {
+	margin-top: 20px;
+	font-size: 18px;
+	text-align: center;
+}
+
+.addcheck form,
+.checkdepChange form {
+	margin: 40px 0;
+}
+
+.addcheck label,
+.checkdepChange label {
+	width: 90%;
+}
+
+.addcheck label span,
+.checkdepChange label span {
+	width: 100px;
+	display: inline-block;
+}
+
+.addcheck input,
+.checkdepChange input {
+	width: 50%;
+	padding-left: 10px;
+}
+
+.checkChooseDep {
+	display: none;
+}
+
+#checkAddTable {
+	margin: 20px;
+	width: 450px;
+}
+
+#checkAddTable tr th,
+#checkAddTable tr td {
+	text-align: center;
+}
+
+.BGM {
+	color: #f00;
+}
+
+#treeDemoChooseCheck2 {
+	background-color: #fff;
+}
+
+.setLeaderDiv {
+	margin: 20px;
+	height: 30px;
+	display: flex
+}
+
+.setLeaderDiv .searchInput {
+	margin-right: 20px;
+	height: 30px;
+	padding-left: 10px;
+}
+
+/***********************************************出差请假CSS***************************************************************/
+.layui-layer-btn .layui-layer-btn0{
+	color: #fff !important;
+}
+.layui-layer-btn .layui-layer-btn0:hover{
+	background:#1E9FFF !important;
+	color: #fff !important;
+}
+.addQingjia,
+.addChuchai,
+.addApplyBtn,
+.addNewrules,
+.addCircular,
+.addEcord,
+.addNoticeBtn,
+.addMangerBtn {
+	background: #00a2e9;
+	font-size: 14px;
+	color: #fff;
+	line-height: 18px;
+	text-align: center;
+	border: none;
+	padding: 6px 10px 6px 10px;
+	border-radius: 15px;
+	margin-bottom: 25px;
+	cursor: pointer;
+
+	outline: none;
+}
+
+/*.addchuchaiForm{display: none;}*/
+
+#qingjiaTable tr th,
+#qingjiaTable tr td {
+	text-align: center;
+}
+
+#chuchaiTable tr th,
+#chuchaiTable tr td {
+	text-align: center;
+}
+
+.shuoming {
+	margin-left: 100px;
+}
+
+.shuoming {
+	line-height: 25px;
+	font-size: 12px;
+	color: #828282;
+}
+
+.addqingjiaTable,
+.editqingjiaTable,
+.addchuchaiTable,
+.editchuchaiTable {
+	display: none;
+	padding: 20px;
+}
+
+.minTime,
+.maxTime,
+.shenpi {
+	display: inline-block;
+}
+
+.maxTime,
+.shenpi {
+	margin-left: 50px;
+}
+
+.minTime span,
+.maxTime span,
+.shenpi span {
+	margin-right: 10px;
+	display: inline-block;
+}
+
+.addqingjiaTable input,
+.editqingjiaTable input,
+.addchuchaiTable input,
+.editchuchaiTable input {
+	width: 50px;
+	margin-right: 10px;
+	text-align: center;
+}
+
+.addqingjiaTable .shuoming,
+.editqingjiaTable .shuoming,
+.addchuchaiTable .shuoming,
+.editchuchaiTable .shuoming {
+	margin-left: 20px;
+	margin-top: 20px;
+}
+
+.addqingjiaTable .shuoming p,
+.editqingjiaTable .shuoming p,
+.addchuchaiTable .shuoming p,
+.editchuchaiTable .shuoming p {
+	line-height: 25px;
+	font-size: 12px;
+	color: #828282;
+}
+
+.qingjia,
+.removeQingjia,
+.chuchai,
+.removeChuchai {
+	color: #29c;
+	cursor: pointer;
+	margin: 0 5px;
+}
+
+.removeqingjiaTable,
+.removechuchaiTable {
+	text-align: center;
+	display: none;
+}
+
+.editNotice {
+	display: none;
+	margin: 20px
+}
+
+#noticeTable tr th,
+#noticeTable tr td {
+	text-align: center;
+	cursor: pointer;
+	height: 40px;
+	line-height: 40px;
+}
+
+#noticeTable tr td img {
+	width: 40px;
+	height: 40px;
+}
+
+.information {
+	display: flex;
+	justify-content: space-around;
+}
+
+#click-lasti,
+#remember {
+	cursor: pointer;
+}
+
+.Mask {
+	width: 100%;
+	height: 100%;
+	background-color: #000;
+	filter: alpha(opacity=50);
+	-moz-opacity: 0.5;
+	opacity: 0.5;
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	display: none;
+	z-index: 90;
+}
+
+.lasti {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	display: none;
+	z-index: 99;
+}
+
+.lastic {
+	width: 460px;
+	height: 600px;
+	border-radius: 5px;
+	position: absolute;
+	left: -250px;
+	top: -250px;
+}
+
+.lastic-header {
+	width: 100%;
+	height: 36px;
+	background-color: #F8F8F8;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+}
+
+.lastic-header span {
+	float: right;
+	margin-right: 10px;
+	margin-top: 4px;
+	font-size: 26px;
+	color: #A7A5A5;
+	cursor: pointer;
+}
+
+.lastic-content {
+	width: 100%;
+	height: 424px;
+	background-color: #fff;
+	border-bottom-left-radius: 5px;
+	border-bottom-right-radius: 5px;
+}
+
+.lastic-content p {
+	text-align: center;
+	color: #333333;
+	line-height: 40px;
+}
+
+.lastic-content .title {
+	font-size: 16px;
+	font-weight: 600;
+	padding-top: 30px;
+	margin-bottom: 10px;
+}
+
+.lastic #QR_Code {
+	width: 135px;
+	margin: 0 auto;
+	margin-top: 30px;
+}
+
+#lastic-button {
+	width: 102px;
+	height: 30px;
+	border: 1px solid #2299EE;
+	line-height: 30px;
+	text-align: center;
+	cursor: pointer;
+	border-radius: 5px;
+	margin: 0 auto;
+	font-size: 12px;
+	color: #2299EE;
+	margin-top: 20px;
+}
+
+/*考勤明细*/
+
+.kaoqinTitle {
+	width: 100%;
+	text-align: center;
+	height: 60px;
+	line-height: 60px;
+	background-color: #eee;
+	color: #333;
+	font-size: 20px;
+	position: fixed;
+	left: 200px;
+	top: 60px;
+	right: 0;
+	z-index: 100
+}
+
+.kaoqinTitle span {
+	margin-left: -200px;
+	display: block;
+}
+
+.kaoqinbiaoshi {
+	margin-left: 20px;
+	margin-top: 70px;
+}
+
+.kaoqinbiaoshi ul li {
+	width: 100px;
+	height: 20px;
+	line-height: 20px;
+	font-size: 16px;
+}
+
+.kaoqinbiaoshi ul li:nth-child(2) {
+	width: 130px;
+}
+
+.chidao,
+.zaotui,
+.loudaka,
+.chidaozaotui {
+	width: 20px;
+	height: 20px;
+	border-radius: 20px;
+	display: inline-block;
+	margin-right: 10px;
+	border: none;
+	vertical-align: middle;
+}
+
+/*.chidao{background-color: #b3b3cc}*/
+
+.zaotui {
+	background-color: #f00
+}
+
+.loudaka {
+	background-color: green;
+}
+
+.chidaozaotui {
+	background: #f00
+}
+
+.timeChoose {
+	margin: 10px 0 0 20px;
+}
+
+.timeChoose #test1,
+.timeChoose #test2 {
+	width: 241px;
+	height: 33px;
+	padding: 6px 12px;
+	font-size: 14px;
+}
+
+.timeChoose .rili,
+.timeChoose .rili2,
+.chooseDepartment input {
+	padding: 6px 12px;
+	font-size: 14px;
+	font-weight: 400;
+	color: #555;
+	text-align: center;
+	background-color: #eee;
+	border: 1px solid #ccc;
+	margin-left: -5px;
+	outline: none;
+	cursor: pointer;
+}
+
+.chooseTime1,
+.chooseTime2,
+.chooseDepartment {
+	display: inline-block;
+	width: 300px;
+}
+
+.chooseDepartment {
+	width: 100px;
+}
+
+.chooseDepartment input {
+	width: 100px;
+	height: 32px;
+}
+
+.timeChoose #test2 {
+	margin-left: 10px;
+}
+
+.choosedepartmentTable {
+	display: none;
+}
+
+.choosedepartmentTable ul.ztree {
+	background-color: #fff;
+	text-align: center;
+}
+
+.sort {
+	width: 110px;
+	display: inline-block;
+	margin-left: 5px;
+}
+
+.sort select {
+	height: 32px;
+	width: 110%;
+}
+
+.export {
+	display: inline-block;
+	margin-left: 5px;
+}
+
+.export input {
+	margin-left: 20px;
+	padding: 3px 10px;
+	height: 32px;
+	color: #fff;
+	border: none;
+	border-radius: 3px;
+}
+
+.export .chaxun,
+.export .chaxun2 {
+	background-color: #348fe2;
+}
+
+.export .chaxun2 {
+	display: none;
+}
+
+.export .daochu,
+.export .daochu2 {
+	background-color: #2eb31d;
+}
+
+.export .daochu2 {
+	display: none;
+}
+
+.export .daochugeren {
+	background-color: #2eb31d;
+}
+
+.kaoqinMain {
+	margin-top: 10px;
+}
+
+.kaoqinmainLeft {
+	width: 100%;
+}
+
+.exampleKaoqin {
+	margin: 30px;
+}
+
+#kaoqinmingxiTable tr th {
+	text-align: center;
+	/* width: 16.66%; */
+	/* height: 80px; */
+	box-sizing: border-box;
+	vertical-align: middle;
+}
+
+#kaoqinmingxiTable tr td {
+	text-align: center;
+	/* width: 16.66%; */
+	/* height: 80px; */
+	/* line-height: 70px; */
+	box-sizing: border-box;
+	cursor: pointer;
+}
+
+.rilishow .rililist {
+	white-space: nowrap;
+}
+
+.rilishow .rililist li {
+	width: 80px;
+	height: 80px;
+	border: 1px solid #333;
+	border-right: none;
+	text-align: center;
+	line-height: 80px;
+	display: inline-block;
+	overflow: hidden;
+	white-space: nowrap;
+}
+
+.rilishow .rililist li:last-child {
+	border-right: 1px solid #333;
+}
+
+.examplekaoqinMingxi {
+	margin: 0 30px 30px 30px;
+}
+
+#kaoqinMingxiTable {
+	margin-top: 156px;
+}
+
+#kaoqinMingxiTable tr th {
+	width: 79px;
+	height: 80px;
+	text-align: center;
+	vertical-align: middle;
+}
+
+#kaoqinMingxiTable tr td {
+	width: 70px;
+	height: 87px;
+	text-align: center;
+	vertical-align: middle;
+	cursor: pointer;
+}
+
+#kaoqinMingxiTable tr td:nth-child(1) {
+	line-height: 70px;
+	width: 79px;
+	height: 87px;
+}
+
+.tableType {
+	height: 40px;
+	padding: 10px 0
+}
+
+.tableType ul li {
+	margin-left: 20px;
+	height: 20px;
+	font-size: 16px
+}
+
+.kaoqintongji input,
+.dakaxiangqing input {
+	width: 20px;
+	height: 20px;
+	margin: 0 5px 0 0;
+	display: none;
+}
+
+.kaoqintongji span,
+.dakaxiangqing span {
+	margin-top: -5px;
+	display: inline-block;
+	cursor: pointer;
+}
+
+.kaoqintongji {
+	vertical-align: middle;
+	line-height: 20px;
+}
+
+.kaoqinTongji,
+.dakaXiangqing {
+	width: 20px;
+	height: 20px;
+	border-radius: 20px;
+	margin: 0 5px 0 0;
+	border: 2px solid #000;
+	display: inline-block;
+	box-sizing: border-box;
+	position: relative;
+	cursor: pointer;
+}
+
+.inner1,
+.inner2 {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	width: 12px;
+	height: 12px;
+	margin: -6px;
+	border: 1px solid grey;
+	border-radius: 10px;
+	background-color: grey;
+	cursor: pointer;
+}
+
+.inner2 {
+	display: none;
+}
+
+.totalWorker,
+.totalWorkers {
+	text-align: center;
+	height: 40px;
+	margin-top: 40px;
+}
+
+.kaoqinDetail {
+	display: none;
+	position: relative;
+}
+
+.dakaDetail {
+	width: 50%;
+	margin: 0px 25% 0px;
+	padding-bottom: 30px;
+	text-align: center;
+}
+
+.dakaDetail p {
+	line-height: 30px;
+}
+
+.dakaDetail:first-child {
+	margin-top: 20px;
+}
+
+.dakaDetail:last-child {
+	margin-bottom: 20px;
+}
+
+.dakaDetail span {
+	display: inline-block;
+}
+
+.dakashijain {
+	margin: 0 20px;
+}
+
+.buchong {
+	font-size: 14px;
+	text-align: center;
+	line-height: 40px;
+	border-top: 1px solid #ddd;
+	width: 100%;
+	position: absolute;
+	left: 0;
+	bottom: -20px;
+}
+
+.layui-layer-title {
+	background-color: #eee;
+	border-bottom: 1px solid #ddd;
+}
+
+.overtimeMin,
+.offMin,
+.travelMin,
+.leaveMin {
+	width: 50%;
+	margin: 20px 25%;
+}
+
+.overtimeMin p,
+.offMin p,
+.travelMin p,
+.leaveMin p {
+	line-height: 30px;
+}
+
+.tiaobanStart,
+.tiaobanEnd,
+.tiaobanAll,
+.qingjiaStart,
+.qingjiaEnd,
+.qingjiaAll,
+.chuchaiStart,
+.chuchaiEnd,
+.chuchaiAll,
+.chuchaiAddress,
+.jiaqileibie,
+.jiaqiStart,
+.jiaqiEnd,
+.jiaqiAll {
+	margin-left: 30px;
+}
+
+/*考勤查询*/
+
+.ChaXun {
+	display: none;
+}
+
+.chaxunTitle {
+	line-height: 60px;
+	text-align: center;
+	color: #333;
+	border-bottom: 1px solid #dfdfdf;
+	height: 60px;
+	font-size: 20px;
+	margin-bottom: 20px;
+}
+
+.chaxunChoose {
+	margin-left: 20px;
+	margin-bottom: 30px;
+}
+
+.chaxunDep,
+.chaxunPeo {
+	width: 150px;
+	height: 30px;
+	padding: 0 10px;
+	margin: 0 5px;
+}
+
+.chaxunPeo {
+	margin-right: 20px;
+	text-shadow: none;
+}
+
+.chaxunDate {
+	margin: 0 10px;
+	width: 272px;
+	height: 30px;
+	padding: 0 20px;
+}
+
+.chaxunBtn,
+.daochuBtn {
+	padding: 5px 10px;
+	background-color: #348fe2;
+	color: #fff;
+	border: none;
+	border-radius: 3px;
+	height: 30px;
+	margin: 0 5px;
+}
+
+.daochuBtn {
+	background-color: #2eb31d;
+}
+
+.chaxunTable {
+	display: none;
+	padding: 0 50px;
+	background-color: #f0f6e4
+}
+
+
+#treeDemo4 {
+	left: 100px;
+	top: 60px;
+	bottom: 30px;
+}
+
+#dangtiandakaTable tr th,
+#dangtiandakaTable tr td {
+	text-align: center;
+	height: 40px;
+}
+
+.addressDet {
+	display: none;
+	text-align: center;
+}
+
+.addressDet p {
+	line-height: 40px;
+	margin: 20px;
+}
+
+#dangtiandakaTable tr th {
+	width: 16.66%;
+}
+
+#kaoqinmingxiAll {
+	display: none;
+}
+
+/*企业文化CSS设置*/
+
+.wenhuaXuanchuan {
+	display: none;
+}
+
+.wenhuaTitle {
+	width: 100%;
+	height: 60px;
+	line-height: 60px;
+	font-size: 20px;
+	text-align: center;
+	background-color: #eeeeee;
+}
+
+.addpicBtn,
+.changepicBtn,
+.detpicBtn {
+	background: #00a2e9;
+	font-size: 14px;
+	color: #fff;
+	line-height: 18px;
+	text-align: center;
+	border: none;
+	padding: 6px 10px 6px 10px;
+	border-radius: 15px;
+	margin-bottom: 25px;
+	cursor: pointer;
+	margin: 20px;
+	width: 100px;
+	display: inline-block;
+	cursor: pointer;
+}
+
+.detpicBtn {
+	background-color: #f00;
+}
+
+.httpShow {
+	line-height: 18px;
+	text-align: center;
+	border: none;
+	padding: 5px 10px;
+	border-radius: 3px;
+	margin: 20px 0;
+	margin-left: 7%;
+	display: inline-block;
+	cursor: pointer;
+	width: 50%;
+}
+
+.changepicBtn,
+.detpicBtn {
+	width: 18%
+}
+
+.piclist ul li {
+	width: 30%;
+	margin-left: 2.5%;
+}
+
+.piclist ul li img {
+	width: 100%;
+}
+
+.picChange {
+	color: #fff;
+	background-color: #5cb85c;
+	border-color: #4cae4c;
+}
+
+.detPicTable,
+.clutureDeletedTable {
+	text-align: center;
+	font-size: 20px;
+	line-height: 40px;
+	display: none;
+}
+
+.httpPre .httplink {
+	background: #2299ee;
+	font-size: 14px;
+	color: #fff;
+	line-height: 18px;
+	text-align: center;
+	border: none;
+	padding: 5px 10px;
+	border-radius: 3px;
+	margin-bottom: 25px;
+	margin: 20px;
+	width: 120px;
+	display: inline-block;
+	cursor: pointer;
+}
+
+.picList {
+	width: 60%;
+	margin: 0 auto;
+}
+
+#PicTable td {
+	width: 40%;
+	text-align: center;
+	vertical-align: middle;
+}
+
+#PicTable td img {
+	width: 100%;
+}
+
+#PicTable th {
+	display: none;
+}
+
+.picTihuan,
+.removePic {
+	color: #19e;
+	margin-right: 10px;
+	cursor: pointer;
+	font-size: 40px;
+}
+
+.inputDetails>div {
+	margin-bottom: 20px;
+}
+
+.httpHead {
+	width: 70px;
+}
+
+.pichttpInput {
+	width: 110px;
+}
+
+.picRule {
+	line-height: 26px;
+}
+
+.picOPtion {
+	display: none;
+}
+
+#setTime2 {
+	display: none;
+}
+
+/*小喇叭CSS设置*/
+
+.xiaolaBa {
+	display: none;
+	margin: 40px 20px;
+}
+
+.attention,
+.lookxiaolaba {
+	font-size: 16px;
+	color: #fff;
+	line-height: 25px;
+	text-align: center;
+	border: none;
+	padding: 5px 15px;
+	border-radius: 3px;
+	background-color: #2299ee;
+	margin: 20px 30px 20px 0;
+}
+
+.sendxiaolabaTable,
+.sendnoticeTable {
+	display: none;
+	margin: 20px auto;
+	vertical-align: top;
+}
+
+.sendnoticeTable {
+	position: relative;
+}
+
+.sendxiaolabaTable span,
+.sendnoticeTable span {
+	vertical-align: top;
+	margin-left: 20px;
+}
+
+.sendxiaolabaTable textarea {
+	width: 80%;
+	height: 40%;
+	box-sizing: border-box;
+}
+
+.luanchTime span,
+.pushTime span {
+	vertical-align: middle;
+	margin-left: 20px;
+}
+
+.luanchTime select {
+	margin: 5px;
+}
+
+.pushTime input {
+	margin: 5px;
+}
+
+#xiaolabashowTable tr th {
+	text-align: center;
+}
+
+#xiaolabashowTable tr td {
+	text-align: center;
+}
+
+/*企业公告CSS设置*/
+
+.qiyeGonggao {
+	display: none;
+	margin: 40px 20px;
+}
+
+.notice,
+.loadNotice,
+.agreeNotice,
+.refuseNotice,
+.addCultureBtn {
+	font-size: 16px;
+	color: #fff;
+	line-height: 25px;
+	text-align: center;
+	border: none;
+	padding: 5px 15px;
+	border-radius: 3px;
+	background-color: #2299ee;
+	margin: 20px 30px 20px 0;
+}
+
+.notice {
+	margin: 20px 30px 20px 0;
+	background-color: green
+}
+
+.sendnoticeTable textarea {
+	width: 500px;
+	padding: 10px 20px;
+	box-sizing: border-box;
+	height: 130px;
+}
+
+.noticeUp label span:nth-child(1) {
+	display: inline-block;
+	width: 100px;
+}
+
+.choosedepTable {
+	display: none;
+}
+
+.choosedepTable ul.ztree {
+	background-color: #fff;
+	text-align: center;
+}
+
+/*企业愿景*/
+
+.qiyeDream {
+	display: none;
+	margin: 40px 20px;
+	position: relative;
+}
+
+#companyDream>div {
+	min-height: 50px;
+}
+
+#companyDream>div>input {
+	margin-right: 30px;
+	background-color: #29e;
+	color: #fff;
+	font-size: 14px
+}
+
+#companyDream label {
+	margin: 10px 0;
+}
+
+#companyDream label>span {
+	vertical-align: top;
+	display: inline-block;
+	width: 120px;
+}
+
+#companyDream label>input {
+	vertical-align: bottom;
+	margin-left: 30px;
+	background-color: #29e;
+	color: #fff;
+	font-size: 14px
+}
+
+#companyDream label:nth-child(1)>.img {
+	background-color: #fff;
+	color: #000;
+	margin: 0;
+}
+
+.deleteImg {
+	text-align: center;
+	font-size: 12px;
+}
+
+.w-e-text {
+	background-color: #fff;
+}
+
+.picDiv .imageDiv {
+	width: 320px;
+	height: 400px;
+}
+
+.picDiv .imageDiv img {
+	width: 80%;
+}
+
+.picDiv .imageDiv p {
+	margin: 10px;
+}
+
+.picDiv .imageDiv p span {
+	display: inline-block;
+	width: 60px;
+}
+
+#file {
+	display: inline-block;
+}
+
+.addPhoto ul {
+	width: 100%;
+}
+
+.addPhoto ul li {
+	width: 50%;
+}
+
+.addPhoto ul li img {
+	width: 80%;
+	margin: 20px 10%;
+	height: 296px;
+}
+
+.kv-fileinput-caption {
+	display: none;
+}
+
+.addImages>div>div>div:nth-child(1) {
+	display: none;
+}
+
+.templeDetsils>div {
+	margin: 20px auto;
+	border: 1px dashed #fff;
+	padding: 5px;
+}
+
+.templeDetsils>div>p {
+	font-size: 20px;
+	font-weight: bolder;
+	padding-left: 30px;
+}
+
+.templeDetsils>div>div p {
+	font-size: 18px;
+	font-weight: bold;
+}
+
+.templeDetsils>div>div .test_box {
+	text-indent: 32px;
+	padding: 5px;
+	line-height: 24px;
+	border-radius: 5px;
+	font-size: 14px;
+	width: 80%;
+	margin-left: 20px;
+}
+
+.templeDetsils>div .imgLogo {
+	margin: 20px 0 10px 30px
+}
+
+.templeDetsils>div #imgReason {
+	vertical-align: top;
+}
+
+.templeDetsils>div>div {
+	margin: 10px;
+	margin-left: 30px;
+	padding: 10px;
+	text-indent: 30px;
+	padding: 5px;
+	line-height: 24px;
+	border-radius: 5px;
+	font-size: 16px;
+	letter-spacing: 1px;
+	z-index: 20
+}
+
+.templeDetsils>div input:nth-child(1) {
+	vertical-align: top;
+	margin-right: 30px;
+}
+
+.templeDetsils>div>div input:nth-child(1) {
+	vertical-align: top;
+	margin-right: 30px;
+}
+
+.templeDetsils>div #deleteTemple {
+	vertical-align: bottom;
+	margin-left: 30px;
+	background-color: #f00;
+	color: #fff;
+	border: none;
+	outline: none;
+	display: none
+}
+
+.templeDetsils>div>div #deleteTemple2 {
+	vertical-align: bottom;
+	margin-left: 30px;
+	background-color: #f00;
+	color: #fff;
+	border: none;
+	outline: none;
+	display: none
+}
+
+.templeDetsils>div #addchildTemple {
+	vertical-align: bottom;
+	margin-left: 30px;
+	display: none
+}
+
+.templeDetsils>div #changeTemple {
+	vertical-align: bottom;
+	margin-left: 30px;
+	background-color: #29e;
+	color: #fff;
+	border: none;
+	outline: none;
+	display: none
+}
+
+.templeDetsils>div>div #changeTemple2 {
+	vertical-align: bottom;
+	margin-left: 30px;
+	background-color: #29e;
+	color: #fff;
+	border: none;
+	outline: none;
+	display: none
+}
+
+.choosetemple {
+	width: 80%;
+	margin: 0 auto;
+}
+
+.choosetemple>ul {
+	position: fixed;
+	top: 60px;
+	left: 200px;
+	right: 20px;
+}
+
+.choosetemple>ul>li {
+	width: 25%;
+	background-color: #29e;
+	color: #fff;
+	text-align: center;
+	height: 50px;
+	line-height: 50px;
+	cursor: pointer;
+}
+
+.choosetemple>ul>li>ul {
+	display: none;
+	box-shadow: 2px 2px 5px #aaaaaa, -2px 2px 5px #aaaaaa;
+	width: 500px;
+	height: 375px;
+	background-color: #000;
+	position: relative;
+	z-index: 200
+}
+
+.choosetemple>ul>li>ul>img {
+	width: 100%;
+	height: 100%;
+}
+
+.templeDetsils {
+	width: 80%;
+	margin: 10px auto;
+	padding: 20px;
+	background-color: #eee;
+	border: 1px dashed #eee;
+	z-index: 10
+}
+
+.addtempleTable,
+.addtempleTable2,
+.addtempleTable3,
+.addtempleTable4 {
+	display: none;
+	margin: 40px 20px;
+}
+
+.addtempleTable label span {
+	display: inline-block;
+	width: 100px;
+	vertical-align: top;
+	text-align: center;
+}
+
+.addtempleTable2 label span {
+	display: inline-block;
+	width: 100px;
+	vertical-align: top;
+	text-align: center;
+}
+
+.addtempleTable3 label span {
+	display: inline-block;
+	width: 100px;
+	vertical-align: top;
+	text-align: center;
+}
+
+.templeDetsils .leaderDiv {
+	width: 30%;
+	height: 550px;
+	text-align: center;
+	margin: 0 1.5%;
+}
+
+.templeDetsils .leaderDiv img {
+	width: 70%;
+	margin: 20px 15%;
+	border-radius: 10px;
+}
+
+.templeDetsils .leaderDiv p {
+	width: 100%;
+	margin: 5px 0;
+}
+
+.templeDetsils .leaderDiv p span {
+	display: inline-block;
+	width: 50%;
+	text-align: center;
+}
+
+.templeDetsils .leaderDiv #deleteTemple {
+	padding: 10px 25px;
+	border: none;
+	outline: none;
+	border-radius: 5px;
+	background-color: #f00;
+	color: #fff;
+	margin-left: -30px;
+}
+
+/*培训管理CSS设置*/
+
+.peiXunPlan,
+.peiXunAttention,
+.coursePlanDiv,
+.peiXunDemand {
+	display: none;
+	margin: 40px 20px;
+}
+
+.coursePlanDiv>div {
+	margin-bottom: 20px;
+}
+
+.peixunChoose {
+	margin-bottom: 20px;
+}
+
+#chooseDetail {
+	margin: 0 5px;
+}
+
+#peixunPlanTable tr th,
+#peixunPlanTable tr td {
+	text-align: center;
+}
+
+.planMore,
+.addplanTable,
+.addattentionTable,
+.lookattentionTable,
+.peixunThemeTable,
+.choosedepartmentTable2,
+.peixunChoosePerson,
+.lookCourseDiv,
+.addCourseDiv {
+	display: none;
+	padding: 20px;
+}
+
+.planMore div {
+	width: 100%;
+}
+
+.planMore div p {
+	width: 50%;
+	display: inline-block;
+	height: 30px;
+	line-height: 30px;
+}
+
+.planMore div p span:nth-child(1) {
+	width: 100px;
+	display: inline-block;
+}
+
+.planMore div p span:nth-child(2) {
+	color: #828282;
+}
+
+.addPlan,
+.addAttention,
+.addCourse,
+.addApplyBtn2 {
+	background: #00a2e9;
+	font-size: 14px;
+	color: #fff;
+	line-height: 18px;
+	text-align: center;
+	border: none;
+	padding: 6px 10px 6px 10px;
+	border-radius: 15px;
+	cursor: pointer;
+
+	margin-right: 30px;
+	outline: none;
+}
+
+#addPlan label {
+	width: 100%;
+	height: 50px;
+	line-height: 20px;
+}
+
+#addPlan label p {
+	width: 50%;
+}
+
+#addPlan label p input {
+	padding-left: 10px;
+	box-sizing: border-box;
+}
+
+#addPlan label p select {
+	padding-left: 10px;
+	box-sizing: border-box;
+	width: 190px;
+	margin-left: -5px;
+}
+
+#addPlan label span:nth-child(1) {
+	width: 10px;
+	display: inline-block;
+	color: red;
+}
+
+#addPlan label span:nth-child(2) {
+	width: 100px;
+	display: inline-block;
+}
+
+.listall {
+	width: 100%;
+	cursor: text;
+}
+
+.detlist {
+	display: inline-block;
+	border: 1px solid #A9A9A9;
+	width: 560px;
+	height: 25px;
+	padding-left: 10px;
+	box-sizing: border-box;
+}
+
+.typeList span {
+	font-size: 12px;
+}
+
+.chooseObj,
+.choosePlanType {
+	display: none;
+	margin: 50px;
+}
+
+#chooseObjTable tr th,
+#chooseObjTable tr td {
+	text-align: center;
+}
+
+.addAttention {
+	margin-bottom: 20px
+}
+
+/*#peixunAttentionTable tr td:nth-child(4){overflow: hidden;text-overflow:ellipsis;white-space: nowrap;width: 100px;}*/
+
+.lookattentionTable>div {
+	line-height: 30px;
+}
+
+.lookattentionTable>div>span:nth-child(1) {
+	display: inline-block;
+	width: 80px;
+}
+
+.lookattentionTable>div>span:nth-child(2) {
+	color: #A9A9A9;
+}
+
+.lookattentionTable>div>p {
+	width: 50%;
+}
+
+.lookattentionTable>div>p span:nth-child(1) {
+	display: inline-block;
+	width: 80px;
+}
+
+.lookattentionTable>div>p span:nth-child(2) {
+	color: #A9A9A9;
+}
+
+#addAttention label {
+	width: 100%;
+}
+
+#addAttention label>p {
+	width: 50%;
+	line-height: 40px;
+}
+
+#addAttention label>p span {
+	display: inline-block;
+}
+
+#addAttention label>p span:nth-child(1) {
+	width: 10px;
+	color: #f00;
+}
+
+#addAttention label>p span:nth-child(2) {
+	width: 80px;
+}
+
+#addAttention .peiXunTime p {
+	width: 100%;
+	line-height: 40px;
+}
+
+#addAttention .peiXunTime p input {
+	width: 600px;
+}
+
+#minPlanTable tr {
+	cursor: pointer;
+}
+
+#minPlanTable tr th {
+	display: none;
+}
+
+.choosedepartmentTable2 ul.ztree {
+	background-color: #fff;
+	margin-top: -60px
+}
+
+.lookRules {
+	font-size: 14px;
+	color: #fff;
+	line-height: 18px;
+	text-align: center;
+	border: none;
+	padding: 5px 10px;
+	border-radius: 3px;
+	outline: none;
+	background-color: #29e;
+}
+
+.lookRules a {
+	color: #fff;
+	text-decoration: none;
+}
+
+.lookRules a:hover {
+	background-color: #29e;
+}
+
+.teaInfo,
+.courseMain {
+	border: 1px solid #ddd;
+	padding: 20px;
+}
+
+.courseDeleted {
+	padding: 20px;
+	text-align: center;
+	display: none;
+}
+
+.lookCourseDiv {
+	padding: 30px 15px;
+}
+
+.lookCourseDiv>div p {
+	width: 50%;
+	float: left;
+	line-height: 35px;
+}
+
+.lookCourseDiv>.coursePlanDiv2 p {
+	width: 100%;
+	line-height: 35px;
+	float: left;
+}
+
+.lookCourseDiv>#courseLine p {
+	width: 100%;
+}
+
+.lookCourseDiv>div p span:nth-child(1) {
+	display: inline-block;
+	width: 80px;
+}
+
+.lookCourseDiv>div p span:nth-child(2) {
+	color: #a9a9a9;
+}
+
+#courseLine {
+	padding: 20px;
+}
+
+.searchCoursePlanBtn {
+	background-color: #29e;
+	color: #fff;
+}
+
+#searchArea {
+	margin-right: 20px;
+}
+
+#chooseplanTable tr td {
+	cursor: pointer;
+}
+
+/*报销设置CSS*/
+
+.addApplyDiv {
+	display: none;
+	padding: 40px;
+}
+
+.baoxiaoShezhi p {
+	line-height: 35px;
+}
+
+.addApplyBtn {
+	margin-right: 30px;
+}
+
+#applyTabel label {
+	display: block;
+	margin-bottom: 20px;
+}
+
+#applyTabel label span:nth-child(1) {
+	display: inline-block;
+	width: 110px;
+}
+
+#applyTabel label #addLabel {
+	display: inline-block;
+	width: 120px;
+	margin: 0 20px;
+	cursor: pointer;
+}
+
+#applyTabel label .deleteApplyinput {
+	display: inline-block;
+	margin-left: 20px;
+	color: #f00;
+	cursor: pointer;
+}
+
+#applyTabel label select {
+	margin-left: 20px;
+}
+
+/*会议设置CSS*/
+
+.newRulesDiv,
+.newCircular,
+.newEcord,
+.addMangerDiv {
+	display: none;
+	padding: 40px;
+}
+
+#addRulesForm label,
+#changeRulesForm label {
+	height: 50px;
+	display: block;
+}
+
+#addRulesForm label>span,
+#changeRulesForm label>span {
+	display: inline-block;
+	width: 100px;
+}
+
+.dismiss {
+	width: 100px;
+	float: left;
+	margin: 8px 0px;
+}
+
+#addCircularFrom .tesk_1,#addEcordFrom .tesk_1{
+	width: 250px !important;
+}
+
+#addCircularFrom .tesk_2,#addEcordFrom .tesk_2 {
+	width: 400px !important;
+}
+
+/*#changeRulesForm label input{outline: none;}*/
+
+#addRulesForm label>select,
+#changeRulesForm label>select {
+	display: inline-block;
+}
+
+#addRulesForm .timeInterval2,
+#addRulesForm .timeInterval4,
+#addRulesForm .timeInterval3,
+#changeRulesForm .timeIntervalC1,
+#changeRulesForm .timeIntervalC2,
+#changeRulesForm .timeIntervalC3 {
+	display: none;
+}
+
+.meetMoreTable {
+	display: none;
+	margin: 20px 40px;
+}
+
+.meetingNoticeDiv>p {
+	margin: 10px 0;
+	width: 100%;
+	text-align: left;
+}
+
+.meetingNoticeDiv>p span:nth-child(1) {
+	display: inline-block;
+	width: 80px;
+}
+
+/*企业空间*/
+
+.addMangerDiv label span {
+	display: inline-block;
+	width: 80px;
+}
+
+.payBtn1,
+.payBtn2 {
+	color: #29e;
+	margin: 0 5px;
+	cursor: pointer;
+	text-decoration: none;
+	background-color: none
+}
+
+.jiaofeiDiv {
+	display: none;
+	margin: 20px;
+}
+
+.jiaofeiDiv button {
+	padding: 10px 20px;
+	background-color: #29e;
+	color: #fff;
+	outline: none;
+	border: none;
+	border-radius: 5px;
+	margin: 0 20px;
+}
+
+.jiaofeiDiv button:nth-child(1) {
+	background-color: #ccc;
+	color: #000;
+}
+
+#shoufeiTable tr td:nth-child(1),
+#shoufeiTable tr td:nth-child(4) {
+	width: 150px;
+}
+
+.loadMoreTrade,
+.loadAllTrade {
+	width: 300px;
+	height: 50px;
+	border-radius: 10px;
+	border: none;
+	outline: none;
+	background-color: #29e;
+	color: #fff;
+	display: none;
+}
+
+.loadAllTrade {
+	background-color: #a9a9a9;
+	cursor: default;
+}
+
+.jiaofeijilvDiv>p:nth-child(1) {
+	margin-bottom: 10px;
+}
+
+/*******************************************************组织结构CSS**************************************************/
+
+.maintext {
+	width: 100%;
+	display: none;
+}
+
+.cover {
+	position: absolute;
+	left: 0px;
+	right: 0;
+	bottom: 0;
+	top: 0;
+	background-color: #000;
+	opacity: 0.3;
+	z-index: 20;
+	display: none;
+}
+
+.adddepartTable {
+	display: none;
+	margin: 50px 0 50px 50px;
+	text-align: center;
+}
+
+.adddepartTable label {
+	width: 90%;
+}
+
+.adddepartTable input {
+	margin-left: 20px;
+	width: 50%;
+	padding-left: 10px;
+}
+
+.departRemove,
+.deleteMeetingDiv,
+.meetingNoticeDiv {
+	display: none;
+	margin: 50px;
+	text-align: center;
+}
+
+.departChangename {
+	display: none;
+	margin: 50px;
+	text-align: center;
+}
+
+.remove2,
+.rename2,
+.deletePost {
+	width: 40%;
+	height: 300px;
+	margin: auto;
+	z-index: 100;
+	border: 1px solid #000;
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	padding: 2%;
+	text-align: center;
+	display: none;
+	background-color: #ddd;
+}
+
+.deletePost label {
+	width: 80%;
+	height: 40px;
+	line-height: 40px;
+	margin-bottom: 30px;
+	margin: 10px;
+}
+
+.deletePost label input {
+	width: 80%;
+	margin-left: 20px;
+	padding-left: 10px;
+}
+
+.deletePost button {
+	height: 40px;
+	line-height: 40px;
+	margin-left: 10px;
+	width: 80px;
+	border: none;
+	border-radius: 3px;
+	background-color: #29c;
+	margin-top: 25px;
+	color: #fff;
+}
+
+.mainright {
+	position: absolute;
+	left: 220px;
+	top: 60px;
+	right: 0;
+	bottom: 0;
+	padding: 10px 20px;
+	overflow: auto;
+	font-family: "微软雅黑";
+}
+
+#marB {
+	margin-bottom: 45px;
+}
+
+.mainright .top {
+	/* text-align: center;
+	height: 50px;
+	line-height: 30px;
+	padding-top: 10px; */
+}
+
+.mainright .top button {
+	border-radius: 3px;
+	border: none;
+	color: #fff;
+}
+
+.mainright .top .dename {
+	font-size: 16px;
+}
+
+.fengexian {
+	width: 100%;
+	height: 2px;
+	background-color: #000;
+	margin: 20px 0;
+}
+
+.middle table {
+	box-sizing: border-box;
+	width: 100%;
+}
+
+.middle table th {
+	text-align: center;
+}
+
+.middle table tr {
+	width: 100%;
+	text-align: center;
+	height: 30px;
+	line-height: 30px;
+}
+
+.middle table tr td {
+	width: 25%;
+}
+
+.middle .table2 {
+	border: 1px solid #000;
+}
+
+.left .addDEP {
+	height: 130px;
+	width: 220px;
+	background-color: #444446;
+	padding-top: 70px;
+	text-align: center;
+}
+
+.left .addDEP button {
+	width: 80%;
+	height: 40px;
+	line-height: 30px;
+	font-size: 16px;
+	border-radius: 3px;
+	border: none;
+	color: #fff;
+	background-color: #29e;
+}
+
+#treeDemo {
+	overflow: auto;
+	margin-top: 60px;
+	background-color: white
+}
+
+.srarchDiv {
+	width: 100%;
+	position: relative;
+	margin: 20px 0;
+}
+
+.srarchDiv .search {
+	border: 1px solid #000;
+	padding: 0 30px 0 10px;
+	box-sizing: border-box;
+	width: 350px;
+}
+
+.srarchDiv .icon {
+	font-size: 16px;
+	position: absolute;
+	right: 10px;
+	top: 8px;
+	z-index: 111;
+	cursor: pointer;
+}
+
+#exampleTableFromData {
+	margin-bottom: 50px;
+}
+
+.renyuan {
+	width: 100%;
+	text-align: center;
+	font-size: 16px;
+	height: 40px;
+}
+
+#tabledepart {
+	box-sizing: border-box;
+	width: 100%;
+}
+
+#tabledepart th {
+	text-align: center;
+}
+
+#tabledepart tr {
+	width: 100%;
+	text-align: center;
+	height: 30px;
+	line-height: 30px;
+}
+
+#tabledepart tr td {
+	width: 20%;
+}
+
+.changePost2,
+.changePost {
+	display: none;
+	margin: 20px 0 20px 20px;
+}
+
+.changePost2 label {
+	line-height: 25px;
+}
+
+.changePost label span {
+	font-size: 20px;
+	line-height: 20px;
+}
+
+.changePost2 label select {
+	height: 29px;
+}
+
+.changePost label select {
+	line-height: 30px;
+}
+
+.changePost label span:first-child,
+.changePost2 label span:first-child {
+	color: red;
+	margin-right: 5px;
+}
+
+#prov1,
+#desc1 {
+	height: 29px;
+}
+
+.changePost label span:nth-child(2),
+.changePost2 label span:nth-child(2) {
+	margin-right: 20px;
+	font-size: 16px;
+}
+
+.changePost2 label #checknew {
+	margin-left: 95px;
+}
+
+.changePost label #check {
+	margin-left: 100px;
+	margin-top: 10px;
+}
+
+#postname {
+	width: 55%;
+	height: 28px;
+	padding-left: 10px;
+}
+
+.changePost button,
+.changePost2 button {
+	height: 40px;
+	line-height: 40px;
+	margin-left: 10px;
+	width: 80px;
+	border: none;
+	border-radius: 3px;
+	background-color: #29c;
+	margin-top: 25px;
+	color: #fff;
+}
+
+.pencil,
+.remove,
+.plese,
+.post,
+.postDes {
+	color: #29e;
+	font-family: "微软雅黑";
+	margin: 0 5px;
+	cursor: pointer;
+}
+
+#addr-show2 {
+	display: none;
+}
+
+.delPost {
+	color: #f00 !important;
+	font-family: "微软雅黑";
+	margin: 0 5px;
+	cursor: pointer;
+}
+
+.pencil:hover {
+	background-color: none;
+}
+
+.yuangongchaKan,
+.yuangongChange,
+.yuangongMove {
+	color: #29e;
+	font-family: "微软雅黑";
+	margin: 0 5px;
+	cursor: pointer;
+	font-style: normal;
+}
+
+.zhigongxinxi,
+.zhigongChange {
+	padding: 20px;
+	display: none;
+}
+
+.zhigongxinxiForm label span:nth-child(2) {
+	color: #828282
+}
+
+.layui-layer-title {
+	text-align: center;
+}
+
+.zhigongxinxi label span:nth-child(1) {
+	width: 100px;
+	display: inline-block;
+	margin-left: 20px;
+}
+
+.zhigongxinxi label span:nth-child(2) {
+	width: 180px;
+	display: inline-block;
+}
+
+.zhigongpostChange,
+.zhigongtelChange {
+	display: none;
+}
+
+.zhigongxinxi .changpostBtn,
+.zhigongxinxi .changtelBtn {
+	margin-left: 50px;
+	background-color: #29C;
+	border: none;
+	border-radius: 2px;
+	color: #fff;
+	padding: 5px 10px;
+}
+
+.changDepartment {
+	display: none;
+}
+
+#treeDemo3 {
+	left: 140px;
+	top: 150px;
+	bottom: 60px;
+}
+
+.changedPost {
+	margin-left: 300px;
+	background-color: #29c;
+	border-radius: 3px;
+	color: #fff;
+	padding: 3px 5px;
+	z-index: 100;
+	margin-top: 20px;
+}
+
+.postDesTable,
+.postChoose,
+.delPostDiv {
+	width: 100%;
+	margin: 20px 0;
+	display: none;
+}
+
+.delPostDiv {
+	text-align: center;
+}
+
+.postChoose {
+	padding: 20px;
+}
+
+.postLook,
+.postAdd {
+	width: 100%;
+	padding: 0 5%;
+	display: none;
+}
+
+.postInfo,
+.postRequire {
+	border: 1px dashed #000;
+	padding: 20px;
+	margin-bottom: 20px;
+}
+
+.tname,
+.trequire {
+	width: 100%;
+	height: 30px;
+	font-size: 20px;
+	line-height: 30px;
+	font-family: "微软雅黑";
+	font-weight: bold;
+}
+
+.postInfo div,
+.postRequire div {
+	width: 100%;
+}
+
+.postInfo div p button,
+.postRequire div p button,
+.jinengDet button,
+.GtypeDetC,
+.GtypeDetY {
+	background-color: #29c;
+	border: none;
+	border-radius: 5px;
+	color: #fff;
+	padding: 3px 5px;
+	float: right;
+	margin-right: 5px;
+}
+
+.jinengDet button,
+.GtypeDetC,
+.GtypeDetY {
+	margin-right: 15px;
+}
+
+.workDetY,
+.postDescriptionY,
+.educationclaY,
+.workexpeclaY,
+.sexclaY,
+.ageclaY,
+.salaryY,
+.peoNumY,
+.jinengDesY,
+.GtypeDetY {
+	display: none;
+}
+
+.postRequire div p button:nth-child(2) {
+	display: none;
+}
+
+.postInfo div p select,
+.postRequire div p select {
+	width: 100px;
+	display: none;
+}
+
+.postInfo div p input,
+.postRequire div p input,
+.jinengDet input,
+.gangweiType input {
+	width: 100px;
+	display: none;
+}
+
+#jinengDesCd {
+	width: 300px;
+	display: none;
+	height: 100px;
+	overflow: hidden;
+	vertical-align: top;
+	padding: 10px;
+	box-sizing: border-box;
+}
+
+#GtypeDetCd {
+	width: 260px;
+}
+
+.postInfo div p,
+.postRequire div p {
+	width: 50%;
+	height: 50px;
+	padding: 0 10px;
+}
+
+.postInfo div p span:nth-child(1),
+.postRequire div p span:nth-child(1) {
+	width: 70px;
+	display: inline-block;
+}
+
+.postInfo div p span:nth-child(2),
+.postRequire div p span:nth-child(2) {
+	color: #828282;
+	font-size: 14px;
+}
+
+.jinengDet span:nth-child(1),
+.gangweiType span:nth-child(1) {
+	width: 70px;
+	display: inline-block;
+}
+
+.jinengDet span:nth-child(2),
+.gangweiType span:nth-child(2) {
+	color: #828282;
+	font-size: 14px;
+}
+
+.postAdd label span:nth-child(1) {
+	width: 70px;
+	display: inline-block;
+}
+
+#workdesc,
+#pfskills {
+	width: 500px;
+	height: 250px;
+	overflow: hidden;
+	vertical-align: top;
+	padding: 10px;
+	box-sizing: border-box;
+}
+
+.postAdd label select {
+	width: 186px;
+	height: 25px;
+}
+
+.postAdd label input {
+	padding-left: 10px;
+	box-sizing: border-box;
+}
+
+.postChoose p {
+	width: 240px;
+	display: inline-block;
+	line-height: 25px;
+	height: 25px;
+}
+
+.postChoose p input {
+	margin-right: 10px;
+}
+
+.ageRange,
+.salaryRange {
+	display: inline-block;
+}
+
+.salaryRange input,
+.ageRange input {
+	width: 90px;
+}
+
+#noticeTime>div {
+	width: 48%;
+	border: 1px solid #ddd;
+	margin: 2px 0;
+	margin-right: 2%;
+}
+
+#noticeTime>div span:nth-child(1) {
+	display: inline-block;
+	width: 80px;
+}
+
+#noticeTime>div span:nth-child(2) {
+	color: #A9A9A9;
+}
+
+#noticeTime>p span {
+	width: 150px;
+}
+
+/*课程*/
+
+#addCourseForm label {
+	height: 50px;
+	display: block;
+}
+
+#addCourseForm label span:nth-child(1) {
+	display: inline-block;
+	width: 10px;
+	color: #f00;
+}
+
+#addCourseForm label span:nth-child(2) {
+	display: inline-block;
+	width: 80px;
+}
+
+#addCourseForm label input,
+#addCourseForm label select {
+	height: 30px;
+	padding: 0 10px;
+}
+
+#addCourseForm label select {
+	width: 190px;
+}
+
+.courseMain {
+	font-size: 20px;
+	margin-top: 20px;
+}
+
+.submitArea {
+	width: 100%;
+	text-align: center;
+	margin: 20px 0;
+}
+
+.submitBtn {
+	background-color: #29e;
+	padding: 15px 30px;
+	font-size: 25px;
+	border: none;
+	border-radius: 5px;
+	outline: none;
+	color: #fff;
+}
+
+.videoLabelTable {
+	display: none;
+	margin: 20px;
+}
+
+.videoLabelLeft {
+	width: 110px;
+}
+
+.videoLabelLeft p {
+	cursor: pointer;
+	background-color: #29e;
+	color: #fff;
+	height: 30px;
+	line-height: 30px;
+	text-align: center;
+}
+
+.videoLabelRight {
+	width: 480px;
+	margin-left: 20px;
+}
+
+.videoLabelRight span {
+	display: inline-block;
+	width: 120px;
+	height: 30px;
+	line-height: 30px;
+}
+
+.departmentTable {
+	display: none;
+}
+
+.LectureIntroduce span {
+	vertical-align: top;
+}
+
+#LectureIntroduceInput {
+	width: 500px;
+	height: 100px;
+}
+
+#file {
+	display: inline-block;
+}
+
+/************************************************员工档案CSS***********************************************************/
+
+.yuangongDangan {
+	display: none;
+}
+
+.ruzhiCode {
+	background-color: red;
+	margin-top: -2px;
+	margin-left: 45px;
+}
+.shezhiLeft,.qiyeLeft,.danganLeft {
+	width: 200px;
+	background-color: #fff;
+	color: #4a4a4a;
+	padding: 20px 0 0 0;
+    height: 820px;
+    overflow-y: auto;
+    box-shadow: 0 0 8px 4px #d6d6d6;
+}
+
+.danganLeft p img {
+	vertical-align: top;
+	margin-right: 3px
+}
+
+.yuangongZhuangkuang,
+.ruzhuyaoqing,
+.ruzhishenpi,
+.laodonghetong,
+.yaoqingRecord {
+	font-size: 16px;
+	width: 100%;
+	padding: 6px 0;
+	padding-left: 50px;
+	cursor: pointer;
+}
+
+.yuangongZhuangkuang span,
+.ruzhuyaoqing span,
+.ruzhishenpi span,
+.laodonghetong span,
+.yaoqingRecord span {
+	font-size: 14px;
+	margin-right: 5px;
+}
+
+.zaizhirenyuan,
+.lizhirenyuan,
+.agreement,
+.checkAgreement {
+	padding-left: 58px;
+	line-height: 25px;
+	cursor: pointer;
+}
+.yuangongZhuangkuang:hover,
+.ruzhuyaoqing:hover,
+.ruzhishenpi:hover,
+.laodonghetong:hover,
+.yaoqingRecord:hover{
+	background: url(../img/listBg.png) 25px -1px no-repeat;
+	color: #fff;
+	
+}
+.zaizhirenyuan span,
+.lizhirenyuan span,
+.agreement span,
+.checkAgreement span {
+	margin-right: 5px;
+	font-size: 12px;
+	line-height: 30px;
+}
+
+.agreement,
+.checkAgreement {
+	display: none;
+}
+
+.danganRight {
+	position: absolute;
+	left: 220px;
+	top: 60px;
+	right: 0;
+	bottom: 0;
+	padding: 40px 20px;
+	font-family: "微软雅黑";
+	min-width: 1200px;
+	overflow: auto;
+}
+
+.zaizhiRenyuan,
+.lizhiRenyuan,
+.ruzhuYaoqing,
+.yaoqingRecordDiv {
+	display: none;
+}
+
+#lizhirenyuanTable tr th,
+#lizhirenyuanTable tr td {
+	text-align: center;
+}
+
+.loadMore,
+.loadAll,
+.loadMore2,
+.loadAll2,
+.examplekaoqinMingxi .loadmoredaKa,
+.examplekaoqinMingxi .loaddaKaAll,
+.loadAllMeet,
+.loadMoreMeetSign,
+.loadAllMeetSign {
+	/*height: 60px;
+	line-height: 55px;
+	background-color: #29e;
+	font-size: 18px;
+	color: #fff;
+	width: 50%;
+	margin: 20px 25%;
+	border: none;
+	outline: none;
+	border-radius: 5px;
+	cursor: pointer;*/
+	    background: #29e;
+    font-size: 14px;
+    color: #fff;
+    line-height: 18px;
+    text-align: center;
+    border: none;
+    padding: 10px 10px;
+    border-radius: 3px;
+    margin-bottom: 25px;
+    outline: none;
+    width: 150px;
+    float: right;
+}
+.loadMoreMeet{
+	background: #29e;
+    font-size: 14px;
+    color: #fff;
+    line-height: 18px;
+    text-align: center;
+    border: none;
+    padding: 10px 10px;
+    border-radius: 3px;
+    margin-bottom: 25px;
+    outline: none;
+    width: 150px;
+    float: right;
+}
+#pageBtn{
+	width: 100px;
+	height: 37px;
+	border-radius: 5px;
+	background-color: #00A2E9;
+	color: #FFFFFF;
+	text-align: center;
+	border: none;
+	font-size: 12px;
+	cursor: pointer;
+	float: right;
+	outline: none!important;
+	margin-right: 16px;
+	margin-top: 20px;
+}
+
+#meetingTable{font-size: 12px!important;}
+
+.loadAll,
+.loadAll2,
+.examplekaoqinMingxi .loaddaKaAll,
+.loadAllMeet,
+.loadAllMeetSign {
+	background-color: #a9a9a9;
+	cursor: default;
+}
+
+#zaizhirenyuanTable tr th {
+	text-align: center;
+	line-height: 60px;
+}
+
+#zaizhirenyuanTable tr td {
+	text-align: center;
+}
+
+#zaizhirenyuanTable tr td:nth-child(2),
+#lizhirenyuanTable tr td:nth-child(1) {
+	min-width: 70px;
+}
+
+#zaizhirenyuanTable tr td:nth-child(5),
+#lizhirenyuanTable tr td:nth-child(4) {
+	min-width: 120px;
+}
+
+#zaizhirenyuanTable tr td:nth-child(6),
+#lizhirenyuanTable tr td:nth-child(5) {
+	min-width: 120px;
+}
+
+#zaizhirenyuanTable tr td:nth-child(8),
+#lizhirenyuanTable tr td:nth-child(7) {
+	min-width: 100px;
+}
+
+#zaizhirenyuanTable tr td:nth-child(9),
+#lizhirenyuanTable tr td:nth-child(8) {
+	min-width: 300px;
+}
+
+#zaizhirenyuanTable tr td:nth-child(10),
+#lizhirenyuanTable tr td:nth-child(9) {
+	min-width: 300px;
+}
+
+#zaizhirenyuanTable tr td:nth-child(16),
+#lizhirenyuanTable tr td:nth-child(15) {
+	min-width: 300px;
+}
+
+#zaizhirenyuanTable tr td:nth-child(24),
+#lizhirenyuanTable tr td:nth-child(23) {
+	min-width: 150px;
+}
+
+#zaizhirenyuanTable tr td:nth-child(25) {
+	min-width: 150px;
+}
+
+#zaizhirenyuanTable tr td:nth-child(27),
+#lizhirenyuanTable tr td:nth-child(26) {
+	min-width: 200px;
+}
+
+#zaizhirenyuanTable tr td:nth-child(28),
+#lizhirenyuanTable tr td:nth-child(27) {
+	min-width: 150px;
+}
+
+#zaizhirenyuanTable tr td:nth-child(29),
+#lizhirenyuanTable tr td:nth-child(28) {
+	min-width: 140px;
+}
+
+#zaizhirenyuanTable tr td:nth-child(30),
+#lizhirenyuanTable tr td:nth-child(29) {
+	min-width: 100px;
+}
+
+#zaizhirenyuanTable tr td:nth-child(32),
+#lizhirenyuanTable tr td:nth-child(30) {
+	min-width: 100px;
+}
+
+#zaizhirenyuanTable tr td:nth-child(33),
+#lizhirenyuanTable tr td:nth-child(31) {
+	min-width: 180px;
+}
+
+#lizhirenyuanTable tr td:nth-child(24) {
+	min-width: 200px
+}
+
+#zaizhirenyuanTable tr td:nth-child(31) {
+	min-width: 100px
+}
+
+#yaoqingRecordTable tr th,
+#yaoqingRecordTable tr td {
+	text-align: center;
+}
+
+.personMore,
+.yaoQing,
+.personInfo,
+.personInfo2 {
+	color: #29e;
+	font-family: "微软雅黑";
+	margin: 0 5px;
+	cursor: pointer;
+}
+
+.personDetail,
+.personDetail2,
+.IDPrint,
+.peosonID,
+.peosonID2 {
+	display: none;
+}
+
+.idcardImg,
+.personConman,
+.tableDet {
+	width: 98%;
+	padding: 0 1%;
+	box-sizing: border-box;
+	margin-top: 20px;
+}
+
+.tableDet table {
+	border: 1px solid #000;
+	border-collapse: collapse
+}
+
+.tableDet table td {
+	border: 1px solid #000
+}
+
+.tableDet p .workerCode {
+	margin-left: 10px;
+	color: #A9a9a9;
+}
+
+.idcardImg div {
+	width: 100%;
+	height: 500px;
+	text-align: center;
+	vertical-align: middle;
+}
+
+.idcardImg div>div {
+	width: 49%;
+}
+
+.idcardImg img {
+	width: 80%;
+	height: 90%;
+	margin: 0 10%;
+	cursor: pointer;
+}
+
+.personConman {
+	height: 40px;
+	padding: 5px;
+}
+
+.per1,
+.per2 {
+	width: 50%;
+	padding: 0 0 0 20px;
+	margin: 0 25%;
+}
+
+.per2 {
+	vertical-align: top;
+}
+
+.per1 .perName,
+.per1 .perSex,
+.per1 .perDepart {
+	font-size: 18px;
+	font-weight: 700;
+}
+
+.per1 .perDepart,
+.per2 .perPost {
+	color: #828282;
+}
+
+.chusheng,
+.idNum,
+.telNum,
+.huji,
+.hukouType,
+.zhengzhi,
+.xueli,
+.major {
+	height: 40px;
+	width: 50%;
+	padding: 5px 20px;
+	margin: 1px 25%;
+	box-sizing: border-box;
+}
+
+.chusheng {
+	margin-top: 20px;
+}
+
+.chusheng div:nth-child(1),
+.idNum div:nth-child(1),
+.telNum div:nth-child(1),
+.huji div:nth-child(1),
+.hukouType div:nth-child(1),
+.zhengzhi div:nth-child(1),
+.xueli div:nth-child(1),
+.major div:nth-child(1) {
+	font-size: 18px;
+	font-weight: 700;
+}
+
+.chusheng div:nth-child(2),
+.idNum div:nth-child(2),
+.telNum div:nth-child(2),
+.huji div:nth-child(2),
+.hukouType div:nth-child(2),
+.zhengzhi div:nth-child(2),
+.xueli div:nth-child(2),
+.major div:nth-child(2) {
+	color: #828282;
+}
+
+#ruzhuTable tr th,
+#ruzhuTable tr td {
+	text-align: center;
+}
+
+.zaizhiSearch {
+	height: 60px;
+	width: 100%;
+	padding: 15px;
+	margin-top: -30px;
+}
+
+.zaizhiSearch #test5,
+.zaizhiSearch #test4 {
+	width: 150px;
+	height: 33px;
+	padding: 6px 12px;
+	font-size: 14px;
+}
+
+.zaizhiSearch #test5 {
+	margin-left: 15px;
+}
+
+.zaizhiSearch .ruzhiTime1,
+.zaizhiSearch .ruzhiTime2,
+.chooseDepart input {
+	padding: 6px 12px;
+	font-size: 14px;
+	font-weight: 400;
+	color: #555;
+	text-align: center;
+	background-color: #eee;
+	border: 1px solid #ccc;
+	margin-left: -5px;
+	outline: none;
+	cursor: pointer;
+}
+
+.chooseDepart input {
+	margin: 0 20px 0 10px;
+	height: 33px;
+}
+
+.ruzhiStart,
+.ruzhiEnd,
+.chooseDepart {
+	display: inline-block;
+	width: 220px;
+}
+
+.chooseDepart {
+	width: 180px;
+}
+
+.zaizhiSearch #test2 {
+	margin-left: 10px;
+}
+
+.zaizhisearchBtn {
+	font-size: 16px;
+	color: #fff;
+	line-height: 25px;
+	text-align: center;
+	border: none;
+	padding: 2px 20px;
+	border-radius: 3px;
+	background-color: #29e;
+	margin-left: 30px;
+	display: inline-block;
+	height: 33px;
+}
+
+.zaizhisearchBtn2 {
+	background-color: #29e;
+	color: #fff;
+}
+
+.printBtn {
+	margin-right: 50px;
+	background-color: green;
+	color: #fff;
+}
+
+.choosedepartTable {
+	display: none;
+	padding-left: 20px;
+}
+
+.choosedepartTable ul.ztree {
+	background-color: #fff;
+	text-align: center;
+}
+
+.allWorker {
+	height: 50px;
+	line-height: 50px;
+	margin-left: 20px;
+}
+
+.allWorker span {
+	display: inline-block;
+	cursor: pointer;
+}
+
+.noticeUp input {
+	padding-left: 10px;
+}
+
+.subNotice {
+	font-size: 16px;
+	color: #fff;
+	line-height: 25px;
+	text-align: center;
+	border: none;
+	padding: 2px 20px;
+	border-radius: 3px;
+	background-color: #29e;
+	margin-right: 20px;
+	height: 30px;
+	position: absolute;
+	bottom: 0;
+	right: 0;
+}
+
+.noticeType {
+	height: 35px;
+}
+
+#noticelistTable2 {
+	display: none;
+}
+
+#noticelistTable tr th,
+#noticelistTable2 tr th {
+	text-align: center;
+}
+
+#noticelistTable tr td,
+#noticelistTable2 tr td {
+	text-align: center;
+}
+
+.noticemoreTable,
+.noticemoreTable2 {
+	display: none;
+	margin: 20px 0;
+}
+
+.noticedName {
+	text-align: center;
+	margin-top: 20px;
+	font-size: 24px;
+	font-weight: bolder;
+	font-family: "黑体";
+	color: #f00;
+}
+
+.noticedTheme {
+	font-size: 20px;
+	text-align: center;
+	margin-top: 20px
+}
+
+.noticedTitle {
+	text-align: center;
+}
+
+.noticedTitle span {
+	display: inline-block;
+}
+
+.noticedTitle span {
+	margin: 0 3px;
+}
+
+.noticedTitle .noticedCode {
+	margin-right: 20px;
+}
+
+.redxian {
+	width: 80%;
+	height: 3px;
+	background-color: #f00;
+	text-align: center;
+	margin-left: 10%
+}
+
+.noticedObj {
+	margin-left: 10%;
+	font-size: 18px;
+}
+
+.noticedReason {
+	margin-left: 10%;
+	font-size: 16px;
+	color: #A9a9a9;
+}
+
+.noticedReason span:nth-child(1) {
+	color: #f00;
+}
+
+.refuseAson {
+	font-size: 15px;
+	margin-left: 20px;
+	display: inline-block;
+}
+
+.noticedContent {
+	margin: 10px 20%;
+	font-size: 16px;
+	line-height: 22px;
+	letter-spacing: 1px;
+	text-indent: 33px
+}
+
+.noticedcreateTime {
+	margin-right: 10%;
+	margin-bottom: 20px;
+}
+
+.noticedcreateTime span {
+	display: inline-block;
+	width: 100%;
+}
+
+.noticedcreateTime span:nth-child(1) {
+	text-align: right;
+	font-size: 16px;
+	margin-bottom: 5px;
+}
+
+.noticeUp .noticeTheme {
+	width: 500px;
+}
+
+/*劳动合同CSS*/
+
+.laodongheTong,
+.agreementTable {
+	display: none;
+}
+
+#hetongCode {
+	background-color: red;
+	margin-top: -5px;
+	margin-left: 45px;
+	height: 20px;
+	line-height: 13px;
+	font-size: 14px
+}
+
+#hetongCodeAll {
+	background-color: red;
+	margin-top: -5px;
+	margin-left: 40px;
+	height: 20px;
+	line-height: 13px;
+	font-size: 14px
+}
+
+#danganCodeAll {
+	background-color: red;
+	margin-top: -5px;
+	margin-left: 20px;
+	height: 20px;
+	line-height: 13px;
+	font-size: 14px
+}
+
+.loadAgreement,
+.agreeAgreement,
+.refuseAgreement,
+.sendedAgreement,
+.agreeSubmit {
+	font-size: 16px;
+	color: #fff;
+	line-height: 25px;
+	text-align: center;
+	border: none;
+	padding: 5px 15px;
+	border-radius: 3px;
+	background-color: #2299ee;
+	margin: 20px 30px 20px 0;
+}
+
+.agreeSubmit {
+	margin-left: 150px;
+}
+
+.agreementpersonChoose {
+	display: none;
+	margin: 50px 20px 20px 50px;
+}
+
+.agreementUp label {
+	display: block;
+	height: 50px;
+}
+
+.agreementUp label span:nth-child(1) {
+	display: inline-block;
+	width: 130px;
+}
+
+.agreementUp label select {
+	width: 177px;
+	margin-left: -3px;
+}
+
+.agreementUp label input {
+	height: 30px;
+	padding: 0 10px;
+	font-size: 14px;
+}
+
+.agreementUp label textarea {
+	margin-left: -3px;
+}
+
+.agreementUp .lizhiReason {
+	height: 110px;
+}
+
+#reasonDetails {
+	padding: 10px;
+}
+
+.agreementUp .lizhiReason span {
+	vertical-align: top;
+}
+
+.agreementUp .shiyongQi,
+.agreementUp .hetongxingShi,
+.agreementUp .lizhiReason,
+.agreementUp .hetongCS {
+	display: none;
+}
+
+#personChooseTable tr th,
+#personChooseTable tr td {
+	text-align: center;
+	height: 40px;
+	line-height: 40px;
+	cursor: pointer;
+}
+
+#personChooseTable tr td img {
+	word-wrap: 40px;
+	height: 40px;
+}
+
+.searchDiv {
+	margin-bottom: 20px;
+}
+
+.searchDiv input {
+	padding-left: 10px;
+}
+
+.searchDiv button {
+	padding: 2px 5px;
+	background-color: #29c;
+	color: #fff;
+	border: none;
+	font-size: 12px;
+}
+
+.agreementFreash {
+	position: relative;
+}
+
+.tipsMin {
+	position: absolute;
+	width: 520px;
+	border: 1px dashed #000;
+	left: 400px;
+	top: 251px;
+	padding: 20px;
+	display: none;
+}
+
+.agreeMore {
+	color: #29e;
+	font-family: "微软雅黑";
+	margin: 0 5px;
+	cursor: pointer;
+}
+
+#agreementListTable tr th,
+#agreementListTable tr td {
+	text-align: center;
+}
+
+.agreementDetails {
+	display: none;
+	margin: 20px 5% 20px 5%;
+}
+
+.agreementDetails div {
+	height: 40px;
+	line-height: 40px;
+	width: 100%;
+}
+
+.agreementDetails div p {
+	height: 40px;
+	line-height: 40px;
+	display: inline-block;
+	width: 50%;
+}
+
+.agreementDetails div span:nth-child(1) {
+	width: 130px;
+	display: inline-block;
+}
+
+.agreementDetails div span:nth-child(2) {
+	color: #828282;
+}
+
+.agreementDetails div #lastEndReason {
+	width: 130px;
+	display: inline-block;
+}
+
+.signinfo {
+	display: none;
+}
+
+.HRgress {
+	margin: 50px 0;
+	display: none;
+}
+
+.HRgress button {
+	font-size: 25px;
+	color: #fff;
+	line-height: 35px;
+	text-align: center;
+	border: none;
+	padding: 5px 20px;
+	border-radius: 3px;
+	margin-bottom: 20px;
+}
+
+.HRgress .HrNo {
+	background-color: #f00;
+	margin-right: 300px;
+	margin-left: 100px;
+}
+
+.HRgress .HrAgree {
+	background-color: green;
+}
+
+.beizhu span {
+	vertical-align: top;
+}
+
+#guandian {
+	padding: 10px;
+	text-indent: 25px;
+}
+
+.agreeAll {
+	margin: 50px 0;
+	display: none;
+}
+
+#clicked {
+	background-color: red;
+	font-size: 16px;
+	color: #fff;
+	line-height: 25px;
+	text-align: center;
+	border: none;
+	padding: 5px 15px;
+	border-radius: 3px;
+	margin: 20px 30px 20px 0;
+}
+
+/******************************************入职审批CSS***************************************************************/
+
+.ruzhiShenpi,
+.ruzhishenpiDet {
+	display: none;
+	padding: 20px;
+}
+
+.ruzhuTitle {
+	width: 100%;
+	line-height: 60px;
+	height: 60px;
+	text-align: center;
+	font-size: 30px;
+	margin-top: -40px;
+	margin-bottom: 20px;
+}
+
+.ruzhuPics {
+	width: 100%;
+}
+
+.ruzhuPics>div {
+	width: 36%;
+	margin: 2% 7%;
+	text-align: center;
+	cursor: pointer;
+}
+
+.picTouxiang,
+.picWith {
+	margin-top: 10px;
+}
+
+.ruzhuPics>div img {
+	width: 100%;
+}
+
+.ruzhuPics>div p {
+	margin-top: 10px;
+	font-size: 16px;
+}
+
+.ruzhudetails {
+	width: 100%;
+}
+
+.ruzhudetails>div {
+	width: 46%;
+	margin: 1%;
+	padding: 0 4%;
+}
+
+.ruzhudetLeft>p {
+	line-height: 30px;
+	height: 30px;
+}
+
+.ruzhudetLeft>p span:nth-child(1) {
+	width: 70px;
+	display: inline-block;
+	text-align: center;
+}
+
+.ruzhudetLeft>p span:nth-child(2) {
+	color: #828282;
+}
+
+.ruzhudetRight>p {
+	line-height: 30px;
+	height: 30px;
+}
+
+.ruzhudetRight>p span:nth-child(1) {
+	width: 100px;
+	display: inline-block;
+	text-align: center;
+}
+
+.ruzhudetRight>p span:nth-child(2) {
+	color: #828282;
+}
+
+#ruzhishenpiTable tr td,
+#ruzhishenpiTable tr th {
+	text-align: center;
+	line-height: 60px;
+	width: 16.66%;
+}
+
+#ruzhishenpiTable tr th {
+	text-align: center;
+	width: 16.66%;
+}
+
+#ruzhishenpiTable tr td:nth-child(1) img {
+	width: 40px;
+	height: 40px;
+}
+
+#ruzhishenpiTable tr td:nth-child(1) img {
+	width: 40px;
+	height: 40px;
+}
+
+.ruzhiMore {
+	color: #29e;
+	font-family: "微软雅黑";
+	margin: 0 5px;
+	cursor: pointer;
+}
+
+.ruzhiYorn {
+	width: 100%;
+	height: 50px;
+	line-height: 50px;
+	text-align: center;
+	margin-top: 20px;
+	margin-bottom: 30px;
+}
+
+.ruzhiYorn button {
+	font-size: 25px;
+	color: #fff;
+	line-height: 35px;
+	text-align: center;
+	border: none;
+	padding: 5px 20px;
+	border-radius: 3px;
+}
+
+.ruzhiYorn .refuse {
+	background-color: #f00;
+	margin-right: 400px;
+}
+
+.ruzhiYorn .accept {
+	background-color: green;
+}
+
+/******************************************入职审批CSS结束**********************************************************/
+
+.setApprove thead {
+	display: none !important
+}
+
+.setApprove {
+	width: 450px !important;
+	margin-left: 326px
+}
+
+.setApprove tr {
+	margin-bottom: 20px;
+	display: block
+}
+
+.setApprove td {
+	border: none !important
+}
+
+.setApprove td:nth-child(1) {
+	width: 150px;
+}
+
+.setApprove td:nth-child(2) {
+	width: 200px;
+}
+
+.setApprove td:nth-child(3) {
+	padding-left: 14px
+}
+
+.setOpt,.setJurisdiction{
+	line-height: 1.5;
+	padding: 5px 10px;
+	font-size: 14px;
+	background-color: #29c;
+	color: #fff;
+	border: none;
+	border-radius: 3px;
+	display: inline-block;
+	cursor: pointer;
+}
+#topPerson{
+	float: left;
+}
+.notNext {
+	display: none;
+	margin: 20px 0 0 190px;
+	width: 100px;
+}
+
+/* ztree */
+
+/*.pcheck {
+	color: #4A4A4A
+}*/
+
+.qiyeLeft p img {
+	margin-right: 6px;
+	/*display: inline-block;*/
+	 /*width: 20px; height: 20px;*/
+	/*overflow: hidden;*/
+	
+}
+.qiyeLeft p:hover img {
+	position: relative;
+			    left: -20px;
+			    border-right: 20px solid transparent;
+			    -webkit-filter: drop-shadow(20px 0);
+			    /*filter: drop-shadow(20px 0);*/
+			    filter: drop-shadow(yellow 20px 0px);
+			    overflow: hidden;
+}
+
+.qiyeLeft p:hover {
+	color: #fff;
+	background:url(../img/listBg.png) 25px -1px no-repeat;
+}
+
+.ztree li {}
+
+.ztree li a {
+	color: black;
+	width: 100%;
+	/* height: 41px;
+	display: flex; */
+	align-items: center;
+	/* padding-left: 15px */
+}
+
+.ztree li a.curSelectedNode {
+	/* background-color: #3a3d42; */
+	color: #29e;
+	height: 30px;
+}
+
+/* .ztree li span.button.switch {
+	display: none;
+}
+
+.ztree li span.button.ico_docu {
+	display: none
+}
+ */
+.zzList {
+	display: flex;
+	height: 40px;
+	margin-top: 20px;
+	margin-left: 15px;
+}
+
+.zzList li {
+	line-height: 30px;
+	text-align: center;
+	border: 1px solid #00a2e8;
+	cursor: pointer;
+	padding: 5px 10px;
+}
+
+.active2 {
+	background-color: #00a2e8;
+	color: white;
+}
+
+.example2 {
+	/* display: none; */
+}
+
+.middle {
+	height: 100%;
+}
+
+#marB {
+	display: none;
+}
+
+#addPost {
+	background-color: #00a2e8;
+	color: white;
+	padding: 5px 20px;
+	margin: 20px 0;
+}
+.qiyeone{
+	height: 40px;
+    width: 100%;
+    text-align: center;
+    padding: 10px;
+    box-sizing: border-box;
+    border-bottom: 1px solid #000;
+}
+.tableLeft1{
+	width: 100%;
+	height: auto;
+}
+xm-select .xm-select-default{
+	left: 0;
+}
+.tableLeft{
+	margin: 0;
+}
+.chaxuntableLeft, .chaxuntableRight{
+	width: 700px;
+}
+/*#layui-layer100005 .layui-layer-content{
+	background: #f0f6e4;	
+}*/
+.chaxunTable{
+	background: #fff;
+}
+.showNumber1 {
+     margin-left: 20px;
+    font-size: 14px;
+}
+.showNumber1 i {
+    margin: 0 3px;
+    font-size: 14px;
+}
+.exampleKaoqin{
+	width: 4000px;
+	height: 600px;
+	/*overflow: scroll;*/
+}
+.fixed-table-toolbar .search{
+	float: left;
+}
+.pull-right{
+	float: left;
+}
+.exampleKaoqin{
+	margin-top: 10px;
+}
+.chaxunTable .chaxuntableLeft,.chaxuntableRight {
+	width: 300px;
+	text-align: center;
+	min-height: 400px
+}
+.chaxunTable .chaxuntableLeft input,.chaxuntableRight input {
+	padding: 5px 10px;
+	background-color: #348fe2;
+	color: #fff;
+	border: none;
+	width: 100%;
+	line-height: 40px;
+}
+.layerfrom{
+	display: inline-block;
+    width: auto;
+    vertical-align: middle;
+	
+}
+.layui-form-select dl dd, .layui-form-select dl {
+	white-space: pre-wrap !important;
+}
+.quanxianShezhi .layui-form-select .layui-input{
+	height: 32px;
+}
+.setApprove .layui-form-select dl dd, .layui-form-select dl{
+	white-space: nowrap !important;
+}
+.fixed-table-body{
+	overflow-x: visible !important; 
+	overflow-y: visible !important;
+}
+.chooseBanci{
+	display: flex;
+	display: -webkit-box;
+	height: auto;
+}
+.addBancitable1{
+	width: 80%;
+}
+.qianDao span,.qianTui span{
+	width:auto;
+}
+#bancishuju{
+	height: auto ;
+}
+.renyuanChakan .renyuancaozuo,.renyuanChakan1{
+	width: 100%;
+	height: 40px;
+	margin-top: 10px;
+	margin-bottom: 5px;
+}
+.newRulesDiv .form-inline{
+	display: block;
+}
+#authorityDelete{
+	cursor: pointer;
+}
+.gongzuoShezhi ul li{
+	margin: 0 20px 30px 20px;
+}
+.gongzuoShezhi ul{
+	margin-top: 20px;
+}
+.gongzuoShezhi ul li input{
+	width: 50%;
+}
+.gongzuoShezhi ul li p{
+	font-size: 20px;
+	font-weight: 600;
+	margin-bottom: 10px !important;
+}
+.gongzuoShezhi ul li .setJurisdiction{
+	margin-left: 15px;
+}

@@ -1,0 +1,15 @@
+body{min-width: 1200px;}
+.banner{width: 100%;height: 210px;background-color: #29e;margin-top: -5px;}
+.bannerMain{width: 60%;margin:auto 20%;color: #fff;text-align: center;}
+.Btitle{font-size: 40px;line-height: 70px;color: #fff;text-align: center;padding-top: 10px;}
+.SearchG{height: 40px;line-height: 40px;}
+.search{height: 40px;border: none;color: #000;padding-left: 10px;width: 40%;font-size: 18px;color: #29e;}
+.seaBtn{height: 40px;border: none;color: #29e;font-size:18px;background-color: #fff;padding: 0 20px;margin-left: -4px;border-left: 1px solid #666;}
+.container{width: 1000px;margin: 0 auto;}
+.postDescribe{padding: 40px 0 ;}
+.postName{font-size: 30px;margin-bottom: 20px;}
+.postNeed p,.postRequired p{font-size: 24px;margin-bottom: 20px;}
+.postNeed .postrequire,.postRequired .skills{font-size: 18px;margin-left: 50px;line-height: 30px;color: #828282;}
+.job p{font-size: 20px;margin-top: 20px;color: #828282;margin-left: 50px;}
+.job p span{margin-left: 5px;display: inline-block;}
+.Gjob{padding: 10px 20px;margin-left: 50px;color: #fff;background-color: #29e;border: none;border-radius: 5px;width: 200px;margin: 20px 0;}

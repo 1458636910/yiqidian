@@ -1,0 +1,21 @@
+body{min-width: 1200px;}
+.banner{width: 100%;height: 210px;background-color: #29e;margin-top: -5px;}
+.bannerMain{width: 60%;margin:auto 20%;color: #fff;text-align: center;font-size: 40px;}
+.Btitle{font-size: 40px;line-height: 70px;color: #fff;text-align: center;padding-top: 10px;}
+.SearchG{height: 40px;line-height: 40px;}
+.search{height: 40px;border: none;color: #000;padding-left: 10px;width: 40%;font-size: 18px;color: #29e;}
+.seaBtn{height: 40px;border: none;color: #29e;font-size:18px;background-color: #fff;padding: 0 20px;margin-left: -14px;border-left: 1px solid #666;}
+.details{width: 100%;}
+.container{width: 1000px;margin: 0 auto;}
+.glyphicon{color: #000;}
+.detTitle ul{width: 100%;}
+.detTitle ul li{padding: 10px;display: inline-block;color: #666;}
+.detTitle ul li a{text-decoration: none;cursor: pointer;color: #666;}
+.detTitle ul li span{font-family: "simsun";margin: 0 5px 0 20px;}
+.detTitle ul li .showPost,.detTitle ul .post{display: none;}
+.postRequire{margin-top: 10px;}
+.postRequire ul li{height: 25px;line-height: 25px;}
+.postRequire ul li span{padding-left: 10px;color: #000}
+.postRequire ul li a{margin: 0 10px;text-decoration: none;cursor: pointer;color: #666;}
+.postRequire ul li .active{color: #29e;}
+#postDetailsTable tr th,#postDetailsTable tr td{text-align: center;cursor: pointer;}

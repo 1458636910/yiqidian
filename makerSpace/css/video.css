@@ -1,0 +1,220 @@
+#videoList thead   {
+    background-color: #e4e4e4;
+    font-weight: bold;
+}
+#videoList tbody tr td:nth-child(6){
+    width: 127px;
+    text-align: left!important;
+}
+#videoList tbody tr td{
+    padding:10px
+}
+.addVideo {
+    padding: 0 15px;
+    background-color: #29e;
+    color: #fff;
+    border: none;
+    outline: none;
+    width: 170px;
+    height: 36px;
+    line-height: 36px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+
+.addVideo img {
+    padding-right: 5px;
+    padding-bottom: 3px;
+}
+
+.publish {
+    margin-top: 20px
+}
+
+.vurl{
+    padding-right: 70px;
+}
+.sub {
+    width: 80px;
+    background-color: #00a3e8;
+    height: 35px;
+    text-align: center;
+    line-height: 35px;
+    color: white;
+    margin-left: 80px;
+    margin-top: 30px;
+    cursor:pointer
+}
+.sure{
+    background-color: #00a2e8;
+    color: white;
+    height: 35px;
+    line-height: 35px;
+    width: 60px;
+    text-align: center;
+    cursor:pointer;
+    margin-left: -60px;
+}
+.lab {
+    font-size: 24px;
+    text-align: center;
+    margin-bottom: 20px!important;
+}
+.vdeclab{
+    align-items: start;
+}
+
+.upload{
+	display: none;
+    width: 92%;
+    margin: 0 auto;
+    margin-top: 30px;
+}
+form label {
+   display: flex;
+   align-items: center;
+   margin-bottom: 20px;
+}
+
+form label span:nth-child(1) {
+   margin-right: 10px;
+}
+
+form label input {
+    min-width: 550px;
+}
+
+form label textarea {
+    min-width: 550px;
+    height: 100px;
+    max-height: 100px;
+}
+
+.what{
+    margin-left:10px;
+    cursor:pointer
+}
+.viewCover{
+    align-items: start;  
+}
+.vtime{
+    margin-left: 20px;
+    display:none;
+    margin-top: 93px;
+}
+.lab2{
+    color: #00a2e8;
+    padding-left: 80px;
+    padding-bottom: 10px;
+}
+.sortp,.sortc{
+    width: 180px;
+    color: #495057;
+}
+.sortp:focus,.sortc:focus{
+    color: #495057;
+    background-color: #fff;
+    border-color: #80bdff;
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25);
+    border-radius: 3px;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+.sortp .selectivity-dropdown{
+    left: 112px!important;
+    top: 558px!important;
+}
+.sortc .selectivity-dropdown{
+    left: 312px!important;
+    top: 558px!important;
+}
+.sortp .selectivity-single-select input,.sortc .selectivity-single-select input{
+    min-width: 170px;
+}
+.sortc{
+    margin-left: 20px;
+}
+.selectivity-single-selected-item{
+    margin-left:45px;
+    color: #495057;
+}
+.selectivity-placeholder{
+    text-align:center;
+    color: #495057;
+}
+.selectivity-single-select{
+    border: 1px solid #ced4da;
+    background: white;
+    border-radius: 3px;
+}
+.form-control{
+    font-size:14px;
+}
+.chooseImg{
+    height: 112px;
+    display: none;
+    min-width: 200px;
+}
+.vcover{
+   height: 112px;
+   width: 200px;
+   cursor:pointer
+}
+.whatUrl{
+    display: none;
+    margin: 60px;
+    width: 92%;
+}
+.whatUrl p{
+    padding-bottom: 10px;
+}
+.del,.change,.see{
+	cursor: pointer;
+    height: 30px;
+    line-height: 30px;
+    margin: 0 10px;
+	
+}
+.delDiv{
+	display: none;
+	text-align: center;
+    color: red;
+    margin-top: 50px;
+}
+.actFmPic{
+	width: 200px;
+}
+.pageNext{
+	padding: 5px 20px;
+	background-color: #29e;
+	color: white;
+	border-radius: 20px;
+	cursor: pointer;
+	margin-right: 30px;
+}
+#changeDiv{
+	display: none;
+	width: 92%;
+    margin: 0 auto;
+    margin-top: 50px;
+}
+#changeDiv form{
+	margin: 0 auto;
+    width: 92%;
+}
+#changeDiv .sortp .selectivity-dropdown{
+    left: 140px!important;
+    top: 310px!important;
+}
+#changeDiv .sortc .selectivity-dropdown{
+    left: 340px!important;
+    top: 310px!important;
+}
+.viewAct{
+    text-align: left;
+    display: block;
+    text-indent: 2em;
+    line-height: 30px;
+    width: 200px;
+}

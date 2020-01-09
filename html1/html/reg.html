@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html ng-app="yqdReg">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+		<meta http-equiv="Cache-Control" content="no-cache" />
+		<link rel="icon" href="../image/pic.ico" type="image/x-icon" />
+		<title>注册</title>
+		<link rel="stylesheet" href="../css/reset.css" />
+		<link rel="stylesheet" href="../css/skin/default/layer.css" />
+		<link rel="stylesheet" href="../css/reg.css?20192131" />
+		<link rel="stylesheet" href="../css/bootstrap.css" />
+	</head>
+	<body ng-controller="regController" ng-cloak>
+		<div class="box col-lg-offset-2 col-lg-8 col-md-offset-2 col-md-8 col-sm-offset-2 col-sm-8 col-xs-12">
+			<div class="tltle col-lg-12 col-md-12 col-sm-12 col-xs-12">易企点</div>
+			<br />
+			<div class="left col-lg-3 col-md-3 col-sm-3 col-xs-12"> </div>
+			<br />
+			<div class="center col-lg-6 col-md-6 col-sm-6 col-xs-12">
+				<form name="myForm" ng-model="myForm" novalidate>
+					<div class="number col-lg-12 col-md-12 col-sm-12 col-xs-12">
+						<input type="text" class="form-control inputtel " name="telnumber" ng-model="telnumber" value="" placeholder="请输入手机号"
+						 ng-pattern="/^1[34578]\d{9}$/" required />
+						<br />
+					</div>
+					<div class="pwd col-lg-12 col-md-12 col-sm-12 col-xs-12">
+						<input type="password" class="inputpass1 form-control" ng-minlength="8" ng-maxlength="18" name="password"
+						 ng-model="password" value="" placeholder="密码" required />
+						<br />
+						<span class="input-mima1" ng-show="myForm.password.$dirty && myForm.password.$error.required&&myForm.password.$touched">密码不能为空!</span>
+						<span class="input-mima2" ng-if="(myForm.password.$error.minlength || myForm.password.$error.maxlength) && myForm.password.$touched">密码为8-18位</span>
+					</div>
+					<br />
+					<!-- 手机验证码 -->
+					<div class="input-group">
+						<input type="text" class="form-control yanzhengma" ng-minlength="6" ng-maxlength="6" value="" name="yzm" ng-model="yzm"
+						 placeholder="请输入验证码" required />
+						<span class="input-group-btn">
+							<input class="btn btn-primary" type="button" value="免费获取验证码" />
+						</span>
+					</div>
+					<br />
+                    <div class=" col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					    <button type="submit" ng-click="formValid()" class=" regBtn">注册</button>                  
+					    <button type="button" class="nextBtn ">下一步</button>
+                    </div>
+				</form>
+				<div class="regCom col-lg-6 col-md-6 col-sm-6 col-xs-6">
+					<a class="comReg" target="_blank">企业注册</a>
+				</div>
+				<div class="reg col-lg-6 col-md-6 col-sm-6 col-xs-6">
+					<a target="_blank">立即登录</a>
+				</div>
+			</div>
+			<br />
+			<div class="right col-lg-3 col-md-3 col-sm-3 col-xs-12"> </div>
+		</div>
+		<div class="popup">
+			<div class="pContent">
+				<div class="pBox">
+					<span>易企点</span>
+					<p>
+						讲师认证
+						<img src="../image/return2.png" alt="" />
+					</p>
+					<p>
+						咨询师认证
+						<img src="../image/return2.png" alt="" />
+					</p>
+					<p>
+						企业注册
+						<img src="../image/return2.png" alt="" />
+					</p>
+					<!-- <p>
+						实名认证
+						<img src="../image/return2.png" alt="" />
+					</p> -->
+					<p>
+						以后考虑
+						<img src="../image/close.png" alt="" />
+					</p>
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript" src="../js/jquery.min.js"></script>
+		<script type="text/javascript" src="../js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="../js/layer.js"></script>
+		<script type="text/ecmascript" src="../js/jquery.sha1.js"></script>
+		<script type="text/javascript" src="../js/angular.1.2.29.js"></script>
+		<script type="text/javascript" src="../js/change.js"></script>
+		<script type="text/javascript">
+			var app = angular.module('yqdReg', []);
+			app.controller('regController', ['$scope', function($scope, $http) {}])
+		</script>
+		<script type="text/javascript">
+			var url = window.location.href;
+			var urlTail = url.split("?")[1];
+//			var storage=window.localStorage
+//			var storage1=storage.getItem('GHY_login')
+//			console.log(JSON.parse(storage1))
+//			$(".yanzhengma").val(JSON.parse(storage1).upname);
+			$('.pwd').show();
+			$(".yanzhengma").val('');
+			setTimeout(function(){
+//				$(".yanzhengma").val('');
+				console.log($(".yanzhengma").val());
+			},400)
+			$(document).ready(function() {
+				
+				$('.goonBtn').click(function() {
+					var picResult = ($('#picInput').val()).toLowerCase();
+					if (picResult == picLower) {
+						$(this).css('display', 'none');
+						$('.center .nextBtn').css('display', 'block');
+						$('.input-group').css('display', 'block');
+					}
+				});
+				// 发送短信验证码
+				function invokeSettime(obj) {
+					var countdown = 60;
+					settime(obj);
+
+					function settime(obj) {
+						if (countdown == 0) {
+							$(obj).attr("disabled", false);
+							$(obj).text("获取验证码");
+							countdown = 60;
+							return;
+						} else {
+							$(obj).attr("disabled", true);
+							$(obj).text("(" + countdown + ") s 重新发送");
+							countdown--;
+						}
+						setTimeout(function() {
+							settime(obj)
+						}, 1000)
+					}
+				};
+				var msgIdReg;
+				var myreg = /^(13[0-9]|14[5|7|9]|15[0|1|2|3|5|6|7|8|9]|16[6]|17[0|1|2|3|5|6|7|8]|18[0-9]|19[8|9])\d{8}$/; //手机正则		
+
+				var countdown = 60;
+
+				function sendtime() {
+					var obj = $('.btn-primary ');
+					if (countdown == 0) {
+						obj.attr('disabled', false);
+						obj.val("免费获取验证码");
+						countdown = 60;
+						return;
+					} else {
+						obj.attr('disabled', true);
+						obj.val("重新发送(" + countdown + ")");
+						countdown--;
+					}
+					setTimeout(function() {
+						sendtime(obj)
+					}, 1000);
+				};
+
+				$('.btn-primary ').click(function() {
+					if ($('.inputtel').val().length > 0) {
+						if (!myreg.test($('.inputtel').val())) {
+							layer.msg("请输入正确手机号格式", {
+								time: 1200,
+							});
+						} else {
+							$.post('http://47.94.173.253:8008/jsms/JSendMessages.ashx', {
+								"tel": $('.inputtel').val(),
+								"type": 0
+							}, function(data) {
+								var dataFindpw = JSON.parse(data);
+								console.log(dataFindpw)
+								if (dataFindpw.status == 202) {
+									layer.msg("该手机号已被注册！", {
+										time: 1200
+									})
+								} else if (dataFindpw.status == 200) {
+									sendtime()
+									msgIdReg = JSON.parse(dataFindpw.msg).msg_id;
+									layer.msg("短信验证码已发送，请注意查收", {
+										time: 1200,
+									});
+								}
+
+							});
+						};
+					} else {
+						layer.msg('请输入手机号', {
+							time: 1000,
+						});
+					}
+				});
+
+				// 输入验证码后显示输入密码和注册框
+				$('.nextBtn').click(function() {
+					$.post('http://47.94.173.253:8008/jsms/Validcode.ashx', {
+						"msgid": msgIdReg,
+						"code": $('.yanzhengma').val()
+					}, function(data) {
+						var dataReg = JSON.parse(data);
+						if (dataReg.status == 200) {
+							$('.pwd').show();
+							$('.regBtn').show();
+							$('.nextBtn').hide();
+						} else {
+							layer.msg('输入验证码有误', {
+								time: 1500,
+							});
+						}
+					});
+				});
+				// 注册操作
+				$('.regBtn').click(function() {
+					var passwordS = $('.inputpass1').val() + "EQD";
+					var passwordReg = hex_sha1(passwordS);
+					if ($('.inputtel').val()) {
+						$.post('http://47.94.173.253:8008/register.ashx', {
+							"u1": $('.inputtel').val(),
+							"password": passwordReg
+						}, function(data) {
+							var dataReged = JSON.parse(data)
+							console.log(dataReged)
+							if (dataReged.status == 200) {
+								$('.regBtn').attr("disabled", true);
+								layer.msg("注册成功，请返回登录",{
+									time:1500
+								});
+								setTimeout(function(){
+									window.location.href = url.split("=")[1];
+								},2000)
+								// layer.open({
+								// 	type: 1,
+								// 	area: ['450px', '500px'],
+								// 	skin: 'layui-layer-demo', //样式类名
+								// 	closeBtn: 0, //不显示关闭按钮
+								// 	anim: 0,
+								// 	content: $(".popup")
+								// });
+								$(".pBox p").eq(4).on("click", function() {
+									location.href = "login.html";
+								})
+							} else {
+								layer.msg(dataReged.msg, {
+									time: 1500,
+								});
+							}
+						});
+					} else {
+						layer.msg("请输入密码", {
+							time: 1200
+						})
+					}
+				});
+			
+				$(".reg").on("click", function() {
+					window.open("http://www.jinshiku.com/html/innerLogin.html?href=http://www.jinshiku.com/");
+				})
+				// 企业注册
+				$(".comReg").on("click", function() {
+					window.location.href = "http://www.jinshiku.com/html/registerCom.html"
+				});
+				// 弹层
+				$(".pBox p").hover(function() {
+					var index = $(this).index();
+					$(this).stop().animate({
+						"marginLeft": "20px",
+					}, 450);
+					if (index == 5) {
+						$(this).children("img").attr("src", "../image/close-b.png");
+					} else {
+						$(this).children("img").attr("src", "../image/return.png");
+					}
+				}, function() {
+					var index = $(this).index()
+					$(this).stop().animate({
+						"marginLeft": "0",
+					}, 450);
+					if (index == 5) {
+						$(this).children("img").attr("src", "../image/close.png");
+					} else {
+						$(this).children("img").attr("src", "../image/return2.png");
+					}
+				});
+				$(".pBox p").eq(4).on("click", function() {
+					layer.closeAll('page');
+				})
+			})
+		</script>
+	</body>
+</html>

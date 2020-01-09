@@ -1,0 +1,114 @@
+<link rel="stylesheet" type="text/css" href="css/apply2.css" ver="20191119"/>
+<style type="text/css">
+	body{font-size: 12px;}
+	.apply{position: initial;margin-left: 0;margin-bottom: 10px;width: 100px;height: 25px;line-height: 25px;float: left;}
+	.bootstrap-table .fixed-table-container .table thead th .th-inner{padding: 0.3rem;}
+	.table td, .table th {padding: 0.3rem;}
+	.btnd{width: 100px;font-size: 12px;margin-top: 20px;height: 30px;line-height: 30px;}
+	.box p{text-align: center;font-size: 20px;margin-top: 30px;}
+</style>
+<div class="box">
+			<div class="apply">新建周总结</div>
+			<p>周总结列表</p>
+			<table id="table" border="1"></table>
+			<div class="pageBtnBox">
+					<button type="button" class="btnd" id="pageBtn">下一页</button>
+				</div>
+			</div>
+			
+			<script type="text/javascript">
+				$(document).ready(function() {
+					//分割当前网页链接
+					var windowUrl = window.location.href; //获取当前url链接		
+					//http://127.0.0.1:8848/summary/oneself.html?userGuid=4f47e8c7e40541d4a2f03c3c72304252&companyId=46
+					var arr = windowUrl.split("?", 2); //分割url		
+					var arr_1 = arr[1]; //瞎起变量		
+					var arr_2 = arr_1.split('&', 2);
+					var arr_3 = (arr_2[0].split('=', 2))[1];
+					var arr_4 = (arr_2[1].split('=', 2))[1];
+					//console.log(arr_4)       
+					var http_head = "http://47.94.173.253:8008";
+					var page = 0;
+					
+					//字符串分割申请时间 2019-11-18 09:00:57
+					function consta(e, value, index, row) {
+						var ar = value.createTime;
+						var ar_1=ar.split(" ")[0];
+						var ar_3=ar.split(" ")[1].split(':')[0]+':'+ar.split(" ")[1].split(':')[1];
+						var ar_4=ar_1+ ' ' +ar_3;
+						return ar_4
+					}
+					
+					function operateFormatter(value, row, index) {
+						return '<div class=w100><a class="agree" href="javascript:void(0)" title="agree">详情</a></div>'	
+					}
+					
+					window.operateEvents = {
+						'click .agree': function(e, value, row, index) {
+						window.open ("http://www.eqidd.com/html/detil.html?userGuid="+ arr_3 +"&companyId=" + arr_4 + "&week=" + row.weekNum + "&weekId=" + row.Id + "");
+						}
+					}
+										
+					$("#table").bootstrapTable({
+						url:'' + http_head + '/WeekPlan/weekId/weekPlan_Listbyuser.ashx',
+						method:'post',
+						contentType: "application/x-www-form-urlencoded",//post请求的话就加上这个句话				
+						queryParams: function (params) {//自定义参数				
+						  params.userGuid = arr_3;
+						  params.page = 0;
+						  return params
+						},
+						responseHandler: function(res) {
+							page = 1;
+							return res.items
+						},
+						columns: [{
+							field:'weekNum',
+							title:'周数/第几周'
+						},{
+							field:'userName',
+							title:'增加人'
+						},{
+							field:'createTime',
+							title:'时间',
+							formatter: consta
+						},{
+							field: 'operate',
+							title: '操作',
+							events: window.operateEvents,
+							formatter: operateFormatter
+						}]				
+					})
+					
+					
+					$('.apply').click(function(){
+						window.open ("http://www.eqidd.com/html/summary.html?userGuid="+ arr_3 +"&companyId=" + arr_4 + "");
+					})
+					//下一步点击事件
+					$("#pageBtn").on("click", function() {				
+						nextPage();
+					})
+					
+					function nextPage() {			
+						$.post("" + http_head + "/WeekPlan/weekId/weekPlan_Listbyuser.ashx", {
+							userGuid: arr_3,
+							page: page
+						}, function(data) {
+							var data = JSON.parse(data);
+							if(data.items.length > 0){
+								page = data.page;
+							}
+							if (data.items=='') {
+								$('#pageBtn').html('没有更多数据了')
+							} else {
+								$("#table").bootstrapTable({						
+									columns: [{
+										formatter: table,
+									}]
+								})					 
+								$("#table").bootstrapTable("append", data.items);
+							}
+						})
+					};
+			});
+			</script>

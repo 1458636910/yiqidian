@@ -1,0 +1,1113 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta http-equiv="expires" content="0">
+		<meta http-equiv="pragma" content="no-cache">
+		<meta http-equiv="cache-control" content="no-cache">
+		<link rel="icon" href="image/eqdLogo.png" type="image/x-icon" />
+		<title>易企学</title>
+		<link rel="stylesheet" href="css/reset.css" />
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+		 crossorigin="anonymous" />
+		<!-- <link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.14.1/dist/bootstrap-table.min.css" /> -->
+		<!-- <link href="https://cdn.bootcss.com/bootstrap-table/1.15.4/bootstrap-table.css" rel="stylesheet"> -->
+		<link rel="stylesheet" type="text/css" href="css/bootstrap-table.min.css" />
+		<link rel="stylesheet" href="css/skin/default/layer.css" />
+		<link rel="stylesheet" href="css/newTitle.css?ver=20191202" />
+		<!-- <link rel="stylesheet" href="css/footer2.css?ver=20191262" /> -->
+		<link rel="stylesheet" href="css/font.css?ver=20191114" />
+		<link rel="stylesheet" type="text/css" href="css/scroll.css?ver=20191035" />
+	</head>
+	<body>
+		<div class="navTitle">
+		</div>
+		<div class="topArea">
+			<div class="search contain clearfix">
+				<div class="searchLeft pull-left">
+					<img src="https://i.loli.net/2019/09/17/O24Qy6tSwKVsAJl.jpg" />
+				</div>
+				<div class="searchCenter pull-left">
+					<div class="clearfix">
+						<select name="" id="selectType" class="pull-left">
+							<option value="1">找讲师</option>
+							<option value="2">找咨询师</option>
+							<option value="3">找需求</option>
+							<option value="4">找文章</option>
+							<option value="5">找活动</option>
+							<option value="6">找机构</option>
+							<option value="7">找课程</option>
+						</select>
+						<input type="text" class="pull-left" id="inputSearch" />
+						<button class="pull-left" id="searchBtn">
+							<span class="glyphicon glyphicon-search"> </span>
+							搜索
+						</button>
+						<span class="pull-left and">或</span>
+						<button class="pull-left" id="demandBtn">
+							<span class="glyphicon glyphicon-pencil"> </span>
+							发布需求
+						</button>
+					</div>
+				</div>
+			</div>
+			<div class="ulList">
+				<ul class="mainFountion clearfix">
+					<li class="pull-left" id="front">
+						<a href="index.html">首页</a>
+					</li>
+					<li class="pull-left" id="teacherLi">
+						<a href="html/teacherIndex.html">讲师</a>
+						<img class="hot" src="image/hot0.png" alt="" />
+					</li>
+					<li class="pull-left" id="consultant">
+						<a href="html/advisory.html">咨询师</a>
+					</li>
+					<li class="pull-left" id="mechanism">
+						<a href="html/organization.html">机构</a>
+					</li>
+					<li class="pull-left" id="courseLi">
+						<a href="html/lookCourseList.html">课程</a>
+					</li>
+					<li class="pull-left">
+						<a href="html/lookActivity.html">活动</a>
+					</li>
+					<li class="pull-left" id="demandSquare">
+						<a href="html/lookDemandList.html">需求广场</a>
+						<img class="hot" src="image/hot0.png" alt="" />
+					</li>
+				</ul>
+			</div>
+		</div>
+
+		<div class="nav">
+			<div class="contain navMin clearfix">
+				<ul class="mainLeft pull-left">
+					<li>培训技术、销售管理</li>
+					<li>生产管理、售后服务</li>
+					<li>财务管理、物联网+</li>
+					<li>通用管理、总裁战略</li>
+					<li>职业素养、国学/养生</li>
+					<li>投融资、人力资源</li>
+					<li>心理学/性格分析</li>
+					<li>办公技能、智能制造</li>
+				</ul>
+				<div class="mainCenter pull-left clearfix">
+					<div class="list">
+						<div>
+							<span>培训技术</span>
+							<ul id="0">
+								<li>TTT</li>
+								<li>微课</li>
+								<li>课程开发</li>
+								<li>行动学习</li>
+								<li>引导技术</li>
+								<li>教练技术</li>
+								<li>沙盘技术</li>
+								<li>世界咖啡</li>
+								<li>培训管理</li>
+								<li>演讲口才</li>
+								<li>PPT</li>
+								<li>EXCEL</li>
+							</ul>
+							<span>销售管理</span>
+							<ul id="1">
+								<li>工业品营销</li>
+								<li>销售技巧</li>
+								<li>电话销售</li>
+								<li>销售谈判</li>
+								<li>销售心态</li>
+								<li>顾问式销售</li>
+								<li>互联网销售</li>
+								<li>大客户销售</li>
+								<li>工业品销售</li>
+								<li>收款技巧</li>
+								<li>关键客户</li>
+								<li>渠道销售</li>
+								<li>区域市场</li>
+								<li>销售管理</li>
+								<li>销售战略</li>
+								<li>关系营销</li>
+								<li>招投标</li>
+								<li>品牌管理</li>
+								<li>体验营销</li>
+								<li>政企营销</li>
+								<li>渠道管理</li>
+								<li>大客户营销</li>
+								<li>网格化营销</li>
+								<li>加盟</li>
+								<li>营销策划</li>
+								<li>会议营销</li>
+							</ul>
+						</div>
+						<div>
+							<span>生产管理</span>
+							<ul id="2">
+								<li>精益生产</li>
+								<li>精细化管理</li>
+								<li>采购管理</li>
+								<li>供应链管理</li>
+								<li>供应商管理</li>
+								<li>物流管理</li>
+								<li>仓储物流</li>
+								<li>研发管理</li>
+								<li>工艺管理</li>
+								<li>质量管理</li>
+								<li>生产成本管理</li>
+								<li>安全生产</li>
+								<li>ISO体系</li>
+								<li>班组长</li>
+								<li>E/PE/ME/QE</li>
+								<li>六西格玛</li>
+								<li>5/6/7/8S</li>
+								<li>工业4.0</li>
+								<li>TPM</li>
+								<li>PMC</li>
+								<li>TQM</li>
+								<li>TWI</li>
+								<li>QCC</li>
+								<li>QC七手法</li>
+								<li>8D</li>
+								<li>IE七手法</li>
+							</ul>
+							<span>售后服务</span>
+							<ul id="3">
+								<li>店长</li>
+								<li>导购</li>
+								<li>督导</li>
+								<li>经销商</li>
+								<li>陈列技巧</li>
+								<li>门店运营</li>
+								<li>门店选址</li>
+								<li>连锁复制</li>
+								<li>店铺盈利</li>
+								<li>营业厅</li>
+								<li>VIP客户管理</li>
+								<li>服务营销</li>
+								<li>客户服务</li>
+								<li>投诉处理</li>
+							</ul>
+						</div>
+						<div>
+							<span>财务管理</span>
+							<ul id="4">
+								<li>营改增</li>
+								<li>成本管理</li>
+								<li>纳税统筹</li>
+								<li>预算管理</li>
+								<li>应收账款</li>
+								<li>资产负债</li>
+								<li>风险管理</li>
+								<li>财务报表</li>
+								<li>非财管理</li>
+								<li>财务战略</li>
+								<li>金三税</li>
+							</ul>
+							<span>互联网+</span>
+							<ul id="5">
+								<li>互联网思维</li>
+								<li>互联网+</li>
+								<li>O2O</li>
+								<li>B2B</li>
+								<li>B2C</li>
+								<li>P2P</li>
+								<li>移动互联网</li>
+								<li>微信营销</li>
+								<li>电子商务</li>
+								<li>网络营销</li>
+								<li>电商转型</li>
+								<li>社群营销</li>
+								<li>微商</li>
+								<li>新媒体营销</li>
+								<li>新零售</li>
+								<li>区块链</li>
+								<li>互联网金融</li>
+							</ul>
+						</div>
+						<div>
+							<span>通用管理</span>
+							<ul id="6">
+								<li>领导力</li>
+								<li>MTP</li>
+								<li>执行力</li>
+								<li>授权与激励</li>
+								<li>团队管理</li>
+								<li>团队建设</li>
+								<li>目标管理</li>
+								<li>管理教练</li>
+								<li>会议管理</li>
+								<li>新生代管理</li>
+								<li>流程管理</li>
+								<li>变革管理</li>
+								<li>角色认识</li>
+								<li>沟通管理</li>
+								<li>辅导技巧</li>
+								<li>项目管理</li>
+								<li>德鲁克</li>
+								<li>阿米巴</li>
+								<li>时间管理</li>
+								<li>管理高尔夫</li>
+								<li>情景领导力</li>
+								<li>危机管理</li>
+								<li>员工辅导</li>
+								<li>思维导图</li>
+								<li>创新管理</li>
+								<li>结构化思维</li>
+								<li>逻辑思维</li>
+								<li>六顶思维帽</li>
+								<li>金字塔原理</li>
+								<li>瞬间思维</li>
+								<li>问题分析解决</li>
+								<li>水平思维</li>
+								<li>系统思维</li>
+							</ul>
+							<span>总裁战略</span>
+							<ul id="7">
+								<li>股权激励</li>
+								<li>投融资</li>
+								<li>商业模式</li>
+								<li>宏观经济</li>
+								<li>组织变革</li>
+								<li>战略规划</li>
+								<li>营销战略</li>
+								<li>品牌建设</li>
+								<li>领导智慧</li>
+								<li>转型升级</li>
+								<li>公司治理</li>
+								<li>经营决策</li>
+								<li>顶层设计</li>
+								<li>经营计划</li>
+								<li>集团管控</li>
+								<li>财税风险</li>
+								<li>上市筹划</li>
+								<li>名企考察</li>
+								<li>MBA</li>
+								<li>私董会</li>
+								<li>一带一路</li>
+								<li>国学修养</li>
+								<li>互联网</li>
+								<li>上市并购</li>
+								<li>资本运营</li>
+								<li>领导力</li>
+							</ul>
+						</div>
+						<div>
+							<span>职业素养</span>
+							<ul id="8">
+								<li>形象礼仪</li>
+								<li>服务礼仪</li>
+								<li>商务礼仪</li>
+								<li>色彩搭配</li>
+								<li>职业化</li>
+								<li>职业道德</li>
+								<li>阳光心态</li>
+								<li>沟通协作</li>
+								<li>时间管理</li>
+								<li>自我管理</li>
+								<li>心态激励</li>
+								<li>情绪压力</li>
+								<li>拓展训练</li>
+								<li>行政文秘</li>
+								<li>正能量</li>
+								<li>感恩</li>
+								<li>情商管理</li>
+								<li>七个习惯</li>
+								<li>职业规划</li>
+								<li>沙漠掘金</li>
+							</ul>
+							<span>国学/养生</span>
+							<ul id="9">
+								<li>国学修养</li>
+								<li>易经智慧</li>
+								<li>儒学修养</li>
+								<li>道德经</li>
+								<li>佛学智慧</li>
+								<li>孙子兵法</li>
+								<li>鬼谷子</li>
+								<li>弟子规</li>
+								<li>禅修</li>
+								<li>王阳明心学</li>
+								<li>曾国藩</li>
+								<li>皇帝内经</li>
+								<li>健康养生</li>
+								<li>中医养生</li>
+								<li>食物养生</li>
+								<li>职场养生</li>
+								<li>总裁健康</li>
+								<li>女性养生</li>
+							</ul>
+						</div>
+						<div>
+							<span>投融资</span>
+							<ul id="10">
+								<li>资本运作</li>
+								<li>新三板</li>
+								<li>众筹</li>
+								<li>风投</li>
+								<li>融资上市</li>
+								<li>路演</li>
+								<li>私募股权</li>
+								<li>并购</li>
+								<li>财富管理</li>
+							</ul>
+							<span>人力资源</span>
+							<ul id="11">
+								<li>招聘面试</li>
+								<li>绩效管理</li>
+								<li>薪酬福利</li>
+								<li>员工关系</li>
+								<li>劳动法规</li>
+								<li>职业规划</li>
+								<li>培训体系</li>
+								<li>企业文化</li>
+								<li>非人</li>
+								<li>战略人力</li>
+								<li>HRBP</li>
+								<li>组织规划</li>
+								<li>能力模型</li>
+								<li>职场管理</li>
+								<li>企业文化</li>
+								<li>人力规划</li>
+							</ul>
+						</div>
+						<div>
+							<span>心理学/性格分析</span>
+							<ul id="12">
+								<li>压力管理</li>
+								<li>情绪管理</li>
+								<li>管理心理学</li>
+								<li>销售心理学</li>
+								<li>心灵成长</li>
+								<li>心理援助</li>
+								<li>九型人格</li>
+								<li>EAP</li>
+								<li>DISC</li>
+								<li>婚恋</li>
+								<li>两性关系</li>
+								<li>情感咨询</li>
+								<li>亲子教育</li>
+								<li>青少年</li>
+								<li>心灵成长</li>
+								<li>教练技术</li>
+								<li>心理资本</li>
+							</ul>
+						</div>
+						<div>
+							<span>办公技能</span>
+							<ul id="13">
+								<li>公文写作</li>
+								<li>PPT汇报</li>
+								<li>Excel应用</li>
+								<li>OFFICE应用</li>
+								<li>行政文秘</li>
+							</ul>
+							<span>智能制造</span>
+							<ul id="14">
+								<li>工业4.0</li>
+								<li>CPS虚拟现实</li>
+								<li>工业互联网</li>
+								<li>IOT互联网</li>
+								<li>云计算</li>
+								<li>大数据</li>
+								<li>数字化制造</li>
+								<li>RFID技术</li>
+								<li>3D打印</li>
+								<li>智能机床应用</li>
+								<li>AI(人工智能)</li>
+								<li>智能物流</li>
+								<li>智能生产</li>
+								<li>5G技术</li>
+								<li>IT运维</li>
+							</ul>
+						</div>
+					</div>
+					<div id="myCarousel" class="carousel slide img">
+						<ol class="carousel-indicators">
+							<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+						</ol>
+						<div class="carousel-inner lunbo">
+							<div class="item videobg">
+								<!-- <div id="youkuplayer" style="width:678px;height:305px" title="点击播放"> </div> -->
+								<img src="https://i.loli.net/2019/09/17/Oma73hSRfkdHFGu.png">
+							</div>
+						</div>
+						<!-- 轮播（Carousel）导航 -->
+						<a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev" style="height: 50%;top:25%">
+							<span aria-hidden="true">
+								<img src="image/back.png" class="control-left"/>
+							</span>
+							<span class="sr-only">Previous</span>
+						</a>
+						<a class="right carousel-control" href="#myCarousel" role="button" data-slide="next" style="height: 50%;top:25%">
+							<span  aria-hidden="true">
+								<img src="image/next.png" class="control-right"/>
+							</span>
+							<span class="sr-only">Next</span>
+						</a>
+					</div>
+				</div>
+				<div class="mainRight pull-right">
+					<div class="loginArea">
+						<img src="https://i.loli.net/2019/09/17/6hxFMVjfKDoSZ8N.png" alt="" />
+						<p>
+							<button class="loginBtn2">
+								<span class="glyphicon glyphicon-user"> </span>
+								登录
+							</button>
+							<button class="regBtn2">
+								<span class="glyphicon glyphicon-pencil"> </span>
+								注册
+							</button>
+						</p>
+						<p>
+							<button class="demandBtn2">马上发布需求</button>
+						</p>
+					</div>
+				</div>
+			</div>
+			<div class="noticeDiv contain clearfix">
+				<div class="pull-left clearfix">
+					<svg class="icon pull-left" aria-hidden="true">
+						<use xlink:href="#icon-notice"> </use>
+					</svg>
+					<span class="pull-left"> </span>
+				</div>
+				<div class="pull-left" id="noticeShow">
+					<div class="txt-scroll">
+						<div class="scrollbox">
+							<div class="txtScroll"> </div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="main contain">
+			<!-- 推荐讲师 -->
+			<div class="rectitle">
+				<p class="active">推荐讲师</p>
+				<div class="typebox">
+					<ul class="recommend"> </ul>
+				</div>
+				<!-- <span class="openlist">更多</span> -->
+			</div>
+			<div class="clearfix listitem">
+				<div class="itembox pull-left teacherTypeList"> </div>
+				<!-- 最新入驻讲师 -->
+				<div class="showGoodTeacherDivRight pull-right">
+					<div class="newTeacherDiv">
+						<div class="newTeacherTitle">最新入驻师资</div>
+						<div id="news">
+							<ul id="newregTeacher"> </ul>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- 推荐咨询师 -->
+			<div class="rectitle4">
+				<p class="active">推荐咨询师</p>
+				<div class="typebox4">
+					<ul>
+						<li>人力资源管理</li>
+						<li>生产制造管理</li>
+						<li>市场营销管理</li>
+						<li>市场营销管理</li>
+						<li>战略与商业模式管理</li>
+						<li>其他</li>
+					</ul>
+				</div>
+			</div>
+			<div class="clearfix listitem4">
+				<div class="itembox pull-left advList"> </div>
+				<!-- 最新入驻咨询师 -->
+				<div class="newRec pull-right">
+					<div class="newRecDiv">
+						<div class="newRecTitle">最新入驻咨询师</div>
+						<div id="newRecs">
+							<ul id="newRecTeacher"> </ul>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- 活动 -->
+			<div class="rectitle2">
+				<p class="active">活动/会议/展览/培训</p>
+				<div class="typebox2">
+					<ul>
+						<li>论坛</li>
+						<li>大会</li>
+						<li>研讨会</li>
+						<li>培训</li>
+						<li>市场活动</li>
+						<li>展览</li>
+						<li>聚会</li>
+						<li>酒会</li>
+						<li>其他</li>
+					</ul>
+				</div>
+			</div>
+			<div class="clearfix listitem2">
+				<div class="pull-left" id="activity"> </div>
+				<!-- 最新活动 -->
+				<div class="ActiveDivRight pull-right">
+					<div class="newActiveDiv">
+						<div class="newActiveTitle">最新发布活动</div>
+						<div id="newActive">
+							<ul id="newActiveList"> </ul>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- 机构 -->
+			<div class="rectitle3">
+				<p class="active">热门机构</p>
+				<div class="typebox3">
+					<ul>
+						<li>人力资源管理</li>
+						<li>生产制造管理</li>
+						<li>市场营销管理</li>
+						<li>市场营销管理</li>
+						<li>战略与商业模式管理</li>
+						<li>其他</li>
+					</ul>
+				</div>
+			</div>
+			<div class="clearfix listitem3">
+				<div class="pull-left" id="organize"> </div>
+				<!-- 最新活动 -->
+				<div class="orgDivRight pull-right">
+					<div class="newActiveDiv">
+						<div class="orgTitle">新入驻机构</div>
+						<div id="org">
+							<ul id="orgList"></ul>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- 临时 -->
+			<ul class="ls">
+				<li>
+					<a href="http://zsld52.cn/?sec=2.3beca5ed.1565918472.7.1.0&uckloadid=5IriAB.1ca50889&Sid=22">
+						<img src="img/h1.png" alt="" />
+						<div>
+							<span class="l1"><img src="image/jg.png" />六安中视联动信息技术有限公司</span>
+							<span class="l2"><img src="image/fsc.png" />连锁</span>
+							<span class="l2"><img src="image/location.png" />安徽</span>
+							<span class="l1"><img src="image/cp.png" />加盟招商</span>
+							<span class="l2"><img src="image/see2.png" /><label>3445</label></span>
+							<span class="l2"><img src="image/fcjl.png" /><label>326</label></span>
+						</div>
+					</a>
+				</li>
+				<li>
+					<a href="http://www.dbn.com.cn/">
+						<img src="img/h2.png" alt="" />
+						<div>
+							<span class="l1"><img src="image/jg.png" />大北农集团股份有限公司</span>
+							<span class="l2"><img src="image/fsc.png" />农林牧渔</span>
+							<span class="l2"><img src="image/location.png" />北京海淀</span>
+							<span class="l1"><img src="image/cp.png" />现代化农业发展</span>
+							<span class="l2"><img src="image/see2.png" /><label>5356</label></span>
+							<span class="l2"><img src="image/fcjl.png" /><label>568</label></span>
+						</div>
+					</a>
+				</li>
+				<li><a href="http://www.jtfa.cn/">
+						<img src="img/h3.png" alt="" />
+						<div>
+							<span class="l1"><img src="image/jg.png" />青岛九天国际飞行学院</span>
+							<span class="l2"><img src="image/fsc.png" />教育</span>
+							<span class="l2"><img src="image/location.png" />山东青岛</span>
+							<span class="l1"><img src="image/cp.png" />飞行员培养</span>
+							<span class="l2"><img src="image/see2.png" /><label>2426</label></span>
+							<span class="l2"><img src="image/fcjl.png" /><label>254</label></span>
+						</div>
+					</a>
+				</li>
+				<li><a href="http://www.sdtaikai.com/">
+						<img src="img/h4.png" alt="" />
+						<div>
+							<span class="l1"><img src="image/jg.png" />山东泰开高压开关有限公司</span>
+							<span class="l2"><img src="image/fsc.png" />生产制造</span>
+							<span class="l2"><img src="image/location.png" />山东泰安</span>
+							<span class="l1"><img src="image/cp.png" />高压开关生产</span>
+							<span class="l2"><img src="image/see2.png" /><label>3376</label></span>
+							<span class="l2"><img src="image/fcjl.png" /><label>338</label></span>
+						</div>
+					</a>
+				</li>
+				<li><a href="http://xxairpull.chinafilter.org/">
+						<img src="img/h5.png" alt="" />
+						<div>
+							<span class="l1"><img src="image/jg.png" />上海艾普利滤清器有限公司</span>
+							<span class="l2"><img src="image/fsc.png" />生产制造</span>
+							<span class="l2"><img src="image/location.png" />上海宝山</span>
+							<span class="l1"><img src="image/cp.png" />空压机过滤</span>
+							<span class="l2"><img src="image/see2.png" /><label>3269</label></span>
+							<span class="l2"><img src="image/fcjl.png" /><label>476</label></span>
+						</div>
+					</a>
+				</li>
+				<li><a href="https://www.11467.com/qiye/31333533.htm">
+						<img src="img/h6.png" alt="" />
+						<div>
+							<span class="l1"><img src="image/jg.png" />贵州博鲁德管理培训咨询有限公司</span>
+							<span class="l2"><img src="image/fsc.png" />培训咨询</span>
+							<span class="l2"><img src="image/location.png" />贵州贵阳</span>
+							<span class="l1"><img src="image/cp.png" />企业培训咨询</span>
+							<span class="l2"><img src="image/see2.png" /><label>4247</label></span>
+							<span class="l2"><img src="image/fcjl.png" /><label>683</label></span>
+						</div>
+					</a>
+				</li>
+				<li>
+					<a href="http://sp4551648.zjbiz.net/">
+						<img src="img/h7.png" alt="" />
+						<div>
+							<span class="l1"><img src="image/jg.png" />白云纸业有限公司</span>
+							<span class="l2"><img src="image/fsc.png" />生产制造</span>
+							<span class="l2"><img src="image/location.png" />河南新密</span>
+							<span class="l1"><img src="image/cp.png" />纸类印刷</span>
+							<span class="l2"><img src="image/see2.png" /><label>683</label></span>
+							<span class="l2"><img src="image/fcjl.png" /><label>195</label></span>
+						</div>
+					</a>
+				</li>
+				<li>
+					<a href="http://www.winnergroup.com.cn/">
+						<img src="img/h8.png" alt="" />
+						<div>
+							<span class="l1"><img src="image/jg.png" />河南威猛振动设备股份有限公司</span>
+							<span class="l2"><img src="image/fsc.png" />生产制造</span>
+							<span class="l2"><img src="image/location.png" />河南新乡</span>
+							<span class="l1"><img src="image/cp.png" />筛分分选装备制造</span>
+							<span class="l2"><img src="image/see2.png" /><label>1327</label></span>
+							<span class="l2"><img src="image/fcjl.png" /><label>217</label></span>
+						</div>
+					</a>
+				</li>
+				<li><a href="http://xuridianyuan.xunshou.com/">
+						<img src="img/h9.png" alt="" />
+						<div>
+							<span class="l1"><img src="image/jg.png" />河南省辉县市旭日电源有限公司</span>
+							<span class="l2"><img src="image/fsc.png" />生产制造</span>
+							<span class="l2"><img src="image/location.png" />河南新乡</span>
+							<span class="l1"><img src="image/cp.png" />电池生产</span>
+							<span class="l2"><img src="image/see2.png" /><label>1263</label></span>
+							<span class="l2"><img src="image/fcjl.png" /><label>258</label></span>
+						</div>
+					</a>
+				</li>
+				<li>
+					<a href="http://www.biglss.com/about/">
+						<img src="img/h10.png" alt="" />
+						<div>
+							<span class="l1"><img src="image/jg.png" />上海博革企业管理咨询有限公司</span>
+							<span class="l2"><img src="image/fsc.png" />管理咨询</span>
+							<span class="l2"><img src="image/location.png" />上海长宁</span>
+							<span class="l1"><img src="image/cp.png" />精益生产咨询</span>
+							<span class="l2"><img src="image/see2.png" /><label>4538</label></span>
+							<span class="l2"><img src="image/fcjl.png" /><label>382</label></span>
+						</div>
+					</a>
+				</li>
+				<li>
+					<a href="http://www.huyu.com.cn/">
+						<img src="img/h12.png" alt="" />
+						<div>
+							<span class="l1"><img src="image/jg.png" />环宇集团浙江高科股份有限公司</span>
+							<span class="l2"><img src="image/fsc.png" />生产制造</span>
+							<span class="l2"><img src="image/location.png" />浙江温州</span>
+							<span class="l1"><img src="image/cp.png" />电器生产制造</span>
+							<span class="l2"><img src="image/see2.png" /><label>3329</label></span>
+							<span class="l2"><img src="image/fcjl.png" /><label>354</label></span>
+						</div>
+					</a>
+				</li>
+				<li>
+					<a href="http://www.tedard.com.cn/">
+						<img src="img/h13.png" alt="" />
+						<div>
+							<span class="l1"><img src="image/jg.png" />天津泰达热电能源管理有限公司</span>
+							<span class="l2"><img src="image/fsc.png" />水/电/气供应</span>
+							<span class="l2"><img src="image/location.png" />天津经开区</span>
+							<span class="l1"><img src="image/cp.png" />热力供应支持</span>
+							<span class="l2"><img src="image/see2.png" /><label>2379</label></span>
+							<span class="l2"><img src="image/fcjl.png" /><label>283</label></span>
+						</div>
+					</a>
+				</li>
+				<li><a href="http://www.grjtgs.com/">
+						<img src="img/h14.png" alt="" />
+						<div>
+							<span class="l1"><img src="image/jg.png" />广瑞集团股份有限公司</span>
+							<span class="l2"><img src="image/fsc.png" />建筑/装饰</span>
+							<span class="l2"><img src="image/location.png" />浙江瑞安</span>
+							<span class="l1"><img src="image/cp.png" />房地产开发经营</span>
+							<span class="l2"><img src="image/see2.png" /><label>2659</label></span>
+							<span class="l2"><img src="image/fcjl.png" /><label>385</label></span>
+						</div>
+					</a>
+				</li>
+				<li><a href="https://www.hngymt.com/">
+						<img src="img/h15.png" alt="" />
+						<div>
+							<span class="l1"><img src="image/jg.png" />河南明泰铝业有限公司</span>
+							<span class="l2"><img src="image/fsc.png" />生产制造</span>
+							<span class="l2"><img src="image/location.png" />河南郑州</span>
+							<span class="l1"><img src="image/cp.png" />铝制品生产制造</span>
+							<span class="l2"><img src="image/see2.png" /><label>3659</label></span>
+							<span class="l2"><img src="image/fcjl.png" /><label>379</label></span>
+						</div>
+					</a>
+				</li>
+				<li><a href="http://www.yssh.com.cn">
+						<img src="img/h16.png" alt="" />
+						<div>
+							<span class="l1"><img src="image/jg.png" />河南仰韶生化工程有限公司</span>
+							<span class="l2"><img src="image/fsc.png" />生物化学</span>
+							<span class="l2"><img src="image/location.png" />河南郑州</span>
+							<span class="l1"><img src="image/cp.png" />酶、微生物制剂科研生产销售</span>
+							<span class="l2"><img src="image/see2.png" /><label>5659</label></span>
+							<span class="l2"><img src="image/fcjl.png" /><label>589</label></span>
+						</div>
+					</a>
+				</li>
+			</ul>
+			<!-- 流程 -->
+			<div class="clearfix regTips">
+				<img src="https://i.loli.net/2019/09/17/2NWzFeqm56gVDr1.jpg" class="pull-left regPersonal lazy" alt="点击进入个人注册页面" />
+				<img src="https://i.loli.net/2019/09/17/5VSd6CNiOhAuTva.jpg" class="pull-right regCompany lazy" alt="点击进入企业注册页面" />
+			</div>
+		</div>
+		<!-- 平台数据 -->
+		<div class="platformDataDiv ">
+			<div class="detailsDataDiv contain">
+				<div class="platformDataTitle">
+					<p class="">
+						易企学平台数据
+					</p>
+				</div>
+				<div class="dataShowDiv clearfix">
+					<div class="pull-left">
+						<p>个</p>
+						<p>534</p>
+						<p>讲师</p>
+					</div>
+					<div class="pull-left">
+						<p>个</p>
+						<p>621</p>
+						<p>咨询师</p>
+					</div>
+					<div class="pull-left">
+						<p>+</p>
+						<p>1876</p>
+						<p>课程</p>
+					</div>
+					<div class="pull-left">
+						<p>个</p>
+						<p>1359</p>
+						<p>咨询产品</p>
+					</div>
+					<div class="pull-left">
+						<p>条</p>
+						<p>3258</p>
+						<p>需求</p>
+					</div>
+					<div class="pull-left">
+						<p>条</p>
+						<p>1457</p>
+						<p>活动</p>
+					</div>
+					<div class="pull-left">
+						<p>条</p>
+						<p>4856</p>
+						<p>新闻洞察</p>
+					</div>
+					<div class="pull-left">
+						<p>家</p>
+						<p>1024</p>
+						<p>企业</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- 平台优势 -->
+		<div class="fightBox">
+			<p class="ft">易企学核心竞争力</p>
+			<ul class="fight">
+				<li><img src="https://i.loli.net/2019/09/17/GsePRC2WuKV9g4Q.png" alt="">
+					<p>1、自动匹配需求</p>
+					<p>（买家/卖家同时在线，需求智能匹配）</p>
+				</li>
+				<li><img src="https://i.loli.net/2019/09/17/oCPnvUdjwRFcSMt.png" alt="">
+					<p>2、老师直联企业</p>
+					<p>（去掉中间商，老师多挣钱、企业少花钱）</p>
+				</li>
+				<li><img src="https://i.loli.net/2019/09/17/GQbpWjdYX3IaruT.png" alt="">
+					<p>3、价格全网最低</p>
+					<p>（所有师资全网售价最低）</p>
+				</li>
+				<li><img src="https://i.loli.net/2019/09/17/NGIQA5DKRpg7bUL.png" alt="">
+					<p>4、质量有保证</p>
+					<p>（有《网购先赔》政策，依法保证买家利益）</p>
+				</li>
+				<li><img src="https://i.loli.net/2019/09/17/zkwfWel3RqtFH65.png" alt="">
+					<p>5、师资智能小助手</p>
+					<p>（适时跟踪老师动态、安排老师一切行程，让老师安心工作）</p>
+				</li>
+			</ul>
+		</div>
+		<!-- 区别 -->
+		<div class="different">
+			<p class="dift">易企学与其他师资平台的区别</p>
+			<ul class="diftList">
+				<li>
+					<div>
+						<p><span>各师资网站：</span>以“公布电话号码”为赢利模式</p>
+					</div>
+					<div>
+						<p><span>易企学平台：</span>电话号码永久公开，创客空间永久免费</p>
+					</div>
+				</li>
+				<li>
+					<div>
+						<p><span>各师资网站：</span>“没有买家在线”</p>
+					</div>
+					<div>
+						<p><span>易企学平台：</span>买家/卖家同时在线，适时互动</p>
+					</div>
+				</li>
+				<li>
+					<div>
+						<p><span>各师资网站：</span>有中间商，导致老师终端售价极高，老师收入少、买家成本高</p>
+					</div>
+					<div>
+						<p><span>易企学平台：</span>没有中间商，师资直联终端买家，所有师资价格全网最低，老师多挣钱，买家少花钱</p>
+					</div>
+				</li>
+				<li>
+					<div>
+						<p><span>各师资网站：</span>师资能力水平参差不齐，质量无保证、买家不放心，平台也不管</p>
+					</div>
+					<div>
+						<p><span>易企学平台：</span>所有师资经过验证和训练，“精品师资”质量有保证，网购先赔</p>
+					</div>
+				</li>
+				<li>
+					<div>
+						<p><span>各师资网站：</span>只是一个静态的个人信息展示Web，无移动端APP</p>
+					</div>
+					<div>
+						<p><span>易企学平台：</span>Web/APP数据同步，买家/卖家适时在线互动，APP“师资智能小助手”让需求/行程一个不落空，让老师省心、安心、放心</p>
+					</div>
+				</li>
+				<li>
+					<div>
+						<p><span>各师资网站：</span>个人主页不能传播，不能与外界互动，只是一个静态的网页</p>
+					</div>
+					<div>
+						<p><span>易企学平台：</span>每个独立的“创客空间”即是独立IP，智能与外界买家链接，让需求源源不绝，让老师永不担心“课量少”、“没活干”</p>
+					</div>
+				</li>
+			</ul>
+		</div>
+		<!-- 合作伙伴 -->
+		<div class="panterDiv contain">
+			<div class="panterTitle">
+				<p>
+					合作伙伴
+				</p>
+			</div>
+			<ul class="clearfix">
+				<li class="pull-left">
+					<a href="http://www.yssh.com.cn"><img src="img/j1.jpg" alt="" /></a>
+				</li>
+				<li class="pull-left">
+					<a href="http://xuridianyuan.xunshou.com/"><img src="img/j2.jpg" alt="" /></a>
+				</li>
+				<li class="pull-left">
+					<a href="http://www.winnergroup.com.cn/"><img src="img/j3.jpg" alt="" /></a>
+				</li>
+				<li class="pull-left">
+					<a href="http://www.tedard.com.cn/"><img src="img/j4.jpg" alt="" /></a>
+				</li>
+				<li class="pull-left">
+					<a href="https://www.hngymt.com/"><img src="img/j5.jpg" alt="" /></a>
+				</li>
+				<li class="pull-left">
+					<a href="http://www.grjtgs.com/"><img src="img/j6.jpg" alt="" /></a>
+				</li>
+				<li class="pull-left">
+					<a href="http://www.glodway.cn/"><img src="img/j7.jpg" alt="" /></a>
+				</li>
+				<li class="pull-left">
+					<a href="http://sp4551648.zjbiz.net/"><img src="img/j8.jpg" alt="" /></a>
+				</li>
+				<li class="pull-left">
+					<a href="http://www.biglss.com/about/"><img src="img/j9.jpg" alt="" /></a>
+				</li>
+				<li class="pull-left">
+					<a href="https://www.11467.com/qiye/31333533.htm"><img src="img/j10.jpg" alt="" /></a>
+				</li>
+				<li class="pull-left">
+					<a href="http://www.sdtaikai.com/"><img src="img/j11.jpg" alt="" /></a>
+				</li>
+				<li class="pull-left">
+					<a href="http://www.huyu.com.cn/"><img src="img/j12.jpg" alt="" /></a>
+				</li>
+				<li class="pull-left">
+					<a href="http://xxairpull.chinafilter.org/"><img src="img/j13.jpg" alt="" /></a>
+				</li>
+				<li class="pull-left">
+					<a href="http://zsld52.cn/?sec=2.3beca5ed.1565918472.7.1.0&uckloadid=5IriAB.1ca50889&Sid=22"><img src="img/j14.jpg"
+						 alt="" /></a>
+				</li>
+				<li class="pull-left">
+					<a href="http://www.dbn.com.cn/"><img src="img/j15.jpg" alt="" /></a>
+				</li>
+				<li class="pull-left">
+					<a href="http://www.jtfa.cn/"><img src="img/j16.jpg" alt="" /></a>
+				</li>
+			</ul>
+		</div>
+		<div class="links">
+			<p style="color: #00a2e8;">友情链接</p>
+			<span><a href="http://www.jiangshi99.com/" title="中国讲师网" target="_blank">中国讲师网</a></span><span><a href="https://www.eduour.cn/"
+				 title="在职研究生" target="_blank">在职研究生</a></span><span><a href="https://www.ququabc.com/" title="英语" target="_blank">英语</a></span><span><a
+				 href="http://sd.huatu.com/ " title="山东公务员考试网" target="_blank">山东公务员考试网</a></span><span><a href="http://www.huishi365.com/"
+				 title="讲师经纪" target="_blank">讲师经纪</a></span><span><a href="http://www.chinatpm.com/" title="精益生产管理" target="_blank">精益生产管理</a></span><span><a
+				 href="http://www.mbajyz.cn/" title="MBA培训" target="_blank">MBA培训</a></span><span><a href="http://sa.offcn.com "
+				 title="陕西人事考试网" target="_blank">陕西人事考试网</a></span><span><a href="http://dili.chazidian.com/" title="查字典地理网" target="_blank">查字典地理网</a></span><span><a
+				 href="http://www.mobiletrain.org" title="Java培训" target="_blank">Java培训</a></span><span><a href="http://www.bdkssc.com/"
+				 title="职称计算机考试" target="_blank">职称计算机考试</a></span><span><a href="http://bg.qianzhan.com/" title="研究报告" target="_blank">研究报告</a></span><span><a
+				 href="http://hb.huatu.com/" title="湖北公务员考试网" target="_blank">湖北公务员考试网</a></span><span><a href="http://en-yinbiao.xiao84.com "
+				 title="英语音标" target="_blank">英语音标</a></span><span><a href="http://wl.zxxk.com/" title="物理课件" target="_blank">物理课件</a></span><span><a
+				 href="http://www.zhibs.net/" title="珠海英语培训" target="_blank">珠海英语培训</a></span><span><a href="http://www.zzyjs.com/"
+				 title="在职研究生" target="_blank">在职研究生</a></span><span><a href="http://www.itcast.cn/" title="Java培训" target="_blank">Java培训</a></span><span><a
+				 href="http://www.jiangshi99.com/home/gejun1/" title="葛军" target="_blank">葛军</a></span><span><a href="http://www.danzhaowang.com/"
+				 title="单招" target="_blank">单招</a></span><span><a href="http://www.1010jz.com/" title="兼职" target="_blank">兼职</a></span><span><a
+				 href="http://www.bjpowernode.com" title="Java培训机构" target="_blank">Java培训机构</a></span><span><a href="http://peixun.jiangshi99.com/"
+				 title="企业内训" target="_blank">企业内训</a></span><span><a href="http://www.zxwh.com/" title="培训讲师" target="_blank">培训讲师</a></span><span><a
+				 href="http://www.99zihua.com" title="99字画网" target="_blank">99字画网</a></span><span><a href="http://www.jiangshi99.com/topic/dadian4/"
+				 title="中国讲师大典第四期" target="_blank">中国讲师大典第四期</a></span><span><a href="http://www.mobiletrain.org/" title="Java培训"
+				 target="_blank">Java培训</a></span><span><a href="http://www.zzyjszs.com" title="在职研究生" target="_blank">在职研究生</a></span><span><a
+				 href="http://www.chuanyinpx.com" title="艺考培训" target="_blank">艺考培训</a></span><span><a href="https://www.itpeixun.com.cn"
+				 title="计算机培训机构" target="_blank">计算机培训机构</a></span><span><a href="https://www.linuxprobe.com" title="Linux" target="_blank">Linux</a></span><span><a
+				 href="http://ln.offcn.com/" title="辽宁公务员考试网" target="_blank">辽宁公务员考试网</a></span><span><a href="http://www.yjyjxh.com"
+				 title="中国易经研究学会" target="_blank">中国易经研究学会</a></span><span><a href="http://www.jsbexam.com/" title="山东教师招聘网" target="_blank">山东教师招聘网</a></span><span><a
+				 href="http://emba.eduego.com/" title="EMBA" target="_blank">EMBA</a></span><span><a href="http://paihang.jiameng.com"
+				 title="加盟项目排行" target="_blank">加盟项目排行</a></span><span><a href="http://www.kaocha.org" title="标杆考察游学网" target="_blank">标杆考察游学网</a></span><span><a
+				 href="http://pmp.aura.cn" title="PMP" target="_blank">PMP</a></span><span><a href="http://qh.offcn.com/" title="青海人事考试信息"
+				 target="_blank">青海人事考试信息</a></span><span><a href="http://www.cnsyzx.net/" title="城南实验中学" target="_blank">城南实验中学</a></span><span><a
+				 href="http://www.aiyy.com" title="品牌排行榜" target="_blank">品牌排行榜</a></span><span><a href="http://www.chinaadec.com"
+				 title="中华汽车网校" target="_blank">中华汽车网校</a></span><span><a href="http://www.codesocang.com" title="源码" target="_blank">源码</a></span><span><a
+				 href="http://www.7799520.com/" title="征婚相亲" target="_blank">征婚相亲</a></span><span><a href="http://www.tantuw.com"
+				 title="坦途教育网" target="_blank">坦途教育网</a></span><span><a href="https://www.shtsn.com" title="健身教练培训" target="_blank">健身教练培训</a></span><span><a
+				 href="http://www.9ask.cn" title="律师咨询" target="_blank">律师咨询</a></span><span><a href="http://www.100.com/" title="家教辅导"
+				 target="_blank">家教辅导</a></span>
+		</div>
+		<!-- 网页底部公用 -->
+		
+		<div class="videoBox">
+			<!-- <div id="youkuplayer" style="width:800px;height:480px" title="点击播放"> </div> -->
+		</div>
+		
+		<div class="foot"></div>
+		<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+		<script type="text/javascript" src="js/layer/layer.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+		 crossorigin="anonymous"></script>
+		<!-- <script src="https://unpkg.com/bootstrap-table@1.14.1/dist/bootstrap-table.min.js"></script> -->
+		<!-- <script src="https://cdn.bootcss.com/bootstrap-table/1.15.4/bootstrap-table.js"></script> -->
+		<script src="js/bootstrap-table.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.12.1/locale/bootstrap-table-zh-CN.min.js"></script>
+		<script src="fonts/iconfont.js"></script>
+		<script src="https://cdn.bootcss.com/jquery_lazyload/1.9.0/jquery.lazyload.min.js"></script>
+		<!-- <script type="text/javascript" src="js/youkuPlayer.js"></script> -->
+		<script src='//player.polyv.net/script/polyvplayer.min.js'></script>
+		<script src="https://cdn.bootcss.com/babel-polyfill/7.2.3/polyfill.min.js"></script>
+		
+		<script type="text/javascript">
+			var html1 = './html/navTitle.html?v=' + Math.random();
+			$(".navTitle").load(html1);
+			$(".foot").load("http://www.eqidd.com/footer.html?v=" + Math.random());
+			// function adStyle(code) {
+			// 	var style = document.createElement('style');
+			// 	style.type = 'text/css';
+			// 	style.appendChild(document.createTextNode(code));
+			// 	var head = document.getElementsByTagName('head')[0];
+			// 	head.appendChild(style);
+			// 	$(".control-play-icon").removeAttr("disabled");
+			// 	console.log($(".control-play-icon"))
+			// };
+			// //去广告
+			// adStyle('#css代码{display:none !important;}');
+
+			var player = polyvObject('.videoBox').videoPlayer({
+				'width': '800',
+				'height': '480',
+				'vid': '056bdf4c1da59756412e57c82446c822_0'
+			});
+			$(".videobg").on("click", function() {
+				layer.open({
+					type: 1,
+					area: ["812px", "492px"],
+					content: $(".videoBox"),
+					skin: 'layui-layer-rim', //加上边框
+				});
+				// var player = new YKU.Player('youkuplayer', {
+				// 	styleid: '0',
+				// 	client_id: 'e29c9b1e28715061',
+				// 	vid: 'XNDI2Nzc3Njc0MA==',
+				// 	newPlayer: true,
+				// 	autoplay: true
+				// });
+			});
+
+			$(".diftList li").hover(function() {
+				$(this).children("div").eq(0).css({
+					"border": "1px solid #0aa2e8",
+				})
+				$(this).children("div").eq(1).css({
+					"background": "#0aa2e8",
+					"color": "white",
+					"transition": "all .5s"
+				})
+			}, function() {
+				$(this).children("div").eq(0).css({
+					"border": "1px solid white",
+				})
+				$(this).children("div").eq(1).css({
+					"background": "white",
+					"color": "#333",
+				})
+			});
+			$(".fight li").hover(function() {
+				$(this).children("img").css({
+					"transform": "scale(1.1,1.1)",
+					"transition": "all .5s"
+				})
+			}, function() {
+				$(this).children("img").css({
+					"transform": "scale(1,1)"
+				})
+			})
+		</script>
+		<script src="js/jquery.ellipsis.js" type="text/javascript"></script>
+		<script src="js/scroll.js?20190615" type="text/javascript"></script>
+		<script type="text/javascript">
+			var src = 'js/font.js?v=' + Math.random();
+			new_element = document.createElement("script");
+			new_element.setAttribute("type", "text/javascript");
+			new_element.setAttribute("src", src); //此处为要引入的js的地址
+			document.body.appendChild(new_element);
+		</script>
+		<script src="fonts/iconfont.js"></script>
+		<script type="text/javascript">
+			$('.txtScroll').liMarquee({
+				circular: false
+			});
+		</script>
+	</body>
+</html>

@@ -1,0 +1,387 @@
+
+		<link rel="stylesheet" type="text/css" href="css/apply2.css" />
+		
+		<style type="text/css">
+			.total {			
+				position: initial!important;
+				margin-bottom: 10px;
+			}
+			
+			#examined {
+				border-bottom-left-radius: 5px;
+				border-bottom-right-radius: 5px;
+				border: none
+			}
+			.w106 {
+				width: 106px;
+			}
+		
+			.size {
+				font-size: 12px;
+			}
+		
+			.agree {
+				color: #00A1E9;
+			}
+		
+			.refuse {
+				color: red;
+			}
+		
+			.atxe {
+				margin-left: 0 !important;
+			}
+			.w133{width: 133px;}
+		</style>
+		
+
+		<div class="box">
+			<div class="total">
+				<!-- .icon-zelvxuanzefeiyongzhengsanjiaoxingzhichi 上箭头 有需求可以加 -->
+				<div class="pp">
+					<p id="selectedText">未审核</p><span class="iconfont icon-zelvxuanzefeiyongdaosanjiaoxingfandui icons"></span>
+				</div>
+				<div class="totals">
+					<ul>	
+						<li id="own" class="on">未审核</li>
+						<li id="examined">已审核</li>
+						
+					</ul>
+				</div>
+			</div>
+			
+			<!-- modal -->
+			<div class="modal fade" tabindex="-1" role="dialog" id="abb">
+				<form class="layui-form" action="">	
+				<div class="modal-dialog" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h4 class="modal-title text-danger aaa">拒绝理由</h4>
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>							
+						</div>
+						<form class="form-horizontal" method="" action="#">
+							<div class="modal-body">				
+								<div class="layui-input-block atxe">
+									<textarea class="layui-textarea" lay-verify="required" id="regard" lay-filter="filter"></textarea>
+								</div>
+							</div>
+							<div class="modal-footer">								
+								<button type="button" class="btn btn-default" data-dismiss="modal" id="affirm" lay-submit="" lay-filter="demo">确定</button>
+								<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+							</div>
+						</form>
+					</div><!-- /.modal-content -->
+				</div><!-- /.modal-dialog -->
+				</form>
+			</div><!-- /.modal -->
+
+			<table id="table" border="1">
+			</table>            
+			<div class="pageBtnBox btnArea">
+					<span class="goback">
+						<img src="img/goback.png" alt="" />
+						返回
+					</span>
+					<button type="button" class="btnd" id="pageBtn">下一页</button>
+				</div>
+			</div>
+
+		<script type="text/javascript">
+			$(document).ready(function() {
+							
+							//分割当前网页链接
+							var windowUrl = window.location.href; //获取当前url链接		
+							//http://127.0.0.1:8848/shenqing/index.html?userGuid=4bdf57feaf1749748dbfd3b2ebd6b0aa&companyId=46
+							var arr = windowUrl.split("?", 2); //分割url		
+							var arr_1 = arr[1]; //瞎起变量		
+							var arr_2 = arr_1.split('&', 2);
+							var arr_3 = (arr_2[0].split('=', 2))[1];
+							var arr_4 = (arr_2[1].split('=', 2))[1];
+							//console.log(arr_4)       
+							var http_head = "http://47.94.173.253:8008";
+							var page = 0;
+							var types = 0;
+							
+							layui.use('form', function(){
+							  var form = layui.form;
+							  
+							  form.on('submit(demo)', function(data){							
+								});
+							});
+							
+							//编号
+							function consta(e, value, index, row) {										
+								return '<div class=size>' + value.changerName + '</div>'
+							}
+							
+							//字符串分割申请时间
+							function consti(e, value, index, row) {
+								var ar = value.createTime;	
+								var ar_1=ar.split("T")[0];			
+								var ar_3=ar.split("T")[1].split(':')[0]+':'+ar.split("T")[1].split(':')[1];
+								var ar_4=ar_1+ ' ' +ar_3;
+							// console.log(ar_4)
+								return '<div class=w133>' + ar_4 + '</div>'
+								
+							}	
+			               				
+							//字符串分割时间段 2019-03-31 09:00 ~ 2019-03-31 12:00
+							function constd(e, value, index, row) {			
+								var implementTime =value.implementTime.split('T')[0]+ ' ';
+								 var leaveEndTime = value.implementTime.split('T')[1];
+								var time = leaveEndTime.split(':')[0]+ ':' + leaveEndTime.split(':')[1];					
+								return  '<div class=w133> '+ implementTime + time +' </div>'   
+							}
+							
+							//原因
+							function consth(e, value, index, row) {										
+								return '<div class=w133>' + value.reason + '</div>'
+							}
+							
+							//判断后台返回status
+							function progress(e, value, index, row) {
+								//console.log(value.status) 
+								if(value.status == 0){
+									status = '待审批'
+								}else{
+									status = '已审批'
+								}
+								return [
+									'<div class="hhhh">' +status+ '</div>'								
+								].join('')
+							}
+							
+							
+							function constf(e, value, index, row) {
+								return '<div class=w133>' + value.leaveReason + '</div>'
+							}
+							
+							//判断后台返回status
+							function progress(e, value, index, row) {
+								//console.log(value.status)
+								if (value.status == 0) {
+									statusd = '未审批'
+								} else {
+									statusd = '已审批'
+								}
+								return statusd
+							}
+							//status = 2已拒绝   其他已同意
+							function operateFormatter(value, row, index) {
+								//console.log(row)
+								if (types == 0)
+							
+								{
+									//未审核的逻辑
+									return [
+										'<div class=w106><a class="agree" href="javascript:void(0)" title="agree" style="margin-right:10px">同意</a><a class="refuse" href="javascript:void(0)" title="refuse" style="margin-right:10px">拒绝</a><a class="detaile" href="javascript:void(0)" title="detaile">详情</a></div>'
+									].join('')
+							
+								} else if (types == 1)
+							
+								{
+									//已审核逻辑
+									if (row.status == 2)
+							
+									{
+										return '<div class=w106><div style="color: red;float:left;margin-left:10px">已拒绝</div><a class="detaile" href="javascript:void(0)" title="detaile">详情</a></div>'
+										} else	
+							
+									{
+										return '<div class=w106><div style="color: #cccccc;float:left;margin-left:10px">已同意</div><a class="detaile" href="javascript:void(0)" title="detaile">详情</a></div>'
+										}
+							
+								} else
+							
+								{
+									return '<div style="color: red">未知</div>'
+							
+								}
+							
+							}
+						
+							 window.operateEvents = {
+								'click .agree': function (e, value, row, index) {
+									$.post('' + http_head + '/ChangePosts/Set_ChangePost.ashx',{
+										changePostId: row.Id,
+										userGuid:arr_3,							
+										message:' ',
+										type:1
+									},function(data) {
+										data = JSON.parse(data);									
+										console.log(data);
+										if (data.status == 200) {
+											$('#table').bootstrapTable('remove', {
+												field: 'code',
+												values: [row.code]
+											  })
+										  }
+									})							 
+								},
+								'click .refuse': function (e, value, row, index) {
+									$('#abb').modal();									
+									   $('#affirm').click(function() {
+											$.post('' + http_head + '/ChangePosts/Set_ChangePost.ashx',{
+													changePostId: row.id,
+													userGuid:arr_3,
+													message:$('#regard').val(),
+													type:2
+											},
+											function(data) {
+												data = JSON.parse(data);
+												console.log(data);
+												if (data.status == 200) {
+													$('#table').bootstrapTable('remove', {
+														field: 'code',
+														values: [row.code]
+													  })
+												  }
+											});
+											});								   								
+								},
+								'click .detaile': function(e, value, row, index) {
+									console.log(row);											
+									window.open ("../bills/tiaogang.html?id=" + row.Id + ""); //兼容
+								}
+							}
+							
+							
+							
+							$.post('' + http_head + '/ChangePosts/Get_ChangePost_ByChecker.ashx',{
+								userGuid:arr_3,
+								companyId:arr_4,
+								page: page,
+								type:types					
+							},function(data){
+								var data = JSON.parse(data);
+								console.log(data)
+								page = data.items.page;
+								$("#table").bootstrapTable({
+									data: data.items.liset,
+									columns: [{
+										field:'code',
+										title:'编号'								
+									},{
+										field:'changerName',
+										title:'调岗人姓名',
+										formatter: consta
+									},{
+										field:'changeDepartment',
+										title:'要调部门'						   
+									},{
+										field:'changePost',
+										title:'要调职位'							
+									},{
+										field:'implementTime',
+										title:'调岗生效日期',
+										formatter: constd
+									},{
+										field:'reason',
+										title:'调岗原因',
+										formatter: consth
+									},{
+										field:'createTime',
+										title:'申请时间',
+										formatter: consti
+									},{
+										field:'status',
+										title:'申请进度',							
+									    formatter:progress
+									},{
+										field: 'operate',
+										title: '操作',
+										align: 'center',
+										events: window.operateEvents,
+										formatter: operateFormatter
+										}]
+								})					
+							});
+								
+							//下一步点击事件
+							$("#pageBtn").on("click", function() {				
+								nextPage();
+							})
+							
+							function nextPage() {			
+								$.post("" + http_head + "/ChangePosts/Get_ChangePost_ByChecker.ashx", {
+									userGuid:arr_3,
+									companyId:arr_4,
+									page: page,
+									type:types
+								}, function(data) {
+									var data = JSON.parse(data);						
+									console.log(data);
+									if(data.items.liset.length > 0){
+										page = data.items.page;
+									}						
+									if (data.items.liset=='') {
+										$('#pageBtn').html('没有更多数据了')
+									} else {
+										$("#table").bootstrapTable({
+											columns: [{
+												formatter: table,
+											}]
+										})					 
+									    $("#table").bootstrapTable("append", data.items.liset);
+									}
+								})
+							};
+							
+							var Totals = $('.totals ul li');
+							Totals.each(function(){			
+								$(this).mouseover(function(){
+									$(this).addClass('on')
+								});
+								$(this).mouseout(function(){
+									$(this).removeClass('on')
+								});			
+							});	
+						
+							//已审核			
+							$('#examined').click(function(){				
+								types = 1;
+								page = 0;				
+								$('#selectedText').html("已审核")
+								$('#pageBtn').html('下一页');
+								nextSerach();
+								
+							})
+							
+							//未审核
+							$('#own').click(function(){
+								types = 0
+								page = 0
+								$('#selectedText').html("未审核")
+								$('#pageBtn').html('下一页')
+								nextSerach()							
+							})
+							
+							function nextSerach() {
+								$.post("" + http_head + "/ChangePosts/Get_ChangePost_ByChecker.ashx", {
+									userGuid:arr_3,
+									companyId:arr_4,
+									page: page,
+									type:types
+								}, function(data) {
+									var data = JSON.parse(data);
+									//console.log(data)		
+										page = data.items.page;
+										$("#table").bootstrapTable({						
+											columns: [{
+												formatter: table,
+											}]
+										})					 
+										$("#table").bootstrapTable("load", data.items.liset);					
+								})			
+							};	
+									$(".goback").hover(function() {
+										$(this).children("img").attr("src", "img/goback-b.png")
+									}, function() {
+										$(this).children("img").attr("src", "img/goback.png")
+									});
+									$(".goback").on("click", function() {
+										$("#dataTable").replaceWith('<div id="dataTable"></div>');
+										$("#dataTable").load("mpz.html");
+									});
+							});
+		</script>

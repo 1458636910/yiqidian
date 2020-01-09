@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html ng-app="yqdRegCom">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta http-equiv="Cache-Control" CONTENT="no-cache">
+  <link rel="icon" href="../image/pic.ico" type="image/x-icon"/>
+  <title>企业注册</title>
+  <link rel="stylesheet" href="../css/reset.css">
+  <link rel="stylesheet" href="../css/skin/default/layer.css">
+  <link rel="stylesheet" href="../css/regCompany.css?ver=20180316">
+  <link rel="stylesheet" href="../css/bootstrap.css">
+  <script type="text/javascript" src="../js/jquery.min.js"></script>
+  <script type="text/javascript" src="../js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="../js/layer.js"></script>
+  <script type="text/javascript" src="../js/change.js"></script>
+  <script type="text/javascript" src="../js/angular.1.2.29.js"></script>
+</head>
+<body ng-controller="regcomController">
+    <div class="box col-lg-offset-2 col-lg-8 col-md-offset-2 col-md-8 col-sm-offset-2 col-sm-8 col-xs-12">
+          <div class="tltle col-lg-12 col-md-12 col-sm-12 col-xs-12">易企点</div><br>
+          <div class="left col-lg-3 col-md-3 col-sm-3 col-xs-12"></div><br>
+          <div class="center col-lg-6 col-md-6 col-sm-6 col-xs-12">
+              <form name="myForm" ng-model="myForm" novalidate>
+                          <div class="number col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <input type="text" class="inputtel form-control" name="telnumber" ng-model="telnumber" value="" placeholder="请输入手机号" ng-pattern="/^1[34578]\d{9}$/" required><br>
+                              <span class="input-txt1" ng-hide="telnumber" ng-if="myForm.telnumber.$error.required&&myForm.telnumber.$touched">手机号不能为空!</span>
+                              <span class="input-txt2" ng-hide="telnumber" ng-if="myForm.telnumber.$dirty && myForm.telnumber.$error.pattern">请输入正确的手机号!</span>
+                        </div>
+                          <!-- 图片验证码 -->
+                          <div class="picYz col-lg-12 col-md-12 col-sm-12 col-xs-12 clearfix">
+                            <input type="text" class="form-control pull-left" id="picInput" placeholder="不区分大小写">
+                            <img src="" alt="" class="pull-right">
+                          </div>
+                          <!-- 手机验证码 -->
+                        <div class="input-group">
+                            <input type="text" class="form-control yanzhengma" ng-minlength="6" ng-maxlength="6" value="" name="yzm" ng-model="yzm"  placeholder="请输入验证码" required>
+                                <span class="input-group-btn">
+                                  <button class="btn btn-primary" type="button">
+                                    发送验证码
+                                  </button>
+                                </span>
+                        </div><br>
+                        <div class="clearfix">
+
+                        <button type="submit" ng-click="formValid()" class="col-lg-11 col-md-11 col-sm-11 col-xs-11 regBtn">注册</button>
+                        <button type="button"  class="col-lg-11 col-md-11 col-sm-11 col-xs-11 nextBtn">下一步</button>
+                        </div>
+              <div class="regCom col-lg-12 col-md-12 col-sm-12 col-xs-12"><a class="peosonReg" target="_blank">个人注册</a></div>
+              </form>
+              <div class="tipsDiv">
+                <p>提示</p>
+                <span>企业注册前，必须先个人注册并实名认证，否则无法注册企业</span>
+              </div>
+          </div><br>
+  <div class="right col-lg-3 col-md-3 col-sm-3 col-xs-12"></div>
+    </div>
+  <script type="text/javascript">
+        var app = angular.module('yqdRegCom',[]);
+      app.controller('regcomController', ['$scope', function($scope,$http){
+     }])
+  </script>
+<script type="text/javascript">
+    $(document).ready(function(){
+      var picLower;
+      function imgLoad(){
+            $.post('http://47.94.173.253:8008/SecurityCode.ashx', {}, function(data) {
+              var picData = JSON.parse(data);
+              picLower = (picData.code).toLowerCase();
+              $('.picYz img').attr('src', 'data:image/Jpeg;base64,'+picData.image+'');
+            });
+      }
+      imgLoad()
+      $('.picYz img').click(function() {
+        imgLoad();
+      });
+      // 发送短信验证码
+      function invokeSettime(obj){
+            var countdown=60;
+            settime(obj);
+            function settime(obj) {
+                if (countdown == 0) {
+                    $(obj).attr("disabled",false);
+                    $(obj).text("获取验证码");
+                    countdown = 60;
+                    return;
+                } else {
+                    $(obj).attr("disabled",true);
+                    $(obj).text("(" + countdown + ") s 重新发送");
+                    countdown--;
+                }
+                setTimeout(function() {
+                            settime(obj) }
+                        ,1000)
+            }
+ }
+        var msgIdReg;
+        // 发送验证码
+      $('.btn-primary ').click(function() {
+            if ($('.inputtel').val().length == 11) {
+              var picResult = ( $('#picInput').val() ).toLowerCase();
+                if ( picResult == picLower) {
+                  new invokeSettime(".btn-primary");
+                  $.post('http://47.94.173.253:8008/jsms/JSendMessages.ashx', {
+                    "tel":$('.inputtel').val()
+                  }, function(data) {
+                    console.log( data )
+                   var  dataFindpw = JSON.parse(data);
+                        msgIdReg = JSON.parse(dataFindpw.msg).msg_id;
+                  });
+                   }else{
+                  layer.msg('请输入图片中正确验证码', {
+                                time: 1000,
+                              });
+                }
+                }else{
+                        layer.msg('请输入正确的手机号', {
+                                time: 1000,
+                              });
+                }
+          });
+// 输入验证码后显示输入密码和注册框
+      $('.nextBtn').click(function() {
+            $.post('http://47.94.173.253:8008/jsms/Validcode.ashx', {
+                  "msgid":msgIdReg,
+                  "code":$('.yanzhengma').val()
+                    }, function(data) {
+                      console.log( data )
+                      var dataReg = JSON.parse(data);
+                      if (dataReg.status == 200) {
+                    $.post('http://47.94.173.253:8008/User_JudgeExist.ashx', {
+                        "username":$('.inputtel').val()
+                    }, function(data) {
+                      var dataTel = JSON.parse(data);
+                      if ( dataTel.status == 200 ) {
+                        var dataInfo = JSON.stringify(dataTel.items);
+                        localStorage.setItem("GHY_info",dataInfo)
+                         location.href ="regCompanyinfo.html";
+                      }else{
+                        layer.msg(dataTel.msg, {
+                                time: 1000,
+                              });
+                      }
+                    });
+                  }else{
+                                      layer.msg('验证码错误或手机号码有误', {
+                                            time: 1000,
+                                          });
+                  }
+            });
+      });
+      // 个人注册
+				var url = window.location.href;
+				var urlTail = url.split("?")[1];
+				$(".peosonReg").on("click",function(){
+					window.location.href="http://www.eqidd.com/html/reg.html?"+urlTail
+				})
+    })
+</script>
+</body>
+</html>

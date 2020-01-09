@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="zh">
+	<head>
+		<meta charset="utf-8">
+		<link rel="icon" href="../image/jinLogo.png" type="image/x-icon" />
+		<title>发布活动</title>
+		<link rel="stylesheet" href="../css/reset.css">
+		<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<link rel="stylesheet" href="../css/skin/default/layer.css">
+		<link rel="stylesheet" href="../css/theme/default/laydate.css">
+		<link rel="stylesheet" type="text/css" href="../css/selectivity-jquery.css" />
+		<link rel="stylesheet" href="../css/bootstrap-table.min.css">
+		<link rel="stylesheet" href="../css/bootstrap-select.css">
+		<link rel="stylesheet" href="../css/addAct.css">
+	</head>
+	<body>
+		<div class="demandTable contain">
+			<form action="" class="form-inline">
+				<p class="actTitle">活动基本信息</p>
+				<label for=""><span>*</span><span>活动标题：</span><input type="text" class="form-control  actName" placeholder="请输入活动标题"></label>
+				<label for=""><span>*</span><span>活动类型：</span>
+					<div class="hyitems"></div>
+				</label>
+				<label for=""><span>*</span><span class="">活动分类：</span><input type="text" class="actSort form-control" placeholder="最多选择5个活动分类" /></label>
+				<label for=""><span>*</span><span>活动人数：</span><input type="text" class="form-control actNum" placeholder="请输入活动人数"><span
+					 class="unit">人</span></label>
+				<label for=""><span>*</span><span>活动规模：</span><input type="text" class="form-control actScale" placeholder="请输入活动规模如百人大会"></label>
+				<label for=""><span>*</span><span>活动开始时间：</span><input type="text" class="form-control actStartTime" placeholder="请选择活动开始时间"></label>
+				<label for=""><span>*</span><span>活动结束时间：</span><input type="text" class="form-control actEndTime" placeholder="请选择活动结束时间"></label>
+				<label for=""><span>*</span><span>活动地址：</span>
+					<div class="docs-methods">
+						<div id="distpicker">
+							<div class="form-group">
+								<label class="sr-only" for="province">Province</label>
+								<select class="form-control" id="province"></select>
+							</div>
+							<div class="form-group">
+								<label class="sr-only" for="city">City</label>
+								<select class="form-control" id="city"></select>
+							</div>
+							<input type="text" class="form-control address" placeholder="具体地址">
+							<div class="form-group">
+								<button class="btn btn-primary" id="reset" type="button">重置</button>
+							</div>
+						</div>
+					</div>
+				</label>
+				<p class="actTitle">活动内容</p>
+				<label for=""><span>*</span><span>讲师头像：</span><input type="button" value="选择照片" class="btn btn-primary btn-sm chooseImg"></label>
+				<input id="headImg" name="file" accept="image/*" type="file" style="display: none" />
+				<div class="preImg">
+					<img src="../image/upload.png" alt="" id="showImg">
+				</div>
+				<label class="ms" for=""><span>*</span><span>活动描述：</span>
+					<div id="editor"></div>
+				</label>
+				<label class="ms lastLab" for=""><span>*</span><span>活动日程：</span>
+					<div id="editor2"></div>
+				</label>
+				<p class="actTitle">报名</p>
+				<label for="" id="checkArea"><span>*</span><span>是否参与审核</span>
+					<label for="noCheck"><input type="radio" name="isCheck" value="false" id="noCheck" checked="true">不审核</label>
+					<label for="check"><input type="radio" name="isCheck" value="true" id="check">审核</label>
+				</label>
+				<label for="" class="ms lastLab"><span>*</span><span>活动对象：</span>
+					<textarea name="" id="actPerson" cols="90" rows="4" class="form-control"></textarea>
+				</label>
+				<p class="actTitle">活动费用</p>
+				<label for="" id="chooseCharge" class="lastLab"><span>*</span><span>活动费用</span>
+					<label for="nocharge"><input type="radio" name="charge" checked="false" id="nocharge" value="false">免费</label>
+					<label for="charge"><input type="radio" name="charge" id="charge" value="true">收费</label>
+					<span for="" class="priceInput"><input type="input" placeholder="请输入费用(元)" class="form-control money" value="0"></span>
+				</label>
+				<p class="actTitle">联系人信息</p>
+				<label for=""><span>*</span><span>姓名：</span><input type="text" class="form-control actContact" placeholder="请输入联系人姓名"></label>
+				<label for=""><span>*</span><span>部门：</span><input type="text" class="form-control actDepart" placeholder="请输入联系人部门"></label>
+				<label for=""><span>*</span><span>职位：</span><input type="text" class="form-control actPost" placeholder="请输入联系人职位"></label>
+				<label for=""><span>*</span><span>手机：</span><input type="text" class="form-control actPhone" placeholder="请输入联系人手机"></label>
+				<label for=""><span>*</span><span>邮箱：</span><input type="text" class="form-control actEmail" placeholder="请输入联系人邮箱"></label>
+			</form>
+			<label for=""> <button class="btn btn-primary sub">提交</button> </label>
+		</div>
+		<div class="teachAreaTable clearfix">
+			<div class="tableLeft pull-left"></div>
+			<div class="tableRight pull-left"></div>
+		</div>
+		<script type="text/javascript" src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+		<script type="text/javascript" src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="https://cdn.bootcss.com/layer/3.1.0/layer.js"></script>
+		<script type="text/javascript" src="https://cdn.bootcss.com/bootstrap-table/1.11.1/bootstrap-table.js"></script>
+		<script type="text/javascript" src="../js/wangEditor.js"></script>
+		<script src="../js/distpicker.data.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/distpicker.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript" src="../js/bootstrap-table-zh-CN.min.js"></script>
+		<script type="text/javascript" src="../js/laydate.js"></script>
+		<script src="../js/selectivity-jquery.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript" src="../js/bootstrap-select.min.js"></script>
+		<script type="text/javascript" src="../js/addAct.js"></script>
+	</body>
+</html>

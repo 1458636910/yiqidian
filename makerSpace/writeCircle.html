@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0,minimum-scale=1.0, user-scalable=no"/>
+        <link rel="icon" href="img/logo.png" type="image/x-icon"/>
+        <title>写文章</title>
+        <link rel="stylesheet" href="css/reset.css"/>
+        <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.css"/>
+        <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap-table/1.11.1/bootstrap-table.min.css"/>
+        <link rel="stylesheet" href="css/writeCircle.css?ver=20190921"/>
+    </head>
+    <body onload="load()">
+        <div class="cover"> </div>
+        <div class="main clearfix">
+            <div class="mainLeft col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                <button class="addListBtn">新建文章目录</button>
+                <div class="addTable">
+                    <input type="text" placeholder="请输入目录名"/>
+                    <button class="sureBtn">确定</button>
+                    <button class="cancleBtn">取消</button>
+                </div>
+                <div class="list" id="list">    </div>
+                <div class="recycle">
+                    <span class="glyphicon glyphicon-trash aria-hidden='true' ">    </span>
+                    <a class="gorec" href="javascript:void(0)" target="_blank">回收站</a>
+                </div>
+            </div>
+            <div class="mainCenter col-lg-2 col-md-2 col-sm-6 col-xs-12">
+                <div class="addCircleTitle">
+                    <button id="addCircle">+新增文章</button>
+                </div>
+                <div class="circleTitle" id="circleTitle">  </div>
+            </div>
+            <div class="mainRight col-lg-8 col-md-7 col-sm-12 col-xs-12">
+                <div class="delTitle">确定删除此文章目录及其内容</div>
+                <div class="delTitle2">确定删除此文章</div>
+                <div class="changeTitle">
+                    新标题&nbsp;:
+                    <input type="text" class="newTitle"/>
+                </div>
+                <div class="addTitle">
+                    标题&nbsp;:
+                    <input type="text" class="Title" value="默认标题"/>
+                </div>
+                <div class="circleAbout">
+                    <p>
+                        <span>文章分类</span>
+                        <input type="text" class="choose" placeholder="点击右面按钮选择"/>
+                        <button class="commonlyLabelBtn">通用文章分类</button>
+                        <button class="lecturerLabelBtn">讲师文章分类</button>
+                    </p>
+                    <p>
+                        <span>文章标题</span>
+                        <input type="text" class="circleT"/>
+                    </p>
+                </div>
+                <!-- 通用分类 -->
+                <div class="hangyeLabel">   </div>
+                <!-- 讲师文章分类 -->
+                <div class="teachAreaTable clearfix">
+                    <input type="text" class="form-control" id="labelInfo"/>
+                    <div class="tableLeft pull-left">   </div>
+                    <div class="tableRight pull-left">  </div>
+                </div>
+                <div class="writeArea" id="writeArea">  </div>
+                <div id="div1" class="toolbar">
+                    <span class="glyphicon glyphicon-minus" id="line" title="增加分割线">    </span>
+                    <div class="tijiaoBtn">
+                        <button class="synct" title="同步文章" id="synct">
+                            <span class="glyphicon glyphicon-repeat">   </span>
+                            同步
+                        </button>
+                        <button class="circleSubmit" title="发表文章">
+                            <span class="glyphicon glyphicon glyphicon-share-alt">  </span>
+                            发表
+                        </button>
+                    </div>
+                </div>
+                <div style="padding: 5px 0; color: #ccc">   </div>
+                <div id="div2" class="text" placeholder=""> </div>
+            </div>
+        </div>
+        <script type="text/javascript" src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+        <script type="text/javascript" src="https://cdn.bootcss.com/layer/3.1.0/layer.js"></script>
+        <script type="text/javascript" src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="js/wangEditor.js"></script>
+        <script type="text/javascript" src="js/bootstrap3-typeahead.min.js"></script>
+        <script type="text/javascript" src="js/writeCircle.js?ver=20191114"></script>
+        <script type="text/javascript">
+                                    function load(){
+                                        setTimeout(function(){
+                                            document.getElementsByTagName("li")[0].click();
+                                        },500)
+                                    }
+                                </script>
+    </body>
+</html>

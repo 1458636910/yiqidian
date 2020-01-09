@@ -1,0 +1,162 @@
+<!-- <link rel="stylesheet" type="text/css" href="css/collectCom.css?v=20190606"/> -->
+<style type="text/css">
+	.cancle{
+		display: none;
+		margin-top: 60px;
+		text-align: center;
+		color: red;
+	}
+	#cltComTable thead
+	{   background-color: #e4e4e4;
+	    font-weight: bold;
+	 }
+	 .cltCompanyDiv{
+	 	margin-top: 30px
+	 }
+	 .cltPic{
+	         width: 160px;
+	 }
+	 .inner{
+	    padding-bottom:0
+	}
+</style>
+<div class="cltCompanyDiv">
+	<table id="cltComTable">
+		<thead>
+			<tr>
+				<th data-field="img">	</th>
+				<th data-field="company">	</th>
+				<th data-field="option">	</th>
+			</tr>
+		</thead>
+	</table>
+	<br/>
+	<p class="clearfix">
+		<button class="cltComNext pull-right">下一页</button>
+	</p>
+	<!-- 取消收藏 -->
+	<div class="cancle">
+		<p>确定取消收藏?</p>
+	</div>
+</div>
+<script type="text/javascript" charset="utf-8" async defer>
+	var demandPage;
+	loadcltComFirst(0);
+
+	function loadcltComFirst(page) {
+		$.post(http_head + 'Makerspacey/MakerCollection/Get_MakerCollection.ashx', {
+			"userGuid": userGuid,
+			"page": page
+		}, function(data) {
+			var dataDemand = JSON.parse(data);
+			demandPage = dataDemand.page;
+			loadTable(dataDemand.items);
+			$("#cltComTable").bootstrapTable('load', dataDemand.items);
+			if (dataDemand.items.length >= 10) {
+					$('.cltComNext').show()
+				} else {
+					$('.cltComNext').hide()
+				}
+		});
+	};
+	function loadcltComNext(page) {
+		$.post(http_head + 'Makerspacey/MakerCollection/Get_MakerCollection.ashx', {
+			"userGuid": userGuid,
+			"page": page
+		}, function(data) {
+			var dataDemand = JSON.parse(data);
+			loadTable(dataDemand.items);
+			$("#cltComTable").bootstrapTable('append', dataDemand.items);
+			demandPage = dataDemand.page;
+			
+			if (dataDemand.items.length >= 10) {
+					$('.cltComNext').show()
+				} else {
+					$('.cltComNext').hide()
+				}
+		});
+	}
+	$('.cltComNext').click(function() {
+		loadcltComNext(demandPage)
+	});
+	
+	function loadTable(data) {
+		$('#cltComTable').bootstrapTable({
+			data: data,
+			columns: [{
+					field: 'img',
+					title: 'logo',
+					align: 'center',
+					valign: 'middle',
+					formatter: logoFormatter,
+				},
+				{
+					field: 'company',
+					title: '公司名称',
+					align: 'center',
+					valign: 'middle'
+				},
+				{
+					field: 'option',
+					title: '操作',
+					align: 'center',
+					valign: 'middle',
+					formatter:demandFormatter,
+					events: CompanyEvents
+				}
+			]
+		});
+		
+
+		function logoFormatter(e, value, row, index) {
+			return [
+				'<img class="cltPic" src="' + value.comLogo + '" alt="">'
+			].join('');
+		};
+
+		function demandFormatter(e, value, row, index) {
+			return [
+				'<a class="cancleCollection"  title="取消收藏">',
+				'<span id="cancleCollection">取消收藏</span>',
+				'</a>  ',
+				'<a class="lookCompany"  title="查看">',
+				'<span id="lookCompany">查看</span>',
+				'</a>',
+			].join('');
+		};
+	}
+	window.CompanyEvents = {
+		'click .cancleCollection': function(e, value, row, index) {
+			layer.open({
+				type: 1,
+				area: ['300px', '220px'],
+				title: ['取消收藏', 'font-size:18px;text-align: center;'],
+				content: $(".cancle"),
+				btn: '确定',
+				yes: function(index, layero) {
+					$.post(http_head+ 'Makerspacey/MakerCollection/Cancle_MakerCollection.ashx', {
+						"collectId": row.Id,
+						"userGuid": userGuid,
+					}, function(data) {
+						console.log(data)
+						var dataDel = JSON.parse(data);
+						if (dataDel.status == 200) {
+							layer.msg('取消成功', {
+								time: 1000,
+							})
+							loadcltComFirst(0)
+						} else {
+							layer.msg(dataDel.msg, {
+								time: 1000,
+							})
+						}
+					});
+					layer.close(index)
+				}
+			})
+		},
+		'click .lookCompany': function(e, value, row, index) {
+			// window.open("https://www.eqidd.com/qiyeSpace/html/companyIndex.html?id=" + row.companyId + "")
+		}
+	}
+</script>

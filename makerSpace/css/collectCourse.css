@@ -1,0 +1,33 @@
+.cancle{
+	display: none;
+}
+#cltTable thead
+{   background-color: #e4e4e4;
+    font-weight: bold;
+ }
+ .cltDiv{
+ 	margin-top: 30px
+ }
+  .cltPic{
+         width: 160px;
+ }
+ .inner{
+    padding-bottom:0
+}
+.lookCourse{
+    height: 238px;
+    display: block;
+    line-height: 238px;
+}
+#cltTable tbody tr td:nth-child(2){
+   cursor:pointer;
+   padding:0
+}
+#cltTable tbody tr td:nth-child(2):hover{
+   background-color:#00a2e8;
+   color:white
+}
+.layui-layer-wrap{
+   margin-top: 50px;
+   text-align: center;
+}

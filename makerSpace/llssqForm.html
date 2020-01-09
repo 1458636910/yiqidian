@@ -1,0 +1,287 @@
+<link rel="stylesheet" type="text/css" href="css/applyForm.css"/>
+<div class="sqDiv">
+	<ul>
+		<li>
+			<span>姓名：</span>
+			<span class="name">	</span>
+		</li>
+		<li>
+			<span>工号：</span>
+			<span class="code">	</span>
+		</li>
+		<li>
+			<span>部门：</span>
+			<span class="depart">	</span>
+		</li>
+		<li>
+			<span>职位：</span>
+			<span class="job">	</span>
+		</li>
+	</ul>
+	<form action="">
+		<label for="">
+			<span>联络人：</span>
+			<span>
+				<input type="text" class="checkName form-control" placeholder="请选择联络人"/>
+			</span>
+		</label>
+		<label for="">
+			<span>联络书名称：</span>
+			<span>
+				<input type="text" class="bookName form-control" placeholder="请输入联络书名称"/>
+			</span>
+		</label>
+		<label for="">
+			<span>联络书主题：</span>
+			<span>
+				<input type="text" class="bookTheme form-control" placeholder="请输入联络书主题"/>
+			</span>
+		</label>
+		<label for="">
+			<span>内容：</span>
+			<span>
+				<textarea type="text" class="content form-control" placeholder="请输入联络书内容"/>	</textarea>
+			</span>
+		</label>
+		<label for="">
+			<span>处理时限：</span>
+			<span>
+				<select name="" class="timeLimit form-control">
+					<option value="7">请选择</option>
+					<option value="0">1小时</option>
+					<option value="1">2小时</option>
+					<option value="2">4小时</option>
+					<option value="3">8小时</option>
+					<option value="4">24小时</option>
+					<option value="5">2个工作日内</option>
+					<option value="6">3个工作日内</option>
+				</select>
+			</label>
+			<label for="">
+				<span>是否回复：</span>
+				<span>
+					<select name="" class="callback form-control">
+						<option value="3">请选择</option>
+						<option value="1">是</option>
+						<option value="0">否</option>
+					</select>
+				</span>
+			</label>
+			<label for="">
+				<span>审核人：</span>
+				<span class="checkName2">	</span>
+			</label>
+			<label>
+				<span class="submit">提交</span>
+			</label>
+		</form>
+	</div>
+	<p class="btnArea">
+		<span class="goback">
+			<img src="img/goback.png" alt=""/>
+			返回
+		</span>
+	</p>
+	<div class="tableBox2">
+		<p class="dateop">
+			<span>选择日期：</span>
+			<input class="chooseDate form-control" type="text" placeholder="请选择日期"/>
+		</p>
+		<table id="clockTable">	</table>
+	</div>
+	<div class="tableBox">
+		<table id="checkTable">	</table>
+		<span class="nameNext ">下一页</span>
+	</div>
+	<script>
+			$(document).ready(function() {
+				var applyPage = 0;
+				var departId;
+				var objComId;
+				var objDepartId;
+				var objGuid;
+				var isLeader;
+				setTimeout(function() {
+					$.post(http_head + "getUserDetailByuserGuid.ashx", {
+						"userGuid": userGuid
+					}, function(data) {
+						var data = JSON.parse(data);
+						console.log("this",data)
+						departId = data.items.departId;
+						$(".name").text(data.items.realName);
+						$(".code").text(data.items.jovNumber);
+						$(".depart").text(data.items.depart);
+						$(".job").text(data.items.post);
+						if(data.items.isleader){
+							isLeader = 1;
+						}else{
+							isLeader = 0;
+						}
+					})
+				}, 350);
+				// 联络人
+				function loadTable(data) {
+					$("#checkTable").bootstrapTable({
+						data: data,
+						columns: [{
+							checkbox: true
+						}, {
+							field: "upname",
+							title: "姓名",
+							align: 'center',
+							valign: 'middle'
+						}, ],
+						singleSelect: true,
+						onCheck: function(row) {
+							$(".checkName").val(row.upname);
+							objComId = row.companyId;
+							objDepartId = row.departmentId;
+							objGuid = row.userGuid
+						},
+					})
+				};
+		
+				function loadFirst(page) {
+					$.post(http_head + "Com/Com_User_ByCompany.ashx", {
+						"companyId": companyId,
+						"page": page
+					}, function(data) {
+						var data = JSON.parse(data);
+						console.log("联络人",data)
+						if (data.status == 200) {
+							if (data.items.BusinessCardList.length > 0) {
+								layer.msg("加载完成", {
+									time: 1200
+								});
+							} else {
+								layer.msg("暂无数据", {
+									time: 1200
+								})
+							};
+							loadTable(data.items.BusinessCardList);
+							$("#checkTable").bootstrapTable('load', data.items.BusinessCardList);
+							applyPage = data.items.page;
+							if (data.items.BusinessCardList.length >= 15) {
+								$('.nameNext').fadeIn()
+							} else {
+								$('.nameNext').hide()
+							}
+						}
+					})
+				};
+		
+				function loadNext(page) {
+					$.post(http_head + "Com/Com_User_ByCompany.ashx", {
+						"companyId": companyId,
+						"page": page
+					}, function(data) {
+						var data = JSON.parse(data);
+						if (data.status == 200) {
+							if (data.items.BusinessCardList.length > 0) {
+								layer.msg("加载完成", {
+									time: 1200
+								});
+							} else {
+								layer.msg("暂无数据", {
+									time: 1200
+								})
+							};
+							loadTable(data.items.BusinessCardList);
+							$("#checkTable").bootstrapTable('append', data.items.BusinessCardList);
+							applyPage = data.items.page;
+							if (data.items.BusinessCardList.length >= 15) {
+								$('.nameNext').fadeIn()
+							} else {
+								$('.nameNext').hide()
+							}
+						}
+		
+					})
+				};
+				$('.nameNext').on("click", function() {
+					loadNext(applyPage)
+				});
+				loadFirst(applyPage);
+				$(".checkName").focus(function() {
+		
+					layer.open({
+						type: 1,
+						area: ['450px', '600px'],
+						title: ['证明人选择', 'font-size:18px;text-align: center;'],
+						content: $(".tableBox"),
+						btn: '确定',
+						yes: function(index, layero) {
+							layer.close(index)
+						}
+					})
+				});
+		
+		
+				// 审核人
+				setTimeout(function() {
+					$.post(http_head + "Com/Get_User_Leader.ashx", {
+						"userGuid": userGuid,
+						"companyId": companyId
+					}, function(data) {
+						var data = JSON.parse(data);
+						if (data.status == 200) {
+							$(".checkName2").text(data.items)
+						}
+					})
+				}, 450);		
+				// 提交
+				$(".submit").on("click", function() {            
+					if ($(".bookName").val().length > 0 && $(".bookTheme").val().length > 0 && $(".content").val().length > 0&& $(".timeLimit").val().length > 0&& $(".callback").val().length > 0) {        
+						$.post(http_head + "LiaisonBooks/Add_LiaisonBook.ashx", {
+							"userGuid": userGuid,
+							"companyId": companyId,
+							"departId": departId,
+							"objectCompanyId": objComId,
+							"objectDepartId":objDepartId,
+							"objecter":objGuid,
+							"liaisonBookName":$(".bookName").val(),
+							"liaisonBookTheme":$(".bookTheme").val(),
+							"liaisonBookContent":$(".content").val(),
+							"timeLimit":$(".timeLimit").val(),
+							"isReply":$(".callback").val() ,
+							"isLeader":isLeader
+						}, function(data) {
+							var data = JSON.parse(data);
+                            console.log(data)
+							if (data.status == 200) {
+								var ii = layer.load(2, {
+								  shade: [0.2,'#000'] //0.1透明度的白色背景
+								});
+								setTimeout(function(){
+							      layer.close(ii);
+							      layer.msg('提交成功', {
+									time: 1000,
+								  });
+							    }, 1000);
+			                   setTimeout(function(){
+			                   		layer.closeAll();
+			                   		$("#dataTable").replaceWith('<div id="dataTable"></div>');
+									$("#dataTable").load("llssq.html");
+			                   },1500)
+							}
+						})
+					} else {
+						layer.msg("请完善信息", {
+							time: 2000
+						});
+					}
+				});
+		
+				// 返回
+				$(".goback").hover(function() {
+					$(this).children("img").attr("src", "img/goback-b.png")
+				}, function() {
+					$(this).children("img").attr("src", "img/goback.png")
+				});
+				$(".goback").on("click", function() {
+					$("#dataTable").replaceWith('<div id="dataTable"></div>');
+					$("#dataTable").load("llssq.html");
+				});
+		
+			})
+		</script>

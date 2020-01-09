@@ -1,0 +1,41 @@
+.main{width: 100%;margin: 80px 0;}
+.banner{height: 100px;width: 100%;background-color: #FEBB50;border-radius: 5px;margin: 10px 0;line-height: 100px;padding-left: 20%}
+.banner span:nth-child(1){font-size: 25px;margin-right: 10px;}
+.banner span:nth-child(2){font-size: 30px;}
+#videoListTable tr th{text-align: center;}
+#videoListTable tr td img{width: 200px;height: 112px;cursor: pointer;}
+#videoListTable tr td:nth-child(3) p{margin: 0;}
+#videoListTable tr td:nth-child(3) p .researchField{color: #29e;cursor: pointer;}
+#videoListTable tr td a{text-decoration: none;color: #29e;cursor: pointer;}
+.deleteVideoTable{display: none;margin: 20px;}
+.changeVideoTable{display: none;margin: 50px 20px}
+.videoLabelTable{display: none;margin: 20px;}
+.videoLabelLeft{width: 110px;}
+.videoLabelLeft p{cursor: pointer;background-color: #29e;color: #fff;height: 30px;line-height: 30px;text-align: center;}
+.videoLabelRight{width: 480px;margin-left: 20px;}
+.videoLabelRight span{display: inline-block;width: 120px;height: 30px;line-height: 30px;}
+#labelA{margin-bottom: 20px;}
+.uploadArea{width: 100%;text-align: right;}
+.uploadVideo{background-color: #29e;border-radius: 5px;padding: 10px 15px;border: none;outline: none;}
+.uploadVideo a{color: #fff;text-decoration: none;font-size: 16px}
+.loadMore,.noMoreBtn{width: 100%;height: 50px;line-height: 50px;background-color: #29e;color: #fff;text-align: center;border: none;border-radius: 5px;outline: none;display: none;}
+.noMoreBtn{background-color: #828282;cursor: default;}
+.navTitle{width: 100%;height: 30px;line-height: 30px;;z-index: 999999;border-bottom: 0.5px solid #eee;background-color: #fff;}
+.navTitle ul{z-index: 20;padding: 0;}
+.navTitle>ul>li{height: 30px;line-height: 30px;text-align: center;cursor: pointer;color: #000;color: #555;}
+.navTitle>ul>li:nth-child(1){width: 8%;}
+.navTitle>ul>li:nth-child(2){width: 8%;}
+.navTitle>ul>li:nth-child(3){width: 8%;}
+.contain{width: 1200px;margin: 30px auto;}
+/*新头部*/
+.topArea{margin-top: 30px;}
+.ulList{width: 100%;height: 60px;background-color: #29e;}
+.mainFountion{width: 70%;margin: 0 15%;height: 60px;min-width: 1200px;}
+.mainFountion li{width: 20%;height: 55px;line-height: 55px;font-size: 20px;color: #fff;text-align: center;margin-top: 5px;}
+.mainFountion li a{text-decoration: none;color:#fff;cursor: pointer;}
+.mainFountion li:hover{background-color: #fff;color: #29e;}
+.mainFountion li:hover a{color: #29e;}
+.searchLeft{width: 20%;height: 60px;}
+.searchLeft img{width: 60px;height: 60px;}
+.searchLeft a{font-size: 30px;text-decoration: none;color: #000;margin-top: 15px;margin-left: 10px}
+.searchRight{width: 60%;}

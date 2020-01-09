@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8"/>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<meta name="apple-mobile-web-app-capable" content="yes"/>
+		<meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+		<meta http-equiv="Cache-Control" content="no-cache"/>
+		<title>企业注册</title>
+		<link rel="icon" href="../image/eqdLogo.png" type="image/x-icon"/>
+		<link rel="stylesheet" href="../css/reset.css"/>
+		<link rel="stylesheet" href="../css/skin/default/layer.css"/>
+		<link rel="stylesheet" href="../css/bootstrap.min.css"/>
+		<link rel="stylesheet" type="text/css" href="../css/newTitle.css"/>
+		<link rel="stylesheet" type="text/css" href="../css/registerCom.css?v=20191127"/>
+	</head>
+	<body>
+		<div class="navTitle">
+			<ul class="clearfix">
+				<p class="pull-left">欢迎来到易企学！</p>
+				<li class="pull-left">
+					<a href="http://www.eqidd.com/yiqiBug/html/EQBuy.html" target="_blank">易企购</a>
+				</li>
+				<li class="pull-left">
+					<a href="http://www.jinshiku.com" target="_blank">易企学</a>
+				</li>
+				<li class="pull-left">
+					<a href="http://www.eqidd.com/yqy/article.html" target="_blank">易企阅</a>
+				</li>
+				<li class="pull-left">
+					<a href="" target="_blank">易企聘</a>
+				</li>
+				<li class="pull-left">
+					<a href="http://www.eqidd.com/createrSpace/html/personInfo.html" target="_blank">创客空间</a>
+				</li>
+				<li class="pull-left">
+					<a href="http://www.eqidd.com/comSpace/eqd.html" target="_blank">企业空间</a>
+				</li>
+				<li class="pull-left">
+					<a href="html/service.html" target="_blank">推广页</a>
+				</li>
+				<div class="pull-right">
+					<li class="pull-left loginBtn">
+						<a id="loginBtn">	</a>
+					</li>
+					<li class="pull-left regBtn">
+						<a id="regBtn" target="_blank">	</a>
+					</li>
+					<li class="pull-left download">
+						<a href="http://www.eqidd.com/html/download.html" target="_blank">APP 下载</a>
+					</li>
+					<li class="pull-left introduce">
+						<a href="" target="_blank">易企点介绍</a>
+					</li>
+					<p class="userOption">后台管理</p>
+				</div>
+			</ul>
+		</div>
+		<div class="content">
+			<div class="regDiv">
+				<p class="regLab">
+					<img src="../image/tu.png" alt=""/>
+					企业注册
+				</p>
+				<form action="" class="form-inline" accept-charset="utf-8">
+					<p>企业基本信息</p>
+					<label for="">
+						<span>*</span>
+						<span>公司名称：</span>
+						<input type="text" class="form-control comName" placeholder="请输入公司名称"/>
+					</label>
+					<label for="" class="lab">
+						<span>*</span>
+						<span>主打产品：</span>
+						<textarea name=""  cols="90" rows="6" class="form-control mainProduct" placeholder="请输入公司主营产品"></textarea>
+					</label>
+					<label for="">
+						<span>*</span>
+						<span>企业性质：</span>
+						<select name="" id="" class="comType form-control">
+							<option value="0">= 请选择 =</option>
+							<option value="国有企业">国有企业</option>
+							<option value="外资企业">外资企业</option>
+							<option value="合资企业">合资企业</option>
+							<option value="私营企业">私营企业</option>
+							<option value="民营企业">民营企业</option>
+							<option value="股份制企业">股份制企业</option>
+							<option value="有限责任制企业">有限责任制企业</option>
+							<option value="独资企业">独资企业</option>
+							<option value="集体企业">集体企业</option>
+							<option value="乡镇企业">乡镇企业</option>
+							<option value="集体事业">集体事业</option>
+							<option value="行政机关">行政机关</option>
+							<option value="社会团体">社会团体</option>
+							<option value="事业单位">事业单位</option>
+							<option value="跨国企业(集团)">跨国企业(集团)</option>
+							<option value="其他">其他</option>
+						</select>
+					</label>
+					<label for="">
+						<span>*</span>
+						<span>企业行业：</span>
+						<select name="" id="" class="comHy form-control">
+							<option value="0">= 请选择 =</option>							
+						</select>					
+					</label>
+					<label for="">
+						<span>*</span>
+						<span>员工人数：</span>
+						<select name=""  class="form-control comNum">
+							<option value="0">= 请选择 =</option>
+							<option value="少于50人">少于50人</option>
+							<option value="50-100人">50-100人</option>
+							<option value="100-200人">100-200人</option>
+							<option value="200-500人">200-500人</option>
+							<option value="500-1000人">500-1000人</option>
+							<option value="1000-2000人">1000-2000人</option>
+							<option value="2000-5000人">2000-5000人</option>
+							<option value="5000-10000人">5000-10000人</option>
+							<option value="10000人以上">10000人以上</option>
+						</select>
+					</label>
+					<label for="">
+						<span>*</span>
+						<span>公司地址：</span>
+						<div id="distpicker">
+							<div class="form-group">
+								<label class="sr-only" for="province">Province</label>
+								<select class="form-control" id="province">	</select>
+							</div>
+							<div class="form-group">
+								<label class="sr-only" for="city">City</label>
+								<select class="form-control" id="city">	</select>
+							</div>
+							<div class="form-group">
+								<label class="sr-only" for="district">District</label>
+								<select class="form-control" id="district">	</select>
+							</div>
+						</div>
+						<input type="text" class="form-control address" placeholder="具体地址"/>
+					</label>
+					<label for="">
+						<span>*</span>
+						<span>手机号：</span>
+						<input type="text" class="form-control contact" placeholder="请输入手机号"/>
+						<button class=" btn btn-primary verify">验证</button>
+						
+						
+					</label>
+					<label for="" class="passwordDiv">
+							<span>*</span>
+							<span>密码：</span>
+							<input type="password" class="form-control password" placeholder="请设置密码"/>
+					</label>
+					<label for="">
+						<span>*</span>
+						<span>营业执照：</span>
+						<input type="button" value="选择照片" class="btn btn-primary btn-sm chooseImg"/>
+					</label>
+					<div class="photoInfor">
+						<input id="headImg" name="file" accept="image/*" type="file" style="display: none"/>
+						<div class="preImg">
+							<img src="../img/example.png" alt="" id="showImg"/>
+							<img src=" " class="realImg"/>
+						</div>
+						<div class="pictorial">
+							<p><span>*</span>照片大小不超过5M</p>
+							<p><span>*</span>照片仅支持jpg,png格式</p>
+							<p><span>*</span>营业执照需要加盖公章（复印件）</p>
+							<p><span>*</span>在天眼查,企查查等app中信息必须一致</p>
+						</div>
+					</div>
+					
+					
+					
+				</form>
+				<input type="button" class="reging btn btn-primary" value="注册"/>
+			</p>
+		</div>
+	</div>
+	<div class="showts" style="display: none;margin: 30px;">
+		<p style="margin-top: 50px;">企业注册信息已经提交到易企点平台，我们会在3个工作日内尽快处理，请耐心等待……</br>提示：请保持手机畅通，我们后台审核人员会通过手机或邮箱通知您有关企业的审核结果</p>
+	</div>
+	<script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.2.4.min.js"></script>
+	<script type="text/javascript" src="../js/layer.js"></script>
+	<script type="text/ecmascript" src="../js/jquery.sha1.js"></script>
+	<script src="../js/bootstrap3-typeahead.min.js" type="text/javascript" ></script>
+	<script src="../js/distpicker.data.min.js?20190901" type="text/javascript" ></script>
+	<script src="../js/distpicker.min.js" type="text/javascript" ></script>
+	<script src="../js/area_code.js" type="text/javascript" ></script>
+	<script src="../js/jquery.sha1.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../js/registerCom.js?v=20191126" type="text/javascript" ></script>
+	<script type="text/javascript">
+		try {
+			var urlhash = window.location.hash;
+			if (!urlhash.match("fromapp")) {
+				if ((navigator.userAgent.match(/(iPhone|iPod|Android|ios|iPad)/i))) {
+					window.location = "http://www.jinshiku.com/Enterprise/index.html";
+				}
+			}
+		} catch (err) {}
+	</script>
+</body>
+</html>

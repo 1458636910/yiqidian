@@ -1,0 +1,136 @@
+.deleteMakeDiv,
+.chooseHangyeDiv,
+.choosePostDiv,
+.serverTypeDiv,
+.serverTimeDiv {
+	display: none;
+}
+
+.addhy,
+.addSelfPost,
+#addserverHangye,
+#addserverPost,
+#addserverType,
+#addserverTime {
+	display: flex;
+	justify-content: flex-end;
+	margin-bottom: 20px!important
+}
+
+.addhy span,
+.addSelfPost span,
+#addserverHangye span,
+#addserverPost span,
+#addserverType span,
+#addserverTime span {
+	background-color: #29e;
+	color: white;
+	padding: 5px 20px;
+	cursor:pointer;
+	border-radius: 5px;
+}
+
+.chooseHangyeDiv p,
+.choosePostDiv p {
+	padding: 60px 160px;
+}
+
+.serverTimeDiv label,
+.serverTypeDiv label {
+	padding-left: 260px;
+	display: flex;
+	justify-content: flex-start;
+	margin-top: 20px
+}
+
+.serverTimeDiv label span,
+.serverTypeDiv label span {
+	width: 120px
+}
+
+#tradeTable thead,
+#selfPostTable thead,
+#serverHangyeTable thead,
+#serverPostTable thead {
+	display: flex;
+}
+
+#tradeTable thead tr,
+#selfPostTable thead tr,
+#serverHangyeTable thead tr,
+#serverPostTable thead tr {
+	display: flex;
+	width: 100%
+}
+
+#tradeTable thead tr th:nth-child(2),
+#tradeTable tbody tr td:nth-child(2),
+#selfPostTable thead tr th:nth-child(2),
+#selfPostTable tbody tr td:nth-child(2),
+#serverHangyeTable thead tr th:nth-child(2),
+#serverHangyeTable tbody tr td:nth-child(2),
+#serverPostTable thead tr th:nth-child(2),
+#serverPostTable tbody tr td:nth-child(2) {
+	width: 20%
+}
+
+#tradeTable thead tr th:nth-child(1),
+#tradeTable tbody tr td:nth-child(1),
+#selfPostTable thead tr th:nth-child(1),
+#selfPostTable tbody tr td:nth-child(1),
+#serverHangyeTable thead tr th:nth-child(1),
+#serverHangyeTable tbody tr td:nth-child(1),
+#serverPostTable thead tr th:nth-child(1),
+#serverPostTable tbody tr td:nth-child(1) {
+	width: 80%
+}
+
+#serverTypeTable,
+#serverTimeTable {
+	border: none
+}
+
+#serverTypeTable tbody tr,
+#serverTimeTable tbody tr {
+	border-bottom: 1px solid #dee2e6
+}
+
+#tradeTable tbody tr,
+#selfPostTable tbody tr,
+#serverHangyeTable tbody tr,
+#serverPostTable tbody tr {
+	width: 100%;
+	display: flex;
+}
+
+#tradeTable tbody,
+#selfPostTable tbody,
+#serverHangyeTable tbody,
+#serverPostTable tbody {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+#deleteHangye,
+#deletePost {
+	cursor: pointer;
+	color: #29e
+}
+
+.deleteMakeDiv {
+	padding-left: 120px;
+	padding-top: 30px
+}
+
+#selfPostTable,#serverPostTable,#tradeTable,#serverHangyeTable{border:none}
+#selfPostTable thead {}
+
+#selfPostTable thead tr {}
+
+#selfPostTable thead tr th {}
+
+#selfPostTable tbody {}
+
+#selfPostTable tbody tr {}
+
+#selfPostTable tbody tr td {}

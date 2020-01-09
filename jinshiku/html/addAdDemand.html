@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="zh">
+	<head>
+		<meta charset="utf-8">
+		<link rel="icon" href="../image/jinLogo.png" type="image/x-icon" />
+		<title>发布咨询需求</title>
+		<link rel="stylesheet" href="../css/reset.css">
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+		<link rel="stylesheet" href="../css/skin/default/layer.css">
+		<link rel="stylesheet" href="../css/theme/default/laydate.css">
+		<link rel="stylesheet" type="text/css" href="../css/selectivity-jquery.css" />
+		<link rel="stylesheet" href="../css/bootstrap-table.min.css">
+		<link rel="stylesheet" href="../css/bootstrap-select.css">
+		<link rel="stylesheet" href="../css/addAdDemand.css">
+	</head>
+	<body>
+		<div class="demandTable contain">
+			<form action="" class="form-inline">
+				<p>联系方式</p>
+				<label for=""><span>*</span><span>联系人：</span><input type="text" class="form-control Acontact" placeholder="请输入联系人"></label>
+				<label for=""><span>*</span><span>电话：</span><input type="text" class="form-control Aphone" placeholder="请输入电话"></label>
+				<label for=""><span>*</span><span>所在部门：</span><input type="text" class="form-control Adepart" disabled="" /></label>
+				<label for=""><span>*</span><span>岗位：</span><input type="text" class="form-control Apost" disabled="" /></label>
+				<p class="title">咨询信息</p>
+				<label for=""><span>*</span><span>需求主题：</span><input type="text" class="form-control Bthem" placeholder="请输入需求主题"></label>
+				<label for=""><span>*</span><span>需求类型：</span>
+					<div class="hyitems"></div>
+				</label>
+				<label for=""><span>*</span><span class="">需求领域：</span><input type="text" class="courseType form-control"
+					 placeholder="最多选择5个课程类型" /></label>
+					 
+				<label for=""><span>*</span><span>所属行业：</span>
+					<div class="hyitems2"></div>
+				</label>
+				<label for=""><span>*</span><span>项目开始时间：</span><input type="text" class="form-control BstartTime" placeholder="请选择项目开始时间"></label>
+				<label for=""><span>*</span><span>项目结束时间：</span><input type="text" class="form-control BendTime" placeholder="请选择项目结束时间"></label>
+				<label for=""><span>*</span><span>预计周期：</span><input type="text" class="form-control BtimeLong" placeholder="请输入项目周期"><span
+					 class="unit">天</span></label>
+				<label for=""><span>*</span><span>项目地址：</span>
+					<div class="docs-methods">
+
+						<div id="distpicker">
+							<div class="form-group">
+								<label class="sr-only" for="province">Province</label>
+								<select class="form-control" id="province"></select>
+							</div>
+							<div class="form-group">
+								<label class="sr-only" for="city">City</label>
+								<select class="form-control" id="city"></select>
+							</div>
+							<div class="form-group">
+								<label class="sr-only" for="district">District</label>
+								<select class="form-control" id="district"></select>
+							</div>
+							<input type="text" class="form-control Badress" placeholder="具体地址">
+							<div class="form-group">
+								<button class="btn btn-primary" id="reset" type="button">重置</button>
+							</div>
+						</div>
+
+					</div>
+				</label>
+				<label for=""><span>*</span><span>针对岗位：</span><input type="text" class="form-control Bpost" placeholder="请输入针对岗位"></label>
+				<label for=""><span>*</span><span>项目人数：</span><input type="text" class="form-control Bnum" placeholder="请输入项目人数"><span
+					 class="unit">人</span></label>
+				<label for=""><span>*</span><span>项目预算：</span><input type="text" class="form-control Bcost" placeholder="请输入项目预算"><span
+					 class="unit">元</span></label>
+				<label for=""><span>*</span><span>咨询模式:</span>
+					<select name="" class="form-control mode">
+						<option value="不限">不限</option>
+						<option value="间歇式">间歇式</option>
+						<option value="驻厂式">驻厂式</option>
+					</select>
+				</label>
+				<label for=""><span>*</span><span>咨询师费用：</span><input type="text" class="form-control Badcost" placeholder="请输入咨询师费用"></label>
+				<label for=""><span>*</span><span>需求有效期：</span><input type="text" class="form-control BendTimeLong" placeholder="请选择需求有效期"></label>
+				<label for=""><span>*</span><span>其他要求</span>
+					<textarea name="" id="BothersRequest" cols="90" rows="6" class="form-control"></textarea>
+				</label>
+
+				<p class="title">对咨询师要求</p>
+				<label for=""><span>*</span><span>行业：</span>
+					<div class="hyitems3"></div>
+				</label>
+				<label for=""><span>*</span><span>文化程度:</span>
+					<select name="" class="form-control wh">
+						<option value="">不限</option>
+						<option value="初中">初中</option>
+						<option value="高中">高中</option>
+						<option value="专科">专科</option>
+						<option value="本科">本科</option>
+						<option value="硕士">硕士</option>
+						<option value="博士">博士</option>
+					</select>
+				</label>
+				<label for=""><span>*</span><span>专业：</span><input type="text" class="form-control Czy" placeholder="请输入专业"></label>
+				<label for=""><span>*</span><span>职称：</span><input type="text" class="form-control Czc" placeholder="请输入职称"></label>
+				<label for=""><span>*</span><span>背景：</span>
+					<div class="hyitems4"></div>
+				</label>
+				<label for=""><span>*</span><span>曾任职：</span>
+					<div class="hyitems5"></div>
+				</label>
+				<label for=""><span>*</span><span>是否认证:</span>
+					<select name="" class="form-control rz">
+						<option value="不限">不限</option>
+						<option value="已认证">已认证</option>
+						<option value="未认证">未认证</option>
+					</select>
+				</label>
+				<label for=""><span>*</span><span>外语等级:</span>
+					<select name="" class="form-control wy">
+						<option value="">不限</option>
+						<option value="英语四级">英语四级</option>
+						<option value="英语六级">英语六级</option>
+						<option value="专业英语四级">专业英语四级</option>
+						<option value="专业英语八级">专业英语八级</option>
+					</select>
+				</label>
+				<label for=""><span>*</span><span>所在城市：</span>
+					<div class="docs-methods">
+						<div id="distpicker2">
+							<div class="form-group">
+								<label class="sr-only" for="province">Province</label>
+								<select class="form-control" id="Cprovince"></select>
+							</div>
+							<div class="form-group">
+								<label class="sr-only" for="city">City</label>
+								<select class="form-control" id="Ccity"></select>
+							</div>
+							<div class="form-group">
+								<button class="btn btn-primary" id="Creset" type="button">重置</button>
+							</div>
+						</div>
+					</div>
+				</label>
+				<label for=""><span>*</span><span>性别:</span>
+					<select name="" class="form-control sex">
+						<option value="不限">不限</option>
+						<option value="男">男</option>
+						<option value="女">女</option>
+					</select>
+				</label>
+				<label for=""><span>*</span><span>年龄：</span>
+					<input type="number" class="form-control minAge" maxlength="2"> <span class="sign">~</span>
+					<input type="number" class="form-control maxAge" maxlength="2">
+				</label>
+				<label for="" class="clearfix side-by-side "><span class="pull-left">*</span><span class="pull-left">属相要求</span>
+					<div class="pul-left">
+						<select name="" class="form-control" id="usertype1">
+							<option value="不限">不限</option>
+							<option value="鼠">鼠</option>
+							<option value="牛">牛</option>
+							<option value="虎">虎</option>
+							<option value="兔">兔</option>
+							<option value="龙">龙</option>
+							<option value="蛇">蛇</option>
+							<option value="马">马</option>
+							<option value="羊">羊</option>
+							<option value="猴">猴</option>
+							<option value="鸡">鸡</option>
+							<option value="狗">狗</option>
+							<option value="猪">猪</option>
+						</select>
+						
+					</div>
+				</label>
+				<label for="" class="clearfix side-by-side"><span class="pull-left">*</span><span class="pull-left">禁忌属相</span>
+					<div class="pul-left form-inline">
+						<select id="usertype2" class="form-control">
+							<option value="不限">不限</option>
+							<option value="鼠">鼠</option>
+							<option value="牛">牛</option>
+							<option value="虎">虎</option>
+							<option value="兔">兔</option>
+							<option value="龙">龙</option>
+							<option value="蛇">蛇</option>
+							<option value="马">马</option>
+							<option value="羊">羊</option>
+							<option value="猴">猴</option>
+							<option value="鸡">鸡</option>
+							<option value="狗">狗</option>
+							<option value="猪">猪</option>
+						</select>
+					</div>
+				</label>
+				<label for=""><span>*</span><span>其他要求</span>
+					<textarea name="" id="CothersRequest" cols="90" rows="6" class="form-control"></textarea>
+				</label>
+				
+
+			</form>
+			<label for=""> <button class="btn btn-primary sub">提交</button> </label>
+		</div>
+		<div class="teachAreaTable clearfix">
+		
+			<div class="tableLeft pull-left"></div>
+			<div class="tableRight pull-left"></div>
+		</div>
+		<script type="text/javascript" src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+		<script src="https://unpkg.com/bootstrap-table@1.14.1/dist/bootstrap-table.min.js"></script>
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.12.1/locale/bootstrap-table-zh-CN.min.js"></script>
+        <script type="text/javascript" src="../js/layer/layer.js"></script>
+		<script src="../js/distpicker.data.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/distpicker.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript" src="../js/laydate.js"></script>
+		<script src="../js/selectivity-jquery.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript" src="../js/bootstrap-select.min.js"></script>
+		<script type="text/javascript" src="../js/addAdDemand.js"></script>
+	</body>
+</html>

@@ -1,0 +1,286 @@
+
+		<link rel="stylesheet" type="text/css" href="css/apply2.css" />		
+		<style type="text/css">
+			#table {
+				margin-top: 50px;
+			}
+
+			.total,
+			.apply {
+				z-index: 100000;
+			}
+
+			#examined {
+				border-bottom-left-radius: 5px;
+				border-bottom-right-radius: 5px;
+				border: none
+			}
+
+			.total .pp p {
+				float: left;
+				margin: 0 !important;
+				padding-left: 21px;
+			}
+		</style>
+
+
+		<div class="box">
+			<div class="total">
+				<!-- .icon-zelvxuanzefeiyongzhengsanjiaoxingzhichi 上箭头 有需求可以加 -->
+				<div class="pp">
+					<p id="selectedText">待审核</p><span class="iconfont icon-zelvxuanzefeiyongdaosanjiaoxingfandui icons"></span>
+				</div>
+				<div class="totals">
+					<ul>
+						<li class="on" id="own">待审核</li>
+						<li id="examined">已审核</li>
+					</ul>
+				</div>
+			</div>
+
+			<div class="apply"><img src="img/2xrz.png" alt=""/><a id="leave">培训申请</a></div>
+
+			<table id="table" border="1" data-show-refresh="true">
+			</table>
+			<div class="pageBtnBox btnArea">
+				<span class="goback">
+					<img src="img/goback.png" alt="" />
+					返回
+				</span>
+				<button type="button" class="btnd" id="pageBtn">下一页</button>
+			</div>
+		</div>
+
+		<script type="text/javascript">
+			$(document).ready(function() {
+
+				//分割当前网页链接
+				var windowUrl = window.location.href; //获取当前url链接		
+				//http://127.0.0.1:8848/shenqing/index.html?userGuid=4f47e8c7e40541d4a2f03c3c72304252&companyId=46
+				var arr = windowUrl.split("?", 2); //分割url		
+				var arr_1 = arr[1]; //瞎起变量		
+				var arr_2 = arr_1.split('&', 2);
+				var arr_3 = (arr_2[0].split('=', 2))[1];
+				var arr_4 = (arr_2[1].split('=', 2))[1];
+				//console.log(arr_4)       
+				var http_head = "http://47.94.173.253:8008";
+				var page = 0;
+				var type = 0;
+
+				//培训对象
+				function consta(e, value, index, row) {
+					return '<div class=w133>' + value.trainees + '</div>'
+				}
+
+				//培训类别
+				function constb(e, value, index, row) {
+					return '<div class=w133>' + value.theCategory + '</div>'
+				}
+
+				//字符串分割时间段 2019-06-12T00:00:00
+				function constc(e, value, index, row) {
+					var ar_1 = value.thedateStart.split('T')[0] + ':';
+					var ar_2 = (value.thedateStart.split('T')[1]).split(':')[0] + ':' + (value.thedateStart.split('T')[1]).split(':')[
+						1];
+					var thedateStart = ar_1 + ar_2;
+					var ar_3 = value.thedateEnd.split('T')[0] + ':';
+					var ar_4 = (value.thedateEnd.split('T')[1]).split(':')[0] + ':' + (value.thedateEnd.split('T')[1]).split(':')[1];
+					var thedateEnd = ar_3 + ar_4;
+					var time = thedateStart + ' ~ ' + thedateEnd;
+					return '<div class=w133> ' + time + ' </div>'
+				}
+
+				//培训主题
+				function constd(e, value, index, row) {
+					return '<div class=w200>' + value.theTheme + '</div>'
+				}
+
+				//推荐讲师
+				function conste(e, value, index, row) {
+					return '<div class=w133>' + value.recoDocentName + '</div>'
+				}
+
+				//预算费用
+				function constf(e, value, index, row) {
+					return '<div class=w133>' + value.budgetedExpense + '</div>'
+				}
+
+				//培训要求
+				function constg(e, value, index, row) {
+					return '<div class=w200>' + value.theDemand + '</div>'
+				}
+
+				//申请理由
+				function consth(e, value, index, row) {
+					return '<div class=w200>' + value.applyReason + '</div>'
+				}
+
+				//申请时间
+				function consti(e, value, index, row) {
+					//console.log(value.createTime)
+					return '<div class=w200>' + value.createTime + '</div>'
+				}
+
+
+				//判断后台返回status
+				function progress(e, value, index, row) {
+					//console.log(value.status)
+					if (value.status == 0) {
+						status = '待审批'
+					} else {
+						status = '已审批'
+					}
+					return [
+						'<div class="hhhh">' + status + '</div>'
+					].join('')
+				}
+
+
+
+				$.post('' + http_head + '/Training/Get_trainingApply_Owner.ashx', {
+					userGuid: arr_3,
+					page: page,
+					type: type
+				}, function(data) {
+					var data = JSON.parse(data);
+					console.log(data)
+					page = data.nextpage;
+					$("#table").bootstrapTable({
+						data: data.items,
+						columns: [{
+							field: 'trainees',
+							title: '培训对象',
+							formatter: consta
+						}, {
+							field: 'theCategory',
+							title: '培训类别',
+							formatter: constb
+						}, {
+							field: 'time',
+							title: '时间段',
+							formatter: constc
+						}, {
+							field: 'theTheme',
+							title: '培训主题',
+							formatter: constd
+						}, {
+							field: 'recoDocentName',
+							title: '推荐讲师',
+							formatter: conste
+						}, {
+							field: 'budgetedExpense',
+							title: '预算费用/元',
+							formatter: constf,
+						}, {
+							field: 'theDemand',
+							title: '培训要求',
+							formatter: constg
+						}, {
+							field: 'applyReason',
+							title: '培训申请理由',
+							formatter: consth
+						}, {
+							field: 'createTime',
+							title: '申请时间',
+							formatter: consti
+						}, {
+							field: 'status',
+							title: '申请进度',
+							events: window.operateEvents,
+							formatter: progress
+						}]
+					})
+				});
+
+				//下一步点击事件
+				$("#pageBtn").on("click", function() {
+					nextPage();
+				})
+
+				function nextPage() {
+					$.post("" + http_head + "/Training/Get_trainingApply_Owner.ashx", {
+						userGuid: arr_3,
+						page: page,
+						type: type
+					}, function(data) {
+						var data = JSON.parse(data);
+						console.log(page);
+						if (data.items.length > 0) {
+							page = data.nextpage;
+						}
+						if (data.items == '') {
+							$('#pageBtn').html('没有更多数据了')
+						} else {
+							$("#table").bootstrapTable({
+								columns: [{
+									formatter: table,
+								}]
+							})
+							$("#table").bootstrapTable("append", data.items);
+						}
+					})
+				};
+
+				var Totals = $('.totals ul li');
+				Totals.each(function() {
+					$(this).mouseover(function() {
+						$(this).addClass('on')
+					});
+					$(this).mouseout(function() {
+						$(this).removeClass('on')
+					});
+				});
+
+				//待审核
+				$('#own').click(function() {
+					type = 0;
+					page = 0;
+					$('#selectedText').html("待审核");
+					$('#pageBtn').html('下一页')
+					nextSerach();
+				})
+
+				//已审核			
+				$('#examined').click(function() {
+					type = 1;
+					page = 0;
+					$('#selectedText').html("已审核")
+					$('#pageBtn').html('下一页');
+					nextSerach();
+
+				})
+
+
+				function nextSerach() {
+					$.post("" + http_head + "/Training/Get_trainingApply_Owner.ashx", {
+						userGuid: arr_3,
+						page: page,
+						type: type
+					}, function(data) {
+						var data = JSON.parse(data);
+						//console.log(data)		
+						page = data.nextpage;
+						$("#table").bootstrapTable({
+							columns: [{
+								formatter: table,
+							}]
+						})
+						$("#table").bootstrapTable("load", data.items);
+					})
+				};
+
+				$(".goback").hover(function() {
+					$(this).children("img").attr("src", "img/goback-b.png")
+				}, function() {
+					$(this).children("img").attr("src", "img/goback.png")
+				});
+				$(".goback").on("click", function() {
+					$("#dataTable").replaceWith('<div id="dataTable"></div>');
+					$("#dataTable").load("msq.html");
+				});
+				$(".apply").on("click", function() {
+					$("#dataTable").replaceWith('<div id="dataTable"></div>');
+					$("#dataTable").load("pxsqForm.html");
+				});
+			});
+		</script>

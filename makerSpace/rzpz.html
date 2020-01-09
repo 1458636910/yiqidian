@@ -1,0 +1,210 @@
+<link rel="stylesheet" type="text/css" href="css/apply2.css" ver="20191119"/>
+<style type="text/css">
+	body{font-size: 12px!important;}
+	.bootstrap-table .fixed-table-container .table thead th .th-inner{padding: 0.3rem;}
+	.table td, .table th {padding: 0.3rem;}
+	.pageBtnBox{margin-top: 40px;}
+	.btnd{width: 100px;font-size: 12px;height: 30px;line-height: 30px;}
+	.total {
+		position: initial!important;
+		margin-bottom: 10px;
+	}
+	
+	#examined {
+		border-bottom-left-radius: 5px;
+		border-bottom-right-radius: 5px;
+		border: none
+	}
+</style>
+<div class="box">
+			<div class="total">
+				<!-- .icon-zelvxuanzefeiyongzhengsanjiaoxingzhichi 上箭头 有需求可以加 -->
+				<div class="pp">
+				<p id="selectedText">未审批</p><span class="iconfont icon-zelvxuanzefeiyongdaosanjiaoxingfandui icons"></span>
+				</div>
+				<div class="totals">
+					<ul>	
+						<li id="own" class="on">未审批</li>
+						<li id="examined">已审批</li>
+					</ul>
+				</div>
+			</div>
+			<!-- <p>周总结列表</p> -->
+			<table id="table" border="1"></table>
+			<div class="pageBtnBox">
+				<span class="goback">
+					<img src="img/goback.png" alt="" />
+					返回
+				</span>
+					<button type="button" class="btnd" id="pageBtn">下一页</button>
+				</div>
+			</div>
+			
+			<script type="text/javascript">
+				$(document).ready(function() {
+					//分割当前网页链接
+					var windowUrl = window.location.href; //获取当前url链接		
+					//http://127.0.0.1:8848/summary/oneself.html?userGuid=4f47e8c7e40541d4a2f03c3c72304252&companyId=46
+					var arr = windowUrl.split("?", 2); //分割url		
+					var arr_1 = arr[1]; //瞎起变量		
+					var arr_2 = arr_1.split('&', 2);
+					var arr_3 = (arr_2[0].split('=', 2))[1];
+					var arr_4 = (arr_2[1].split('=', 2))[1];
+					//console.log(arr_4)       
+					var http_head = "http://47.94.173.253:8008";
+					var page = 0;
+					var ispi = 0;
+					 
+					//字符串分割申请时间 2019-11-18 09:00:57
+					function consta(e, value, index, row) {
+						console.log(value)
+						var ar = value.createTime;
+						var ar_1=ar.split(" ")[0];
+						var ar_3=ar.split(" ")[1].split(':')[0]+':'+ar.split(" ")[1].split(':')[1];
+						var ar_4=ar_1+ ' ' +ar_3;
+						return ar_4
+					}
+					
+					function operateFormatter(value, row, index) {
+						return '<div class=w100><a class="agree" href="javascript:void(0)" title="agree">详情</a></div>'	
+					}
+					
+					window.operateEvents = {
+						'click .agree': function(e, value, row, index) {
+							console.log(row)
+						window.open ("http://www.eqidd.com/html/PTask_details.html?userGuid="+ row.userGuid +"&companyId=" + row.companyId + "&Id=" + row.Id + "");
+						}
+					}
+										
+					$("#table").bootstrapTable({
+						url:'' + http_head + '/workday/getGanwuListByleader.ashx',
+						method:'post',
+						contentType: "application/x-www-form-urlencoded",
+						queryParams: function (params) {
+						  params.userGuid = arr_3;
+						  params.page = 0;
+						  params.ispi = ispi;
+						  return params
+						},
+						responseHandler: function(res) {
+							page = 1;
+							return res.items
+						}, 
+						columns: [{
+							title: '序号',
+							formatter: function(value, row, index) {
+							//获取每页显示的数量
+							var pageSize = $('#table').bootstrapTable('getOptions').pageSize;
+							//获取当前是第几页
+							var pageNumber = $('#table').bootstrapTable('getOptions').pageNumber;
+							//返回序号，注意index是从0开始的，所以要加上1
+							return pageSize * (pageNumber - 1) + index + 1;
+							}
+						},{
+							field:'createTime',
+							title:'发布日期',
+							formatter: consta
+						},{
+							field:'ganWu',
+							title:'工作感悟'
+						},{
+							field:'pingyu',
+							title:'领导评语'
+						},{
+							title: '详情',
+							events: window.operateEvents,
+							formatter: operateFormatter
+						}]				
+					})
+					
+					//下一步点击事件
+					$("#pageBtn").on("click", function() {				
+						nextPage();
+					})
+					
+					function nextPage() {
+						$.post("" + http_head + "/workday/getGanwuListByleader.ashx", {
+							userGuid: arr_3,
+							ispi: ispi,
+							page: page
+						}, function(data) {
+							var data = JSON.parse(data);
+							if(data.items.length > 0){
+								page = data.page;
+							}
+							if (data.items=='') {
+								$('#pageBtn').html('没有更多数据了')
+							} else {
+								$("#table").bootstrapTable({						
+									columns: [{
+										formatter: table,
+									}]
+								})					 
+								$("#table").bootstrapTable("append", data.items);
+							}
+						})
+					};
+					
+					var Totals = $('.totals ul li');
+					Totals.each(function(){
+						$(this).mouseover(function(){
+							$(this).addClass('on')
+						});
+						$(this).mouseout(function(){
+							$(this).removeClass('on')
+						});			
+					});
+					
+					//未审批
+					$('#own').click(function(){
+						ispi = 0
+						page = 0
+						$('#selectedText').html("未审批")
+						$('#pageBtn').html('下一页')
+						nextSerach()
+					})
+					
+					//已审批
+					$('#examined').click(function(){				
+						ispi = 1;
+						page = 0;
+						$('#selectedText').html("已审批")
+						$('#pageBtn').html('下一页');
+						nextSerach();
+					})
+					
+					function nextSerach() {	
+						$.post("" + http_head + "/workday/getGanwuListByleader.ashx", {
+							userGuid: arr_3,
+							page: page,
+							ispi: ispi
+						}, function(data) {
+							var data = JSON.parse(data);
+							//console.log(data)
+								if(data.items.length > 0){
+									page = data.page;
+								}
+								$("#table").bootstrapTable({						
+									columns: [{
+										formatter: table,
+									}]
+								})					 
+								$("#table").bootstrapTable("load", data.items);					
+						})			
+					};
+					
+					
+						
+						$(".goback").hover(function() {
+							$(this).children("img").attr("src", "img/goback-b.png")
+						}, function() {
+							$(this).children("img").attr("src", "img/goback.png")
+						});
+						$(".goback").on("click", function() {
+							$("#dataTable").replaceWith('<div id="dataTable"></div>');
+							$("#dataTable").load("mpz.html");
+						});
+					
+					
+			});
+			</script>

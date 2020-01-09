@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html ng-app="yqdRegcom">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="icon" href="../image/pic.ico" type="image/x-icon"/>
+  <title>易企点企业注册</title>
+  <link rel="stylesheet" href="../css/reset.css">
+  <link rel="stylesheet" href="../css/skin/default/layer.css">
+  <link rel="stylesheet" href="../css/regCompanyinfo.css?ver=20180307">
+  <link rel="stylesheet" href="../css/bootstrap-select.css">
+  <link rel="stylesheet" href="../css/bootstrap.css">
+  <script type="text/javascript" src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+  <script type="text/javascript" src="../js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="../js/layer.js"></script>
+  <script type="text/javascript" src="../js/ajaxfileupload.js"></script>
+  <script type="text/javascript" src="../js/regCompanyinfo.js?ver=20180405"></script>
+  <script type="text/javascript" src="../js/bootstrap3-typeahead.min.js"></script>
+  <script type="text/javascript" src="../js/angular.1.2.29.js"></script>
+  <script type="text/javascript" src="../js/change.js"></script>
+</head>
+<body ng-controller="regControllercom">
+<div class="regcomTitle">
+  易企点企业注册
+</div>
+<div class="regCom">
+  <form action="" name="myForm" ng-model="myForm" novalidate class="form-inline" id="comInfo">
+          <p>企业基本信息</p>
+            <label for=""><span class="comName">公司名称</span><input type="text" class="comNameval form-control" placeholder="公司名称"></label><br><br>
+            <label for=""><span class="comDutyman">公司法人</span><input type="text" class="comDutymanval form-control" placeholder="公司法人"></label><br><br>
+            <label for=""><span class="comdutyIDnum">法人身份证号</span><input type="text" class="comdutyIDnumval form-control" name="idnumber" ng-model="idnumber" placeholder="身份证号" ng-pattern="/^(^[1-9]\d{7}((0\d)|(1[0-2]))(([0|1|2]\d)|3[0-1])\d{3}$)|(^[1-9]\d{5}[1-9]\d{3}((0\d)|(1[0-2]))(([0|1|2]\d)|3[0-1])((\d{4})|\d{3}[Xx])$)$/" required><span class="tips2" ng-hide="idnumber" ng-if="myForm.idnumber.$dirty && myForm.idnumber.$error.pattern">请输入正确的身份证号码</span></label><br><br>
+            <label for=""><span class="comDutytel">法人手机号</span><input type="tel" class="comDutytelval form-control" name="telnumber" ng-model="telnumber" value="" placeholder="请输入手机号" ng-pattern="/^1[34578]\d{9}$/" required><span class="tips4" ng-hide="telnumber" ng-if="myForm.telnumber.$dirty && myForm.telnumber.$error.pattern ">请输入正确的手机号!</span></label><br><br>
+            <label for=""><span class="comHangye ">企业性质</span>
+                <select name="" id="" class="comtypeval form-control">
+                    <option value="国有企业">国有企业</option>
+                    <option value="外资企业">外资企业</option>
+                    <option value="合资企业">合资企业</option>
+                    <option value="私营企业">私营企业</option>
+                    <option value="民营企业">民营企业</option>
+                    <option value="股份制企业">股份制企业</option>
+                    <option value="有限责任制企业">有限责任制企业</option>
+                    <option value="独资企业">独资企业</option>
+                    <option value="集体企业">集体企业</option>
+                    <option value="乡镇企业">乡镇企业</option>
+                    <option value="集体事业">集体事业</option>
+                    <option value="行政机关">行政机关</option>
+                    <option value="社会团体">社会团体</option>
+                    <option value="事业单位">事业单位</option>
+                    <option value="跨国企业(集团)">跨国企业(集团)</option>
+                    <option value="其他">其他</option>
+                </select>
+            </label><br><br>
+            <label for=""><span class="comemail">公司邮箱</span><input type="email" class="comemailval form-control" name="emailnumber" ng-model="emailnumber" placeholder="输入邮箱" ng-pattern="/^([a-zA-Z0-9]+[_|\-|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\-|\.]?)*[a-zA-Z0-9]+(\.[a-zA-Z]{2,3})+$/" required><span class="tips3" ng-hide="emailnumber" ng-if="myForm.emailnumber.$dirty && myForm.emailnumber.$error.pattern">请输入正确的邮箱格式</span></label><br><br>
+            <label for=""><span class="comaddress">公司地址</span>
+             <select id="s_province" name="s_province" class="form-control"></select>  
+            <select id="s_city" name="s_city" class="form-control"></select>  
+              <select id="s_county" name="s_county" class="form-control"></select>
+              <input type="text" class="buchong form-control" placeholder="详细地址">
+            </label><br><br>
+            <label for=""><span class="comaddress">员工人数</span>
+                <select name="" id="staffnum" class="form-control">
+                    <option value="0">=请选择=</option>
+                    <option value="少于50人">少于50人</option>
+                    <option value="50-100人">50-100人</option>
+                    <option value="100-200人">100-200人</option>
+                    <option value="200-500人">200-500人</option>
+                    <option value="500-1000人">500-1000人</option>
+                    <option value="1000-2000人">1000-2000人</option>
+                    <option value="2000-5000人">2000-5000人</option>
+                    <option value="5000-10000人">5000-10000人</option>
+                    <option value="10000人以上">10000人以上</option>
+                </select>
+            </label><br><br>
+            <label for=""><span class="comContact">公司联系方式(座机)</span><input type="text" class="quhaoval form-control">-<input type="tel" class="comcontactval form-control"><span class="tips">区号仅供参考，如不对请自行修改</span></label><br><br>
+            <label for=""><span class="comhangye" id="mainHangye">企业行业</span>
+                <input type="text" class="form-control" id="typeInput" placeholder="输入关键字自动选择匹配">
+            </label><br><br>
+            <hr>
+            <p class="imgTips">图片不要超过5M</p>
+            <p>法人信息</p>
+            <div class="idcardFront clearfix">
+                  <div class="pull-left"><span>身份证正面照</span><br><span class="regTips">(必传)</span></div>
+                  <div class="pull-left imglist1">
+                    <input type="button" value="上传照片" id="pic1"><br>
+                    <input id="upload1" name="file" accept="image/*" type="file" style="display: none"/>
+                    <img src="" alt="" style="display: none" id="pic1Img">
+                  </div>
+              </div>
+              <div class="idcardBack clearfix">
+                  <div class="pull-left"><span>身份证反面照</span><br><span class="regTips">(必传)</span></div>
+                  <div class="pull-left imglist2">
+                    <input type="button" value="上传照片" id="pic2"><br>
+                    <input id="upload2" name="file" accept="image/*" type="file" style="display: none"/>
+                    <img src="" alt="" style="display: none" id="pic2Img">
+                  </div>
+              </div>
+              <div class="idcardHand clearfix">
+                  <div class="pull-left"><span>手持身份证照</span><br><span class="regTips">(必传)</span></div>
+                  <div class="pull-left imglist3">
+                    <input type="button" value="上传照片" id="pic3"><br>
+                    <input id="upload3" name="file" accept="image/*" type="file" style="display: none"/>
+                    <img src="" alt="" style="display: none" id="pic3Img">
+                  </div>
+              </div>
+            <hr>
+            <p>企业性质信息(三证合一，只传营业执照即可)</p>
+            <div class="yingyeCard clearfix">
+                  <div class="pull-left"><span>《营业执照》照片</span><br><span class="regTips">(必传)</span></div>
+                  <div class="pull-left imglist4">
+                    <input type="button" value="上传照片" id="pic4"><br>
+                    <input id="upload4" name="file" accept="image/*" type="file" style="display: none"/>
+                    <img src="" alt="" style="display: none" id="pic4Img">
+                  </div>
+              </div>
+            <div class="zuzhiCard clearfix">
+                <div class="pull-left"><span>《组织机构代码证》照片</span><br><span class="regTips">(可不传)</span></div>
+                <div class="pull-left imglist5">
+                      <input type="button" value="上传照片" id="pic5"><br>
+                      <input id="upload5" name="file" accept="image/*" type="file" style="display: none"/>
+                      <img src="" alt="" style="display: none" id="pic5Img">
+                </div>
+             </div>
+            <div class="shengchanCard clearfix">
+                <div class="pull-left"><span>《生产许可证》照片</span><br><span class="regTips">(可不传)</span></div>
+                <div class="pull-left imglist6">
+                  <input type="button" value="上传照片" id="pic6"><br>
+                  <input id="upload6" name="file" accept="image/*" type="file" style="display: none"/>
+                  <img src="" alt="" style="display: none" id="pic6Img">
+                </div>
+             </div>
+            <div class="shuiwuCard clearfix">
+                <div class="pull-left"><span>《税务登记证》照片</span><br><span class="regTips">(可不传)</span></div>
+                <div class="pull-left imglist7">
+                  <input type="button" value="上传照片" id="pic7"><br>
+                  <input id="upload7" name="file" accept="image/*" type="file" style="display: none"/>
+                  <img src="" alt="" style="display: none" id="pic7Img">
+                </div>
+             </div>
+             <p class="promise">易企点承诺对认证图片及信息的严格保密义务。承诺未经您明确授权，不将认证图片及信息用于易企点平台之外的使用，请放心上传。<br></p>
+  </form>
+  <p class="areaReg"><button type="button" class="regBtn">注册</button></p>
+</div>
+  <script type="text/javascript">
+        var app = angular.module('yqdRegcom',[]);
+      app.controller('regControllercom', ['$scope', function($scope,$http){
+     }])
+  </script>
+<script class="resources library" src="../js/area.js" type="text/javascript"></script>
+<script type="text/javascript">_init_area();</script>
+<script type="text/javascript">
+        var Gid  = document.getElementById ;
+        var showArea = function(){
+              Gid('show').innerHTML = "<h3>省" + Gid('s_province').value + " - 市" +
+              Gid('s_city').value + " - 县/区" +
+              Gid('s_county').value + "</h3>"
+              Gid('s_county').setAttribute('onchange','showArea()');
+        }
+</script>
+</body>
+</html>

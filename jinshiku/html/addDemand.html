@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="zh">
+	<head>
+		<meta charset="utf-8">
+		<link rel="icon" href="../image/eqdLogo.png" type="image/x-icon"/>
+		<title>发布培训需求</title>
+		<link rel="stylesheet" href="../css/reset.css">
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+		<link rel="stylesheet" href="../css/skin/default/layer.css">
+		<link rel="stylesheet" href="../css/theme/default/laydate.css">
+		<link rel="stylesheet" href="../css/bootstrap-table.min.css">
+		<link rel="stylesheet" href="../css/bootstrap-select.css">
+		<link rel="stylesheet" href="../css/addDemand.css?v=20190138">
+	</head>
+	<body>
+		<div class="header clearfix">
+			<div class=" comName2">
+				<img src="../image/downQRcode.png" />
+				易企点平台
+			</div>
+			<p>易企点课程上传</p>
+			<div class=" uname"></div>
+		</div>
+		<div class="teacherTable contain">
+			<form action="" class="form-inline">
+				<p>培训信息</p>
+				<label for=""><span>*</span><span>培训主题</span><input type="text" class="form-control peixuntheme" placeholder="点击输入双击选择"></label>
+				<label for=""><span>*</span><span>培训类别</span><input type="text" class="form-control peixunLebel" placeholder="请输入培训类别"></label>
+				<label for=""><span>*</span><span>培训对象</span><input type="text" class="form-control peixunObj" placeholder="请输入培训对象"></label>
+				<label for=""><span>*</span><span>开始时间</span><input type="text" class="form-control" id="timeBegin" placeholder="请选择开始时间"></label>
+				<label for=""><span>*</span><span>结束时间</span><input type="text" class="form-control" id="timeEnd" placeholder="请选择结束时间"></label>
+				<label for=""><span>*</span><span>培训地点</span>
+					<select id="provice2" class="form-control">
+						<option value="=请选择=">=请选择=</option>
+					</select>
+					<select id="city2" class="form-control">
+						<option value="=请选择=">=请选择=</option>
+					</select>
+					<select id="county2" class="form-control">
+						<option value="=请选择=">=请选择=</option>
+					</select>
+					<input type="text" class="form-control detailsAddress" placeholder="请输入具体地址">
+				</label>
+				<label for=""><span>*</span><span>培训预算</span><input type="text" class="form-control peixunExpend" placeholder="请输入培训预算"> <span class="unit">元</span></label>
+				<label for=""><span>*</span><span>关键词</span><input type="text" class="form-control peixunGuanjianzi" placeholder="请输入关键词 "></label>
+				<label for="" class="lab"><span>*</span><span>其他要求</span>
+					<textarea name="" id="othersRequest" cols="90" rows="3" class="form-control" placeholder="请输入其他要求"></textarea>
+				</label>
+				<p>联系方式</p>
+				<label for=""><span>*</span><span>联系人</span><input type="text" class="form-control comContentman" placeholder="请选择联系人"></label>
+				<label for=""><span>*</span><span>公司名称</span><input type="text" class="form-control comName" placeholder="请输入公司名称"></label>
+				<label for=""><span>*</span><span>电话</span><input type="text" class="form-control comPhone" placeholder="请输入电话号"></label>
+				<label for=""><span>*</span><span>手机</span><input type="text" class="form-control comCellphone" placeholder="请输入手机号"></label>
+				<label for="" class="lab"><span>*</span><span>QQ</span><input type="text" class="form-control comQQ" placeholder="请输入QQ号"></label>
+				<p>对讲师要求</p>
+				<label for=""><span>*</span><span>行业要求</span><input type="text" class="form-control hangyeRequire" placeholder="请输入行业要求"></label>
+				<label for=""><span>*</span><span>性别要求</span>
+					<select name="" id="sex" class="form-control">
+						<option value="0">不限</option>
+						<option value="1">男</option>
+						<option value="2">女</option>
+					</select>
+				</label>
+				<label for=""><span>*</span><span>年龄要求</span>
+					<input type="number" class="form-control minAge" maxlength="2" placeholder="请输入最小年龄"> <span class="sign">~</span>
+					<input type="number" class="form-control maxAge" maxlength="2" placeholder="请输入最大年龄">
+				</label>
+				<label for="" class="clearfix side-by-side "><span class="pull-left">*</span><span class="pull-left">属相要求</span>
+					<div class="pul-left">
+						<select id="usertype2" name="usertype2" class="selectpicker show-tick form-control" multiple data-live-search="false">
+							<option value="鼠">鼠</option>
+							<option value="牛">牛</option>
+							<option value="虎">虎</option>
+							<option value="兔">兔</option>
+							<option value="龙">龙</option>
+							<option value="蛇">蛇</option>
+							<option value="马">马</option>
+							<option value="羊">羊</option>
+							<option value="猴">猴</option>
+							<option value="鸡">鸡</option>
+							<option value="狗">狗</option>
+							<option value="猪">猪</option>
+						</select>
+					</div>
+				</label>
+				<label for="" class="clearfix side-by-side"><span class="pull-left">*</span><span class="pull-left">禁忌属相</span>
+					<div class="pul-left form-inline">
+						<select id="usertype1" name="usertype1" class="selectpicker show-tick form-control" multiple data-live-search="false">
+							<option value="鼠">鼠</option>
+							<option value="牛">牛</option>
+							<option value="虎">虎</option>
+							<option value="兔">兔</option>
+							<option value="龙">龙</option>
+							<option value="蛇">蛇</option>
+							<option value="马">马</option>
+							<option value="羊">羊</option>
+							<option value="猴">猴</option>
+							<option value="鸡">鸡</option>
+							<option value="狗">狗</option>
+							<option value="猪">猪</option>
+						</select>
+					</div>
+				</label>
+				<label for=""><span>*</span><span>地址要求</span>
+					<select id="provice1" class="form-control">
+						<option value="=请选择=">=请选择=</option>
+					</select>
+					<select id="city1" class="form-control">
+						<option value="=请选择=">=请选择=</option>
+					</select>
+					<select id="county1" class="form-control">
+						<option value="=请选择=">=请选择=</option>
+					</select>
+				</label>
+				<label for=""><span>*</span><span>学历要求</span><input type="text" class="form-control eduRequire" placeholder="请输入学历要求"></label>
+				<label for=""><span>*</span><span>所学专业</span><input type="text" class="form-control skills" placeholder="请输入专业要求"></label>
+				<label for=""><span>*</span><span>职称要求</span><input type="text" class="form-control zhichengRequire" placeholder="请输入职称要求"></label>
+				<label for=""><span>*</span><span>外语授课要求</span><input type="text" class="form-control fornigeRequire" placeholder="请输入外语要求"></label>
+				<label for=""><span>*</span><span>工作背景要求</span><input type="text" class="form-control workRequire" placeholder="请输入工作背景要求"></label>
+				<label for=""><span>*</span><span>担任职务要求</span><input type="text" class="form-control zhiwuRequire" placeholder="请输入担任职务要求"></label>
+			</form>
+			<p class="submit"><button class="btn btn-primary sub">提交</button></p>
+			<div class="chooseApplyDiv">
+				<table id="applyTable">
+					<thead>
+						<tr>
+							<th data-field="theTheme"></th>
+							<th data-field="budgetedExpense"></th>
+							<th data-field="theCategory"></th>
+						</tr>
+					</thead>
+				</table>
+			</div>
+			<div class="choosePostDiv">
+				<table id="postTable">
+					<thead>
+						<tr>
+							<th data-checkbox="true">请选择</th>
+							<th data-field="name">职位</th>
+							<th data-field="dename">部门</th>
+						</tr>
+					</thead>
+				</table>
+			</div>
+			<!-- 选择联系人 -->
+			<div class="editNotice">
+				<div class="col-lg-12">
+					<div class="exampleNotice">
+						<div class="setLeaderDiv">
+							<button type="button" class="seainputBtn pull-right">搜索</button>
+							<input type="text" class="searchInput pull-right" placeholder="请输入姓名或手机号">
+						</div>
+						<table id="noticeTable" data-pagination="true" data-page-number="1" data-page-size="5">
+							<thead>
+								<tr>
+									<th data-field="uname">姓名</th>
+									<th data-field="userPhone">电话</th>
+								</tr>
+							</thead>
+						</table>
+						<br>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript" src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+		<script type="text/javascript" src="../js/layer.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+		<script src="https://unpkg.com/bootstrap-table@1.14.1/dist/bootstrap-table.min.js"></script>
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.12.1/locale/bootstrap-table-zh-CN.min.js"></script>
+		<script type="text/javascript" src="../js/laydate.js"></script>
+		<script type="text/javascript" src="../js/change.js?ver=20180305"></script>
+		<script type="text/javascript" src="../js/bootstrap-select.min.js"></script>
+		<script type="text/javascript" src="../js/addDemand.js?v=20190606"></script>
+	</body>
+</html>

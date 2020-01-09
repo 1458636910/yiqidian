@@ -1,0 +1,30 @@
+.top{height: 60px;position: fixed;width: 100%;line-height: 60px;padding: 0 40px;border-bottom: 1px solid #29e;box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);z-index: 99999;background-color: #fff;text-align: center;font-size: 25px;}
+.contain{width: 1000px;margin: 0 auto;background-color: #ddd;padding: 65px 30px;}
+.cover{position:absolute;left: 0px;right: 0;bottom: 0;top: 0;background-color: #000;opacity:0.3 ;z-index: 20;display: none;}
+#infoTable label span:nth-child(1){width: 10px;display: inline-block;color: #f00;height: 30px;vertical-align: top;}
+#infoTable label span:nth-child(2){width: 100px;display: inline-block;vertical-align: top;color: #828282;}
+#infoTable>p{font-size: 20px;margin-bottom: 20px;}
+#infoTable label input{padding-left: 10px;}
+#infoTable label select{height: 34px;width: 186px;}
+.title{font-size: 22px;border-bottom: 0.5px solid #fff;height: 40px;line-height: 40px;}
+.title span{display: inline-block;margin-right: 5px;font-size: 18px;}
+.addPhoto ul{width: 100%;}
+.addPhoto ul li{width: 50%;}
+.addPhoto ul li img{width: 80%;margin: 20px 10%;height: 296px;}
+.submit{width: 100%;height: 60px;border-top: 1px solid #fff;text-align: center;margin: 20px 0;}
+.submit .subBtn{background-color: #29e;color: #fff;border: none;border-radius: 5px;outline: none;padding: 10px 40px;margin-top: 30px;font-size: 20px;}
+#infoTable label .teachArea{width: 500px;}
+.teachAreaTable{display: none;margin: 20px;}
+.tableLeft{width: 110px;height: 330px;overflow-y: auto;}
+.tableLeft::-webkit-scrollbar {display:none}
+.tableLeft p{cursor: pointer;background-color: #29e;color: #fff;height: 30px;line-height: 30px;text-align: center;}
+.tableRight{width: 480px;margin-left: 20px;}
+.tableRight span{display: inline-block;width: 120px;height: 30px;line-height: 30px;}
+.infoLabel span{vertical-align: top;}
+#info{width: 500px;height: 200px;padding: 10px;}
+#infoTable .detailCom{font-size: 14px;}
+.deleteImg{text-align: center;font-size: 12px;}
+.w-e-text{background-color: #fff;}
+.picDiv .imageDiv{width: 320px;height: 296px;}
+.picDiv .imageDiv img{width: 100%;}
+#file{display: inline-block;}

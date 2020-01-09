@@ -1,0 +1,121 @@
+<link rel="stylesheet" type="text/css" href="css/pInfo.css?v=20190506"/>
+<div class="personInfoDiv">
+    <div class="conformInfo">
+        <form action="" id="infoTable" novalidate class="form-inline">
+            <label for="">
+                <span>手机 :</span>
+                <input type="text" class="form-control phone"/>
+            </label>
+            <br/>
+            <label for="">
+                <span>助理手机 :</span>
+                <input type="text" class="form-control assistantPhone"/>
+            </label>
+            <br/>
+            <label for="">
+                <span>助理姓名 :</span>
+                <input type="text" class="form-control assistantName"/>
+            </label>
+            <br/>
+            <label for="">
+                <span>邮箱 :</span>
+                <input type="text" class="form-control email"/>
+            </label>
+            <br/>
+            <label for="">
+                <span>QQ :</span>
+                <input type="text" class="form-control qq"/>
+            </label>
+            <br/>
+            <label for="">
+                <span>微信 :</span>
+                <input type="text" class="form-control wechat"/>
+            </label>
+            <br/>
+            <label for="" class="newArea">
+                <span class="">常驻地址 :</span>
+                <input type="text"  class="form-control address"/>
+            </label>
+            <br/>
+            <label for="">
+                <span>研究领域 :</span>
+                <input type="text" class="form-control ResearchField"/>
+            </label>
+            <br/>
+            <label for="">
+                <span>课程价格(元/天) :</span>
+                <input type="text" class="form-control cooperativePrice"/>
+            </label>
+            <br/>
+            <label for="">
+                <span>课程 :</span>
+                <textarea cols="80" rows="3" class="form-control courses">  </textarea>
+            </label>
+            <br/>
+            <br/>
+            <label for="">
+                <span>授课风格 :</span>
+                <textarea cols="80" rows="3" class="form-control TeachStyle">   </textarea>
+            </label>
+            <br/>
+            <label for="">
+                <span>讲师简介 :</span>
+            </label>
+            <br/>
+            <div id="editor" class="personalProfile">   </div>
+            <br/>
+            <label for="">
+                <span>客户案例 :</span>
+            </label>
+            <br/>
+            <div id="editor2" class="personalProfile">  </div>
+            <br/>
+            <label for="">
+                <span>曾服务过的企业 :</span>
+            </label>
+            <br/>
+            <div id="editor3" class="personalProfile">  </div>
+            <br/>
+        </form>
+        <!-- <p class="subArea"><button id="subFormBtn">修改</button></p> -->
+    </div>
+</div>
+<script  type="text/javascript" charset="utf-8" async defer>
+    $(document).ready(function(){
+        loadInfo()
+      function loadInfo(){
+        $.post(http_head+'Lectures/Get_Lecture_ByCreater.ashx', {
+          "userGuid" : userGuid,
+        }, function(data) {
+                var dataInfo = JSON.parse(data)
+                if ( dataInfo.status == 200 ) {
+                      $('#nameShow').val(dataInfo.items.realname)
+                      $('#email').val(dataInfo.items.email)
+                      $('.phone').val(dataInfo.items.phone)
+                      $('.assistantPhone').val(dataInfo.items.AssistantPhone)
+                      $('.assistantName').val(dataInfo.items.Assistant)
+                      $('.email').val(dataInfo.items.email)
+                      $('.qq').val(dataInfo.items.QQ)
+                      $('.wechat').val(dataInfo.items.wechat)
+                      $('.address').val(dataInfo.items.address)
+                      $('.ResearchField').val(dataInfo.items.ResearchField)
+                      $('.cooperativePrice').val(dataInfo.items.CooperativePrice)
+                      $('.courses').val(dataInfo.items.courses)
+                      $('.TeachStyle').val(dataInfo.items.TeachStyle)
+                      $('#editor').html(dataInfo.items.LecturerBackground)
+                      $('#editor2').html(dataInfo.items.CustCase)
+                      $('#editor3').html(dataInfo.items.ServiceCom)
+                }else{
+                  layer.msg('未认证，请认证', {
+                         time: 200000,
+                          shade:0.5
+                   });
+                    setTimeout(function(){
+                        location.href="conformTeacher.html"
+                    },1500)
+                }
+        });
+      }
+    })
+      
+</script>

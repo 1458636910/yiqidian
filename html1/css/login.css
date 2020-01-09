@@ -1,0 +1,21 @@
+input,button{outline:none}
+textarea{resize:none}
+body{background-color: #f5f6f7;}
+.content{width: 100%;margin: 100px auto;margin-left: 25%;}
+.box{width: 100%;margin: 100px auto;text-align: center;padding: 2%;}
+.tltle{font-size: 40px;color: #00A8FF;text-align: center;}
+.box .inputtel,.box .inputpass{width: 100%;height: 50px;line-height: 50px;padding-left: 25px;margin: 20px 0;position: relative;}
+.box .input-txt1,.box .input-txt2{color: red;text-align: center;}
+.box .input-mima1,.box .input-mima2{color: red;text-align: center;}
+.box button{box-sizing: border-box; height: 50px;line-height: 50px;border-radius: 5px;background-color: #00A8FF;margin-left: 4%;border: 2px solid #00A8FF;display: block;text-align: center;margin-top: 15px;}
+.box button a{color: #fff;text-decoration: none;font-size: 16px;}
+.glyphicon{position: absolute;top: 5px;left: 28px;z-index: 100;}
+.left,.right{height: 100%;}
+.reg{margin-top: 10px;text-align: right}
+.regCom{margin-top: 10px;text-align:left; }
+body{font-family: "微软雅黑";}
+.box .inputtel,.box .inputpass:focus{
+　　border:1px solid #f00;
+background-color: #fff;
+　　}
+.box .inputtel,.box .inputpass:-webkit-autofill{background-color: #fff;}

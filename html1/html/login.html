@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html ng-app="yqd">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta http-equiv="Cache-Control" CONTENT="no-cache">
+  <link rel="icon" href="../image/pic.ico" type="image/x-icon"/>
+  <title>登录</title>
+  <link rel="stylesheet" href="../css/reset.css">
+  <link rel="stylesheet" href="../css/skin/default/layer.css">
+  <link rel="stylesheet" href="../css/login.css">
+  <link rel="stylesheet" href="../css/bootstrap.css">
+  <script type="text/javascript" src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+  <script type="text/javascript" src="https://cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+  <script type="text/javascript" src="https://cdn.bootcss.com/layer/3.1.0/layer.js"></script>
+  <script type="text/ecmascript" src="../js/jquery.sha1.js"></script>
+  <script type="text/javascript" src="../js/angular.1.2.29.js"></script>
+  <script type="text/javascript" src="../js/change.js"></script>
+</head>
+<body ng-controller="loginController">
+    <div class="box col-lg-offset-2 col-lg-8 col-md-offset-2 col-md-8 col-sm-offset-2 col-sm-8 col-xs-12">
+          <div class="tltle col-lg-12 col-md-12 col-sm-12 col-xs-12">易企点</div><br>
+          <div class="left col-lg-3 col-md-3 col-sm-3 col-xs-12"></div>
+          <div class="center col-lg-6 col-md-6 col-sm-6 col-xs-12">
+              <form name="myForm" ng-model="myForm" novalidate>
+                          <div class="number col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <input type="text" class="inputtel form-control" name="username" ng-model="username"  placeholder="请输入手机号"ng-pattern="/^1[34578]\d{9}$/" required><br>
+                              <span class="input-txt1" ng-hide="username" ng-if="myForm.username.$dirty && myForm.username.$error.required">用户名不能为空!</span>
+                        </div>
+                        <div class="pwd col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <input type="password" class="inputpass form-control" ng-minlength="8" ng-maxlength="18" value="" name="password" ng-model="password"  placeholder="密码" required><br>
+
+                            <span class="input-mima1" ng-show="myForm.password.$dirty && myForm.password.$error.required">密码不能为空!</span>
+                            <span class="input-mima2" ng-if="(myForm.password.$error.minlength||myForm.password.$error.maxlength)&&myForm.password.$touched">密码为8-18位</span>
+                        </div><br>
+                         <div class="det col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <span class="pull-left"><input type="checkbox" class="rember" name="checkbox" checked="">
+                                记住密码</span>
+                                <a href="find_password.html" class="pull-right" target="_blank">找回密码</a>
+                            </div>
+
+                        <button type="submit" ng-click="formValid()" class="col-lg-11 col-md-11 col-sm-11 col-xs-11"><a href="" target="_blank">登录</a></button>
+              </form>
+              <div class="regCom col-lg-6 col-md-6 col-sm-6 col-xs-6"><a href="reg.html" target="_blank">企业注册</a></div>
+              <div class="reg col-lg-6 col-md-6 col-sm-6 col-xs-6"><a href="reg.html" target="_blank">免费注册</a></div>
+          </div>
+  <div class="right col-lg-3 col-md-3 col-sm-3 col-xs-12"></div>
+    </div>
+  <script type="text/javascript">
+        var app = angular.module('yqd',[]);
+      app.controller('loginController', ['$scope','$http', function($scope,$http){
+         }])
+  </script>
+<script type="text/javascript">
+    $(document).ready(function(){
+      if(localStorage.getItem("GHY_username")!=null)
+        {
+          $('.inputtel').val(localStorage.getItem("GHY_username"));
+        }
+        else{}
+      if(localStorage.getItem("GHY_password")!=null)
+        {
+          $('.inputpass').val(localStorage.getItem("GHY_password"));
+        }else{}
+          $('.rember').click(function(){
+                if($(this).attr("checked",'true')){
+                      save();
+                }
+                else{
+                  remove();
+                }
+          })
+          function remove (){
+            $('.rember').attr('checked', 'false');
+             localStorage.remove("GHY_username");
+             localStorage.remove("GHY_password");
+          }
+             function save (){
+                      $('.rember').attr('checked', 'checked');
+                      localStorage.setItem("GHY_username",$('.inputtel').val());
+                      localStorage.setItem("GHY_password",$('.inputpass').val());
+                    }
+              $('button').click(function(){
+                 if($(this).attr("checked",'true')){
+                      save();
+                }
+                else{
+                  remove();
+                }
+                if($('.inputtel').val().length ==0 || $('.inputpass').val().length ==0){
+                              layer.msg('请完善信息', {
+                                time: 1000,
+                              });
+                }else{
+                   var password1= $('.inputpass').val() +"EQD";
+                    var password2 = hex_sha1(password1);
+                    $.post('https://www.eqid.top:8009/User_login1.ashx',
+                      {
+                        u1: $('.inputtel').val(),
+                        u2:password2
+                      },
+                      function(data) {
+                        console.log(data)
+                        var  data1 =JSON.parse(data); //转成json数据
+                        var str = JSON.stringify(data1.items); // 将对象转换为字符串
+                              localStorage.setItem("GHY_login",str);
+                      if(Number(data1.status)==200)
+                      {
+                            //location.href ="http://www.eqidd.com:8010/user/login";
+                            var backUrl = window.location.href.split("?")[1].split("=")[1];
+                            console.log(backUrl)
+							window.location = backUrl;
+                      }
+                      else{
+                            layer.msg(data1.msg, {
+                                time: 1000,
+                              });
+                      }
+                    });
+                }
+              })
+    })
+</script>
+</body>
+</html>

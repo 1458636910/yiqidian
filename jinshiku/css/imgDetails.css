@@ -1,0 +1,11 @@
+.main{width: 100%;margin-top: 70px;}
+.mainCenter{padding: 20px 5px;}
+.imgArea>div{text-align: center;padding: 10px;}
+.imgArea>div:hover{background-color: #ddd;}
+.mainCenter>p{width: 100%;text-align: right;}
+.mainCenter>p button{padding: 10px 15px;border: none;outline: none;background-color: #29e;color: #fff;cursor: pointer;border-radius: 5px;font-size: 16px;}
+.addListTable,.changeListTable,.deleteImgTable{display: none;margin: 20px 0;text-align: center;}
+.addListTable span,.changeListTable span{display: inline-block;width: 50px;}
+.optionImg span{display: inline-block;color: #29e;margin: 2px 5px;cursor: pointer;}
+.optionImg span:hover{color: #f00;}
+.imgArea>div img{width: 80%;height: 300px;border-radius: 10px;margin: 0 10%;margin-bottom: 10px;}

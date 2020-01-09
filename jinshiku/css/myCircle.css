@@ -1,0 +1,50 @@
+.navTitle{width: 100%;height: 60px;line-height: 55px;;z-index: 999999;border-bottom: 0.5px solid #eee;position: fixed;top: 0;left: 0;right: 0;background-color: #fff;}
+.navTitle>div a{text-decoration: none;color: #000;}
+.navTitle .logo{font-size: 30px;line-height: 60px;cursor: pointer;}
+@media (max-width: 800px){
+.navTitle .logo{width: 100%;}
+.navTitle ul{display: none;}
+}
+.navTitle .logo img{display: inline-block;margin-right: 10px;width: 50px;margin-top: -5px;}
+.navTitle ul{z-index: 20;padding: 0;}
+.navTitle .quit{text-align: center;}
+.navTitle .quit a{color: #000;font-size: 20px;cursor: pointer;}
+.navTitle .quit a:hover{text-decoration: none;color: #29c;}
+.navTitle>ul>li{height: 60px;line-height: 57px;text-align: center;cursor: pointer;color: #000;color: #555;}
+.navTitle>ul>li:nth-child(1){width: 15%;}
+.navTitle>ul>li:nth-child(2){width: 15%;}
+.navTitle>ul>li:nth-child(3){width: 40%;}
+.navTitle>ul>li:nth-child(4){width: 15%;}
+.navTitle>ul>li:nth-child(5){width: 15%;}
+.navTitle>ul>li:nth-child(6){width: 15%;}
+.navTitle>ul>li button{height: 40px;line-height: 30px;border: none;outline: none;background-color: #fff;font-size: 18px}
+.navTitle>ul>li button span{margin-right: 10px;font-size: 18px;}
+.navTitle>ul>li input{width: 100%;box-sizing: border-box;padding: 0 20px;height: 40px;border-radius: 20px;outline: none;background-color: #ddd;border: none;}
+.searchBtn{margin-left: -20px;}
+.newsDetails,.Winfo{display: none;background-color: #eee;box-shadow:2px 2px 5px #aaaaaa, -2px 2px 5px #aaaaaa}
+.infoBtn img{width: 40px;height: 40px;border-radius: 20px;margin-right: 10px;}
+.searchArea input{line-height: 30px;width: 100%;}
+.searchArea span{margin-left: -30px;font-size: 16px;margin-top: 5px;line-height: 30px;color: #828282;}
+.newsDetails,.Winfo,.fouceDetails{display: none;background-color: #eee;z-index: 20px;text-align: left;box-shadow:2px 2px 5px #aaaaaa, -2px 2px 5px #aaaaaa}
+.newsDetails li:hover,.fouceDetails li:hover{color: #f00;}
+.Winfo li a,.fouceDetails li a{text-decoration: none;color: #555;}
+.Winfo li a:hover,.fouceDetails li a:hover{color: #f00}
+.Winfo li:hover{color: #f00;}
+.newsDetails li,.Winfo li,.fouceDetails li{font-size: 18px;padding-left: 20px;box-sizing: border-box;}
+.newsDetails li span,.Winfo li span,.fouceDetails li span{margin-right: 10px;font-size: 18px;}
+.infoBtn img{width: 40px;height: 40px;margin-right: 5px;border-radius: 20px;}
+.loginBtn,.infoBtn{display: none;}
+#writeCircleBtn button{height: 40px;padding: 0 20px;border-radius: 20px;background-color: #29e;color: #fff;}
+.lsss{border:  1px solid #000;width: 100%;padding: 10px;box-sizing: border-box;}
+#lssslb{background-color: #eee;z-index: 10000;display: none;}
+#lssslb p{text-align: left;height: 20px;padding-left: 10%;}
+#lssslb p a{text-decoration: none;color: #000;}
+.main{width: 100%;margin-top: 70px;}
+.deleteCircle{display: none;margin: 20px;}
+#circleList tr th,#circleList tr td {text-align: center;}
+.searchCircle{margin-bottom: 20px;margin-top: 20px;}
+#circleList tr td a{cursor: pointer;text-decoration: none;}
+#circleList tr td a:hover{color: #f00;}
+.searchBtn{cursor: pointer;}
+.loadMore,.noMoreBtn{width: 100%;height: 50px;line-height: 50px;background-color: #29e;color: #fff;text-align: center;border: none;border-radius: 5px;outline: none;display: none;}
+.noMoreBtn{background-color: #828282;cursor: default;}

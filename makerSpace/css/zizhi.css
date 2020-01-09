@@ -1,0 +1,19 @@
+.zzList{
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: space-between;
+   padding-top: 20px;
+}
+.zzList li{
+	width: 31%;
+	margin-bottom:30px
+}
+.zzList li img{
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 1px 3px 5px 1px rgba(0, 0, 0, 0.2);
+    cursor:pointer
+}
+.zzList li img:hover{
+    box-shadow: 1px 3px 5px 1px rgba(0, 0, 0, 0.3);
+}

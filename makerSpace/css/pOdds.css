@@ -1,0 +1,48 @@
+.personDiv{
+	display: none
+}
+.personTitle {
+    font-size: 25px;
+    text-align: center;
+     padding: 20px 0
+}
+#editorBtn{
+	background-color: #29e;
+    color: #fff;
+    padding: 5px 20px;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    display: none;
+     margin-bottom: 20px;
+     cursor: pointer
+}
+#addBtn{
+	background-color: #29e;
+    color: #fff;
+    padding: 5px 20px;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+     margin-bottom: 20px;
+     cursor: pointer
+}
+.personTips{
+	color: silver;
+	padding:  0 60px;
+	font-size: 14px;
+	padding-bottom: 10px;
+}
+.layui-layer-btn .layui-layer-btn0 {
+	border-color: #1E9FFF;
+	background-color: #1E9FFF;
+	color: #fff!important;
+	margin-right: 50px
+}
+.personDiv{
+	width: 90%;
+	margin: 0 auto;
+}
+.inner{
+    padding-bottom:20px
+}

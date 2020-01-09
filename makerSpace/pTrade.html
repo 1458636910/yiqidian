@@ -1,0 +1,1024 @@
+<link rel="stylesheet" type="text/css" href="css/tab2.css?v=201905"/>
+<!-- <link rel="stylesheet" type="text/css" href="css/pTrade.css"/> -->
+<style type="text/css">
+	.deleteMakeDiv,
+	.chooseHangyeDiv,
+	.choosePostDiv,
+	.serverTypeDiv,
+	.serverTimeDiv {
+		display: none;
+	}
+	
+	.addhy,
+	.addSelfPost,
+	#addserverHangye,
+	#addserverPost,
+	#addserverType,
+	#addserverTime {
+		display: flex;
+		justify-content: flex-end;
+		margin-bottom: 20px!important
+	}
+	
+	.addhy span,
+	.addSelfPost span,
+	#addserverHangye span,
+	#addserverPost span,
+	#addserverType span,
+	#addserverTime span {
+		background-color: #29e;
+		color: white;
+		padding: 5px 20px;
+		cursor:pointer;
+		border-radius: 5px;
+	}
+	.addhy span{
+		font-size: 14px;
+        margin-top: 20px;
+	}
+	.chooseHangyeDiv p,
+	.choosePostDiv p {
+		padding: 60px 160px;
+	}
+	
+	.serverTimeDiv label,
+	.serverTypeDiv label {
+		padding-left: 260px;
+		display: flex;
+		justify-content: flex-start;
+		margin-top: 20px
+	}
+	
+	.serverTimeDiv label span,
+	.serverTypeDiv label span {
+		width: 120px
+	}
+	
+	#tradeTable thead,
+	#selfPostTable thead,
+	#serverHangyeTable thead,
+	#serverPostTable thead {
+		display: flex;
+	}
+	
+	#tradeTable thead tr,
+	#selfPostTable thead tr,
+	#serverHangyeTable thead tr,
+	#serverPostTable thead tr {
+		display: flex;
+		width: 100%
+	}
+	
+	#tradeTable thead tr th:nth-child(2),
+	#tradeTable tbody tr td:nth-child(2),
+	#selfPostTable thead tr th:nth-child(2),
+	#selfPostTable tbody tr td:nth-child(2),
+	#serverHangyeTable thead tr th:nth-child(2),
+	#serverHangyeTable tbody tr td:nth-child(2),
+	#serverPostTable thead tr th:nth-child(2),
+	#serverPostTable tbody tr td:nth-child(2) {
+		width: 20%
+	}
+	
+	#tradeTable thead tr th:nth-child(1),
+	#tradeTable tbody tr td:nth-child(1),
+	#selfPostTable thead tr th:nth-child(1),
+	#selfPostTable tbody tr td:nth-child(1),
+	#serverHangyeTable thead tr th:nth-child(1),
+	#serverHangyeTable tbody tr td:nth-child(1),
+	#serverPostTable thead tr th:nth-child(1),
+	#serverPostTable tbody tr td:nth-child(1) {
+		width: 80%
+	}
+	
+	#serverTypeTable,
+	#serverTimeTable {
+		border: none
+	}
+	
+	#serverTypeTable tbody tr,
+	#serverTimeTable tbody tr {
+		border-bottom: 1px solid #dee2e6
+	}
+	
+	#tradeTable tbody tr,
+	#selfPostTable tbody tr,
+	#serverHangyeTable tbody tr,
+	#serverPostTable tbody tr {
+		width: 100%;
+		display: flex;
+	}
+	
+	#tradeTable tbody,
+	#selfPostTable tbody,
+	#serverHangyeTable tbody,
+	#serverPostTable tbody {
+		display: flex;
+		flex-wrap: wrap;
+	}
+	
+	#deleteHangye,
+	#deletePost {
+		cursor: pointer;
+		color: #29e
+	}
+	
+	.deleteMakeDiv {
+		padding-left: 120px;
+		padding-top: 30px
+	}
+	
+	#selfPostTable,#serverPostTable,#tradeTable,#serverHangyeTable{border:none}
+	#selfPostTable thead {}
+	
+	#selfPostTable thead tr {}
+	
+	#selfPostTable thead tr th {}
+	
+	#selfPostTable tbody {}
+	
+	#selfPostTable tbody tr {}
+	
+	#selfPostTable tbody tr td {}
+	
+</style>
+<div class="deleteMakeDiv">
+	<p>确定删除?</p>
+</div>
+<!-- 选择行业 -->
+<div class="chooseHangyeDiv">
+	<p class="form-inline">
+		<span>行业：</span>
+		<input type="text" class="form-control" id="chooseHangye" placeholder="输入关键字匹配"/>
+	</p>
+</div>
+<!-- 选择岗位 -->
+<div class="choosePostDiv">
+	<p class="form-inline">
+		<span>选择岗位</span>
+		<select name="" id="hangye1" class="form-control">
+			<option value="">==请选择==</option>
+		</select>
+		<select name="" id="hangye2" class="form-control">
+			<option value="">==请选择==</option>
+		</select>
+	</p>
+</div>
+<!-- 服务类型 -->
+<div class="serverTypeDiv form-inline">
+	<label for="">
+		<span>服务类型</span>
+		<select name="" id="chooseType" class="form-control">
+			<option value="0">线下服务</option>
+			<option value="1">电话服务</option>
+			<option value="2">线上服务</option>
+		</select>
+	</label>
+	<label for="">
+		<span>一小时价格</span>
+		<input type="number" class="form-control" id="hourPrice" min="0"/>
+		(元)
+	</label>
+	<label for="">
+		<span>一天价格</span>
+		<input type="number" class="form-control" id="dayPrice" min="0"/>
+		(元)
+	</label>
+</div>
+<!-- 服务时间 -->
+<div class="serverTimeDiv  form-inline">
+	<label for="">
+		<span>服务时间</span>
+		<select name="" id="chooseTime" class="form-control">
+			<option value="0">白天</option>
+			<option value="1">夜晚</option>
+		</select>
+	</label>
+	<label for="">
+		<span>开始时间</span>
+		<input type="text" id="startTime" class="form-control" autocomplete="off"/>
+	</label>
+	<label for="">
+		<span>结束时间</span>
+		<input type="text" id="endTime" class="form-control" autocomplete="off"/>
+	</label>
+</div>
+<div class="cd-tabs">
+	<nav>
+		<ul class="cd-tabs-navigation">
+			<li>
+				<a data-content="1" class="selected" href="#0">自己的行业</a>
+			</li>
+			<li>
+				<a data-content="2" href="#0">自己的岗位</a>
+			</li>
+			<li>
+				<a data-content="3" href="#0">服务的行业</a>
+			</li>
+			<li>
+				<a data-content="4" href="#0">服务的岗位</a>
+			</li>
+			<li>
+				<a data-content="5" href="#0">服务的类型</a>
+			</li>
+			<li>
+				<a data-content="6" href="#0">服务的时间</a>
+			</li>
+		</ul>
+	</nav>
+	<ul class="cd-tabs-content">
+		<li data-content="1" class="selected">
+			<p class="addhy">
+				<span>添加</span>
+			</p>
+			<table id="tradeTable">	</table>
+		</li>
+		<li data-content="2">
+			<p class="addSelfPost">
+				<span>添加</span>
+			</p>
+			<table id="selfPostTable">
+				<thead>
+					<tr>
+						<th data-field="post">	</th>
+						<th data-field="option">	</th>
+					</tr>
+				</thead>
+			</table>
+			<br/>
+		</li>
+		<li data-content="3">
+			<p id="addserverHangye">
+				<span>添加</span>
+			</p>
+			<table id="serverHangyeTable">
+				<thead>
+					<tr>
+						<th data-field="Industry">	</th>
+						<th data-field="option">	</th>
+					</tr>
+				</thead>
+			</table>
+		</li>
+		<li data-content="4">
+			<p id="addserverPost">
+				<span>添加</span>
+			</p>
+			<table id="serverPostTable">
+				<thead>
+					<tr>
+						<th data-field="post">	</th>
+						<th data-field="option">	</th>
+					</tr>
+				</thead>
+			</table>
+		</li>
+		<li data-content="5">
+			<p id="addserverType">
+				<span>添加</span>
+			</p>
+			<table id="serverTypeTable">
+				<thead>
+					<tr>
+						<th data-field="type">	</th>
+						<th data-field="OneHourPrice">	</th>
+						<th data-field="OneDayPrice">	</th>
+						<th data-field="option">	</th>
+					</tr>
+				</thead>
+			</table>
+		</li>
+		<li data-content="6">
+			<p id="addserverTime">
+				<span>添加</span>
+			</p>
+			<table id="serverTimeTable">
+				<thead>
+					<tr>
+						<th data-field="type">	</th>
+						<th data-field="startTime">	</th>
+						<th data-field="endTime">	</th>
+						<th data-field="option">	</th>
+					</tr>
+				</thead>
+			</table>
+		</li>
+	</ul>
+</div>
+<script src="js/tab2.js" type="text/javascript"  defer></script>
+<script src="js/bootstrap3-typeahead.min.js" type="text/javascript"  defer></script>
+<script type="text/javascript" charset="utf-8"  defer>
+	$(document).ready(function() {
+
+		$.post(http_head + 'Option_AreasAnd.ashx', {
+			"type": 2
+		}, function(data) {
+			$("#chooseHangye").typeahead({
+				source: data,
+				items: 15,
+			});
+		});
+
+		function loadType() {
+			$.post(http_head + 'Makerspacey/MakerIndustry/Get_MakerIndustry.ashx', {
+				"userGuid": userGuid,
+			}, function(data) {
+				var dataType = JSON.parse(data)
+				if (dataType.items.Industry.length == 0) {
+					layer.msg('创客行业还没完善，请完善', {
+						time: 1000,
+					});
+					$('#addcreaterBtn').show()
+					$('#createrBtn').hide()
+				} else {
+					$('#createrBtn').show()
+					$('#addcreaterBtn').hide()
+					loadTradeTable(dataType.items.Industry);
+					loadserverHangyeTable(dataType.items.ServiceIndustry);
+					loadselfPostTable(dataType.items.Post);
+					loadserverPostTable(dataType.items.ServicePost);
+					loadserverPostTypeTable(dataType.items.ServiceMode);
+					loadserverPostTimeTable(dataType.items.ServiceTime)
+				}
+			});
+		}
+		loadType()
+		//行业 
+		function loadTradeTable(data) {
+			$('#tradeTable').bootstrapTable({
+				data: data,
+				columns: [{
+						field: 'Industry',
+						title: '行业',
+						align: 'center',
+						valign: 'middle'
+					},
+					{
+						field: 'option',
+						title: '操作',
+						align: 'center',
+						valign: 'middle',
+						formatter: optionselfHangyeFormatter,
+						events: optionselfHnagyeEvents
+					}
+				]
+			});
+			$("#tradeTable").bootstrapTable('load', data);
+
+			function optionselfHangyeFormatter(e, value, row, index) {
+				return [
+					'<a class="deleteHangye"  title="删除">',
+					'<span id="deleteHangye" class="text-danger">删除</span>',
+					'</a>  ',
+				].join('');
+			};
+		}
+		window.optionselfHnagyeEvents = {
+			'click .deleteHangye': function(e, value, row, index) {
+				layer.open({
+					type: 1,
+					area: ['300px', '180px'],
+					title: ['删除自己的行业', 'font-size:18px;text-align: center;'],
+					content: $(".deleteMakeDiv"),
+					btn: '确定',
+					yes: function(index, layero) {
+						$.post(http_head + 'Makerspacey/MakerIndustry/Delete_MakerIndustrys.ashx', {
+							"userGuid": userGuid,
+							"industryId": row.Id,
+						}, function(data) {
+							var dataDelete = JSON.parse(data)
+							if (dataDelete.status == 200) {
+								layer.msg("删除成功", {
+									time: 1000,
+								});
+								loadType()
+							} else {
+								layer.msg(dataDelete.msg, {
+									time: 1000,
+								});
+							}
+						});
+						layer.close(index)
+					}
+				})
+			}
+		};
+		// 添加自己的行业
+		$('.addhy span').click(function(event) {
+			layer.open({
+				type: 1,
+				area: ['600px', '480px'],
+				title: ['添加自己创客行业', 'font-size:18px;text-align: center;'],
+				content: $(".chooseHangyeDiv"),
+				btn: '确定',
+				yes: function(index, layero) {
+					$.post('' + EQD_space + '/Makerspacey/MakerIndustry/Add_MakerIndustrys.ashx', {
+						"userGuid": dataInfo.Guid,
+						"type": 0,
+						"Industry": $('#chooseHangye').val()
+					}, function(data) {
+						var dataSelf = JSON.parse(data)
+						if (dataSelf.status == 200) {
+							layer.msg("添加成功", {
+								time: 1000,
+							});
+							loadType()
+						}
+					});
+					layer.close(index)
+				}
+			})
+		});
+		// 岗位
+		function loadselfPostTable(data) {
+			$('#selfPostTable').bootstrapTable({
+				data: data,
+				columns: [{
+						field: 'post',
+						title: '岗位',
+						align: 'center',
+						valign: 'middle'
+					},
+					{
+						field: 'option',
+						title: '操作',
+						align: 'center',
+						valign: 'middle',
+						formatter: optionselfPostFormatter,
+						events: optionselfPostEvents
+					}
+				]
+			});
+			$("#selfPostTable").bootstrapTable('load', data);
+
+			function optionselfPostFormatter(e, value, row, index) {
+				return [
+					'<a class="deletePost"  title="删除">',
+					'<span id="deletePost">删除</span>',
+					'</a>  ',
+				].join('');
+			};
+		}
+		window.optionselfPostEvents = {
+			'click .deletePost': function(e, value, row, index) {
+				layer.open({
+					type: 1,
+					area: ['300px', '180px'],
+					title: ['删除自己的岗位', 'font-size:18px;text-align: center;'],
+					content: $(".deleteMakeDiv"),
+					btn: '确定',
+					yes: function(index, layero) {
+						$.post(http_head + 'Makerspacey/MakerIndustry/Delete_MakerPost.ashx', {
+							"userGuid": userGuid,
+							"postId": row.Id,
+						}, function(data) {
+							var dataDelete = JSON.parse(data)
+							if (dataDelete.status == 200) {
+								layer.msg("删除成功", {
+									time: 1000,
+								});
+								loadType()
+							} else {
+								layer.msg(dataDelete.msg, {
+									time: 1000,
+								});
+							}
+						});
+						layer.close(index)
+					}
+				})
+			}
+		};
+		$('.addSelfPost span').click(function() {
+			layer.open({
+				type: 1,
+				area: ['800px', '480px'],
+				title: ['添加自己创客岗位', 'font-size:18px;text-align: center;'],
+				content: $(".choosePostDiv"),
+				btn: '确定',
+				yes: function(index, layero) {
+					$.post(http_head + 'Makerspacey/MakerIndustry/Add_MakerPost.ashx', {
+						"userGuid": userGuid,
+						"type": 0,
+						"post": $('#hangye2').val()
+					}, function(data) {
+						var dataSelf = JSON.parse(data)
+						if (dataSelf.status == 200) {
+							layer.msg("添加成功", {
+								time: 1000,
+							});
+							loadType()
+						}
+					});
+					layer.close(index)
+				}
+			})
+		});
+		// 获取岗位
+		var dataType, hangye1Val;
+		$.post(http_head + 'Option_AreasAnd.ashx', {
+			"type": 1
+		}, function(data) {
+			dataType = data;
+			for (var i = 0; i < data.length; i++) {
+				$('#hangye1').append('<option value="' + i + '">' + dataType[i].name + '</option>');
+			}
+		});
+		$('#hangye1').change(function() {
+			if ($(this).val() != "") {
+				hangye1Val = dataType[$(this).val()].name
+				$('#hangye2 option:gt(0)').remove()
+				if (true) {}
+				for (var j = 0; j < dataType[$(this).val()].sub.length; j++) {
+					$('#hangye2').append('<option value="' + dataType[$(this).val()].sub[j].name + '">' + dataType[$(this).val()].sub[
+						j].name + '</option>')
+				}
+			}
+		});
+		// 服务行业
+		function loadserverHangyeTable(data) {
+			$('#serverHangyeTable').bootstrapTable({
+				data: data,
+				columns: [{
+						field: 'Industry',
+						title: '服务行业',
+						align: 'center',
+						valign: 'middle'
+					},
+					{
+						field: 'option',
+						title: '操作',
+						align: 'center',
+						valign: 'middle',
+						formatter: optionserverHangyeFormatter,
+						events: optionserverHangyeEvents
+					}
+				]
+			});
+			$("#serverHangyeTable").bootstrapTable('load', data);
+
+			function optionserverHangyeFormatter(e, value, row, index) {
+				return [
+					'<a class="deleteHangye"  title="删除">',
+					'<span id="deleteHangye">删除</span>',
+					'</a>  ',
+				].join('');
+			};
+		}
+		window.optionserverHangyeEvents = {
+			'click .deleteHangye': function(e, value, row, index) {
+				layer.open({
+					type: 1,
+					area: ['300px', '180px'],
+					title: ['删除服务的行业', 'font-size:18px;text-align: center;'],
+					content: $(".deleteMakeDiv"),
+					btn: '确定',
+					yes: function(index, layero) {
+						$.post(http_head + 'Makerspacey/MakerIndustry/Delete_MakerIndustrys.ashx', {
+							"userGuid": userGuid,
+							"industryId": row.Id,
+						}, function(data) {
+							var dataDelete = JSON.parse(data)
+							if (dataDelete.status == 200) {
+								layer.msg("删除成功", {
+									time: 1000,
+								});
+								loadType()
+							} else {
+								layer.msg(dataDelete.msg, {
+									time: 1000,
+								});
+							}
+						});
+						layer.close(index)
+					}
+				})
+			}
+		};
+		// 添加服务的行业
+		$('#addserverHangye span').click(function(event) {
+			layer.open({
+				type: 1,
+				area: ['600px', '480px'],
+				title: ['添加服务的创客行业', 'font-size:18px;text-align: center;'],
+				content: $(".chooseHangyeDiv"),
+				btn: '确定',
+				yes: function(index, layero) {
+					$.post(http_head + 'Makerspacey/MakerIndustry/Add_MakerIndustrys.ashx', {
+						"userGuid": userGuid,
+						"type": 1,
+						"Industry": $('#chooseHangye').val()
+					}, function(data) {
+						var dataSelf = JSON.parse(data)
+						if (dataSelf.status == 200) {
+							layer.msg("添加成功", {
+								time: 1000,
+							});
+							loadType()
+						}
+					});
+					layer.close(index)
+				}
+			})
+		});
+
+		function loadserverPostTable(data) {
+			$('#serverPostTable').bootstrapTable({
+				data: data,
+				columns: [{
+						field: 'post',
+						title: '服务岗位',
+						align: 'center',
+						valign: 'middle'
+					},
+					{
+						field: 'option',
+						title: '操作',
+						align: 'center',
+						valign: 'middle',
+						formatter: optionserverPostFormatter,
+						events: optionserverPostEvents
+					}
+				]
+			});
+			$("#serverPostTable").bootstrapTable('load', data);
+
+			function optionserverPostFormatter(e, value, row, index) {
+				return [
+					'<a class="deletePost"  title="删除">',
+					'<span id="deletePost">删除</span>',
+					'</a>  ',
+				].join('');
+			};
+		}
+		window.optionserverPostEvents = {
+			'click .deletePost': function(e, value, row, index) {
+				layer.open({
+					type: 1,
+					area: ['300px', '180px'],
+					title: ['删除服务的岗位', 'font-size:18px;text-align: center;'],
+					content: $(".deleteMakeDiv"),
+					btn: '确定',
+					yes: function(index, layero) {
+						$.post(http_head + 'Makerspacey/MakerIndustry/Delete_MakerPost.ashx', {
+							"userGuid": userGuid,
+							"postId": row.Id,
+						}, function(data) {
+							var dataDelete = JSON.parse(data)
+							if (dataDelete.status == 200) {
+								layer.msg("删除成功", {
+									time: 1000,
+								});
+								loadType()
+							} else {
+								layer.msg(dataDelete.msg, {
+									time: 1000,
+								});
+							}
+						});
+						layer.close(index)
+					}
+				})
+			}
+		};
+		// 添加服务的岗位
+		$('#addserverPost span').click(function() {
+			layer.open({
+				type: 1,
+				area: ['800px', '480px'],
+				title: ['添加服务创客岗位', 'font-size:18px;text-align: center;'],
+				content: $(".choosePostDiv"),
+				btn: '确定',
+				yes: function(index, layero) {
+					$.post(http_head + 'Makerspacey/MakerIndustry/Add_MakerPost.ashx', {
+						"userGuid": userGuid,
+						"type": 1,
+						"post": $('#hangye2').val()
+					}, function(data) {
+						var dataSelf = JSON.parse(data)
+						if (dataSelf.status == 200) {
+							layer.msg("添加成功", {
+								time: 1000,
+							});
+							loadType()
+						}
+					});
+					layer.close(index)
+				}
+			})
+		});
+		// 服务类型
+		function loadserverPostTypeTable(data) {
+			$('#serverTypeTable').bootstrapTable({
+				data: data,
+				columns: [{
+						field: 'type',
+						title: '服务类型',
+						align: 'center',
+						valign: 'middle',
+						formatter: serverTypeFormatter,
+					},
+					{
+						field: 'OneHourPrice',
+						title: '一小时(元)',
+						align: 'center',
+						valign: 'middle'
+					},
+					{
+						field: 'OneDayPrice',
+						title: '一天(元)',
+						align: 'center',
+						valign: 'middle'
+					},
+					{
+						field: 'option',
+						title: '操作',
+						align: 'center',
+						valign: 'middle',
+						formatter: optionserverTypeFormatter,
+						events: optionserverTypeEvents
+					}
+				]
+			});
+			$("#serverTypeTable").bootstrapTable('load', data);
+
+			function optionserverTypeFormatter(e, value, row, index) {
+				return [
+					'<a class="detetetype"  title="删除">',
+					'<span id="detetetype">删除</span>',
+					'</a>  ',
+					'<a class="changetype"  title="修改">',
+					'<span id="changetype">修改</span>',
+					'</a>  ',
+				].join('');
+			};
+
+			function serverTypeFormatter(e, value, row, index) {
+				var serverTypeVal;
+				if (value.type == 0) {
+					serverTypeVal = "线下服务"
+				} else if (value.type == 1) {
+					serverTypeVal = "电话服务"
+				} else if (value.type == 2) {
+					serverTypeVal = "线上服务"
+				}
+				return [
+					serverTypeVal
+				].join('');
+			};
+		}
+		window.optionserverTypeEvents = {
+			'click .detetetype': function(e, value, row, index) {
+				layer.open({
+					type: 1,
+					area: ['300px', '180px'],
+					title: ['删除服务的岗位', 'font-size:18px;text-align: center;'],
+					content: $(".deleteMakeDiv"),
+					btn: '确定',
+					yes: function(index, layero) {
+						$.post(http_head + 'Makerspacey/MakerIndustry/Delete_MakerServiceMode.ashx', {
+							"userGuid": userGuid,
+							"modeId": row.Id,
+						}, function(data) {
+							var dataDelete = JSON.parse(data)
+							if (dataDelete.status == 200) {
+								layer.msg("删除成功", {
+									time: 1000,
+								});
+								loadType()
+							} else {
+								layer.msg(dataDelete.msg, {
+									time: 1000,
+								});
+							}
+						});
+						layer.close(index)
+					}
+				})
+			},
+			'click .changetype': function(e, value, row, index) {
+				$('#chooseType').val(row.type)
+				$('#dayPrice').val(row.OneDayPrice)
+				$('#hourPrice').val(row.OneHourPrice)
+				layer.open({
+					type: 1,
+					area: ['800px', '480px'],
+					title: ['修改服务创客的类型', 'font-size:18px;text-align: center;'],
+					content: $(".serverTypeDiv"),
+					btn: '确定',
+					yes: function(index, layero) {
+						$.post(http_head + 'Makerspacey/MakerIndustry/Update_MakerServiceMode.ashx', {
+							"userGuid": userGuid,
+							"modeId": row.Id,
+							"oneDayPrice": $('#dayPrice').val(),
+							"oneHourPrice": $('#hourPrice').val()
+						}, function(data) {
+							var dataSelf = JSON.parse(data)
+							if (dataSelf.status == 200) {
+								layer.msg("修改成功", {
+									time: 1000,
+								});
+								$('#chooseType').val(0)
+								$('#dayPrice').val("")
+								$('#hourPrice').val("")
+								loadType()
+							} else {
+								layer.msg(dataSelf.msg, {
+									time: 1000,
+								});
+							}
+						});
+						layer.close(index)
+					}
+				})
+			}
+		};
+		// 添加服务的类型
+		$('#addserverType span').click(function() {
+			layer.open({
+				type: 1,
+				area: ['800px', '480px'],
+				title: ['添加服务创客的类型', 'font-size:18px;text-align: center;'],
+				content: $(".serverTypeDiv"),
+				btn: '确定',
+				yes: function(index, layero) {
+					$.post(http_head + 'Makerspacey/MakerIndustry/Add_MakerServiceMode.ashx', {
+						"userGuid": userGuid,
+						"type": $('#chooseType').val(),
+						"oneDayPrice": $('#dayPrice').val(),
+						"oneHourPrice": $('#hourPrice').val()
+					}, function(data) {
+						var dataSelf = JSON.parse(data)
+						if (dataSelf.status == 200) {
+							layer.msg("添加成功", {
+								time: 1000,
+							});
+							loadType()
+						} else {
+							layer.msg(dataSelf.msg, {
+								time: 1000,
+							});
+						}
+					});
+					layer.close(index)
+				}
+			})
+		});
+		// 服务时间
+		function loadserverPostTimeTable(data) {
+			$('#serverTimeTable').bootstrapTable({
+				data: data,
+				columns: [{
+						field: 'type',
+						title: '服务类型',
+						align: 'center',
+						valign: 'middle',
+						formatter: serverTimeFormatter,
+					},
+					{
+						field: 'startTime',
+						title: '开始时间',
+						align: 'center',
+						valign: 'middle'
+					},
+					{
+						field: 'endTime',
+						title: '结束时间',
+						align: 'center',
+						valign: 'middle'
+					},
+					{
+						field: 'option',
+						title: '操作',
+						align: 'center',
+						valign: 'middle',
+						formatter: optionserverTimeFormatter,
+						events: optionserverTimeEvents
+					}
+				]
+			});
+			$("#serverTimeTable").bootstrapTable('load', data);
+
+			function optionserverTimeFormatter(e, value, row, index) {
+				return [
+					'<a class="detetetype"  title="删除">',
+					'<span id="detetetype">删除</span>',
+					'</a>  ',
+					'<a class="changetype"  title="修改">',
+					'<span id="changetype">修改</span>',
+					'</a>  ',
+				].join('');
+			};
+
+			function serverTimeFormatter(e, value, row, index) {
+				var serverTypeVal;
+				if (value.type == 0) {
+					serverTimeVal = "白天"
+				} else {
+					serverTimeVal = "晚上"
+				}
+				return [
+					serverTimeVal
+				].join('');
+			};
+		}
+		window.optionserverTimeEvents = {
+			'click .detetetype': function(e, value, row, index) {
+				layer.open({
+					type: 1,
+					area: ['300px', '180px'],
+					title: ['删除服务的岗位', 'font-size:18px;text-align: center;'],
+					content: $(".deleteMakeDiv"),
+					btn: '确定',
+					yes: function(index, layero) {
+						$.post(http_head + 'Makerspacey/MakerIndustry/Delete_MakerServiceTime.ashx', {
+							"userGuid": userGuid,
+							"timeId": row.Id,
+						}, function(data) {
+							var dataDelete = JSON.parse(data)
+							if (dataDelete.status == 200) {
+								layer.msg("删除成功", {
+									time: 1000,
+								});
+								loadType()
+							} else {
+								layer.msg(dataDelete.msg, {
+									time: 1000,
+								});
+							}
+						});
+						layer.close(index)
+					}
+				})
+			},
+			'click .changetype': function(e, value, row, index) {
+				$('#chooseTime').val(row.type)
+				$('#startTime').val(row.startTime)
+				$('#endTime').val(row.endTime)
+				layer.open({
+					type: 1,
+					area: ['800px', '480px'],
+					title: ['修改服务创客的时间', 'font-size:18px;text-align: center;'],
+					content: $(".serverTimeDiv"),
+					btn: '确定',
+					yes: function(index, layero) {
+						$.post(http_head + 'Makerspacey/MakerIndustry/Update_MakerServiceTime.ashx', {
+							"userGuid": userGuid,
+							"timeId": row.Id,
+							"startTime": $('#startTime').val(),
+							"endTime": $('#endTime').val()
+						}, function(data) {
+							var dataSelf = JSON.parse(data)
+							if (dataSelf.status == 200) {
+								layer.msg("修改成功", {
+									time: 1000,
+								});
+								$('#chooseTime').val(0)
+								$('#startTime').val("")
+								$('#endTime').val("")
+								loadType()
+							} else {
+								layer.msg(dataSelf.msg, {
+									time: 1000,
+								});
+							}
+						});
+						layer.close(index)
+					}
+				})
+			}
+		};
+		// 添加服务的时间
+		$('#addserverTime span').click(function() {
+			layer.open({
+				type: 1,
+				area: ['800px', '480px'],
+				title: ['添加服务创客的时间', 'font-size:18px;text-align: center;'],
+				content: $(".serverTimeDiv"),
+				btn: '确定',
+				yes: function(index, layero) {
+					$.post(http_head + 'Makerspacey/MakerIndustry/Add_MakerServiceTime.ashx', {
+						"userGuid": userGuid,
+						"type": $('#chooseTime').val(),
+						"startTime": $('#startTime').val(),
+						"endTime": $('#endTime').val()
+					}, function(data) {
+						var dataSelf = JSON.parse(data)
+						if (dataSelf.status == 200) {
+							layer.msg("添加成功", {
+								time: 1000,
+							});
+							loadType()
+						} else {
+							layer.msg(dataSelf.msg, {
+								time: 1000,
+							});
+						}
+					});
+					layer.close(index)
+				}
+			})
+		});
+
+	})
+</script>

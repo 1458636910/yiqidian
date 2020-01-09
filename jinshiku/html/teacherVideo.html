@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta http-equiv="Cache-Control" CONTENT="no-cache">
+  <link rel="icon" href="../image/jinLogo.png" type="image/x-icon"/>
+  <title>我的视频</title>
+  <link rel="stylesheet" href="../css/reset.css">
+  <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap-table/1.11.1/bootstrap-table.min.css">
+  <link rel="stylesheet" href="../css/skin/default/layer.css">
+  <link rel="stylesheet" href="../css/teacherVideo.css?ver=20180827">
+
+</head>
+<body>
+  <div class="navTitle">
+          <ul class="clearfix">
+                <li class="pull-left"><a href="http://www.eqidd.com/yqy/article.html" target="_blank">易企阅</a></li>
+                <li class="pull-left"><a href="http://www.jinshiku.com" target="_blank">金师库</a></li>
+                <li class="pull-left"><a href="http://www.eqidd.com/createrSpace/html/personInfo.html" target="_blank">创客空间</a></li>
+                <li class="pull-left"><a href="http://www.eqidd.com/comSpace/eqd.html" target="_blank">企业空间</a></li>
+                <li class="pull-left"><a href="http://www.eqidd.com/html/download.html" target="_blank">下载</a></li>
+                <li class="pull-left"><a href="http://www.eqidd.com/html/feedback.html" target="_blank">反馈</a></li>
+                <li class="pull-right loginBtn" ><a id="loginBtn">登录</a></li>
+                <li class="pull-right regBtn" ><a id="regBtn" href="http://www.eqidd.com/html/reg.html" target="_blank">注册</a></li>
+                <li class="pull-right quitOut">退出</li>
+                <li class="pull-right infoBtn" ><span class="loginName"></span><a href="../createrSpace/html/personInfo.html" target="_blank">个人中心</a></li>
+          </ul>
+  </div>
+  <div class="topArea">
+      <div class="loginArea"></div>
+      <div class="search contain clearfix">
+          <div class="searchLeft pull-left"><img src="../image/downQRcode.png" alt=""><a href="../font.html">易企学</a></div>
+          <div class="searchRight pull-left">
+          <div class="input-group input-group-lg searchDiv">
+                  <input type="text" class="form-control inputVal">
+                  <span class="input-group-addon seaBtn">搜索</span>
+          </div>
+          </div>
+      </div>
+      <div class="ulList">
+          <ul class="mainFountion clearfix">
+            <li class="pull-left"><a href="../font.html" target="_blank">首页</a></li>
+            <li class="pull-left"><a href="teacherIndex.html" target="_blank">找讲师</a></li>
+            <li class="pull-left"><a href="lookCourseList.html" target="_blank">选课程</a></li>
+            <a href="lookDemandList.html"><li class="pull-left">看需求</li></a>
+            <li class="pull-left"><a href="" target="_blank">发需求</a></li>
+          </ul>
+      </div>
+  </div>
+<div class="main">
+        <div class="mainLeft col-lg-3 col-md-3 col-sm-0 col-xs-0"></div>
+        <div class="mainCenter col-lg-6 col-md-6 col-sm-12 col-xs-12">
+            <div class="banner">
+                  <span class="glyphicon glyphicon-heart"></span>
+                  <span>视频列表</span>
+                </div>
+                <p class="uploadArea"><button class="uploadVideo"><a href="updataVideo.html" target="black">上传视频</a></button></p>
+                <div class="col-lg-12">
+                          <table id="videoListTable" >
+                                <thead>
+                                      <tr>
+                                            <th data-field="videoImage">视频截图</th>
+                                            <th data-field="videoTitle">视频名称</th>
+                                            <th data-field="label">视频类别</th>
+                                            <th data-field="option">操作</th>
+                                      </tr>
+                                </thead>
+                          </table>
+                         <br>
+                         <button class="loadMore">阅读更多</button>
+                         <button class="noMoreBtn">已全部加载</button>
+                  </div>
+                  <div class="deleteVideoTable">
+                    确定删除该视频
+                  </div>
+                  <div class="changeVideoTable">
+                        <form action=""  class="form-horizontal">
+                          <div class="form-group">
+                            <label for="videoTitle" class="col-sm-2 control-label">视频标题 :</label>
+                            <div class="col-sm-10">
+                              <input type="text" class="form-control" id="inputVideoTitle" placeholder="视频标题">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="videoLabel" class="col-sm-2 control-label">视频标签 :</label>
+                            <div class="col-sm-10">
+                              <input type="text" class="form-control" id="inputVideoLabel" placeholder="视频标签">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="videoTitle" class="col-sm-2 control-label">视频类别 :</label>
+                            <div class="col-sm-10">
+                              <!-- <input type="text" class="form-control" id="inputVideoType" placeholder="视频类别"> -->
+                              <textarea class="form-control" rows="3" id="inputVideoDescribe"></textarea>
+                            </div>
+                        </div>
+                        </form>
+                  </div>
+                  <div class="videoLabelTable clearfix">
+                    <input type="text" class="form-control" id="labelA">
+                    <div class="videoLabelLeft pull-left"></div>
+                    <div class="videoLabelRight pull-left"></div>
+                  </div>
+        </div>
+        <div class="mainRight col-lg-3 col-md-3 col-sm-0 col-xs-0"></div>
+</div>
+  <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+  <script type="text/javascript" src="http://cdn.bootcss.com/layer/3.1.0/layer.js"></script>
+  <script type="text/javascript" src="http://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="http://cdn.bootcss.com/bootstrap-table/1.11.1/bootstrap-table.js"></script>
+  <script type="text/javascript" src="../js/bootstrap-table-zh-CN.min.js"></script>
+  <script type="text/javascript" src="../js/change.js?ver=20180305"></script>
+  <script type="text/javascript" src="../js/teacherVideo.js?ver=20180312"></script>
+</body>
+</html>

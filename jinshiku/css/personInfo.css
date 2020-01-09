@@ -1,0 +1,72 @@
+.mian{width: 100%;}
+.topT{width: 1200px;margin: 0 auto;height: 200px;padding: 10px;font-size: 20px;font-weight: bold;}
+.mainText{width: 1200px;margin: 0px auto;}
+.mainTextLeft{width: 209px;text-align: center;}
+.mainTextLeft ul li{width: 100%;height: 40px;line-height: 40px;cursor: pointer;}
+.mainTextLeft ul li:hover{background-color: lightblue}
+.mainTextRight{width: 950px;border: 1px solid #000;padding: 20px;box-sizing: border-box;}
+.mainTextRight>div{display: none;}
+.top{height: 60px;border-bottom: #e1e1e1 solid 2px;margin-bottom: 10px;}
+.top>a{text-decoration: none;font-size: 25px;font-weight: bold;margin-left: 40px;color: #666;}
+.mainTextRight .infoDiv{display: block;}
+.deleteCircle,.deleteVideoTable,.deleteCourseTable,.addCourseVideoTable{display: none;text-align: center;margin: 20px;}
+#circleList tr th,#circleList tr td{text-align: center;vertical-align: middle;}
+#circleList tr td a{text-decoration: none;cursor: pointer;}
+.researchField{color: #29e;}
+.changeVideoTable,.changeCourseTable{display: none;margin: 50px 20px}
+.videoLabelTable,.courseLabelTable,.infoLabelTable{display: none;margin: 20px;}
+.videoLabelLeft,.courseLabelLeft,.infoLabelLeft{width: 110px;}
+.videoLabelLeft p,.courseLabelLeft p,.infoLabelLeft p{cursor: pointer;background-color: #29e;color: #fff;height: 30px;line-height: 30px;text-align: center;}
+.videoLabelRight,.courseLabelRight,.infoLabelRight{width: 480px;margin-left: 20px;}
+.videoLabelRight span,.courseLabelRight span,.infoLabelRight span{display: inline-block;width: 120px;height: 30px;line-height: 30px;}
+.loadMore,.noMoreBtn,.loadMoreMin,.noMoreMin{width: 100%;height: 50px;line-height: 50px;background-color: #29e;color: #fff;text-align: center;border: none;border-radius: 5px;outline: none;display: none;}
+.noMoreBtn,.noMoreMin{background-color: #828282;cursor: default;}
+#videoListTable tr td:nth-child(1){width: 226px;position: relative;cursor: pointer;}
+.videoPlayTime{position: absolute;right: 18px;top: 95px;color: #fff;cursor: pointer;}
+#videoListTable tr td a{text-decoration: none;cursor: pointer;}
+.uploadVideo,.addCircle,.addCourse,.newphoto,.addNewVideoBtn{background-color: #29e;border-radius: 5px;border: none;outline: none;text-align: center;width: 120px;height: 50px;}
+.addNewVideoBtn a{color: #fff;text-decoration: none;font-size: 15px;}
+#addCourseVideoTable p{text-align: right;}
+.newphoto{color: #fff;margin: 10px 0;width: 144px;}
+.uploadVideo a,.addCircle a,.addCourse a,.addPhoto1 a{color: #fff;text-decoration: none;font-size: 16px;line-height: 50px;}
+.imgArea>div p{width: 100%;text-align: center;}
+.optionImg span{display: inline-block;color: #29e;margin: 2px 5px;cursor: pointer;}
+.optionImg .deleteImgList{color: #f00;}
+.optionImg .addphotoBtn{background-color: #29e;padding: 5px 8px;border-radius: 5px;color: #fff;}
+.imgArea{width: 180px;text-align: center;overflow: auto;height: 500px;}
+.imgArea>div{width: 100%;}
+.imgArea>div img{width: 80%;height: 150px;border-radius: 10px;margin: 0 10%;margin-bottom: 10px;}
+.addListTable,.changeListTable,.deleteListTable,.deleteImgTable,.addListTable,.addphotoTable,.changephotoTable,.changeListNameTable{display: none;margin: 20px 0;text-align: center;}
+.addListTable span,.changeListTable span{display: inline-block;width: 50px;}
+#infoTable label span,#courseTable label span{display: inline-block;width: 110px;}
+.subArea{width: 100%;text-align: center;margin: 20px;}
+#subFormBtn{padding: 10px 25px;border: none;outline: none;color: #fff;background-color: #29e;font-size: 16px;border-radius: 5px;}
+#s_county{display: none;}
+#changeArea{margin-left: 10px;border: none;outline: none;background-color: #29e;color: #fff;padding: 5px 10px;}
+.newArea{display: none;}
+.bigDiv{height: 500px;overflow: auto;}
+.imgDetails{width: 700px;border-left: 3px solid #ddd;height: 750px;overflow: auto;}
+/*::-webkit-scrollbar{width:0px}*/
+.imgDetails>div{width: 100%;}
+.imgDetails>div img{width: 80%;height: 300px;border-radius: 10px;margin: 0 10%;margin-bottom: 10px;}
+.imgDetails>div p{text-align: center;}
+.photoDiv .top button{background-color: #29e;color: #fff;height: 50px;width: 80px;margin-bottom: 10px;border: none;outline: none;}
+.addphotoBtn{cursor: pointer;}
+.topT .teainfoDiv{margin: 10px;}
+.topT img{width: 150px;height: 150px;border-radius: 15px;}
+.changePhoto{padding: 5px 8px;background-color: #29e;color: #fff;border: none;outline: none;border-radius: 5px;}
+label span{vertical-align: top;}
+.tips{display: inline-block;margin-left: 20px;color: #f00;}
+.lookNeed{cursor: pointer;text-decoration: none;}
+.needTable{display: none;padding:20px 30px;}
+.needTable p{height: 30px;}
+#addvideoListTable tr td img{width: 100px;height: 56px;}
+#deleteCircleBtn,#deleteCourse,#deleteVideo,.deleteImg{color: #f00}
+body{position: relative;}
+.wxArea{position: fixed;width: 110px;right: 50px;bottom: 50px; height: 130px;z-index: 100;text-align: center;}
+.wxArea img{width: 100px;height: 100px;}
+@media (max-width: 800px){
+  .cirDet .cirDetTitle,.cirDet2 .cirDetTitle{height: 20px;line-height: 20px;font-size: 16px;font-weight: bolder;}
+  .cirDet .cirDetMain,.cirDet2 .cirDetMain{font-size: 14px;letter-spacing: 1px;}
+  .wxArea{display: none;}
+}

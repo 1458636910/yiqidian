@@ -1,0 +1,711 @@
+<!-- <link rel="stylesheet" type="text/css" href="css/video.css" /> -->
+<style type="text/css">
+	#videoList thead {
+		background-color: #e4e4e4;
+		font-weight: bold;
+	}
+
+	#videoList tbody tr td:nth-child(7) {
+		width: 127px;
+		text-align: left !important;
+	}
+
+	#videoList tbody tr td {
+		padding: 10px
+	}
+
+	.addVideo {
+		padding: 0 15px;
+		background-color: #29e;
+		color: #fff;
+		border: none;
+		outline: none;
+		width: 170px;
+		height: 36px;
+		line-height: 36px;
+		border-radius: 5px;
+		cursor: pointer;
+		margin-bottom: 20px;
+	}
+
+	.addVideo img {
+		padding-right: 5px;
+		padding-bottom: 3px;
+	}
+
+	.publish {
+		margin-top: 20px
+	}
+
+	.vurl {
+		padding-right: 70px;
+	}
+
+	.sub {
+		width: 80px;
+		background-color: #00a3e8;
+		height: 35px;
+		text-align: center;
+		line-height: 35px;
+		color: white;
+		margin-left: 80px;
+		margin-top: 30px;
+		cursor: pointer
+	}
+
+	.sure {
+		background-color: #00a2e8;
+		color: white;
+		height: 35px;
+		line-height: 35px;
+		width: 60px;
+		text-align: center;
+		cursor: pointer;
+		margin-left: -60px;
+	}
+
+	.lab {
+		font-size: 24px;
+		text-align: center;
+		margin-bottom: 20px !important;
+	}
+
+	.vdeclab {
+		align-items: start;
+	}
+
+	.upload {
+		display: none;
+		width: 92%;
+		margin: 0 auto;
+		margin-top: 30px;
+	}
+
+	form label {
+		display: flex;
+		align-items: center;
+		margin-bottom: 20px;
+	}
+
+	form label span:nth-child(1) {
+		margin-right: 10px;
+	}
+
+	form label input {
+		min-width: 550px;
+	}
+
+	form label textarea {
+		min-width: 550px;
+		height: 100px;
+		max-height: 100px;
+	}
+
+	.what {
+		margin-left: 10px;
+		cursor: pointer
+	}
+
+	.viewCover {
+		align-items: start;
+	}
+
+	.vtime {
+		margin-left: 20px;
+		display: none;
+		margin-top: 93px;
+	}
+
+	.lab2 {
+		color: #00a2e8;
+		padding-left: 80px;
+		padding-bottom: 10px;
+	}
+
+	.sortp,
+	.sortc {
+		width: 180px;
+		color: #495057;
+	}
+
+	.sortp:focus,
+	.sortc:focus {
+		color: #495057;
+		background-color: #fff;
+		border-color: #80bdff;
+		outline: 0;
+		box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, .25);
+		border-radius: 3px;
+		transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+	}
+
+	.sortp .selectivity-dropdown {
+		left: 112px !important;
+		top: 558px !important;
+	}
+
+	.sortc .selectivity-dropdown {
+		left: 312px !important;
+		top: 558px !important;
+	}
+
+	.sortp .selectivity-single-select input,
+	.sortc .selectivity-single-select input {
+		min-width: 170px;
+	}
+
+	.sortc {
+		margin-left: 20px;
+	}
+
+	.selectivity-single-selected-item {
+		margin-left: 45px;
+		color: #495057;
+	}
+
+	.selectivity-placeholder {
+		text-align: center;
+		color: #495057;
+	}
+
+	.selectivity-single-select {
+		border: 1px solid #ced4da;
+		background: white;
+		border-radius: 3px;
+	}
+
+	.form-control {
+		font-size: 14px;
+	}
+
+	.chooseImg {
+		height: 112px;
+		display: none;
+		min-width: 200px;
+	}
+
+	.vcover {
+		height: 112px;
+		width: 200px;
+		cursor: pointer
+	}
+
+	.whatUrl {
+		display: none;
+		margin: 60px;
+		width: 92%;
+	}
+
+	.whatUrl p {
+		padding-bottom: 10px;
+	}
+
+	.del,
+	.change,
+	.see {
+		cursor: pointer;
+		height: 30px;
+		line-height: 30px;
+		margin: 0 10px;
+
+	}
+
+	.delDiv {
+		display: none;
+		text-align: center;
+		color: red;
+		margin-top: 50px;
+	}
+
+	.actFmPic {
+		width: 200px;
+	}
+
+	.pageNext {
+		padding: 5px 20px;
+		background-color: #29e;
+		color: white;
+		border-radius: 20px;
+		cursor: pointer;
+		margin-right: 30px;
+	}
+
+	#changeDiv {
+		display: none;
+		width: 92%;
+		margin: 0 auto;
+		margin-top: 50px;
+	}
+
+	#changeDiv form {
+		margin: 0 auto;
+		width: 92%;
+	}
+
+	#changeDiv .sortp .selectivity-dropdown {
+		left: 140px !important;
+		top: 310px !important;
+	}
+
+	#changeDiv .sortc .selectivity-dropdown {
+		left: 340px !important;
+		top: 310px !important;
+	}
+
+	.viewAct {
+		text-align: left;
+		display: block;
+		text-indent: 2em;
+		line-height: 30px;
+		width: 200px;
+	}
+</style>
+<div class="videoDiv">
+	<p class="publish">
+		<button class="addVideo pull-right">
+			<img src="img/2fb.png" alt="" />
+			发布视频
+		</button>
+	</p>
+	<table id="videoList">
+	</table>
+	<br />
+	<p class="clearfix pageArea">
+		<span class="pageNext pull-right">下一页</span>
+	</p>
+</div>
+<div class="upload">
+	<form action="">
+		<p class="lab">视频上传</p>
+		<p class="lab2">提示：目前仅支持优酷视频地址</p>
+		<label for="">
+			<span>视频地址：</span>
+			<span>
+				<input class="form-control vurl" type="text" placeholder="请输入视频地址" />
+			</span>
+			<span class="sure">解析</span>
+			<img class="what" src="img/why.png" alt="" />
+		</label>
+		<label class="viewCover" for="">
+			<span>图片预览：</span>
+			<span>
+				<input class="chooseImg" type="file" />
+				<img class="vcover" src="img/uploadv.png" alt="" />
+			</span>
+			<p class="vtime">
+				<span>时长：</span>
+				<span class="minute"> </span>
+				分
+				<span class="second"> </span>
+				秒
+			</p>
+		</label>
+		<label for="">
+			<span>视频标题：</span>
+			<span>
+				<input class="form-control vtitle" type="text" placeholder="请输入视频标题" />
+			</span>
+		</label>
+		<label class="vdeclab" for="">
+			<span>视频描述：</span>
+			<span>
+				<textarea class="form-control vdec" type="text" placeholder="请输入视频描述（可不填）"></textarea>
+			</span>
+		</label>
+		<label for="">
+			<span>所属类型：</span>
+			<div class="sortp"> </div>
+			<div class="sortc"> </div>
+		</label>
+	</form>
+	<p class="sub">提交</p>
+</div>
+<div class="whatUrl">
+	<p>视频地址指的是浏览器优酷视频播放页的播放地址URL,如下图红框区域所示：</p>
+	<img src="img/wyk.png" alt="" />
+</div>
+<div class="delDiv">
+	<p>确认删除该视频</p>
+</div>
+<div id="changeDiv">
+	<form action="">
+		<label for="">
+			<span>视频标题：</span>
+			<span>
+				<input class="form-control ctitle" type="text" placeholder="请输入视频标题" />
+			</span>
+		</label>
+		<label class="vdeclab" for="">
+			<span>视频描述：</span>
+			<span>
+				<textarea class="form-control cdec" type="text" placeholder="请输入视频描述（可不填）"></textarea>
+			</span>
+		</label>
+		<label for="">
+			<span>所属类型：</span>
+			<div class="sortp"> </div>
+			<div class="sortc"> </div>
+		</label>
+	</form>
+</div>
+
+<script>
+	$(document).ready(function() {
+		var pageNext = 0;
+		var sort = '';
+		// 报名活动的表格
+		function loadTable(data) {
+			$('#videoList').bootstrapTable({
+				data: data,
+				columns: [{
+						field: 'num',
+						title: '编号',
+						align: 'center',
+						valign: 'middle',
+						formatter: function(value, row, index) {
+							return index + 1;
+						}
+					}, {
+						field: 'videoImage',
+						title: '视频封面',
+						align: 'center',
+						valign: 'middle',
+						formatter: imgCover
+					},
+					{
+						field: 'videoTitle',
+						title: '视频名称',
+						align: 'center',
+						valign: 'middle',
+						formatter: actName,
+
+					},
+					{
+						field: 'label',
+						title: '视频类型',
+						align: 'center',
+						valign: 'middle',
+					},
+					{
+						field: 'videoTime',
+						title: '视频时长',
+						align: 'center',
+						valign: 'middle'
+					},
+					{
+						field: 'createTime',
+						title: '上传时间',
+						align: 'center',
+						valign: 'middle',
+						formatter: timeUpload
+					}, {
+						title: '操作',
+						align: 'center',
+						valign: 'middle',
+						formatter: option,
+						events: optionEvents
+					}
+				]
+			});
+
+			function imgCover(e, value, row, index) {
+				return '<img class="actFmPic" src="' + value.videoImage + '" alt="">'
+			};
+
+			function actName(e, value, row, index) {
+				return '<span class="viewAct">' + value.videoTitle + '</span>'
+			};
+
+			function timeUpload(e, value, row, index) {
+				var time = value.createTime.split(".")[0].split("T")[0] + " " + value.createTime.split(".")[0].split("T")[1];
+				return '<span class="">' + time + '</span>'
+			};
+
+			function option(e, value, row, index) {
+				return '<span class="del text-danger">删除</span><span class="change text-success">修改</span><span class="see text-primary">详情</span>'
+			}
+		};
+		window.optionEvents = {
+			'click .del': function(e, value, row, index) {
+				layer.open({
+					type: 1,
+					area: ['300px', '200px'],
+					title: ['视频删除', 'font-size:18px;text-align: center;'],
+					content: $('.delDiv'),
+					btn: ['确认'],
+					yes: function(index, layero) {
+						$.post(http_head + "Lectures/Delete_LectureVideo.ashx", {
+							"userGuid": userGuid,
+							"lectureVideoId": row.Id
+						}, function(data) {
+							var data = JSON.parse(data)
+							console.log(data)
+							if (data.status == 200) {
+								layer.msg("删除成功", {
+									time: 1200
+								});
+								setTimeout(function() {
+									layer.closeAll();
+									$("#dataTable").replaceWith('<div id="dataTable"></div>');
+									$("#dataTable").load('video.html');
+								}, 1500)
+							}
+						})
+					}
+				})
+			},
+			'click .change': function(e, value, row, index) {
+				layer.open({
+					type: 1,
+					area: ['800px', '450px'],
+					title: ['视频修改', 'font-size:18px;text-align: center;'],
+					content: $('#changeDiv'),
+					btn: ['确认'],
+					yes: function(index, layero) {
+						$.post(http_head + "Lectures/Update_LectureVideo.ashx", {
+							"userGuid": userGuid,
+							"lectureVideoId": row.Id,
+							"lectureVideoTitle": $(".ctitle").val(),
+							"label": sort,
+							"describe": $(".cdec").val()
+						}, function(data) {
+							var data = JSON.parse(data)
+							if (data.status == 200) {
+								layer.msg("修改成功", {
+									time: 1200
+								});
+								setTimeout(function() {
+									layer.closeAll();
+									$("#dataTable").replaceWith('<div id="dataTable"></div>');
+									$("#dataTable").load('video.html');
+								}, 1500)
+							} else {
+								layer.msg(data.msg, {
+									time: 1200
+								})
+							}
+						})
+					}
+				})
+			},
+			'click .see': function(e, value, row, index) {
+				var code_index = row.videoUrl.indexOf("==");
+				var videoId = row.videoUrl.substr(code_index - 15, 17);
+				window.open("http://www.eqidd.com/player/index.html?id=" + videoId);
+			}
+		}
+
+		function loadFirst(page) {
+			$.post(http_head + 'Lectures/Get_LectureVideo_ByLecture.ashx', {
+				"page": page,
+				"lectureGuid": userGuid
+			}, function(data) {
+				var data = JSON.parse(data);
+				loadTable(data.items.rows);
+				$("#videoList").bootstrapTable('load', data.items.rows);
+
+				pageNext = data.items.page;
+				if (data.items.rows.length > 9) {
+					$('.pageArea').show()
+				} else {
+					$('.pageArea').hide()
+				}
+			});
+		};
+
+		function loadNext(page) {
+			$.post(http_head + 'Lectures/Get_LectureVideo_ByLecture.ashx', {
+				"page": page,
+				"lectureGuid": userGuid
+			}, function(data) {
+				var data = JSON.parse(data);
+				if (data.status == 200) {
+					layer.msg("加载完成", {
+						time: 1200
+					});
+					loadTable(data.items.rows);
+					$("#videoList").bootstrapTable('append', data.items.rows);
+					pageNext = data.items.page;
+					if (data.items.rows.length > 9) {
+						$('.pageArea').show()
+					} else {
+						$('.pageArea').hide()
+					}
+				}
+			});
+		};
+		loadFirst(pageNext)
+		$('.pageNext').click(function() {
+			loadNext(pageNext)
+		});
+
+		setTimeout(function() {
+			$.post('' + http_head + '/Option_AreasAnd.ashx', {
+				"type": 45
+			}, function(data) {
+				var parent = [];
+				var child = [];
+				var childChange = [];
+				for (let i = 0; i < data.length; i++) {
+					parent.push(data[i].name);
+				}
+				$(".sortp").selectivity({
+					allowClear: true,
+					items: parent,
+					placeholder: '请选择'
+				});
+				$(".sortp").on("change", function(e) {
+					var this_val = e.value;
+					child = [];
+					for (let k = 0; k < data.length; k++) {
+						if (this_val == parent[k]) {
+							for (let j = 0; j < data[k].sub.length; j++) {
+								child.push(data[k].sub[j].name)
+							}
+							$(".sortc").selectivity({
+								allowClear: true,
+								items: child,
+								placeholder: '请选择'
+							});
+							$(".sortc").on("change", function(e) {
+								sort = e.value;
+							})
+						}
+					}
+				});
+
+			});
+		}, 456);
+		$(".addVideo").on("click", function() {
+			layer.open({
+				type: 1,
+				area: ['800px', '700px'],
+				title: ['视频上传', 'font-size:18px;text-align: center;'],
+				content: $('.upload'),
+			})
+		});
+		$(".what").on("click", function() {
+			layer.open({
+				type: 1,
+				area: ['800px', '300px'],
+				title: ['视频上传', 'font-size:18px;text-align: center;'],
+				content: $('.whatUrl'),
+			})
+		});
+		var player;
+		var videoTime;
+		var videoId;
+		$(".sure").on("click", function() {
+			if ($(".vurl").val()) {
+				$.post(http_head + 'Lectures/video/Parsingvideo.ashx', {
+					"videoUrl": $(".vurl").val()
+				}, function(data) {
+					var data = JSON.parse(data);
+					if (data.status == 200) {
+						layer.msg("视频解析成功", {
+							time: 1200
+						});
+						videoTime = data.items.duration;
+						player = data.items.player;
+						var second = data.items.duration.split(".")[0] % 60;
+						var minute = parseInt(data.items.duration.split(".")[0] / 60);
+						$(".vcover").attr("src", data.items.bigThumbnail);
+						$(".vtitle").val(data.items.title);
+						$(".minute").text(minute);
+						$(".second").text(second);
+						$(".vtime").fadeIn();
+						$(".vdec").val(data.items.description);
+						videoId = data.items.id;
+					}
+				})
+			} else {
+				layer.msg("请输入视频地址", {
+					time: 1200
+				})
+			}
+		});
+		// 图片
+		$(".vcover").on("click", function() {
+			$(".chooseImg").click()
+		});
+		$(".chooseImg").on("change", function() {
+			ajaxFileUpload(this.files[0])
+		})
+		// 上传图片
+		function ajaxFileUpload(file) {
+			var imgData = new FormData();
+			imgData.append('willcompress', "true");
+			imgData.append('file', file);
+			$.ajax({
+				type: 'post',
+				url: '' + http_head + '/Reimburse/Upload_Files.ashx',
+				data: imgData,
+				cache: false,
+				processData: false, // 不处理发送的数据，因为data值是Formdata对象，不需要对数据做处理
+				contentType: false, // 不设置Content-type请求头
+				success: function(data) {
+					var data = JSON.parse(data)
+					if (data.status == 200) {
+						layer.msg('上传成功', {
+							time: 1000,
+						});
+						imgHref = http_head + data.items.split(";")[0];
+						$(".vcover").attr("src", imgHref); //弹窗已选图片
+					}
+				},
+			});
+		};
+		$(".sub").on("click", function() {
+			if ($(".vtitle").val()) {
+				$.post(http_head + 'Lectures/Add_LectureVideos.ashx', {
+					"userGuid": userGuid,
+					"videoUrl": $(".vurl").val(),
+					"id": videoId,
+					"player": player,
+					"title": $(".vtitle").val(),
+					"describe": $(".vdec").val(),
+					"bigThumbnail": $(".vcover").attr("src"),
+					"videoTime": videoTime,
+					"lable": sort
+				}, function(data) {
+					var data = JSON.parse(data);
+					console.log(data)
+					if (data.status == 200) {
+						var ii = layer.load(2, {
+						  shade: [0.2,'#000'] //0.1透明度的白色背景
+						});
+						var text=setTimeout(function(){
+					      layer.close(ii);
+					      layer.msg("添加成功", {
+							time: 1000,
+						  });
+					    }, 1000);
+						setTimeout(function() {
+							layer.closeAll();
+							$("#dataTable").replaceWith('<div id="dataTable"></div>');
+							$("#dataTable").load('video.html');
+							$(".layui-layer-shade").css({
+								"display": "none"
+							})
+							clearTimeout(text)
+						}, 1500)
+					} else {
+						layer.msg(data.msg, {
+							time: 1200
+						})
+					}
+				})
+			} else {
+				var ii = layer.load(2, {
+				  shade: [0.2,'#000'] //0.1透明度的白色背景
+				});
+				setTimeout(function(){
+			      layer.close(ii);
+			      layer.msg("请解析视频地址", {
+					time: 1000,
+				  });
+			    }, 1000);
+			}
+		})
+	})
+</script>

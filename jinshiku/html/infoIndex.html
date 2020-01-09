@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="_blank">
+  <meta http-equiv="Cache-Control" CONTENT="no-cache">
+  <link rel="icon" href="../image/jinLogo.png" type="image/x-icon"/>
+  <title>讲师详情</title>
+  <link rel="stylesheet" href="../css/reset.css">
+  <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../css/skin/default/layer.css">
+  <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap-table/1.11.1/bootstrap-table.min.css">
+  <link rel="stylesheet" href="../css/newTitle.css">
+  <link rel="stylesheet" href="../css/infoIndex.css?ver=20181016">
+</head>
+<body onload="load()">
+  <div class="navTitle">
+          <ul class="clearfix">
+                <li class="pull-left"><a href="http://www.eqidd.com/yqy/article.html" target="_blank">易企阅</a></li>
+                <li class="pull-left"><a href="http://www.jinshiku.com" target="_blank">金师库</a></li>
+                <li class="pull-left"><a href="http://www.eqidd.com/createrSpace/html/personInfo.html" target="_blank">创客空间</a></li>
+                <li class="pull-left"><a href="http://www.eqidd.com/comSpace/eqd.html" target="_blank">企业空间</a></li>
+                <li class="pull-left"><a href="http://www.eqidd.com/html/download.html" target="_blank">下载</a></li>
+                <li class="pull-left"><a href="http://www.eqidd.com/html/feedback.html" target="_blank">反馈</a></li>
+                <li class="pull-right loginBtn" ><a id="loginBtn">登录</a></li>
+                <li class="pull-right regBtn" ><a id="regBtn" href="http://www.eqidd.com/html/reg.html" target="_blank">注册</a></li>
+                <li class="pull-right quitOut">退出</li>
+                <li class="pull-right infoBtn" ><span class="loginName"></span><a href="../../createrSpace/html/personInfo.html" target="_blank">个人中心</a></li>
+          </ul>
+  </div>
+  <div class="topArea">
+      <div class="loginArea"></div>
+      <div class="ulList">
+          <ul class="mainFountion clearfix">
+            <a href="../index.html"><li class="pull-left">首页</li></a>
+            <a href="teacherIndex.html"><li class="pull-left" id="lookTea">找讲师</li></a>
+            <a href="lookCourseList.html"><li class="pull-left">选课程</li></a>
+            <a href="lookDemandList.html"><li class="pull-left">看需求</li></a>
+            <a href="lookCircleList.html"><li class="pull-left">品文章</li></a>
+            <a href="lookActivity.html"><li class="pull-left">活动</li></a>
+          </ul>
+      </div>
+  </div>
+  <div class="main">
+    <div class="mainLeft col-lg-2 col-md-2 col-sm-0 col-xs-0"></div>
+    <div class="mainCenter col-lg-8 col-md-8 col-sm-12 col-xs-12">
+          <div class="info clearfix">
+              <img alt="" class="pull-left">
+              <div class="pull-left">
+                  <p class="name"></p>
+                  <p class="research"><span>研究领域 : </span><span class="researchField"></span></p>
+              </div>
+          </div>
+          <ul class="clearfix">
+            <li class="pull-left mainInfo" id="mianInfo">基本信息</li>
+            <li class="pull-left course">课程</li>
+            <li class="pull-left video">视频</li>
+            <li class="pull-left photoes">相册</li>
+            <li class="pull-left circle">文章/观点</li>
+          </ul>
+      <div>
+           <!-- 讲师详情 -->
+            <div class="mainInfoDiv">
+                  <p class="teacherName"><span class="glyphicon glyphicon-user"></span><span class="tName"></span></p>
+                  <p><span>性别 : </span><span class="tSex"></span></p>
+                  <p class="research "><span>研究领域 : </span><span class="researchField"></span></p>
+                  <p class="price"><span>授课费用(元/天) : </span><span class="CooperativePrice"></span><span class="tips">(具体课酬和讲师商量确定)</span></p>
+                  <p class="address "><span>所在地 : </span><span class="addressDet"></span></p>
+                  <p class="phoneArea"><span>联系方式 : </span><button class="phoneNumber">查看</button></p>
+                  <p class="mainCourses "><span>主讲课程 : </span><span class="courses"></span></p>
+                  <p class="method "><span>授课风格 : </span><span class="WorkingMethod"></span></p>
+                  <p class="personalProfile "><span>讲师简介 : </span></p>
+                  <div id="editor"></div>
+                  <p class="CustCase"><span>客户案例 : </span></p>
+                  <div id="editor2"></div>
+                  <p class="ServiceCom"><span>服务过的企业 : </span></p>
+                  <div id="editor3"></div>
+            </div>
+            <!-- 课程列表 -->
+            <div class="coursesDiv">
+                  <div class="col-lg-12">
+                        <table id="showList">
+                             <thead>
+                                 <tr>
+                                     <th data-field="operate1"></th>
+                                     <th data-field="courseTheme"></th>
+                                     <th data-field="operate2"></th>
+                                     <th data-field="operate3"></th>
+                                 </tr>
+                             </thead>
+                         </table>
+                         <button class="loadMore">阅读更多</button>
+                         <button class="noMoreBtn">已全部加载</button>
+                    </div>
+            </div>
+            <!-- 讲师联系方式 -->
+            <div class="teacherContent">
+                  <p><span>讲师电话 : </span><span class="phone"></span></p>
+                  <p><span>助理电话 : </span><span class="AssistantPhone"></span></p>
+                  <p><span>讲师微信 : </span><span class="wechat"></span></p>
+                  <p><span>讲师QQ : </span><span class="QQ"></span></p>
+                  <p><span>讲师邮箱 : </span><span class="email"></span></p>
+            </div>
+            <!-- 视频列表 -->
+            <div class="videoDiv">
+                  <div class="col-lg-12">
+                            <table id="videoListTable" >
+                                  <thead>
+                                        <tr>
+                                              <th data-field="videoImage">视频截图</th>
+                                              <th data-field="videoTitle">视频名称</th>
+                                        </tr>
+                                  </thead>
+                            </table>
+                           <br>
+                           <button class="loadMore">阅读更多</button>
+                          <button class="noMoreBtn">已全部加载</button>
+                    </div>
+            </div>
+            <!-- 相册 -->
+            <div class="photoesDiv">
+            <div class="imgArea clearfix">
+              <div class="imgAreaLeft pull-left"></div>
+              <div class="imgAreaRight pull-left clearfix"></div>
+            </div>
+            </div>
+            <!-- 文章列表 -->
+            <div class="circleDiv">
+                 <div class="col-lg-12">
+                        <table id="circleList">
+                             <thead>
+                                 <tr>
+                                     <th data-field="title"></th>
+                                     <th data-field="Label"></th>
+
+                                 </tr>
+                             </thead>
+                         </table>
+                         <button class="loadMore">阅读更多</button>
+                         <button class="noMoreBtn">已全部加载</button>
+                 </div>
+            </div>
+      </div>
+    </div>
+    <div class="mainRight col-lg-2 col-md-2 col-sm-0 col-xs-0"></div>
+  </div>
+  <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+  <script type="text/javascript" src="http://cdn.bootcss.com/layer/3.1.0/layer.js"></script>
+  <script type="text/javascript" src="http://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="http://cdn.bootcss.com/bootstrap-table/1.11.1/bootstrap-table.js"></script>
+  <script type="text/javascript" src="../js/bootstrap-table-zh-CN.min.js"></script>
+  <script type="text/javascript" src="../js/wangEditor.js"></script>
+  <script type="text/javascript" src="../js/public.js"></script>
+  <script type="text/javascript" src="../js/change.js?ver=20181016"></script>
+  <script type="text/javascript" src="../js/infoIndex.js?ver=20181016"></script>
+  <script type="text/javascript">
+        function load(){
+          setTimeout(function(){
+                     document.getElementById("mianInfo").click();
+          },500)
+                        }
+</script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+#infoTable label {
+    display: flex;
+    min-width: 100%;
+    justify-content: start;
+    margin-top: 20px;
+    padding:0 60px;
+    font-size:14px
+}
+#infoTable label input
+{
+    font-size:14px
+}
+#infoTable label textarea
+{
+    font-size:14px
+}
+label {
+    display: inline-block;
+    max-width: 100%;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+#infoTable label span, #courseTable label span {
+    display: inline-block;
+    width: 130px;
+}
+#infoTable div{
+    padding-left: 60px
+}
+#infoTable div p{
+    padding-right:60px;
+    text-indent: 2em;
+    margin-top: 5px;
+}
+#infoTable
+{
+    font-size:14px!important
+}

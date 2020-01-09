@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0,minimum-scale=1.0, user-scalable=no" />
+		<link rel="icon" href="img/logo.png" type="image/x-icon" />
+		<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.css" />
+		<link rel="stylesheet" type="text/css" href="css/selectivity-jquery.css" />
+		<link rel="stylesheet" type="text/css" href="http://www.jq22.com/jquery/font-awesome.4.6.0.css">
+		<title>写文章</title>
+	</head>
+	<body>
+		<div class="header clearfix">
+			<div class="pull-left comName">
+				<img src="img/logo.png" />
+				易企点平台
+			</div>
+			<!-- <p >写文章</p> -->
+			<div class="pull-right uname"></div>
+		</div>
+		<div class="content">
+			<form action="">
+				<label for="">
+					<div class="selectivity-input sort"></div>
+				</label>
+				<label for="">
+					<input type="input" class="form-control title" placeholder="请输入文章标题" />
+				</label>
+				<label for="">
+					<div class="editor"></div>
+				</label>
+				<label>
+					<span class="wordsNumber">*不得少于100字</span>
+					<input type="button" class="sub pull-right " value="发表"></input>
+				</label>
+			</form>
+		</div>
+
+		<script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+		 crossorigin="anonymous"></script>
+		<script type="text/javascript" src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<script src="https://cdn.bootcss.com/layer/2.3/layer.js"></script>
+		<script type="text/javascript" src="js/selectivity-jquery.js" ></script>
+		<script src="https://cdn.bootcss.com/wangEditor/10.0.13/wangEditor.js"></script>
+		
+        <script type="text/javascript">
+            var src = 'js/writing.js?v=' + Math.random();
+            new_element = document.createElement("script");
+            new_element.setAttribute("type", "text/javascript");
+            new_element.setAttribute("src", src); 
+            document.body.appendChild(new_element);
+
+            var href = 'css/writing.css?v=' + Math.random();
+            new_link = document.createElement("link");
+            new_link.setAttribute("rel", "stylesheet");
+            new_link.setAttribute("href", href); 
+            document.head.appendChild(new_link);
+		</script>
+	</body>
+</html>

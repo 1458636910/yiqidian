@@ -1,0 +1,55 @@
+.title{
+	font-weight: bold;
+	margin: 20px 0;
+}
+.tableTop{
+	display: flex;
+	justify-content: space-between;
+	align-items:center;
+	height: 64px;
+}
+.addProduct
+{
+    padding: 0 15px;
+    background-color: #29e;
+    color: #fff;
+    border: none;
+    outline: none;
+    width: 170px;
+    height: 36px;
+    line-height: 36px;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+}
+.addProduct img{
+	padding-right: 10px;
+    padding-bottom: 3px;
+}
+#productTable thead{
+	background-color: #e4e4e4;
+    font-weight: bold;
+}
+#productTable tbody{
+
+}
+#productTable tbody tr{
+	border:1px solid #8a8a8a;
+}
+.deleteDiv{
+	display: none
+}
+#delete{
+    cursor:pointer;
+    color: #337ab7;
+    margin:0 10px
+}
+.deleteDiv{
+    margin-top: 30px;
+    text-align: center; 
+}
+#see{
+    line-height: 35px;
+    cursor:pointer;
+    margin:0 10px
+}

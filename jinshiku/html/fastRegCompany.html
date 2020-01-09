@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html ng-app="yqdReg">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta http-equiv="Cache-Control" content="no-cache">
+  <link rel="icon" href="../image/jinLogo.png" type="image/x-icon" />
+  <title>快速注册企业</title>
+  <link rel="stylesheet" href="../css/reset.css">
+  <link rel="stylesheet" href="../css/skin/default/layer.css">
+  <link rel="stylesheet" href="../css/fastRegCompany.css?v=20190322">
+  <link rel="stylesheet" href="../css/bootstrap.min.css">
+  <script type="text/javascript" src="../js/jquery-1.7.2.min.js"></script>
+  <script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.2.4.min.js"></script>
+  <script type="text/javascript" src="../js/layer.js"></script>
+  <script type="text/ecmascript" src="../js/jquery.sha1.js"></script>
+  <script type="text/javascript" src="../js/angular.1.2.29.js"></script>
+  <script type="text/javascript" src="../js/change.js"></script>
+</head>
+<body ng-controller="regController">
+    <div class="box col-lg-offset-2 col-lg-8 col-md-offset-2 col-md-8 col-sm-offset-2 col-sm-8 col-xs-12">
+          <div class="tltle col-lg-12 col-md-12 col-sm-12 col-xs-12">企业注册</div><br>
+          <div class="left col-lg-3 col-md-3 col-sm-3 col-xs-12"></div><br>
+          <div class="center col-lg-6 col-md-6 col-sm-6 col-xs-12">
+              <form name="myForm" ng-model="myForm" novalidate>
+                          <div class="number col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <input type="text" class="inputtel form-control" name="telnumber" ng-model="telnumber" value="" placeholder="请输入手机号" ng-pattern="/^1[34578]\d{9}$/" required><br>
+                              <span class="input-txt1" ng-hide="telnumber" ng-if="myForm.telnumber.$dirty && myForm.telnumber.$error.required">手机号不能为空!</span>
+                              <span class="input-txt2" ng-hide="telnumber" ng-if="myForm.telnumber.$dirty && myForm.telnumber.$error.pattern ">请输入正确的手机号!</span>
+                        </div>
+                        <!-- 验证码手动 -->
+                          <div class="picYz col-lg-12 col-md-12 col-sm-12 col-xs-12 clearfix">
+                            <input type="text" class="form-control pull-left" id="picInput" placeholder="不区分大小写" autocomplete="off">
+                            <img src="" alt="" class="pull-right">
+                          </div>
+                        <!-- 手机验证码 -->
+                        <div class="input-group">
+                            <input type="text" class="form-control yanzhengma" ng-minlength="6" ng-maxlength="6" value="" name="yzm" ng-model="yzm"  placeholder="请输入验证码" required autocomplete="off">
+                                <span class="input-group-btn">
+                                  <button class="btn btn-primary" type="button">
+                                    发送验证码
+                                  </button>
+                                </span>
+                        </div><br>
+
+                        <div class="pwd col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <input type="text" class="inputpass1 form-control" placeholder="公司全称" required><br>
+                        </div><br>
+                        <!-- 营业执照 -->
+                        <div class="imgDiv">
+                                <input type="button" value="上传营业执照" id="pic3"><br>
+                                <img  style="display: none" id="pic3Img"  alt="">
+                                <input id="upload3" name="file" accept="image/*" type="file" style="display: none"/>
+                        </div>
+                        <button type="submit" ng-click="formValid()" class="col-lg-11 col-md-11 col-sm-11 col-xs-11 regBtn">注册</button>
+              </form>
+             
+          </div><br>
+  <div class="right col-lg-3 col-md-3 col-sm-3 col-xs-12"></div>
+    </div>
+  <script type="text/javascript">
+        var app = angular.module('yqdReg',[]);
+      app.controller('regController', ['$scope', function($scope,$http){
+     }])
+  </script>
+<script >
+    $(document).ready(function(){
+      // 手动验证码图片
+      var picLower;
+      function imgLoad(){
+            $.post('http://47.94.173.253:8008/SecurityCode.ashx', {}, function(data) {
+              var picData = JSON.parse(data);
+              //console.log("图片验证码",picData)
+              picLower = (picData.code).toLowerCase();
+              $('.picYz img').attr('src', 'data:image/Jpeg;base64,'+picData.image+'');
+            });
+      }
+      imgLoad();
+      $('.picYz img').click(function() {
+        imgLoad();
+      });
+      $('.goonBtn').click(function() {
+        var picResult = ( $('#picInput').val() ).toLowerCase();
+        if ( picResult == picLower) {
+          $(this).css('display', 'none');
+          $('.input-group').css('display', 'block');
+        }
+      });
+      // 发送短信验证码
+      function invokeSettime(obj){
+            var countdown=60;
+            settime(obj);
+            function settime(obj) {
+                if (countdown == 0) {
+                    $(obj).attr("disabled",false);
+                    $(obj).text("获取验证码");
+                    countdown = 60;
+                    return;
+                } else {
+                    $(obj).attr("disabled",true);
+                    $(obj).text("(" + countdown + ") s 重新发送");
+                    countdown--;
+                }
+                setTimeout(function() {
+                            settime(obj) }
+                        ,1000)
+            }
+      }
+        var msgIdReg;
+        // 发送验证码
+      $('.btn-primary ').click(function() {
+            if ($('.inputtel').val().length >0) {
+              var picResult = ( $('#picInput').val() ).toLowerCase();
+                if ( picResult == picLower) {
+                  new invokeSettime(".btn-primary");
+                  $.post('http://47.94.173.253:8008/jsms/JSendMessages.ashx', {
+                    "tel":$('.inputtel').val()
+                  }, function(data) {
+                   var  dataFindpw = JSON.parse(data);
+                        msgIdReg = JSON.parse(dataFindpw.msg).msg_id;
+                  });
+                }else{
+                  layer.msg('请输入图片中正确验证码', {
+                                time: 1000,
+                              });
+                }
+                }else{
+                        layer.msg('请输入手机号', {
+                                time: 1000,
+                              });
+                }
+          });
+    var arr = []
+    var arr_imgHref
+        $("#pic3").click(function () {
+          $("#upload3").click(); //隐藏了input:file样式后，点击头像就可以本地上传
+    });
+          $("#upload3").on("change",function(){
+          var objUrl3 = getObjectURL(this.files[0]) ; //获取图片的路径，该路径不是图片在本地的路径
+           arr=this.files[0]
+           ajaxFileUpload(arr)
+          if (objUrl3) {
+            $("#pic3Img").show()
+            $("#pic3Img").attr("src", objUrl3) ; //将图片路径存入src中，显示出图片
+            $("#pic3").val("重新选择")
+          }
+          });
+  // 上传活动封面图片
+      function ajaxFileUpload(file) {
+             var  Pformdata2= new FormData();
+             Pformdata2.append ('willcompress',"true");
+             Pformdata2.append('file', file);
+             $.ajax({
+                           type : 'post',
+                           url : 'http://47.94.173.253:8008/Reimburse/Upload_Files.ashx',
+                           data : Pformdata2,
+                           cache : false,
+                           processData : false, // 不处理发送的数据，因为data值是Formdata对象，不需要对数据做处理
+                           contentType : false, // 不设置Content-type请求头
+                           success : function(data){
+                            var data2 = JSON.parse(data)
+                            if (data2.status == 200) {
+                              layer.msg('上传成功', {
+                                                time: 1000,
+                                               });
+                                arr_imgHref = data2.items.split(";")[0];
+                                $("#pic3").show()
+                                $('.imageDiv').remove()
+                            }
+                           },
+                         error:function()
+                         {
+
+                         }
+                       });
+          }
+    //建立一個可存取到該file的url
+    function getObjectURL(file) {
+        var url = null ;
+        if (window.createObjectURL!=undefined) { // basic
+        url = window.createObjectURL(file) ;
+        } else if (window.URL!=undefined) { // mozilla(firefox)
+        url = window.URL.createObjectURL(file) ;
+        } else if (window.webkitURL!=undefined) { // webkit or chrome
+        url = window.webkitURL.createObjectURL(file) ;
+        }
+        return url ;
+    }
+      // 注册操作
+      $('.regBtn').click(function() {
+        $.post('http://47.94.173.253:8008/jsms/Validcode.ashx', {
+                  "msgid":msgIdReg,
+                  "code":$('.yanzhengma').val()
+                    }, function(data) {
+                      var dataReg = JSON.parse(data);
+                      if (dataReg.status == 200) {
+                      if (arr_imgHref == undefined || $('.inputpass1').val().length == 0 ) {
+                          layer.msg('请上传营业执照或填写公司全称', {
+                                                            time: 1000,
+                                                          });
+                        }else{
+                                $.post('http://47.94.173.253:8008/comtemp/setComRegisterTest.ashx', {
+                                          "phone":$('.inputtel').val(),
+                                         "comName": $('.inputpass1').val(),
+                                         "imgUrl" :arr_imgHref
+                                          }, function(data) {
+                                                  var dataReged = JSON.parse(data)
+                                                  if (dataReged.status == 200) {
+                                                     layer.open({
+                                                                      type: 1,
+                                                                       title: 0,
+                                                                      closeBtn: 0, //不显示关闭按钮
+                                                                      anim: 2,
+                                                                      shadeClose: true, //开启遮罩关闭
+                                                                      content: '<div id="tipsDiv"><p>《'+$(".inputpass1").val()+'》已经注册成功，等待易企点平台审核。您的企业登录账号是'+$(".inputtel").val()+'；若该手机号以前没有注册易企点，则默认密码88888888，否则是您注册时候的密码。审核成功会及时短信通知您！欢迎关注《郑州易企点科技》公众号：zzeqid </p><img src="../image/downQRcode.jpg" alt="" /></div>'
+                                                                    });
+
+                                            }else{
+                                              layer.msg(dataReged.msg, {
+                                                            time: 2000,
+                                                          });
+
+                                            }
+                              });
+                        }
+                  }else{
+                                      layer.msg('验证码错误或手机号码有误', {
+                                            time: 1000,
+                                          });
+
+
+                  }
+            });
+
+
+
+      });
+    })
+</script>
+</body>
+</html>

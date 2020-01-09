@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+        <link rel="icon" href="img/eqdLogo.png" type="image/x-icon"/>
+		<link href="css/layout.min.css" rel="stylesheet" />
+		<link href="css/scs.min.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="https://www.layuicdn.com/layui/css/layui.css" />
+		<link rel="stylesheet" type="text/css" href="css/index.css?v=20190909" />
+		<title>企业注册</title>
+	</head>
+	<body>
+
+		<!--  头部 -->
+		<div class="header">
+			<div class="title"><img src="img/1.png">企业注册</div>
+		</div>
+
+		<!--  注册信息 -->
+		<div class="content">
+			<form class="layui-form box" action="">
+
+				<div class="layui-form-item">
+					<label class="layui-form-label labx"><span class="isa">* </span>公司名称</label>
+					<div class="layui-input-block inxs">
+						<input type="text" name="title" lay-verify="required" placeholder="请输入公司名称" autocomplete="off" class="layui-input"
+						 id="name">
+					</div>
+				</div>
+
+
+				<div class="layui-form-item layui-form-text">
+					<label class="layui-form-label labx"><span class="isa">* </span>主打产品</label>
+					<div class="layui-input-block inxs">
+						<textarea name="desc" lay-verify="required" placeholder="请输入公司主营产品" class="layui-textarea" id="mainProduct" /></textarea>
+					</div>
+				</div>
+
+
+				<div class="layui-form-item">
+					<label class="layui-form-label labx"><span class="isa">* </span>企业性质</label>
+					<div class="layui-input-block inxs">
+						<select name="city" lay-verify="required" id="nature">
+							<option value=""></option>
+						</select>
+					</div>
+				</div>
+
+
+				<div class="layui-form-item">
+					<label class="layui-form-label labx"><span class="isa">* </span>企业行业</label>
+					<div class="layui-input-block inxs">
+						<select name="city" lay-verify="required" id="hangye">
+							<option value=""></option>
+							<option value="0">机械设备、通用零部件</option>
+							<option value="1">旅游、餐饮、住宿、娱乐、休闲、购物</option>
+							<option value="2">生活服务</option>
+							<option value="3">纺织 皮革 服装 鞋帽</option>
+							<option value="4">家具 生活用品 食品</option>
+							<option value="">通信 邮政 计算机 网络</option>
+							<option value="">医疗保健 社会福利</option>
+							<option value="">电子电器 仪器仪表</option>
+							<option value="">金融 保险 证券 投资</option>
+							<option value="">交通物流 运输设备</option>
+							<option value="">城建 房产 建材 装潢</option>
+							<option value="">石油/化工/煤炭/橡胶塑料</option>
+							<option value="">钟表眼镜/工艺品/礼品</option>
+							<option value="">造纸/纸品/印刷/包装</option>
+							<option value="">新闻/出版/科研/教育</option>
+							<option value="">农/林/牧/渔</option>
+							<option value="">广告/会展/商务办公</option>
+							<option value="">咨询培训业</option>
+							<option value="">冶金冶炼/金属及非金属制品</option>
+							<option value="">贸易/批发/市场</option>
+							<option value="">党政机关/社会团体/非盈利机构</option>
+						</select>
+					</div>
+				</div>
+
+				<div class="layui-form-item">
+					<label class="layui-form-label labx"><span class="isa">* </span>员工人数</label>
+					<div class="layui-input-block inxs">
+						<select name="city" lay-verify="required" id="staffnum">
+							<option value=""></option>
+						</select>
+					</div>
+				</div>
+
+
+				<div class="layui-form-item layui-form-text">
+					<label class="layui-form-label labx"><span class="isa">* </span>公司地址</label>
+					<div class="layui-input-block inxs">
+						<input type="text" readonly id="myAddrs" name="addr" data-key="4-84-1298" value="河南省 郑州市 金水区" class="layui-input" />
+					</div>
+				</div>
+
+
+				<div class="layui-form-item layui-form-text">
+					<label class="layui-form-label labx"><span class="isa">* </span>具体地址</label>
+					<div class="layui-input-block inxs">
+						<input type="text" name="title" lay-verify="required" placeholder="请输入具体地址" autocomplete="off" class="layui-input"
+						 id="address">
+					</div>
+				</div>
+
+
+				<div class="layui-form-item">
+					<label class="layui-form-label labx"><span class="isa">* </span>手机号</label>
+					<div class="layui-input-block inxs">
+						<input type="text" name="title" lay-verify="required|phone" placeholder="请输入手机号" autocomplete="off" class="layui-input"
+						 id="phone">
+					</div>
+				</div>
+
+
+				<div class="layui-form-item">
+					<label class="layui-form-label labx"><span class="isa">* </span>营业执照</label>
+					<input type="button" class="layui-btn chooseImg" value="图片" id="pics" />
+					</label>
+					<input id="headImg" name="file" accept="image/*" type="file" style="display: none;" />
+				</div>
+
+				<div class="layui-form-item">
+					<div class="image">
+						<img src="" alt="" id="showImg" />
+					</div>
+				</div>
+
+				<div class="layui-form-item clxk">
+					<div class="layui-btn" id="refer" lay-submit="" lay-filter="formDemo">注册</div>
+				</div>
+			</form>
+		</div>
+
+		<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js"></script>
+		<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+		<script src="js/jquery.scs.min.js"></script>
+		<script src="js/CNAddrArr.min.js"></script>
+		<script src="https://www.layuicdn.com/layui/layui.js"></script>
+		<script src="js/index.js" type="text/javascript" charset="utf-8"></script>
+	</body>
+</html>

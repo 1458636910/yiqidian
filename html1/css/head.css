@@ -1,0 +1,13 @@
+.nav{height: 60px;line-height: 60px;font-size: 20px;width: 100%;background-color: #fff;z-index: 200;border-bottom: 5px solid transparent;}
+.nav .logo{cursor: pointer;}
+.nav .logo img{width: 46px;height: 46px;margin-top: 7px;margin-left: 50px;margin-right: 10px;}
+.logo span{font-size: 25px;height: 60px;line-height: 60px;color: #000;}
+.nav ul{line-height: 55px;}
+.nav ul li{width: 20%;color:#000; text-align: center;box-sizing: border-box;cursor: pointer;}
+.nav ul li:hover{border-bottom: 5px solid #f00;}
+.container{width: 1000px;margin: 0 auto;}
+.nav ul button{height: 40px;line-height: 40px;font-size: 20px;padding:0 30px;margin-top: 10px;margin-left: 30px;border: 1px solid #29e;border-radius: 5px;background-color: #fff;color: #29e;max-width: 200px; min-width: 100px}
+.nav ul button a{text-decoration: none;}
+.nav ul button:hover{background-color: #29e;color: #fff;}
+.nav ul button a:hover{color: #fff;}
+

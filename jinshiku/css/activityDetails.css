@@ -1,0 +1,363 @@
+.main {
+	width: 100%;
+	background-color: #f1f1f1
+}
+
+.topArea {
+	margin-bottom: 0
+}
+
+.showDiv {
+	width: 1200px;
+	margin: 0 auto;
+	padding: 20px 0;
+}
+
+.activityShowLeft {
+	width: 900px;
+}
+
+.activityShowRight {
+	width: 270px;
+	background-color: #f1f1f1;
+}
+
+.activityInfoDiv {
+	padding: 20px;
+	background-color: #fff;
+}
+
+.acvitityOtherDiv {
+	padding: 0 20px;
+	background-color: #fff;
+	margin: 20px 0;
+}
+
+.imgArea {
+	width: 370px;
+}
+
+.imgArea img {
+	width: 368px;
+	height: 208px;
+}
+
+.jubaoArea {
+	height: 36px;
+	line-height: 36px;
+	margin-bottom: 0;
+	color: #a3a3a3;
+	font-size: 15px;
+	padding-right: 15px;
+}
+
+.jubaoArea span {
+	cursor: pointer;
+}
+
+.infoArea {
+	width: 445px;
+	margin-left: 20px
+}
+
+.infoArea p {
+	margin-left: 10px;
+	line-height: 30px;
+	font-size: 14px;
+	color: #959595;
+	margin-bottom: 0
+}
+
+.infoArea .title {
+	margin-left: 0;
+	font-size: 24px;
+	color: #00368a;
+	padding-left: 10px;
+}
+
+.infoArea .buttonArea {
+	height: 50px;
+	line-height: 50px;
+	margin: 10px 0;
+}
+
+.infoArea .buttonArea button {
+	margin-left: 10px;
+	height: 50px;
+	line-height: 50px;
+	background-color: #f7ae16;
+	font-size: 16px;
+	color: #fff;
+	text-align: center;
+	width: 170px;
+	border: none;
+	outline: none;
+	border-radius: 10px;
+}
+
+.infoArea .buttonArea button span {
+	margin-right: 10px;
+}
+
+.infoArea p span:nth-child(2) {
+	color: #434343;
+}
+.viewInfor{
+	width: 120px;
+    border: 1px solid #00a2e8;
+    text-align: center;
+    padding: 10px 0;
+    color: #00a2e8;
+    cursor: pointer;
+    margin: 0 auto;
+}
+.viewInfor:hover{
+    color:white;
+    background-color:#00a2e8
+}
+.infoArea p #acNum,
+.infoArea p #acSize {
+	color: #00368a;
+	font-size: 15px
+}
+
+.acvitityOtherDiv>ul {
+	height: 58px;
+	border-bottom: 1px solid #e7e7e7;
+	margin-bottom: 0
+}
+
+.acvitityOtherDiv>ul>li {
+	height: 57px;
+	line-height: 57px;
+	border-bottom: 1px solid #e7e7e7;
+	text-align: center;
+	cursor: pointer;
+}
+.active{
+	border-bottom: 2px solid #00368a!important;
+	
+}
+.activea{
+	color: rgb(0, 54, 138)!important;
+}
+.acvitityOtherDiv>ul>li>a {
+	text-decoration: none;
+	text-align: center;
+	border-right: 1px solid #d8d8d8;
+	color: #686868;
+	height: 20px;
+	padding: 0 30px;
+}
+
+.acvitityOtherDiv>ul>li:last-child a {
+	border-right: none;
+}
+
+.acvitityOtherDiv>div {
+	padding: 44px 60px 90px 70px;
+	display: none;
+}
+
+.acvitityOtherDiv .acJianjieDiv {
+	display: block;
+}
+
+.baomingDiv {
+	display: none;
+	margin: 20px;
+}
+.baomingDiv p{
+	margin-bottom: 15px!important
+}
+.baomingDiv p span {
+	display: inline-block;
+	width: 60px;
+}
+
+.lanuchDemandDiv {
+	background-color: #0aa2e8;
+	height: 160px;
+	text-align: center;
+	padding: 35px 0;
+	margin-bottom: 33px
+}
+
+.lanuchDemandDiv>p {
+	color: #fff;
+	font-size: 18px;
+	font-weight: bold;
+	margin: 0 0 25px 0;
+}
+
+.lanuchDemandDiv>button {
+	width: 160px;
+	height: 46px;
+	background-color: #f7ae16;
+	color: #fff;
+	text-align: center;
+	border: none;
+	outline: none;
+	border-radius: 5px;
+	font-size: 16px;
+	line-height: 44px;
+	margin-top: 25px
+}
+
+.lanuchDemandDiv>button span {
+	margin-right: 10px;
+	font-size: 14px
+}
+
+.sameTypeDiv,
+.holderOtherDiv,
+.mateLecturerDiv {
+	background-color: #fff;
+	margin-bottom: 20px
+}
+
+.sameTypetitle,
+.holderOthertitle,
+.matelecturertitle {
+	height: 56px;
+	background-color: #0aa2e8;
+	line-height: 56px;
+	font-size: 16px;
+	margin: 0;
+	color: #fff;
+}
+
+.sameTypetitle>p,
+.holderOthertitle>p,
+.matelecturertitle>p {
+	margin: 0 20px
+}
+
+.sameTypetitle>p a,
+.holderOthertitle>p a,
+.matelecturertitle>p a {
+	color: #fff;
+	text-decoration: none;
+	font-style: 16px
+}
+
+/*推荐讲师*/
+#matelecturerDiv {
+	height: 400px;
+	overflow: hidden;
+}
+
+#mateLecturer li {
+	padding: 10px;
+	border-bottom: 1px solid #eaeaea;
+	height: 81px;
+}
+
+#mateLecturer li img {
+	width: 60px;
+	height: 60px;
+	border-radius: 30px;
+	cursor: pointer;
+}
+
+#mateLecturer li div {
+	width: 180px;
+}
+
+#mateLecturer li div p {
+	height: 30px;
+	line-height: 30px;
+	margin-bottom: 0;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	padding-left: 10px
+}
+
+#mateLecturer li div p:nth-child(2) {
+	color: #c1c1c1;
+	font-size: 13px;
+}
+
+/*主办发其他活动*/
+#holderotherDiv,
+#sametypeDiv {
+	height: 450px;
+	margin-bottom: 20px;
+	overflow: hidden;
+}
+
+#holderother,
+#holderother {
+	width: 100%;
+	overflow: hidden;
+	margin: 0;
+}
+
+#holderother li {
+	border-bottom: 1px solid #eee;
+	padding: 10px 0;
+	height: 110px;
+}
+
+#sametype li,
+#holderother li {
+	height: 81px;
+	border-bottom: 1px solid #e4e4e4;
+	padding: 10px
+}
+
+#holderother li>div {
+	margin: 0
+}
+
+#sametype li img,
+#holderother li img {
+	width: 102px;
+	height: 60px;
+}
+
+#sametype li>div>div,
+#holderother li>div>div {
+	width: 145px;
+	padding-left: 10px;
+}
+
+#sametype li>div>div p,
+#holderother li>div>div p {
+	font-size: 14px;
+	display: -webkit-box;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 2;
+}
+
+#sametype li>div>div p:nth-child(1),
+#holderother li>div>div p:nth-child(1) {
+	font-size: 14px;
+	color: #7a7a7a;
+}
+
+#sametype li>div>div p:nth-child(2),
+#holderother li>div>div p:nth-child(2) {
+	font-size: 13px;
+	color: #a7a7a7;
+}
+#acvitityLi{background-color: #fff;}
+#acvitityLi a{color: #00368a}
+.nextpage {
+    width: 130px;
+    height: 50px;
+    background-color: #0aa2e8;
+    color: #fff;
+    line-height: 50px;
+    border: none;
+    outline: none;
+    margin-right: 120px
+
+}
+.typeArea{
+	display: none;
+	margin-top: 30px
+}

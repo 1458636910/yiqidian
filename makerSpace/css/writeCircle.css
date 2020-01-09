@@ -1,0 +1,54 @@
+.cover{position:absolute;left: 0px;right: 0;bottom: 0;top: 0;background-color: #000;opacity:0.3 ;z-index: 200;display: none;}
+.mainLeft{background-color: #3f3f3f;padding:20px 0;text-align: center;height: 100%; display: table-cell;}
+.mainCenter{background-color: #d3d3d3;padding:20px 0;text-align: center;}
+.mainRight{padding: 20px;}
+.addListBtn{padding: 10px 20px;border: none;border-radius: 5px;color: #fff;background-color: #29e;margin: 0 auto;}
+.list{width: 100%;text-align: left;color: #fff;padding-top: 20px;}
+.list li{padding-left: 20px;cursor: pointer;margin: 0;height: 40px;line-height: 40px;font-size: 16px;position: relative;}
+.list li span{display: block!important;}
+.active{background-color: rgba(0,0,0,0.5);}
+.list li span:nth-child(2){position: absolute;right: 33px;top: 13px;display: none}
+.list li span:nth-child(3){position: absolute;right: 10px;top: 13px;display: none}
+.addTable{width: 100%;height:70px;margin-top: 20px;text-align: left;display: none;}
+.addTable input{width: 80%;height: 30px;line-height: 30px;padding-left: 10px;margin-left: 10%;box-sizing: border-box;}
+.addTable button{padding: 5px 10px; border: none;border-radius: 5px;margin-left: 10px;margin-top: 10px;}
+.addTable .sureBtn{margin-left: 20px;background-color: #29e;color: #fff;}
+.delTitle,.changeTitle,.addTitle,.delTitle2{display: none;margin: 20px;font-size: 18px;text-align: center;}
+.newTitle{margin-left: 20px;padding-left: 10px;}
+.Title{margin-left: 20px;padding-left: 10px;}
+.circleAbout{margin: 10px 0;}
+.circleAbout p{height: 30px;line-height: 25px;}
+.circleAbout p span{width: 100px;display: inline-block;}
+.circleAbout p input{padding: 0 10px;}
+.choose,.circleT{margin-right: 10px;width: 300px;}
+.commonlyLabelBtn,.lecturerLabelBtn{background-color: #29e;color: #fff;border: none;padding: 2px 10px;outline: none;}
+.hangyeLabel{display: none;margin: 20px 0;padding: 0 50px;}
+.hangyeLabel span{display: inline-block;width: 150px;}
+#div2{border: 1px solid #666;overflow: hidden;}
+#div2 .w-e-toolbar{display: none;}
+#div1{position: relative;background-color: #000;}
+#line{display: inline-block;margin-top: 7px;height: 16px;cursor: pointer;}
+.circleSubmit,.synct{border: none;padding: 0 10px;background-color: #fff;margin-left: 20px;}
+#synct{margin-right: 30px;}
+.circleSubmit span,.synct span{margin-right: 5px;}
+.tijiaoBtn{position: absolute;right: 30px;line-height: 30px;}
+#saveBtn{cursor: pointer;margin-right: 20px;display: inline-block;}
+.addCircleTitle{height: 60px;display: none;}
+.addCircleTitle button{padding: 10px 20px; border: none;border-radius: 5px;background-color: #29e;color: #fff;}
+.circleTitle{text-align: left;width: 100%;}
+.circleTitle p{height: 40px;line-height: 40px;padding: 0 20px;cursor: pointer;position: relative;overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;}
+.circleTitle p span{position: absolute; right: 10px;top: 14px;display: none;}
+.recycle{width: 100%;height: 50px;line-height: 50px;text-align: left;padding-left: 20px;color: #fff;font-size: 20px;cursor: pointer;}
+.recycle span{margin-right: 5px;font-size: 15px;}
+.recycle a{text-decoration: none;color: #fff;}
+@media (min-width: 1500px){
+    .w-e-menu{padding: 5px 10px}
+}
+.teachAreaTable{display: none;margin: 20px;}
+.tableLeft{width: 110px;height: 330px;overflow-y: auto;}
+.tableLeft::-webkit-scrollbar {display:none}
+.tableLeft p{cursor: pointer;background-color: #29e;color: #fff;height: 30px;line-height: 30px;text-align: center;}
+.tableRight{width: 480px;margin-left: 20px;}
+.tableRight span{display: inline-block;width: 120px;height: 30px;line-height: 30px;}

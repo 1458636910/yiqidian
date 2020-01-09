@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="icon" href="../image/pic.ico" type="image/x-icon"/>
+  <title>人才招聘</title>
+  <link rel="stylesheet" href="../css/reset.css">
+  <link rel="stylesheet" href="../css/bootstrap.min.css">
+  <link rel="stylesheet" href="../css/bootstrap-table.min.css ">
+  <link rel="stylesheet" href="../css/advertises.css">
+  <script type="text/javascript" src="../js/jquery.js"></script>
+  <script type="text/javascript" src="../js/bootstrap-table.min.js"></script>
+  <script type="text/javascript" src="../js/bootstrap-table-zh-CN.min.js"></script>
+  <script type="text/javascript" src="../js/change.js"></script>
+  <script type="text/javascript" src="../js/advertises.js"></script>
+</head>
+<body>
+  <embed src="header.html" type="text/html" width="100%" height="61px">
+  <div class="banner">
+    <div class="bannerMain">
+        <p class="Btitle">人才招聘</p>
+         <p class="SearchG">
+                  <input type="search" class="search">
+                  <input type="submit" class="seaBtn" value="搜索">
+        </p>
+        </div>
+  </div>
+  <div class="details container">
+        <!-- <div class="detTitle">
+                <ul class="clearfix">
+                  <li class="pull-left"><a href="">首页</a><span>></span></li>
+                  <li class="pull-left">人才招聘<span class="showPost">></span></li>
+                  <li class="pull-left post">职位 </li>
+                </ul>
+        </div> -->
+        <div class="postRequire">
+        <ul>
+          <li class="typePost"><span>招聘类型&nbsp;:</span><a class="active">全职</a><a>兼职</a><a>实习</a></li>
+          <li class="placePost"><span>工作地点&nbsp;:</span><a class="placeAll active">全部</a><a>郑州</a><a>上海</a><a>北京</a></li>
+          <li class="leibiePost"><span>职位类别&nbsp;:</span><a class="typeAll active">全部</a><a>开发</a><a>测试</a><a>产品</a></li>
+        </ul>
+        </div>
+        <div class="postDetails">
+          <div class="col-lg-12">
+                  <table id="postDetailsTable" >
+                        <thead>
+                              <tr>
+                                   <th data-field="positionName">职位名称</th>
+                                    <th data-field="positionCategory">职位类别</th>
+                                    <th data-field="recruitType">职位类别</th>
+                                    <th data-field="workPlace">工作地点</th>
+                                    <th data-field="createTime">发布时间</th>
+                              </tr>
+                        </thead>
+                  </table>
+                 <br>
+          </div><br><br>
+        </div>
+  </div>
+  <embed src="footer.html" type="text/html"  width="100%" height="274px">
+</body>
+</html>

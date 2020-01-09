@@ -1,0 +1,154 @@
+body {
+	background-color: #f9f9f9;
+}
+
+.container {
+	padding: 0;
+}
+
+.labBar {
+	margin-top: 5%;
+}
+
+.lab {
+	margin-top: 2%;
+}
+
+.lookRule {
+	color: #f7ae16;
+	border: 1px solid #f7ae16;
+	padding: 5px 10px;
+	cursor: pointer;
+}
+#actTable tbody tr{
+	cursor: pointer;
+}
+#actTable tbody tr td:first-child {
+	display: flex;
+	justify-content: center;
+	align-content: center;
+	position: relative;
+}
+
+#actTable tbody tr td:last-child {
+	color: #F7AE16;
+	font-weight: bold;
+	font-size: 16px;
+	font-style: italic;
+}
+
+.th-inner {
+	position: relative;
+	overflow: visible !important;
+}
+
+.table-responsive {
+	border: none;
+}
+
+.headImg {
+	width: 60px;
+	height: 60px;
+	margin-right: 20px;
+}
+
+.actDiv {
+	display: flex;
+	padding: 10px 0;
+}
+
+.actDiv p {
+	margin-bottom: 0;
+}
+
+.tc {
+	color: #0aa2e8;
+}
+
+.tc span {
+	margin-right: 20px;
+}
+
+.tlab {
+	background-color: #f7ae16;
+	color: white;
+	font-weight: bold;
+	padding: 5px 15px;
+	border-radius: 20px;
+	position: absolute;
+	top: 80%;
+	left: 35%;
+	z-index: 123123;
+}
+
+@media (max-width: 750px) {
+	.tlab {
+		left: 20%;
+		top: 60%;
+	}
+}
+
+.sortImg {
+	width: 35px;
+	height: 54px;
+	margin-top: 13px;
+}
+
+.actRule {
+	background-color: white;
+	margin-top: 30px;
+}
+
+.actRule tbody tr td {
+	/* text-align: center; */
+	text-align: left;
+	padding-left: 23%;
+}
+
+.actRule tbody tr td:first-child {
+	border-right: 1px solid #ddd;
+}
+
+.actRule tbody tr td:last-child{
+	color: #F7AE16;
+}
+
+.actRule thead th {
+	width: 50%;
+	background-color: #0AA2E8;
+	color: white;
+}
+
+.actRule thead th:first-child {
+	border-right: 1px solid #ddd;
+}
+
+.sortNum {
+	background-color: #f7ae16;
+	color: white;
+	border-radius: 50%;
+	font-size: 16px;
+	padding: 5px;
+	width: 30px;
+	height: 30px;
+	display: flex;
+	text-align: center;
+	line-height: 20px;
+	align-items: center;
+	justify-content: center;
+	position: absolute;
+	top: 30px;
+}
+
+.atention {
+	color: #0aa2e8;
+}
+
+.nextpage {
+	background-color: #0aa2e8;
+	color: white;
+	border-radius: 20px;
+	padding: 10px 0;
+	margin-top: 60px;
+	cursor: pointer;
+}

@@ -1,0 +1,323 @@
+<!-- <link rel="stylesheet" type="text/css" href="css/message.css?v=20190929"/> -->
+<style type="text/css">
+	#messageList tr td div>.content,
+	.answercontent,
+	.comeForm {
+		color: #969aa3;
+		text-align: left;
+		padding-left: 65px;
+	}
+
+	#messageList tr td div>.content {
+		margin: 5px 0;
+		text-indent: 2em;
+	}
+
+	#visitorList tr td div>.content p span {
+		margin: 0 20px
+	}
+
+	#messageList tr td div>p {
+		margin: 0;
+		text-align: left;
+		padding-left: 45px
+	}
+
+	#messageList tr td .personInfo>p {
+		margin: 0;
+		text-align: left;
+		padding-left: 0
+	}
+
+	#messageList tr td .answerMessage,
+	#messageList tr td .deleteMessage {
+		display: inline-block;
+		margin: 0 20px;
+	}
+
+	#messageList tbody tr {
+		margin-top: 10px;
+		display: block;
+		cursor: pointer
+	}
+
+	#messageList tr td img {
+		width: 45px;
+		height: 45px;
+		border-radius: 22.5px;
+		margin-right: 20px;
+		cursor: pointer;
+	}
+
+	.lyTime {
+		margin-right: 10px;
+		font-size: 12px;
+		color: #707070;
+	}
+
+
+	.deleteMessage,
+	.answerMessage {
+		margin: 0 0 0 20px !important;
+		cursor: pointer
+	}
+
+	.deleteMessage span,
+	.answerMessage span {
+		margin-right: 5px;
+		color: #337ab7;
+		font-size: 14px;
+	}
+
+	#messageList tr td {
+		border: 1px solid #ddd;
+		display: block
+	}
+
+	.messageNext {
+		width: 280px;
+		height: 50px;
+		line-height: 50px;
+		background-color: #29e;
+		color: #fff;
+		text-align: center;
+		border: none;
+		border-radius: 40px;
+		outline: none;
+		margin: 2.5%;
+		display: none;
+	}
+
+	#messageList {
+		border: none;
+	}
+
+	#messageList thead {
+		display: none !important
+	}
+
+	.inner {
+		padding-bottom: 20px
+	}
+
+	.deleteMessageDiv,
+	.answerMessageDiv {
+		display: none;
+		text-align: center;
+		margin-top: 50px;
+		color: red;
+	}
+
+	#messageVal {
+		width: 80%;
+		margin: 0 auto;
+		height: 120px !important;
+	}
+
+	.answercontent span {
+		color: #337ab7;
+	}
+
+	.answercontent span:nth-child(1) {
+		margin-right: 10px;
+	}
+
+	.answercontent span:nth-child(2) {
+		margin-left: 10px;
+	}
+
+	.comMessageDiv {
+		margin-top: 10px
+	}
+</style>
+<link rel="stylesheet" type="text/css" href="font/iconfont.css" />
+<div class="comMessageDiv" id="comMessageDiv">
+	<table id="messageList">
+		<thead>
+			<tr>
+				<th data-field="iphoto"> </th>
+			</tr>
+		</thead>
+	</table>
+	<p>
+		<span class="messageNext pull-right">下一页</span>
+	</p>
+	<div class="answerMessageDiv">
+		<textarea type="text" class="form-control" id="messageVal" placeholder="请输入留言"></textarea>
+	</div>
+	<div class="deleteMessageDiv">
+		<p>确认删除该留言及其回复?</p>
+	</div>
+</div>
+<script type="text/javascript" charset="utf-8" async defer>
+	var messagePage;
+	loadMessageFirst(0)
+ 
+	function loadMessageFirst(page) {
+		$.post(http_head + 'Makerspacey/MakerLeaveMsg/Get_MakerLeaveMsg.ashx', {
+			"makerGuid": userGuid,
+			"page": page
+		}, function(data) {
+			var dataMessage = JSON.parse(data);
+			if (dataMessage.items.length > 0) {
+				
+				loadMessageTable(dataMessage.items);
+				$("#messageList").bootstrapTable('load', dataMessage.items);
+			} else {
+				layer.msg("暂无数据", {
+					time: 1200
+				})
+			}
+			messagePage = dataMessage.page;
+			if (dataMessage.items.length > 5) {
+				$('.messageNext').fadeIn()
+			} else {
+				$('.messageNext').hide()
+			}
+		});
+	};
+
+	function loadMessageNext(page) {
+		$.post(http_head + 'Makerspacey/MakerLeaveMsg/Get_MakerLeaveMsg.ashx', {
+			"makerGuid": userGuid,
+			"page": page
+		}, function(data) {
+			var dataMessage = JSON.parse(data);
+			if (dataMessage.items.length > 0) {
+				layer.msg("加载完成", {
+					time: 1200
+				})
+				loadMessageTable(dataMessage.items);
+				$("#messageList").bootstrapTable('append', dataMessage.items);
+			} else {
+				layer.msg("已无更多", {
+					time: 1200
+				})
+			}
+			messagePage = dataMessage.page;
+			if (dataMessage.items.length > 5) {
+				$('.messageNext').fadeIn()
+			} else {
+				$('.messageNext').hide()
+			}
+		});
+	};
+	$('.messageNext').click(function() {
+		loadMessageNext(messagePage)
+	});
+	// 留言表格
+	function loadMessageTable(data) {
+		$('#messageList').bootstrapTable({
+			data: data,
+			columns: [{
+				field: 'iphoto',
+				align: 'center',
+				valign: 'middle',
+				formatter: imgMessageFormatter,
+				events: optionMessageEvents
+			}, ],
+			onPostBody: function(name, args) {
+
+			},
+		});
+
+		function imgMessageFormatter(e, value,row,index) {
+			var answerVal;
+			var time1 = value.createTime.split("T")[0];
+			var lab = '';
+			if (value.childList.length == 0) {
+				answerVal = "";
+			} else {
+				answerVal = value.childList[0].Message;
+				lab = '<span>' + $(".uName").text() + '</span>回复<span>' + value.upname + '</span>：'
+			}
+			if(value.iphoto==''){
+				value.iphoto='img/user.png'
+			}
+			return ['<div class="logDiv"><div class="personInfo clearfix"><img src="' + value.iphoto +
+				'" title="点击访问他的创客空间"  class="pull-left photo"><p class="personName pull-left" title="点击访问他的创客空间">' + value.staffName +
+				'</p><br /><p class="pull-left"><span class="lyTime">' + time1 + '</span><span>' + value.departName + '</span>' +
+				"  " + '<span>' + value.postName + '</span></p></div><div class="content">' + value.Message +
+				'</div><p style="display:none"><a class="deleteMessage"  title="删除"><span class="glyphicon glyphicon-trash"></span><span id="deleteMessage">删除</span></a><a class="answerMessage"  title="回复"><span class="glyphicon glyphicon-comment"></span><span id="answerMessage">回复</span></a></p><div class="answercontent">' +
+				lab + answerVal + '</div></div>'
+			].join('');
+		};
+	}
+	
+	window.optionMessageEvents = {
+		'click .deleteMessage': function(e, value, row, index) {
+			
+			layer.open({
+				type: 1,
+				area: ['350px', '210px'],
+				title: ['删除留言', 'font-size:18px;text-align: center;'],
+				content: $(".deleteMessageDiv"),
+				btn: '确定',
+				yes: function(index, layero) {
+					layer.close(index)
+					$.post(http_head + 'Makerspacey/MakerLeaveMsg/Delete_MakerLeaveMsg.ashx', {
+						"msgId": row.Id,
+						"userGuid": userGuid,
+						"type": "1"
+					}, function(data) {
+						layer.msg("删除成功", {
+							time: 1200
+						})
+						loadMessageFirst(0)
+					});
+				}
+			});
+		},
+		'click .answerMessage': function(e, value, row, index) {
+			layer.open({
+				type: 1,
+				area: ['450px', '300px'],
+				title: ['回复留言', 'font-size:18px;text-align: center;'],
+				content: $(".answerMessageDiv"),
+				btn: '发送',
+				yes: function(index, layero) {
+					$.post(http_head + 'Makerspacey/MakerLeaveMsg/Add_MakerLeaveMsg.ashx', {
+						"userGuid": userGuid,
+						"userCompanyId": row.userCompanyId,
+						"message": $('#messageVal').val(),
+						"parentId": row.Id,
+						"parentUserGuid": row.parentUserGuid,
+						"firstCommentId": row.Id,
+						"objectId": 0,
+						"makerGuid": row.MakerGuid,
+						"objectType": 0
+					}, function(data) {
+						var dataAnswer = JSON.parse(data);
+						console.log(dataAnswer)
+						if (dataAnswer.status == 200) {
+							loadMessageFirst(0)
+							layer.closeAll()
+						}
+					});
+				}
+			})
+		},
+		'click .photo': function(e, value, row, index) {
+			window.open("http://www.eqidd.com/changke/index_start.html?userGuid=" + row.creater)
+		},
+		'click .personName': function(e, value, row, index) {
+			window.open("http://www.eqidd.com/changke/index_start.html?userGuid=" + row.creater)
+		},
+		'mouseover .logDiv':function(e,value,row,index){
+			$('.logDiv').eq(index).children('p').show()
+		},
+		'mouseout .logDiv':function(e,value,row,index){
+			$('.logDiv').eq(index).children('p').hide()
+		}
+	}
+	$(function(){
+		$('.logDiv').on('click',function(){
+		alert(111)
+	 	console.log($(this).index())
+	// 	$(this).find('.logDiv').children('p').index($(this)).show()
+	 }),function(){
+	 	
+	 }
+	})
+	
+</script>

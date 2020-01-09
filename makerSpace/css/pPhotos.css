@@ -1,0 +1,87 @@
+.makeImgList span {
+	background-color: #29e;
+	color: white;
+	padding: 5px 20px;
+	cursor: pointer
+}
+.makeImgList{
+	display: flex;
+	justify-content: flex-end;
+	margin: 20px 0
+}
+#imgShowArea{}
+#imgShowArea>li {
+    width: 22.5%;
+    padding: 10px;
+    background-color: #eee;
+    margin: 10px 1.25%;
+    position: relative;
+    border-radius: 10px;
+}
+#imgShowArea>li:hover
+{
+    box-shadow: 1px 3px 5px 1px rgba(0, 0, 0, 0.2);
+}
+
+#imgShowArea li div:nth-child(1) {
+    height: 200px;
+    cursor: pointer;
+}
+#imgShowArea li div:nth-child(2) {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    width: 100px;
+    opacity: 0.7;
+    z-index: 500;
+    background-color: #fff;
+    opacity: 0.8;
+    height: 110px;
+    padding-top: 8px;
+    display: none;
+}
+#imgShowArea li div:nth-child(2) li {
+    width: 80px;
+    text-align: center;
+    margin: 5px 10px 5px 0;
+    cursor: pointer;
+}
+#imgShowArea li div img {
+    width: 100%;
+    height: 200px;
+    border-radius: 10px;
+}
+.changeImgNameDiv,.deleteImgDiv{
+	display: none
+}
+#imgShowArea li p {
+    text-align: center;
+    margin-top: 10px;
+}
+#optionImg {
+    margin-left: 10px;
+}
+#optionImg li
+{
+    font-size:14px
+}
+.changeImgNameDiv{
+	margin-top: 30px;
+    padding-left: 160px;
+}
+.deleteImgDiv{
+	margin-top: 30px;
+    padding-left: 120px;
+}
+.pageArea button {
+    width: 120px;
+    margin: 10px 5%;
+    background-color: #29e;
+    color: #fff;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 14px;
+    cursor: pointer;
+}

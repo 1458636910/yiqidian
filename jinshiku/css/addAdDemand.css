@@ -1,0 +1,149 @@
+.contain {
+	width: 1000px;
+	margin: 50px auto;
+	background-color: #eee;
+	padding: 30px;
+	box-shadow: 1px 3px 5px 1px rgba(0, 0, 0, 0.1);
+}
+
+.demandTable label {
+	display: flex;
+	min-height: 40px;
+	align-items: center;
+	position: relative;
+	margin-top: 10px;
+}
+.demandTable label textarea{
+	width: 100%!important;
+}
+.demandTable label select{
+	width: 198px;
+}
+.demandTable label input{
+	width: 198px;
+}
+.demandTable label>span:nth-child(1) {
+	display: inline-block;
+	width: 10px;
+	color: #f00;
+}
+
+.demandTable label>span:nth-child(2) {
+	display: inline-block;
+	width: 100px;
+	min-width: 100px;
+	font-weight: 100;
+	color: #969aa3;
+}
+
+.demandTable form p {
+	height: 40px;
+	line-height: 30px;
+	border-bottom: 1px solid #888;
+	font-size: 20px;
+	font-weight: 600;
+	display: block;
+	margin-bottom: 20px;
+}
+.demandTable form p:nth(2),.demandTable form p:nth(3){
+	margin-top: 20px;
+}
+/* 插件样式修改 */
+.hyitems,.hyitems2,.hyitems3,.hyitems4,.hyitems5{
+	width: 198px;
+	position: relative;
+}
+.selectivity-dropdown {
+	color: #656565;
+	overflow: hidden;
+	position: absolute;
+	left: 0 !important;
+	top: 39px !important;
+}
+.selectivity-single-result-container{
+	padding-left: 6px;
+}
+.selectivity-single-selected-item{
+	color: #555;
+}
+.selectivity-single-select{
+	padding: 3px ;
+	background-color: white;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+}
+.selectivity-single-select-input{
+	width: 190px!important;
+}
+/* ////////////////////////////// */
+.Badress{
+	width: 326px!important
+}
+#reset,#reset2{
+	height: 32px;
+}
+.unit{
+	position: absolute;
+	left: 286px;
+}
+.sign{
+	font-weight: bold;
+    font-size: 18px;
+    margin: 0 10px;
+}
+.docs-methods {
+	height: 40px;
+}
+#distpicker div label,#distpicker2 div label{
+	display: none;
+}
+.title{
+	margin-top: 30px;
+}
+.sub{
+    width: 120px;
+	margin: 30px auto;
+}
+
+
+.teachAreaTable {
+	display: none;
+	margin: 20px;
+}
+
+.tableLeft {
+	width: 160px;
+	height: 330px;
+	overflow-y: auto;
+	margin-top: 20px;
+}
+
+.tableLeft::-webkit-scrollbar {
+	display: none
+}
+
+.tableLeft p {
+	cursor: pointer;
+	background-color: #29e;
+	color: #fff;
+	height: 30px;
+	line-height: 30px;
+	text-align: center;
+}
+
+.tableRight {
+	width: 560px;
+	margin-left: 20px;
+	margin-top: 20px;
+}
+
+.tableRight label {
+	display: inline-block;
+	width: 180px;
+	height: 30px;
+	line-height: 30px;
+}
+
+.infoLabel label {
+	vertical-align: top;
+}

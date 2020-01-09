@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.1.0/css/bootstrap.min.css" />
+		<link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.14.2/dist/bootstrap-table.min.css" />
+		<script type="text/javascript">
+			;
+			(function(doc, win) {
+				var docEle = doc.documentElement,
+					dpr = Math.min(win.devicePixelRatio, 3),
+					scale = 1 / dpr,
+					resizeEvent = 'orientationchange' in window ? 'orientationchange' : 'resize';
+				var metaEle = doc.createElement('meta');
+				metaEle.name = 'viewport';
+				metaEle.content = 'initial-scale=' + 1 + ',maximum-scale=' + scale;
+				docEle.firstElementChild.appendChild(metaEle);
+				var recalCulate = function() {
+					var width = docEle.clientWidth;
+					docEle.style.fontSize = 10 * (width / 375) + 'px';
+				};
+				recalCulate();
+				if (!doc.addEventListener) return;
+				win.addEventListener(resizeEvent, recalCulate, false);
+			})(document, window);
+		</script>
+		<style type="text/css">
+			.content {
+				background-color: white;
+				width: 1200px;
+				margin: 30px auto;
+				padding: 3% 12%;
+			}
+
+			.mtable {
+				font-size: 12px;
+				margin: 60px auto;
+				width: 80%;
+			}
+
+			.mtable tbody tr td:nth-child(1) {
+				width: 160px;
+			}
+
+			.share {
+				width: 80px;
+				height: 80px;
+			}
+
+			.share canvas {
+				width: 100%;
+				height: 100%;
+			}
+
+			.foot span {
+				margin-right: 100px;
+			}
+
+			.foot span:nth-child(1) {
+				margin-left: 180px;
+			}
+
+			.middle {
+				position: relative;
+				width: 1200px;
+				margin: 0 auto;
+			}
+
+			.print {
+				position: absolute;
+				top: 70px;
+				right: 50px;
+				border: 1px solid #29e;
+				padding: 1px 10px;
+				border-radius: 5px;
+				font-size: 12px;
+				color: #29e;
+				cursor: pointer;
+			}
+
+			.t1 p {
+				margin: 0;
+				width: auto;
+			}
+
+			.qr {
+				width: 80px;
+				text-align: center;
+				float: left;
+			}
+
+			.meet {
+				font-weight: bold;
+				margin-left: 360px;
+				text-align: center;
+				margin-top: 20px;
+				float: left;
+			}
+
+			.lab {
+				margin-left: 10%;
+				padding-bottom: 10px;
+			}
+
+			.signTable {
+				font-size: 14px;
+				width: 80% !important;
+				margin: 0 auto;
+			}
+
+			.pageArea {
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				margin-top: 1rem;
+			}
+
+			.pageNext {
+				background-color: #29e;
+				color: white;
+				padding: 3px 15px;
+				font-size: 14px;
+				border-radius: 20px;
+			}
+		</style>
+	</head>
+	<body>
+		<table class="table table-bordered mtable">
+			<tbody>
+				<tr>
+					<td colspan="2" class="t1">
+						<div class="qr">
+							<div class="share"></div>
+							<span>扫码分享</span>
+						</div>
+						<div class="meet">
+							<p class="mName"></p>
+							<p class="mTime"></p>
+							<p class="mPlace"></p>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td>参会人员</td>
+					<td class="people"></td>
+				</tr>
+				<tr>
+					<td>书记员</td>
+					<td class="reco"></td>
+				</tr>
+				<tr>
+					<td>主持人</td>
+					<td class="compere"></td>
+				</tr>
+				<tr>
+					<td>参会人员会议准备</td>
+					<td class="ready"></td>
+				</tr>
+				<tr>
+					<td>注意事项</td>
+					<td class="notice"></td>
+				</tr>
+			</tbody>
+		</table>
+		<p class="lab">会议签到：</p>
+		<table class="signTable">
+			<thead>
+				<tr>
+					<th>姓名</th>
+					<th>状态</th>
+				</tr>
+			</thead>
+		</table>
+		<p class="pageArea">
+			<span class="pageNext">下一页</span>
+		</p>
+		<script src="https://cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+		<script src="https://cdn.staticfile.org/twitter-bootstrap/4.1.0/js/bootstrap.min.js"></script>
+		<script src="https://unpkg.com/bootstrap-table@1.14.1/dist/bootstrap-table.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.12.1/locale/bootstrap-table-zh-CN.min.js"></script>
+		<script src="js/jquery.qrcode.min.js" type="text/javascript"></script>
+		<script type="text/javascript">
+			$(document).ready(function() {
+				let http_head = "http://47.94.173.253:8008/";
+				let href = window.location.href;
+				console.log(href)
+				let userGuid = href.split("?")[1].split("&")[0].split("=")[1];
+				let companyId = href.split("?")[1].split("&")[1].split("=")[1];
+				// 会议详情
+				setTimeout(function() {
+					$.post(http_head + 'Meeting/Get_metNoticeDe.ashx?rand=' + Math.random(), {
+						"userGuid": userGuid,
+						"comid": companyId,
+						"noticeId": 76
+					}, function(data) {
+						var data = JSON.parse(data)
+						console.log(data)
+						$(".mName").text(data.items.type);
+						var time = data.items.startTime;
+						var y = time.substr(0, 4);
+						var m = parseInt(time.substr(5, 2));
+						var d = parseInt(time.substr(8, 2));
+						var t = time.substr(11, 5);
+						var mTime = y + "年" + m + "月" + d + "日" + " " + t;
+						$(".mTime").text(mTime);
+						$(".mPlace").text(data.items.place);
+
+						var peopleArr = data.items.attendees;
+						var name = [];
+						for (var i = 0; i < peopleArr.length; i++) {
+							name.push(peopleArr[i].realName)
+						}
+						var nameStr = name.join("、");
+						$(".people").text(nameStr);
+						$(".reco").text(data.items.recorder.realName);
+						$(".compere").text(data.items.compere.realName);
+						$(".ready").text(data.items.aim);
+						$(".notice").text(data.items.note)
+					})
+				}, 300)
+				// 生成二维码
+				$(".share").replaceWith('<div class="share"></div>')
+				$('.share').qrcode(href);
+				// 获取画布的对象(canvas)
+				var mycanvas = $(".share canvas")[0];
+				// 获取画布的父对象(div)
+				var parent = mycanvas.parentElement;
+				// 根据画布内容生成图片
+				var image = mycanvas.toDataURL("image/png");
+				// 创建一个img图片对象元素
+				var img = document.createElement("img");
+				// 将画布生成的图片内容给img图片对象元素
+				img.src = image;
+
+				// // 将画布宽度给img图片对象元素宽度
+				// img.width = mycanvas.width;
+				// // 将画布高度给img图片对象元素高度
+				// img.height = mycanvas.height;
+
+				img.width = "80";
+				img.height = "80";
+
+				// 将生成的图片内容加载到画布所在父元素的内容里
+				parent.appendChild(img);
+				// 从画布所在的父元素里删除画布自己的内容
+				parent.removeChild(mycanvas);
+				// 开始打印
+				// $("#centerdiv").print();
+				// Print('.content')
+				// 回复画布的内容
+				parent.appendChild(mycanvas);
+				// 将生成的图片内容从到画布所在父元素的内容里删除
+				parent.removeChild(img);
+				// 签到Table				
+				var pageNext = 0;
+
+				function loadTable(data) {
+					$('.signTable').bootstrapTable({
+						data: data,
+						columns: [{
+							field: 'userName',
+							align: 'center',
+							valign: 'middle',
+						}, {
+							align: 'center',
+							valign: 'middle',
+							formatter: fun
+						}]
+					});
+
+					function fun(e, value, row, index) {
+						var status;
+						if (value.status === 1) {
+							status = "已到";
+						} else if (value.status === -2) {
+							status = "未到"
+						} else if (value.status === -1) {
+							status = "迟到"
+						}
+						return '<span class="status">' + status + '</span>'
+					}
+				};
+
+				function loadFirst(page) {
+					$.post(http_head + 'Meeting/Get_signDetails_meet.ashx', {
+						"page": page,
+						"comid": 46,
+						"noticeId": 28
+					}, function(data) {
+						var data = JSON.parse(data);
+
+						loadTable(data.items);
+						$(".signTable").bootstrapTable('load', data.items);
+						pageNext = data.page;
+						if (data.items.length >= 10) {
+							$('.pageArea').show()
+						} else {
+							$('.pageArea').hide()
+						}
+					});
+				};
+
+				function loadNext(page) {
+					$.post(http_head + 'Meeting/Get_signDetails_meet.ashx', {
+						"page": page,
+						"comid": 46,
+						"noticeId": 28
+					}, function(data) {
+						var data = JSON.parse(data);
+						loadTable(data.items);
+						$(".signTable").bootstrapTable('append', data.items);
+						pageNext = data.page;
+						if (data.items.length >= 10) {
+							$('.pageArea').show()
+						} else {
+							$('.pageArea').hide()
+						}
+					});
+				};
+				loadFirst(pageNext);
+				$('.pageNext').click(function() {
+					loadNext(pageNext)
+				});
+			})
+		</script>
+	</body>
+</html>

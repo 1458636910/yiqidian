@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <link rel="icon" href="../image/pic.ico" type="image/x-icon"/>
+        <title>易企点活动申请</title>
+        <link rel="stylesheet" href="css/reset.css"/>
+        <link rel="stylesheet" href="css/skin/default/layer.css"/>
+        <link rel="stylesheet" href="css/bootstrap.min.css"/>
+        <link rel="stylesheet" href="css/bootstrap-select.css"/>
+        <link rel="stylesheet" href="css/theme/default/laydate.css"/>
+        <link rel="stylesheet" href="css/addActicity.css"/>
+    </head>
+    <body>
+        <div class="regcomTitle">
+            <div>
+                <img src="../image/downQRcode.png" alt=""/>
+                易企点平台
+            </div>
+            <p>易企点活动申请</p>
+        </div>
+        <div class="regCom">
+            <div class="content">
+                <p class="activityInfo">活动基本信息</p>
+                <form action="" class="form-inline" id="activityInfoForm">
+                    <label for="">
+                        <span>*</span>
+                        <span>活动名字</span>
+                        <input type="text" class="form-control" placeholder="绩效管理理论与实践" id="activityName" autocomplete="off"/>
+                    </label>
+                    <label for="" id="activityType">
+                        <span>*</span>
+                        <span>活动类型</span>
+                        <label for="radio1">
+                            <input type="radio" name="chooseType" id="radio1" value="论坛" checked="true"/>
+                            论坛
+                        </label>
+                        <label for="radio2">
+                            <input type="radio" name="chooseType" id="radio2" value="大会"/>
+                            大会
+                        </label>
+                        <label for="radio3">
+                            <input type="radio" name="chooseType" id="radio3" value="研讨会"/>
+                            研讨会
+                        </label>
+                        <label for="radio4">
+                            <input type="radio" name="chooseType" id="radio4" value="培训"/>
+                            培训
+                        </label>
+                        <label for="radio5">
+                            <input type="radio" name="chooseType" id="radio5" value="市场活动"/>
+                            市场活动
+                        </label>
+                        <label for="radio6">
+                            <input type="radio" name="chooseType" id="radio6" value="展览"/>
+                            展览
+                        </label>
+                        <label for="radio7">
+                            <input type="radio" name="chooseType" id="radio7" value="聚会"/>
+                            聚会
+                        </label>
+                        <label for="radio8">
+                            <input type="radio" name="chooseType" id="radio8" value="酒会"/>
+                            酒会
+                        </label>
+                        <label for="radio9">
+                            <input type="radio" name="chooseType" id="radio9" value="其他"/>
+                            其他
+                        </label>
+                    </label>
+                    <label for="">
+                        <span>*</span>
+                        <span>活动分类</span>
+                        <select name="" id="provice1" class="form-control">
+                            <option value="">==请选择==</option>
+                        </select>
+                        <select name="" id="city1" class="form-control">
+                            <option value="==请选择==">==请选择==</option>
+                        </select>
+                    </label>
+                    <label for="">
+                        <span>*</span>
+                        <span>活动规模</span>
+                        <input type="text" class="form-control" placeholder="如百人大会" id="activitySize" autocomplete="off"/>
+                    </label>
+                    <label for="">
+                        <span>*</span>
+                        <span>活动人数</span>
+                        <input type="text" class="form-control" placeholder="请设置参加活动的目标人数" id="activitypeopleNumber" autocomplete="off"/>
+                    </label>
+                    <label for="">
+                        <span>*</span>
+                        <span>开始时间</span>
+                        <input type="text" class="form-control" placeholder="请选择活动开始时间" id="beginTime" autocomplete="off"/>
+                    </label>
+                    <label for="">
+                        <span>*</span>
+                        <span>结束时间</span>
+                        <input type="text" class="form-control" placeholder="请选择活动结束时间" id="endTime" autocomplete="off"/>
+                    </label>
+                    <label for="">
+                        <span>*</span>
+                        <span>活动地址</span>
+                        <select name="" id="s_province" class="form-control">   </select>
+                        <select name="" id="s_city" class="form-control">   </select>
+                        <select name="" id="s_county" class="form-control"> </select>
+                        <input type="text" class="form-control" placeholder="如上海浦东嘉里中心、北京四季酒店等" id="detailAddress"/>
+                    </label>
+                    <label for="">
+                        <span>*</span>
+                        <span>参会对象</span>
+                        <textarea name="" id="activityObj" cols="60" rows="3" class="form-control" placeholder="如企业管理者，人力资源总监，经理人等">    </textarea>
+                    </label>
+                    <label for="" id="checkArea">
+                        <span>*</span>
+                        <span>参会资格审核</span>
+                        <label for="noCheck">
+                            <input type="radio" name="isCheck" value="true" id="noCheck" checked="true"/>
+                            不审核
+                        </label>
+                        <label for="check">
+                            <input type="radio" name="isCheck" value="false" id="check"/>
+                            审核
+                        </label>
+                    </label>
+                </form>
+                <p class="activityContent">活动内容</p>
+                <form action="" class="form-inline"  id="activityContentForm">
+                    <div class="imgDiv clearfix">
+                        <div class="pull-left">
+                            <span>*</span>
+                            <span>活动封面图</span>
+                        </div>
+                        <div class="pull-left imglist3">
+                            <input type="button" value="上传照片" id="pic3"/>
+                            <br/>
+                            <img  style="display: none" id="pic3Img"  alt=""/>
+                            <input id="upload3" name="file" accept="image/*" type="file" style="display: none"/>
+                        </div>
+                    </div>
+                    <div class="activityDesc clearfix">
+                        <p class="pull-left">
+                            <span>*</span>
+                            <span>活动描述</span>
+                        </p>
+                        <div id="activityDesc" class="pull-left">   </div>
+                    </div>
+                    <div class="activitySchedule clearfix">
+                        <p class="pull-left">
+                            <span>*</span>
+                            <span>活动日程</span>
+                        </p>
+                        <div id="activitySchedule" class="pull-left">   </div>
+                    </div>
+                    <label for="" id="chooseCharge">
+                        <span>*</span>
+                        <span>活动费用</span>
+                        <label for="nocharge">
+                            <input type="radio" name="charge" checked="true" id="nocharge" value="true"/>
+                            免费
+                        </label>
+                        <label for="charge">
+                            <input type="radio" name="charge" id="charge" value="false"/>
+                            收费
+                        </label>
+                        <label for="" class="priceInput">
+                            <input type="input" placeholder="请输入费用(元)" class="form-control" value="0"/>
+                        </label>
+                    </label>
+                </form>
+                <p class="activityHolderInfo">联系人信息</p>
+                <form action="" class="form-inline" id="activityHolderForm">
+                    <label for="">
+                        <span>*</span>
+                        <span>姓名</span>
+                        <input type="text" class="form-control" id="holderName"/>
+                    </label>
+                    <label for="">
+                        <span>*</span>
+                        <span>部门</span>
+                        <input type="text" class="form-control" id="holderDep"/>
+                    </label>
+                    <label for="">
+                        <span>*</span>
+                        <span>职位</span>
+                        <input type="text" class="form-control" id="holderPost"/>
+                    </label>
+                    <label for="">
+                        <span>*</span>
+                        <span>电话</span>
+                        <input type="text" class="form-control" id="holderPhone"/>
+                    </label>
+                    <label for="">
+                        <span>*</span>
+                        <span>邮箱</span>
+                        <input type="text" class="form-control" id="holderEmail"/>
+                    </label>
+                    <label for="" id="lanucherID">
+                        <span>*</span>
+                        <span>发布者身份</span>
+                        <label for="person">
+                            <input type="radio" name="lanucherID" value="0" id="person" checked="true"/>
+                            个人
+                        </label>
+                        <label for="company">
+                            <input type="radio" name="lanucherID" value="1" id="company"/>
+                            企业
+                        </label>
+                    </label>
+                </form>
+                <p class="submitArea">
+                    <button id="applyActivityBtn">提交</button>
+                </p>
+            </div>
+        </div>
+        <script type="text/javascript" src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+        <script type="text/javascript" src="https://cdn.bootcss.com/layer/3.1.0/layer.js"></script>
+        <script type="text/javascript" src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="js/ajaxfileupload.js"></script>
+        <script src="layui/lay/modules/laydate.js" ></script>
+        <script type="text/javascript" src="js/addActicity.js?ver=20191115"></script>
+        <script type="text/javascript" src="js/bootstrap3-typeahead.min.js"></script>
+        <script type="text/javascript" src="js/angular.1.2.29.js"></script>
+        <script type="text/javascript" src="js/change.js"></script>
+        <script type="text/javascript" src="js/wangEditor.js"></script>
+        <script class="resources library" src="js/area.js" type="text/javascript"></script>
+        <script type="text/javascript">_init_area();</script>
+        <script type="text/javascript">
+                                                                                                        var Gid  = document.getElementById ;
+                                                                                                        var showArea = function(){
+                                                                                                              Gid('show').innerHTML = "<h3>省" + Gid('s_province').value + " - 市" +
+                                                                                                              Gid('s_city').value + " - 县/区" +
+                                                                                                              Gid('s_county').value + "</h3>"
+                                                                                                              Gid('s_county').setAttribute('onchange','showArea()');
+                                                                                                        }
+                                                                                                </script>
+    </body>
+</html>

@@ -1,0 +1,31 @@
+<link rel="stylesheet" type="text/css" href="css/zizhi.css"/>
+<div class="zzBox">
+	<ul class="zzList " ></ul>
+</div>
+<script charset="utf-8">
+    setTimeout(function () {
+        $.post(http_head + "Lectures/Get_Lecture_ByCreater.ashx", {
+            "userGuid": userGuid
+        }, function (data) {
+            var data = JSON.parse(data);
+            var srcHead = "http://47.94.173.253:8008";
+            if (data.status == 200) {
+                var zzImgStr = data.items.Qualifications;
+                for (var i = 0; i < zzImgStr.split(";").length; i++) {
+                    if (zzImgStr.split(";")[i]) {
+                        var imgSrc = srcHead + zzImgStr.split(";")[i];
+                        $(".zzList").append('<li><img title = "look this"  src="' + imgSrc + '"  /></li>')
+                    }
+                }
+            };
+            $(".zzList li").on("click", function () {
+                // ‘§¿¿Õº∆¨
+                layer.photos({
+                    photos: '.zzList',
+                    anim: 5
+                })
+            })
+        })
+    }, 300);
+   
+</script>

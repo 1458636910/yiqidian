@@ -1,0 +1,86 @@
+
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="utf-8">
+  <link rel="icon" href="../image/pic.ico" type="image/x-icon"/>
+  <title>课程列表</title>
+  <link rel="stylesheet" href="../css/reset.css">
+  <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../css/skin/default/layer.css">
+  <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap-table/1.11.1/bootstrap-table.min.css">
+  <link rel="stylesheet" href="../css/newTitle.css">
+  <link rel="stylesheet" href="../css/courseList.css?ver=20180827">
+</head>
+<body>
+<div class="navTitle clearfix">
+        <ul class="col-lg-10 col-md-10 col-sm-10 col-xs-12 clearfix">
+              <li class="pull-right loginBtn " ><button id="loginBtn">登录</button></li>
+              <li class="pull-right quitOut" >退出</li>
+              <li class="pull-right infoBtn" ><span class="loginName"></span><a href="../../createrSpace/html/personInfo.html">个人中心</a></li>
+        </ul>
+</div>
+  <div class="topArea">
+      <div class="loginArea"></div>
+      <div class="ulList">
+          <ul class="mainFountion clearfix">
+            <li class="pull-left"><a href="../font.html">首页</a></li>
+            <li class="pull-left"><a href="teacherIndex.html">找讲师</a></li>
+            <li class="pull-left" id="chooseCpurse"><a href="lookCourseList.html">选课程</a></li>
+            <a href="lookDemandList.html"><li class="pull-left">找需求</li></a>
+            <li class="pull-left"><a href="lookCircleList.html">品文章</a></li>
+          </ul>
+      </div>
+  </div>
+  <div class="main clearfix">
+    <div class="input-group input-group-lg searchDiv">
+      <input type="text" class="form-control" aria-label="" id="searchVal">
+              <span class="input-group-addon">搜索课程</span>
+    </div>
+        <!-- <p class="clearfix addArea"><button class="addCourseBtn pull-right"><a href="addTeacherCourse.html" target="_blank">增加课程</a></button></p> -->
+        <div class=" listLeft pull-left">
+          <p>视频分类</p>
+        </div>
+        <div class="listRight pull-left">
+              <table id="coursesList">
+                   <thead>
+                       <tr>
+                           <th data-field="courseTheme">课程题目</th>
+                           <th data-field="courseType">课程类别</th>
+                           <th data-field="objecter">听众对象</th>
+                           <th data-field="createTime">创建时间</th>
+                           <th data-field="option">查看详情</th>
+                       </tr>
+                   </thead>
+               </table>
+                <button class="loadMore">阅读更多</button>
+                <button class="noMoreBtn">已全部加载</button>
+        </div>
+        <div class="deleteCourse">
+            确定删除该课程
+          </div>
+  </div>
+  <div class="leaveMessage">
+        <div class="backTop">
+              <span class="glyphicon glyphicon-arrow-up"></span>
+        </div>
+        <div class="weChat">
+              <span class="glyphicon glyphicon-qrcode"></span>
+        </div>
+          <div class="message">
+              <span class="glyphicon glyphicon-user"></span>
+        </div>
+        <div class="collection2">
+              <span class="glyphicon glyphicon-pencil"></span>
+        </div>
+    </div>
+  <script type="text/javascript" src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+  <script type="text/javascript" src="https://cdn.bootcss.com/layer/3.1.0/layer.js"></script>
+  <script type="text/javascript" src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="https://cdn.bootcss.com/bootstrap-table/1.11.1/bootstrap-table.js"></script>
+  <script type="text/javascript" src="../js/bootstrap-table-zh-CN.min.js"></script>
+  <script type="text/javascript" src="../js/public.js"></script>
+  <script type="text/javascript" src="../js/change.js?ver=20180305"></script>
+  <script type="text/javascript" src="../js/courseList.js?ver=20180312"></script>
+</body>
+</html>

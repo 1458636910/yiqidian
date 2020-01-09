@@ -1,0 +1,16 @@
+.cancle{
+	display: none;
+}
+#cltTable thead
+{   background-color: #e4e4e4;
+    font-weight: bold;
+ }
+ .cltDiv{
+ 	margin-top: 30px
+ }
+ .cltPIc{
+         width: 160px;
+ }
+ .inner{
+    padding-bottom:0
+}

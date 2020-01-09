@@ -1,0 +1,285 @@
+<link rel="stylesheet" type="text/css" href="css/renwu.css" />
+<div class="header">
+	<p class="header_p1">姓名：<i id="upname"></i></p>
+	<p>工号：<i id="jobNumber"></i></p>
+	<p>部门：<i id="department"></i></p>
+	<p>职位：<i id="post"></i></p>
+</div>
+
+<div class="box">
+	<form class="layui-form" action="">
+		<div class="content">
+              <p class="title">带 <i class="isa">*</i>为必选项,不带 <i class="isa">*</i>为非必选项</p>
+			<div class="content_list">
+				<p class="dimission">父项目：</p>
+				<div class="layui-input-block dist add" id="seachx">
+					<select name="city" id="ParentTask" lay-filter="ParentTask" lay-search>
+						<option value="">请选择</option>
+					</select>
+					<i class="layui-icon layui-icon-search sxfx"></i>
+				</div>
+				<!-- <div class="content_list-img">
+					<img src="img/Add.png">
+					</div> -->
+			</div>
+
+			<!-- <div class="content_list">
+						<p class="dimission">主事项：</p>
+						<div class="layui-input-block dist add">
+							<input type="text" name="username" required lay-verify="required" autocomplete="off" placeholder="请输入添加主事项名称" class="layui-input" id="newsTheme">
+						</div>
+					</div> -->
+
+			<div class="content_list">
+				<p class="dimission"><i class="isa">*</i>具体事项：</p>
+				<div class="layui-input-block dist">
+					<textarea class="layui-textarea" placeholder="请输入具体事项" lay-verify="required" id="taskDesc"></textarea>
+				</div>
+			</div>
+
+			<div class="content_list">
+				<p class="dimission"><i class="isa">*</i>责任人：</p>
+				<div class="layui-input-inline times nosd" style="margin-right: 20px!important;">
+					<select name="quiz3" id="xcxv" lay-filter="ParentTask2" lay-verify="required" lay-search>
+						<option value="">请选择</option>
+					</select>
+				</div>
+			</div> 
+			
+			
+			<div class="content_list">
+				<div class="dimission">协助人：</div>
+				<div id="ParentTask1" class="xm-select-demo layui-input-block tesk_1"></div>
+				<div id="demo1-getValue" style="display: none;">获取选中值</div>
+			</div>
+			
+			<div class="content_list">
+				<p class="dimission"><i class="isa">*</i>计划完成时间：</p>
+				<input type="text" class="layui-input" id="dimis" lay-verify="required" placeholder="请输入验收时间" autocomplete="off">
+			    <div class="layui-input-inline">
+			    	<select name="Noon" id="Noon" lay-filter="Noon">
+			    		<option value="上午">上午</option>
+						<option value="下午">下午</option>
+			    	</select>
+			    </div>
+			</div>
+
+			<div class="content_list">
+				<p class="dimission"><i class="isa">*</i>验收标准：</p>
+				<div class="layui-input-block dist">
+					<textarea class="layui-textarea" lay-verify="required" placeholder="请输入验收标准" id="leaveReason"></textarea>
+				</div>
+			</div>
+
+			<div class="content_list">
+				<p class="dimission"><i class="isa">*</i>验收人：</p>
+				<div class="layui-input-inline times nosd" style="margin-right: 20px!important;">
+					<select name="quiz3" id="ffsx" lay-verify="required" lay-filter="ParentTask3" lay-search>
+						<option value="">请输入</option>
+					</select>
+				</div>
+			</div>
+
+			<div class="content_list">
+				<p class="dimission">注意事项：</p>
+				<div class="layui-input-block dist">
+					<textarea class="layui-textarea" placeholder="其他注意事项" id="duty"> </textarea>
+				</div>
+			</div>
+
+
+		</div>
+
+		<div class="content_list">
+			<div class="layui-form-item">
+				<div class="layui-input-block">
+					<div class="layui-btn btns" lay-submit="" lay-filter="demo">发布</div>
+				</div>
+			</div>
+		</div>
+	</form>
+</div>
+<script type="text/javascript">
+	
+	
+	//分割当前网页链接
+	var windowUrl = window.location.href; //获取当前url链接		
+	//http://127.0.0.1:8848/shenqing/index.html?userGuid=4f47e8c7e40541d4a2f03c3c72304252&companyId=46
+	var arr = windowUrl.split("?", 2); //分割url	
+	var arr_1 = arr[1]; //瞎起变量
+	var arr_2 = arr_1.split('&', 2);
+	var arr_3 = (arr_2[0].split('=', 2))[1];
+	var arr_4 = (arr_2[1].split('=', 2))[1];
+	//console.log(arr_4)
+
+	let depart = '';
+	let ParentTaskId = 0;
+	//Demo
+	layui.use('form', function() {
+		var form = layui.form;
+		//监听提交
+		form.on('submit(demo)', function(data) {
+				$('#demo1-getValue').click();
+				var Noon = $('#dimis').val() + ' ' + $('#Noon').val();
+				$.post('http://47.94.173.253:8008/MyTask/Add_Task.ashx', {
+					'userGuid': arr_3,
+					'TaskName': ' ', //任务名称
+					'ParentTaskId': ParentTaskId, //(关联父项目id)
+					'recipient': ParentTaskId2, //责任人
+					'assist': nameArr, //协助人(可以多个，用';'分割)
+					'notify': ' ', //知会人,同上
+					'startTime': ' ', //开始时间
+					'endTime': Noon, //结束时间
+					'checkStandard': $('#leaveReason').val(), //验收标准
+					'checker': ParentTaskId3, //验收人
+					'checkTime': ' ',//计划完成时间
+					'duty': $('#duty').val(), //责任描述
+					'companyId': arr_4,
+					'departId': depart,
+					'taskDesc': $('#taskDesc').val(), //任务描述
+				}, function(data) {
+					data = JSON.parse(data);
+					console.log(data);
+					if (data.status == 200) {
+						layer.msg('添加成功！', {
+							time: 1000,
+						});
+						$(".box form input").each(function() {
+							$(this).val('');
+						});
+						$(".box form textarea").each(function() {
+							$(this).val('');
+						});
+						$('.toolbar-tag').click();
+					} else {
+						layer.msg(data.msg, {
+							time: 1000,
+						});
+					}
+				})
+		 });
+		form.on('select(ParentTask2)', function(data) {
+			ParentTaskId2 = $("option[value=" + data.value + "]").attr('userGuid');
+		});
+		form.on('select(ParentTask3)', function(data) {
+			ParentTaskId3 = $("option[value=" + data.value + "]").attr('userGuid');
+		});
+		//父项目
+		form.on('select(ParentTask)', function(data) {
+			ParentTaskId = $("option[value=" + data.value + "]").attr('data-id');
+			console.log(ParentTaskId); //得到被选中的值
+		});
+	});
+
+	layui.use('laydate', function() {
+		var laydate = layui.laydate;
+		//执行一个laydate实例
+		laydate.render({
+			elem: '#dimis', //指定元素
+			type: 'date'
+		});
+	});
+
+	
+		//获取个人信息
+		$.ajax({
+			url: 'http://47.94.173.253:8008/getUserDetailByuserGuid.ashx', //你请求的接口
+			type: 'POST',//类型
+			data: {
+				'userGuid': arr_3,
+			}, //数据有则传，没有可以不写
+			success: function(data) {
+				data = JSON.parse(data)
+				//请求成功后的返回
+				//console.log(data)
+				depart = data.items.departId;
+				$('#upname').text(data.items.realName);
+				$('#jobNumber').text(data.items.jovNumber);
+				$('#department').text(data.items.depart);
+				$('#post').text(data.items.post);
+				layui.use('form', function() {
+					var form = layui.form;
+					form.render();
+				});
+			}
+		})
+		
+		//获取父项目 companyId,startDate,endDate,para(搜索关键字)
+			$.ajax({
+				url: 'http://47.94.173.253:8008/MyTask/Get_Task_BySearch.ashx', //你请求的接口
+				type: 'POST', //类型
+				data: {
+					'para': '',
+					'companyId': arr_4,
+					'page': 0
+				}, //数据有则传，没有可以不写		
+				success: function(data) {
+					var data = JSON.parse(data);
+					datas = data.items
+					//console.log(datas)
+					for (let i = 0; i < datas.length; i++) {
+						var html = "<option value='" + datas[i].TaskDesc + "' data-id='" + datas[i].Id + "'>" + datas[i].TaskDesc +
+							"</option>";
+						$("#ParentTask").append(html);
+					}
+					layui.use('form', function() {
+						var form = layui.form;
+						form.render();
+					})
+				}
+			})
+			
+		// 获取下拉框数据
+		var nameArr = '';
+		var para = ' ';
+		$.post('http://47.94.173.253:8008/Com/User_Search_Info.ashx', {
+			companyId: arr_4,
+			para: para
+		}, function(data) {
+			var data = JSON.parse(data);
+			var datas = data.items;
+			for (let i = 0; i < datas.length; i++) {
+				var html = "<option value='" + datas[i].upname + "' userGuid='" + datas[i].userGuid + "'>" + datas[i].upname +
+					"</option>";
+				$("#xcxv").append(html);
+				$("#ffsx").append(html);
+			}
+			
+			var demo1 = xmSelect.render({ 
+				el: '#ParentTask1',
+				filterable: true,
+				toolbar:{show: true},
+				model: {
+				label: {
+					type: 'block',
+					block: {
+						//最大显示数量, 0:不限制
+						showCount: 4,
+						//是否显示删除图标
+						showIcon: true,
+					}
+				}
+			  },
+				prop: {
+					name: 'upname',
+					value: 'userGuid',
+				},
+				data: data.items
+			})
+			document.getElementById('demo1-getValue').onclick = function(){
+				//获取当前多选选中的值
+				var selectArr = demo1.getValue();
+				for(let i =0;i<selectArr.length;i++){
+					if(i==selectArr.length-1){
+						nameArr += selectArr[i].userGuid;
+					}else{
+					nameArr += selectArr[i].userGuid+";";
+					}
+				}
+			}
+			layui.use('form', function() {
+				var form = layui.form;
+				form.render();
+			})
+		});
+</script>

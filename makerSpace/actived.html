@@ -1,0 +1,121 @@
+<!-- <link rel="stylesheet" type="text/css" href="css/actived.css"/> -->
+<style type="text/css">
+	.signInDiv{
+		margin-top: 30px
+	}
+	#ActivityList thead
+	{   background-color: #e4e4e4;
+	    font-weight: bold;
+	}
+</style>
+<div class="signInDiv">
+	<table id="ActivityList">
+		<thead>
+			<tr>
+				<th data-field="activeTitle">	</th>
+				<th data-field="activeType">	</th>
+				<th data-field="activer">	</th>
+				<th data-field="signTime">	</th>
+				<th data-field="option">	</th>
+			</tr>
+		</thead>
+	</table>
+	<br/>
+	<p class="clearfix approvalingArea">
+		<button class="ActivityNext pull-right">下一页</button>
+	</p>
+</div>
+<script type="text/javascript" charset="utf-8" async defer>
+	var pageSignIn;	
+	loadActivityFirst(0)
+	function loadActivityFirst(page) {
+		$.post(http_head + 'Activity/Sign/Get_MySign.ashx', {
+			"userGuid": userGuid,
+			"page": page,
+		}, function(data) {
+			var datasignIn = JSON.parse(data);
+			if (datasignIn.items.length > 0) {
+				layer.msg("加载完成", {
+					time: 1200
+				});
+
+			} else {
+				layer.msg("暂无数据", {
+					time: 1200
+				})
+			}
+			loadTable(datasignIn.items);
+			$("#ActivityList").bootstrapTable('load', datasignIn.items);
+			pageSignIn = datasignIn.page
+
+			if (datasignIn.items.length > 9) {
+				$('.ActivityNext').show()
+			} else {
+				$('.ActivityNext').hide()
+			}
+		});
+	};
+
+	function loadActivityNext(page) {
+		$.post(http_head + 'Activity/Sign/Get_MySign.ashx', {
+			"userGuid": userGuid,
+			"page": page,
+		}, function(data) {
+
+			var datasignIn = JSON.parse(data);
+			if (datasignIn.items.length > 0) {
+				layer.msg("加载完成", {
+					time: 1200
+				});
+
+			} else {
+				layer.msg("已无更多", {
+					time: 1200
+				})
+			}
+			loadTable(datasignIn.items);
+			$("#ActivityList").bootstrapTable('append', datasignIn.items);
+			pageSignIn = datasignIn.page;
+
+			if (datasignIn.items.length > 9) {
+				$('.ActivityNext').show()
+			} else {
+				$('.ActivityNext').hide()
+			}
+		});
+	}
+	$('.ActivityNext').click(function() {
+		loadActivityNext(pageSignIn)
+	});
+	// 签到活动的表格
+	function loadTable(data) {
+		$('#ActivityList').bootstrapTable({
+			data: data,
+			columns: [{
+					field: 'activeTitle',
+					title: '主题',
+					align: 'center',
+					valign: 'middle',
+				},
+				{
+					field: 'activeType',
+					title: '活动类型',
+					align: 'center',
+					valign: 'middle',
+				},
+				{
+					field: 'activer',
+					title: '负责人',
+					align: 'center',
+					valign: 'middle'
+				},
+				{
+					field: 'signTime',
+					title: '签到时间',
+					align: 'center',
+					valign: 'middle',
+				}
+			]
+		});
+	}
+</script>

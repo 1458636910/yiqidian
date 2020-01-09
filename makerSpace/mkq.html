@@ -1,0 +1,465 @@
+<link rel="stylesheet" type="text/css" href="css/mkq.css"/>
+
+		<div class="box" onload="disptime()">
+			<div id='container'></div>
+			<!-- 头部 -->
+			<div class="header">
+				<!-- <p>我的考勤<span></span></p> -->
+				<p class="on">打卡记录<span></span></p>
+				<p>统计<span style="display: none;"></span></p>
+			</div>
+			<div id="main">
+				<!-- 我的考勤界面  -->
+				<!-- <div id="main0">
+					<div class="register">
+						<p class="register_1">当前时间：<i id="ciko"></i></p>
+						<div class="register_2">
+							<p id="sign">打卡</p>
+						</div>
+						<ul></ul>
+
+					</div>
+					<div class="datetime">
+						<div id="test1"></div>
+						<ul>
+							<li>打卡：<span>技术部班别</span></li>
+							<li>打卡次数：<span>两次</span></li>
+							<li>上班时间：<span>09：00~18:00</span></li>
+							<li>打卡时间：<span>上班前一个小时内，下班后一个小时内</span></li>
+						</ul>
+					</div>
+				</div> -->
+
+
+				<!-- 打卡记录界面  日期 说明 状态 前月记录 -->
+				<div id="main1">
+					<form class="layui-form" action="">
+						<div class="layui-inline main_line">
+							<div class="layui-input-inline" id="dimis">
+								<input type="text" class="layui-input" id="test2" placeholder="前月记录选择" name="start">
+							</div>
+						</div>
+					</form>
+
+					<!-- modal -->
+					<div class="modal fade" tabindex="-1" role="dialog" id="abb">
+						<div class="modal-dialog" role="document">
+							<div class="modal-content">
+								<div class="modal-header">
+									<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+								</div>
+								<form class="form-horizontal" method="" action="#">
+									<div class="modal-body">
+										<table id="latter"></table>
+									</div>
+									<div class="modal-footer">
+										<button type="button" class="btnd btn-default" data-dismiss="modal">确定</button>
+									</div>
+								</form>
+							</div><!-- /.modal-content -->
+						</div><!-- /.modal-dialog -->
+					</div><!-- /.modal -->
+
+					<table id="table" border="1"></table>
+				</div>
+
+				<!-- 统计界面  -->
+				<div id="main2">
+					<div id="vital"></div>
+				</div>
+			</div>
+		</div>
+		
+		<script type="text/javascript">
+			$(document).ready(function() {
+				// var t = null;
+				// t = setTimeout(time,1000);//開始运行
+				// function time(){
+				//    clearTimeout(t);//清除定时器
+				//    dt = new Date();
+				//    var h=dt.getHours();//获取时
+				//    var m=dt.getMinutes();//获取分
+				//    var s=dt.getSeconds();//获取秒
+				//    if (h >= 1 && h <= 9) {
+				//    	h = "0" + h;
+				//    }
+				//    if (m >= 0 && m <= 9) {
+				//    	m = "0" + m;
+				//    };
+				//    if (s >= 0 && s <= 9) {
+				//    	s = "0" + s;
+				//    };
+				//    var x = h+":"+m+":"+s;
+				//    $('#ciko').text(x)
+				//    //document.getElementById("ciko").innerHTML = h+":"+m+":"+s;
+				//    t = setTimeout(time,1000); //设定定时器，循环运行     
+				// }
+				
+				//分割当前网页链接
+				var windowUrl = window.location.href; //获取当前url链接		
+				//http://127.0.0.1:8848/shenqing/index.html?userGuid=4f47e8c7e40541d4a2f03c3c72304252&companyId=46
+				var arr = windowUrl.split("?", 2); //分割url		
+				var arr_1 = arr[1]; //瞎起变量
+				var arr_2 = arr_1.split('&', 2);
+				var arr_3 = (arr_2[0].split('=', 2))[1];
+				var arr_4 = (arr_2[1].split('=', 2))[1];
+				//console.log(arr_4)
+				var http_head = "http://47.94.173.253:8008";
+				var date = new Date();
+				var hour = date.getHours();
+				var month = date.getMonth() + 1;
+				var strDate = date.getDate();
+				if (month >= 1 && month <= 9) {
+					month = "0" + month;
+				};
+				if (strDate >= 0 && strDate <= 9) {
+					strDate = "0" + strDate;
+				};	
+				var newS;
+				var Month = date.getFullYear() + '-' + month + "-" + strDate;	
+				var xcsd = '';
+				var types = 0;
+				
+				
+				//tab类型 
+				$(".header p").click(function() {
+					$(this).siblings('p').removeClass('on');
+					$(this).siblings('p').find('span').remove();
+					$(this).addClass('on');
+					$(this).append('<span></span>');
+					var order = $(".header p").index(this);
+					$("#main" + order).show().siblings("div").hide();
+				});
+				
+				//日期	
+				layui.use('laydate', function() {
+					var laydate = layui.laydate;
+					//执行一个laydate实例
+					laydate.render({
+						elem: '#test1',
+						value: new Date(),
+						position: 'static'
+					});
+				
+					//年月选择器
+					laydate.render({
+						elem: '#test2',
+						max: 0,
+						done: function(value, date) {
+							nextSerach(value);
+						},
+					});	
+				});
+			
+			    
+			// 	//定位
+			// 	var map = new AMap.Map('container');
+			// 	map.setZoom(15);
+			// 	map.plugin(['AMap.Scale'], function () {
+			// 	    var scale = new AMap.Scale({});
+			// 	    map.addControl(scale);
+			// 	});
+			// 	
+			// 	map.plugin('AMap.Geolocation', function () {
+			// 	    var geolocation = new AMap.Geolocation({
+			// 	            enableHighAccuracy: true,// 是否使用高精度定位，默认：true
+			// 	            convert:true,
+			// 	            showMarker:true,
+			// 	            panToLocation:true,
+			// 	            timeout: 10000
+			// 	        });
+			// 	
+			// 	    geolocation.getCurrentPosition();
+			// 	    map.addControl(geolocation);
+			// 	    AMap.event.addListener(geolocation, 'complete', onComplete)
+			// 	    AMap.event.addListener(geolocation, 'error', onError)
+			// 	
+			// 	    function onComplete(data) {
+			// 	        // data是具体的定位信息
+			// 			site(data.formattedAddress);
+			// 	    }
+			// 	
+			// 	    function onError(data) {
+			// 	        // 定位出错
+			// 	        window.alert("定位出错！");
+			// 	    }
+			// 	})
+			// 	
+			// 	
+			// 	//禁止点击状态
+			// 	function attendance() {
+			// 		$('#sign').css({
+			// 			"background": "url(img/4.png) no-repeat",
+			// 			"color": "#fff"
+			// 		});
+			// 		$('.register_2').css('pointer-events', 'none');
+			// 	};
+			// 	
+			// 	//可以点击状态
+			// 	function Noattendance() {
+			// 		$('#sign').css({
+			// 			"background": "url(img/1.png) no-repeat",
+			// 			"color": "#27A6EB"
+			// 		});
+			// 		$('.register_2').css('pointer-events', 'initial');
+			// 	};
+			// 
+			// 	//打卡时间段
+			// 	$.post("http://47.94.173.253:8008/Clocks/Get_Clock.ashx", {
+			// 		userGuid: arr_3,
+			// 		companyId: arr_4,
+			// 		date: Month
+			// 	}, function(data) {
+			// 		var data = JSON.parse(data);
+			// 		var work = '';
+			// 		var statud = '';
+			// 		var createTime = '';
+			// 		for (let i = 0; i < data.items.length; i++) {
+			// 			if (data.items[i].type == 0) {
+			// 				work = '上班';
+			// 			} else {
+			// 				work = '下班';
+			// 			};
+			// 			if (data.items[i].status == 0) {
+			// 				statud = '正常';
+			// 				attendance();
+			// 			} else if (data.items[i].status == 1) {
+			// 				statud = '迟到';
+			// 				attendance();
+			// 			} else if (data.items[i].status == 2) {
+			// 				statud = '早退';
+			// 				attendance();
+			// 			} else if (data.items[i].status == -2) {
+			// 				statud = '漏打卡';
+			// 				attendance();
+			// 			} else if (data.items[i].status == -3) {
+			// 				statud = '未开始';
+			// 			    attendance();
+			// 			} else if (data.items[i].status == -1) {
+			// 				statud = '打卡';
+			// 				Noattendance();
+			// 			}
+			// 			
+			// 			if (data.items[i].createTime == null) {
+			// 				createTime = '';
+			// 			} else {
+			// 				createTime = data.items[i].createTime;
+			// 			};
+			// 			
+			// 			$(".register ul").append('<li><b class="let_1"></b>' + work + '<strong>' + data.items[i].clockTime +
+			// 				'</strong><span>' + statud + '</span><i id="work_1">' + createTime + '</i></li>');
+			// 				if(hour < 12){
+			// 					$(".register ul li:eq(0)").find('b').removeClass("let_1").addClass('let_2');
+			// 					$('#sign').text($(".register ul li:eq(0)").find('span').text())
+			// 					newS = data.items[0].clockTime;
+			// 				}else{
+			// 					$(".register ul li:eq(1)").find('b').removeClass("let_1").addClass('let_2');
+			// 					$('#sign').text($(".register ul li:eq(1)").find('span').text());
+			// 					newS = data.items[1].clockTime;
+			// 				}
+			// 		};
+			// 		//打卡
+			// 		$(".register ul li").click(function() {
+			// 			$(".register ul li").find('b').removeClass('let_2').addClass('let_1');
+			// 			$(this).siblings('li').find('b').removeClass('let_2').addClass('let_1');
+			// 			$(this).find('b').addClass('let_2');
+			// 			var ios = $(".register ul li").index(this);
+			// 			function Daily(){
+			// 			 if (data.items[ios].status == 0) {
+			// 			 	$('#sign').text('正常');
+			// 				attendance();
+			// 			 } else if (data.items[ios].status == 1) {
+			// 			 	$('#sign').text('迟到');
+			// 				attendance();
+			// 			 } else if (data.items[ios].status == 2) {
+			// 			 	$('#sign').text('早退');
+			// 				attendance();
+			// 			 } else if (data.items[ios].status == -2) {
+			// 			 	$('#sign').text('漏打卡');
+			// 				attendance();
+			// 			 } else if (data.items[ios].status == -3) {
+			// 			 	$('#sign').text('未开始');
+			// 				attendance();
+			// 			 } else if (data.items[ios].status == -1) {
+			// 			 	$('#sign').text('打卡');
+			// 				Noattendance();
+			// 			 };
+			// 			};
+			// 			 if(data.items[ios].type == 0){
+			// 				 types = 0;
+			// 				 Daily();
+			// 				 newS = data.items[ios].clockTime;
+			// 			 }else{
+			// 				 types = 1;
+			// 				 Daily();
+			// 				 newS = data.items[ios].clockTime;
+			// 			 };
+			// 		});
+			// 	});
+			// 
+			// 	function site(date) {
+			// 		$('#sign').click(function() {
+			// 			 $.post('http://47.94.173.253:8008/Clocks/Add_Clock.ashx', {
+			// 				'userGuid': arr_3,
+			// 				'companyId': arr_4, //部门id
+			// 				'clockTime': newS, //打卡时段 (打的几点的卡)
+			// 				'place': date,  //打卡地点
+			// 				'MAC': ' ', 
+			// 				'WIFIName': ' ', 
+			// 				'phoneUUID': ' ', //手机UUID
+			// 				'phoneType': ' ', //要求型号
+			// 				'coordinate': ' ', 
+			// 				'type': types, //打卡类型（0:上班卡，1:下班卡）
+			// 			 },
+			// 			 function(data) {
+			// 			data = JSON.parse(data);
+			// 			console.log(data);
+			// 			if(data.status == 200){
+			// 				$('#sign').text('已打卡');
+			// 				attendance();
+			// 			};
+			// 			 });
+			// 		});
+			// 	};
+			
+			
+			
+			   //打卡记录
+				function consta(e, value, index, row) {
+					//console.log(value)
+					return value.date
+				};
+			
+				function constb(e, value, index, row) {
+					return ' '
+				};
+			
+				//判断后台返回status
+				function constc(e, value, index, row) {
+					//console.log(value.list);
+					let status = '';
+					if (value.list == '') {
+						status == '';
+					} else {
+						for (let i =0; i<value.list.length; i++){
+							//console.log(value.list[i])
+							if(value.list[i].status === 0){
+								return '正常'
+							}else{
+								return '<div style="color: red">异常</div>'
+							}
+						}
+						
+						
+						
+					}
+					return status
+				};
+			
+			
+				function operateFormatter(e, value, index, row) {
+					//console.log(value)
+					return '<div class="operat">查看</div>'
+				};
+			
+			
+				window.operateEvents = {
+					'click .operat': function(e, value, row, index) {
+						loadCourseTable(row.list);
+						$('#abb').modal();
+					}
+				};
+			
+				function loadCourseTable(data) {
+					$("#latter").bootstrapTable({
+						data: data,
+						classes: " table-no-bordered",
+						columns: [{
+							formatter: latterList,
+						}]
+					});
+			
+					function latterList(e, value, row, index) {
+						//console.log(value);
+						var normal = '';
+						if (value.status == 0) {
+							normal = '正常';
+						} else {
+							normal = '异常';
+						}
+						return '<div class="layui-timeline"><div class="layui-timeline-item"><i class="layui-icon layui-timeline-axis">&#xe63f;</i><div class="layui-timeline-content layui-text clock"><p>打卡时间：<span id="time_1">' +
+							value.createTime +
+							'</span></p><p>规定时间：<span id="time_2">' + value.clockTime + '</span></p><p>打卡WiFi：<span id="time_3">' + value.WIFIName +
+							'</span></p><p id="time_4">' + normal + '</p><p class="clock_1" id="time_5">' + value.place +
+							'</p></div></div></div>'
+					};
+				};
+			
+				$('#abb').on('hidden.bs.modal', function() {
+					let latter = document.createElement("table");
+					latter.id = 'latter'
+					$(".modal-body").html("");
+					$(".modal-body").append(latter)
+			
+				})
+			
+			
+				$.post('' + http_head + '/Clocks/Get_Clock_ByMonth.ashx', {
+					userGuid: arr_3,
+					Month: Month
+				}, function(data) {
+					var data = JSON.parse(data);
+					var explain = data.items.date;
+					//console.log(data.items);
+					$("#table").bootstrapTable({
+						data: data.items,
+						columns: [{
+							field: 'explain',
+							title: '日期',
+							align: 'center',
+							formatter: consta
+						}, {
+							field: 'WIFIName',
+							title: '说明',
+							align: 'center',
+							formatter: constb
+						}, {
+							field: 'status',
+							title: '状态',
+							align: 'center',
+							formatter: constc
+						}, {
+							field: 'operate',
+							title: '操作',
+							align: 'center',
+							events: window.operateEvents,
+							formatter: operateFormatter
+						}]
+					});
+				});
+			
+			
+				//前月记录
+				function nextSerach(date) {
+					$.post("" + http_head + "/Clocks/Get_Clock_ByMonth.ashx", {
+						userGuid: arr_3,
+						Month: date
+					}, function(data) {
+						var data = JSON.parse(data);
+						//console.log(data)
+						$("#table").bootstrapTable({
+							columns: [{
+								formatter: table,
+							}]
+						})
+						$("#table").bootstrapTable("load", data.items);
+					})
+				};
+				
+				
+				//统计列表
+				
+			
+			});
+		</script>
+		

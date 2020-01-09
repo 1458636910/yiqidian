@@ -1,0 +1,327 @@
+.main {
+	width: 100%;
+	background-color: #f1f1f1;
+}
+
+.topArea {
+	height: 185px;
+	margin-bottom: 0
+}
+
+.contain {
+	width: 1200px;
+	margin: 0 auto;
+}
+
+#courseLi {
+	background-color: #fff;
+}
+
+#courseLi a {
+	color: #00368a
+}
+
+.showDiv {
+	width: 1200px;
+	margin: 0px auto;
+	padding-top: 20px
+}
+
+.showDiv>p {
+	color: #868686;
+	font-size: 14px;
+	margin-bottom: 20px
+}
+
+.showDiv>p span:nth-child(1) {
+	margin-right: 10px
+}
+
+.courseDetailsDiv {
+	width: 900px;
+}
+
+.courseDetailsDiv .courseInfoDiv {
+	padding: 30px 50px 40px 37px;
+	background-color: #fff;
+	margin-bottom: 30px
+}
+
+.courseTitle {
+	font-size: 18px;
+	color: #3d3d3d;
+	font-weight: bold;
+	height: 50px;
+	border-bottom: 1px solid #eeeeee;
+	margin-bottom: 0
+}
+
+.courseInfoDiv>div>p {
+	line-height: 60px;
+    margin-bottom: 0;
+    border-bottom: 1px solid #eaeaea;
+    display: flex;
+    align-items: center;
+}
+
+.courseInfoDiv>div>p:nth-child(1) {
+	min-width: 50%;
+	margin-right: 20px;
+}
+
+.courseInfoDiv>div>p span:nth-child(1) {
+	color: #b4b4b4;
+	min-width: 64px;
+}
+
+.courseInfoDiv>div>p span:nth-child(2) {
+	color: #767676;
+	display: block;
+}
+
+.courseInfoDiv>div>p #coursePrice {
+	color: #ff0000;
+	font-size: 24px;
+	margin-right: 3px
+}
+
+.courseInfoDiv>div>p #courseDay {
+	color: #ff9500;
+	font-size: 24px;
+	margin-right: 3px
+}
+
+.courseInfoDiv .courseOutline,
+.courseInfoDiv .courseImg {
+	border-bottom: 1px solid #eeeeee;
+	padding: 10px 0;
+}
+
+.courseInfoDiv .courseOutline>p {
+	border-bottom: none;
+	height: 40px;
+	line-height: 40px;
+	margin-bottom: 0;
+}
+
+.courseInfoDiv .courseImg>p {
+	border-bottom: none;
+}
+
+.outLineDetails>p {
+	margin-bottom: 0
+}
+
+.imgShow li {
+	width: 200px;
+	height: 130px;
+}
+
+.imgShow li img {
+	width: 180px;
+	height: 125px;
+	cursor: pointer;
+}
+
+.courseOthersDiv {
+	padding: 10px;
+	background-color: #fff;
+	margin-bottom: 30px
+}
+
+.courseOthersDiv>ul li {
+	height: 60px;
+	line-height: 58px;
+	border-bottom: 2px solid transparent;
+	width: 130px;
+	text-align: center;
+	font-size: 16px;
+	cursor: pointer;
+}
+
+.courseOthersDiv>ul .activeLi {
+	border-bottom: 2px solid #00368a;
+	color: #00368a
+}
+
+.courseVideoDiv,
+.courseCommentDiv {
+	display: none;
+}
+
+/*右边侧边区域*/
+.otherCourseDiv {
+	width: 270px;
+}
+
+.lanuchDemandDiv {
+	background-color: #0aa2e8;
+	height: 160px;
+	text-align: center;
+	padding: 35px 0;
+	margin-bottom: 33px
+}
+
+.lanuchDemandDiv>p {
+	color: #fff;
+	font-size: 18px;
+	font-weight: bold;
+	margin: 0 0 25px 0;
+}
+
+.lanuchDemandDiv>button {
+	width: 160px;
+	height: 46px;
+	background-color: #f7ae16;
+	color: #fff;
+	text-align: center;
+	border: none;
+	outline: none;
+	border-radius: 5px;
+	font-size: 16px;
+	line-height: 44px;
+	margin-top: 25px
+}
+
+.lanuchDemandDiv>button span {
+	margin-right: 10px;
+	font-size: 14px
+}
+
+/**/
+.courseTuijianDiv,
+.newCourseDiv {
+	background-color: #fff;
+	margin-bottom: 20px
+}
+
+.courseTuijianTitle,
+.newCourseTitle,
+.matelecturertitle {
+	height: 56px;
+	background-color: #0aa2e8;
+	line-height: 56px;
+	font-size: 16px;
+	margin: 0;
+	color: #fff;
+}
+
+.courseTuijianTitle>p,
+.newCourseTitle>p,
+.matelecturertitle>p {
+	margin: 0 20px
+}
+
+.courseTuijianTitle>p a,
+.newCourseTitle>p a,
+.matelecturertitle>p a {
+	color: #fff;
+	text-decoration: none;
+	font-style: 16px
+}
+
+.courseTuijianTitle>p a:nth-child(2),
+.newCourseTitle>p a:nth-child(2),
+.matelecturertitle>p a:nth-child(2) {
+	font-size: 12px
+}
+
+.tuijianCourseDiv,
+.newCourseShowdiv,
+#matelecturerDiv {
+	background-color: #fff;
+	overflow: hidden;
+	height: 404px;
+}
+
+#tuijianCourse,
+#newCourseUl {
+	overflow: hidden;
+}
+
+#tuijianCourse li,
+#newCourseUl li {
+	height: 81px;
+	border-bottom: 1px solid #c2c2c2;
+	padding: 10px;
+	cursor: pointer;
+}
+
+#tuijianCourse li p,
+#newCourseUl li p {
+	margin-bottom: 0;
+	height: 30px;
+	line-height: 30px;
+}
+
+#tuijianCourse li p:nth-child(1),
+#newCourseUl li p:nth-child(1) {
+	font-size: 16px;
+	color: #7a7a7a;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+#tuijianCourse li p:nth-child(2) span:nth-child(1),
+#newCourseUl li p:nth-child(2) span:nth-child(1) {
+	font-size: 14px;
+	color: #c1c1c1;
+	margin-right: 10px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+#tuijianCourse li p:nth-child(2) span:nth-child(2),
+#newCourseUl li p:nth-child(2) span:nth-child(2) {
+	font-size: 14px;
+	color: #ff9500;
+}
+
+#matelecturerDiv {
+	height: 404px;
+	overflow: hidden;
+}
+
+#mateLecturer li {
+	padding: 10px;
+	border-bottom: 1px solid #eaeaea;
+}
+
+#mateLecturer li img {
+	width: 60px;
+	height: 60px;
+	border-radius: 30px
+}
+
+#mateLecturer li div {
+	width: 180px;
+}
+
+#mateLecturer li div p {
+	height: 30px;
+	line-height: 30px;
+	margin-bottom: 0;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	padding-left: 10px
+}
+
+#mateLecturer li div p:nth-child(1) {
+	font-size: 15px;
+	color: #7a7a7a;
+}
+
+#mateLecturer li div p:nth-child(2) {
+	font-size: 13px;
+	color: #c3c3c3;
+}
+.bg{
+	align-items: flex-start!important;
+}
+.courseBackground{
+	line-height: 30px;
+    padding: 15px 0;
+}

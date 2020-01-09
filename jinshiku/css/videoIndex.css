@@ -1,0 +1,18 @@
+.main{width: 100%;}
+.contain{width: 1000px;margin: 0 auto;}
+.mainCenter{margin-top: 50px;}
+#videoList{margin: 20px 0;}
+.seaBtn{cursor: pointer;}
+#showVideoList tr th{display: none;}
+.researchField,.courses,.info,.cellphone{display: inline-block;margin-left: 10px;}
+#showVideoList tr td{vertical-align: middle;}
+#showVideoList tr td:nth-child(3){width: 15%;text-align: center;}
+#showVideoList tr td:nth-child(1){width: 15%;text-align: center;}
+.imgHead{width: 200px;margin-bottom: 10px;}
+.videoTitle{font-size: 20px;font-weight: bolder;}
+.name{font-size: 20px;font-weight: bolder;}
+.price,.cellphone{font-size: 20px;font-weight: bolder;color: #f00;}
+.info{width: 586px;}
+.infoName{vertical-align: top;}
+.place{color: #29e;}
+.videoLable{color: #29e;cursor: pointer;}

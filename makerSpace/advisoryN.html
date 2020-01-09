@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1"/>
+		<link rel="icon" href="img/logo.png" type="image/x-icon"/>
+		<link rel="stylesheet" href="css/reset.css"/>
+		<link rel="stylesheet" href="layui/css/layui.css" media="all"/>
+		<link rel="stylesheet" type="text/css" href="css/advisory.css?v=20190617"/>
+		<title>咨询师认证</title>
+	</head>
+	<body>
+		<div class="content">
+			<div class="seek w1000">
+				<p>咨询师认证</p>
+			</div>
+			<div class="main w1000">
+				<p>
+					<span class="isa">*</span>
+					号为必填项，请认真填写，未填写将无法通过认证，未认证咨询师无法申请 / 投递项目；您的信息将被严格保密，仅供申请 / 匹配项目时使用，
+					个人信息越详细越容易匹配到项目
+				</p>
+				<form class="layui-form" action="">
+					<div class="layui-form-item lists">
+						<label class="layui-form-label">
+							<span class="isa">*</span>
+							曾担任职位
+						</label>
+						<div class="layui-input-block">
+							<input type="text" name="title" required lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input poin" id="job"/>
+						</div>
+					</div>
+					<div class="layui-form-item layui-form-text lists">
+						<label class="layui-form-label">
+							<span class="isa">*</span>
+							咨询师简介
+						</label>
+						<div class="layui-input-block">
+							<textarea name="desc" lay-verify="required" placeholder="请对个人经历（包括曾经工作所在地、企业名称、担任职位、任职年限、取得成果、创造业绩）等详细描述 （字数最多3000个）" class="layui-textarea poins" id="briefly"></textarea>
+						</div>
+					</div>
+					<div class="layui-form-item layui-form-text lists">
+						<label class="layui-form-label">
+							<span class="isa">*</span>
+							服务的客户
+						</label>
+						<div class="layui-input-block">
+							<textarea name="desc" lay-verify="required" placeholder="请对个人经历（包括曾经工作所在地、企业名称、担任职位、任职年限、取得成果、创造业绩）等详细描述 （字数最多3000个）" class="layui-textarea poins" id="serve"></textarea>
+						</div>
+					</div>
+					<div class="layui-form-item layui-form-text lists">
+						<label class="layui-form-label">
+							<span class="isa">*</span>
+							其他要求
+						</label>
+						<div class="layui-input-block">
+							<textarea name="desc" lay-verify="required" placeholder="包括交通费、交通工具要求、餐食、饮食习惯要求、住宿、住宿条件要求、接送的要求等（字数最多300字）" class="btnd" id="restd"></textarea>
+						</div>
+					</div>
+                    
+					<div class="layui-form-item">
+						<p class=" refer" id="refers" >提交</p>
+					</div>
+				</form>
+			</div>
+		</div>
+		<script type="text/javascript" src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+		<script src="layui/layui.js"></script>
+        <script src="js/layer.js" type="text/javascript" charset="utf-8" async defer></script>
+		<script src="js/advisory.js?v=20190825"></script>
+	</body>
+</html>

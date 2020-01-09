@@ -1,0 +1,232 @@
+body{
+	min-width: 100px
+}
+.contain{
+	display: flex;
+	justify-content: center
+}
+.title{
+	margin: 0 auto;
+	text-align: center;
+	display: block;
+	font-size: 26px;
+	margin-bottom: 30px;
+	min-width: 1100px;
+	width: 1100px;
+	border-bottom: 1px solid silver;
+	padding-bottom: 30px;
+    padding-top: 30px;
+}
+.step_img{
+	margin: 20px auto;
+	display: block
+}
+.addPhoto{
+	min-width: 1200px;
+	width: 1200px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: 0 auto;
+	margin-top: 60px
+}
+.imgList{
+	display: flex;
+	flex-wrap: wrap
+}
+.imgList li{
+	width: 220px;
+	margin-bottom: 30px;
+	text-align: center
+}
+.imgList li img{
+	min-width: 200px;
+	max-width: 200px;
+	cursor: pointer
+}
+.content,.content2{
+	min-width: 1200px;
+	width: 1200px;
+	margin: 60px auto;
+    box-shadow: 1px 3px 5px 1px rgba(0,0,0,0.2);
+    padding-bottom: 60px;
+}
+/* 2 */
+.lab{
+	font-size: 24px;
+	padding-bottom: 20px
+}
+.step{
+	width: 500px;
+	margin: 0 auto;
+    margin-bottom: 60px
+}
+.step label{
+	display: flex
+}
+
+.headImgBox span:nth-child(1) {
+    display: inline-block;
+    color: #f00;
+    height: 30px;
+    font-weight: bold
+}
+.headImgBox span:nth-child(2) {
+	min-width: 93px;
+    display: inline-block;
+    height: 30px;
+    font-weight: bold
+}
+
+.step label span:nth-child(1) {
+    width: 10px;
+    display: inline-block;
+    color: #f00;
+    height: 30px;
+}
+.step label span:nth-child(2) {
+    min-width: 100px;
+    display: inline-block;
+    height: 30px;
+}
+.sex{
+   margin-left: 20px!important
+}
+.step label select{
+	width: 120px;
+    margin-right: 10px;
+}
+.tableLeft {
+    width: 130px;
+    height: 312px;
+    overflow-y: auto;
+    margin-top: 20px;
+}
+.tableLeft p {
+    cursor: pointer;
+    background-color: #29e;
+    color: #fff;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    margin-bottom: 10px!important;
+    
+}
+.tableLeft p:hover{
+	background-color: #5BB85D!important;
+	transition: all 0.5s
+}
+.tableRight {
+    width: 480px;
+    margin-left: 20px;
+    margin-top: 20px;
+}
+.tableRight label {
+    display: inline-block;
+    width: 120px;
+    height: 30px;
+    line-height: 30px;
+    cursor: pointer
+}
+.teachAreaTable {
+    display: none;
+    margin: 20px;
+}
+.contain {
+    width: 1000px;
+    margin: 50px auto;
+    background-color: white;
+    padding: 30px;
+    box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.05);
+}
+.tabBox{
+	width: 110px;
+    overflow: hidden;
+}
+.submit{
+	display: flex;
+	justify-content: center;
+	align-items: center
+}
+.submit .subBtn {
+    background-color: #29e;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    outline: none;
+    padding: 5px 30px;
+    margin-top: 30px;
+    font-size: 14px;
+}
+.st1{
+	background-image: none;
+	position: relative;
+    top: 25%;
+    width: 120px;
+    text-align: center;
+    background: #29e;
+    height: 34px;
+    line-height: 34px;
+    color: white;
+    border-radius: 20px;
+    margin-left: 50px
+}
+.st2-2,.st2-1{
+	background-image: none;
+    width: 120px;
+    text-align: center;
+    background: #29e;
+    height: 34px;
+    line-height: 34px;
+    color: white;
+    border-radius: 20px;
+}
+
+.swiper-slide{
+	min-width: 1200px;
+	width: 1200px
+}
+.tabBox2{
+    height: 60px;
+    width: 360px;
+    margin-top: 60px;
+    position: relative;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#pic0{
+	width: 120px;
+	cursor: pointer;
+}
+#s_county{
+	display: none
+}
+.realPrice{
+	color: red;
+	width: auto!important;
+}
+.price{
+	display: none;
+	height: 34px;
+	line-height: 34px;
+	width: 360px;
+	margin-left: 10px
+}
+.whyIcon{
+	width: 20px;
+	cursor: pointer
+}
+.priceBox{
+	display: none;
+	text-align: center;
+    margin-top: 30px;
+}
+.sex,.sex2{
+	cursor: pointer
+}
+
+.swiper-wrapper .swiper-slide:nth-child(1){
+   height: 930px!important
+}

@@ -1,0 +1,305 @@
+
+		<link rel="stylesheet" type="text/css" href="css/applyForm2.css" />
+	
+		<style type="text/css">
+			.content_list span {
+				float: left;
+				margin-top: 10px;
+			}
+			
+			.dimission {
+				width: 100px !important;
+				text-align: right;
+				display: inline-block !important;
+				margin-right: 10px !important;
+			}
+			
+			#dimis {
+				width: 209px !important;
+				height: 38px !important;
+			}
+			
+			.content p span {
+				width: 56px !important;
+			}
+			
+			#verify {
+				padding-top: 10px;
+			}
+		</style>
+	
+             <div class="header">
+				 <p class="header_p1">姓名：<i id="upname"></i></p>
+				 <p>工号：<i id="jobNumber"></i></p>
+				 <p>部门：<i id="department"></i></p>
+				 <p>职位：<i id="post"></i></p>				 
+				 </div>
+
+
+		<div class="box">
+			<div class="content">
+				<form class="layui-form" action="">	
+				
+				
+				<div class="content_list">
+					<p class="dimission">申请人：</p>
+					<div class="layui-input-inline times nosd">
+						<select name="quiz1" class="industry" lay-verify="required" id="changer" lay-filter="changer">
+							<option value ="">请选择</option>
+						</select>
+					</div>						
+				</div>
+				
+				<div class="content_list">
+					<p class="dimission">要调到的职位：</p>
+					<div class="layui-input-inline times nosd">
+						<select name="quiz1" class="industry" lay-verify="required" id="changePost">							
+						</select>
+					</div>						
+				</div>
+				
+				<div class="content_list">
+					<p class="dimission">薪资：</p>
+					<div class="layui-input-inline times nosd">
+						<select name="quiz1" class="industry" lay-verify="required" id="salary">							
+						</select>
+					</div>						
+				</div>
+				
+				
+				<div class="content_list">
+					<p class="dimission">调岗生效日期：</p>
+					<input type="text" class="layui-input" id="dimis" placeholder="请选择" lay-verify="required">				
+				</div>
+				
+				<div class="content_list">
+					<p class="dimission">调岗原因：</p>
+					<div class="layui-input-block dist">
+						<textarea class="layui-textarea" lay-verify="required" id="theDemand"></textarea>
+					</div>
+				</div>
+				
+						
+                   <div class="content_list">
+					   <p><span class="atisd" style="margin-left: 45px;">审核人：</span><i id="verify"></i></p>
+					
+					</div>
+
+					<div class="content_list">
+						<div class="layui-form-item">
+							<div class="layui-input-block" style="margin: 0;">
+								<div class="layui-btn btns" id="referd" lay-submit="" lay-filter="demo1">立即提交</div>
+							</div>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+		<p class="btnArea">
+			<span class="goback">
+				<img src="img/goback.png" alt=""/>
+				返回
+			</span>
+		</p>
+		
+		<script type="text/javascript">
+			//分割当前网页链接
+			var windowUrl = window.location.href; //获取当前url链接		
+			//http://127.0.0.1:8848/shenqing/renli.html?userGuid=4f47e8c7e40541d4a2f03c3c72304252&companyId=46
+			var arr = windowUrl.split("?", 2); //分割url		
+			var arr_1 = arr[1]; //瞎起变量		
+			var arr_2 = arr_1.split('&', 5);
+			var arr_3 = (arr_2[0].split('=', 2))[1];
+			var arr_4 = (arr_2[1].split('=', 2))[1];
+			var IsAdmin = [];
+			var changeDepartmentId = [];
+			var changePostId = [];
+			var ParentId = [];
+			var changer = [];
+			var userType = [];
+			var isleader = [];
+			var dscu = [];
+			
+			//Demo
+			layui.use('form', function() {
+				var form = layui.form;
+				//监听提交
+				form.on('submit(demo1)', function(data) {					
+				});
+				
+				
+				//监听提交
+				form.on('select(changer)', function(data) {
+					  changeDepartmentId = $("option[value="+ data.value +"]").attr('data-css');
+					  changePostId = $("option[value="+ data.value +"]").attr('data-id');
+					  dscu = $("option[value="+ data.value +"]").attr('data-dscu');
+				       //console.log(changeDepartmentId)
+				});
+				
+				var promise = new Promise(function(resolve, reject) {
+				//获取个人信息
+					$.ajax({
+						url: 'http://47.94.173.253:8008/getUserDetailByuserGuid.ashx', //你请求的接口
+						type: 'POST', //类型
+						data: {
+							'userGuid': arr_3,
+						}, //数据有则传，没有可以不写
+						success: function(data) {
+							data = JSON.parse(data);				
+							IsAdmin = data.items.IsAdmin;				
+							ParentId = data.items.departId;
+							isleader = data.items.isleader;								
+							$('#upname').text(data.items.realName);
+							$('#jobNumber').text(data.items.jovNumber);
+							$('#department').text(data.items.depart);
+							$('#post').text(data.items.post);
+							if(IsAdmin > 0){
+								ParentId = 0;
+								userType = 2;
+							}else{
+								if(isleader){
+									userType = 1;
+								}else{
+									ParentId = data.items.departId;
+									userType = 0;
+								}
+							}				
+							resolve({ParentId:ParentId,userType:userType})
+			
+						}		
+					})
+				});
+				
+				promise.then(function(value) {
+				//申请人
+					$.ajax({
+						url: 'http://47.94.173.253:8008/Com/Get_Com_User.ashx', //你请求的接口
+						type: 'POST', //类型
+						data: {
+							'companyId': arr_4,
+							'ParentId':value.ParentId,
+						}, //数据有则传，没有可以不写
+						success: function(data) {				
+							data = JSON.parse(data);				
+							datas = data.items;	
+							for(let i = 0; i < datas.length; i++){
+								for(let j = 0; j < datas[i].UserInfo.length; j++){
+									 var UserInfo = datas[i].UserInfo[j];						 
+									 var html = "<option value='"+ UserInfo.upname +"'  data-id='"+UserInfo.postId +"' data-css='"+ UserInfo.departmentId + "' data-dscu='"+ UserInfo.userGuid +"'>"+UserInfo.upname+"</option>";						     
+									$("#changer").append(html);							
+										};					
+							};
+							
+							form.render();
+							
+						}
+					})
+				})
+				
+				//职位
+				$.ajax({
+					url: 'http://47.94.173.253:8008/User_getcompost.ashx', //你请求的接口
+					type: 'POST', //类型
+					data: {
+						'userGuid': arr_3,
+						'comid':arr_4,
+					}, //数据有则传，没有可以不写
+					success: function(data) {
+						data = JSON.parse(data);
+						datas = data.items
+						//console.log(datas)
+						for(let i = 0; i < datas.length; i++){
+							$("#changePost").append(new Option(datas[i].name))
+						};
+						form.render();
+					}
+				})
+				
+				
+			});
+			
+			layui.use('laydate', function(e) {
+				var laydate = layui.laydate;
+				laydate.render({
+					elem: '#dimis'
+				});
+			});
+			
+					
+			       // 薪资
+					$.ajax({
+						url:'http://47.94.173.253:8008/Option_AreasAnd.ashx',//你请求的接口
+						type:'POST',//类型
+						data:{
+							type:'36',
+						},//数据有则传，没有可以不写
+						success:function(data){
+							xcxvArr = data
+							//请求成功后的返回
+							for(let i = 0; i < data.length; i++){
+								$("#salary").append(new Option(data[i].name,data[i].name))
+							};							
+							layui.use('form', function() {
+								var form = layui.form;
+								form.render();
+							})
+						}
+				});
+			
+			
+			
+			//获取审批人数据
+			$.ajax({
+				url: 'http://47.94.173.253:8008/Com/Get_User_Leader.ashx', //你请求的接口
+				type: 'POST', //类型
+				data: {
+					'userGuid': arr_3,
+					'companyId': arr_4,
+				}, //数据有则传，没有可以不写		
+				success: function(data) {
+					var data = JSON.parse(data);
+					//console.log(data)
+					$("#verify").text(data.items)
+					layui.use('form', function() {
+						var form = layui.form;
+						form.render();
+					})
+				}
+			})
+			
+			
+			$('#referd').click(function() {
+			$.post('http://47.94.173.253:8008/ChangePosts/Add_ChangePost.ashx', {
+					'userGuid': arr_3,
+					'companyId': arr_4,
+					'changer': dscu,  //调班的人的ID
+					'changeDepartmentId': changeDepartmentId,  //部门id
+					'changePostId': changePostId, //职位id
+					'salary': $('#salary').val(), //薪资等级
+					'implementTime': $('#dimis').val(),  //调岗生效时间
+					'reason': $('#theDemand').val(), //原因
+					'userType': userType, //申请人身份(0:普通员工，1：部门领导，2：人事)
+			},
+			function(data) {
+				data = JSON.parse(data)
+				console.log(data)
+				if (data.status == 200) {
+					$("#dataTable").replaceWith('<div id="dataTable"></div>');
+					$("#dataTable").load("tgsq.html");
+				}
+			}
+			)
+			});
+			
+			// 返回
+					$(".goback").hover(function() {
+					    $(this).children("img").attr("src", "img/goback-b.png")
+					}, function() {
+					    $(this).children("img").attr("src", "img/goback.png")
+					});
+					$(".goback").on("click", function() {
+					    $("#dataTable").replaceWith('<div id="dataTable"></div>');
+					    $("#dataTable").load("tgsq.html");
+					});
+			
+		</script>

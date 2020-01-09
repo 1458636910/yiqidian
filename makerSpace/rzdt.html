@@ -1,0 +1,187 @@
+<link rel="stylesheet" type="text/css" href="css/dynamics.css"/>
+<div class="content"></div>
+			
+			<script type="text/javascript">
+				$(document).ready(function() {
+				//获取携带值:
+				function GetRequest() {
+					var url = location.search; //获取url中"?"符后的字串
+					var theRequest = new Object();
+					if (url.indexOf("?") != -1) { //判断是否含有'?'
+						var str = url.substr(1); //从字符中index为1开始抽取
+						strs = str.split("&"); //字符串分割成字符串数组
+						for (var i = 0; i < strs.length; i++) {
+							theRequest[strs[i].split("=")[0]] = decodeURIComponent(strs[i].split("=")[1]);
+						}
+					}
+					return theRequest;
+				}
+					
+					var arr_3 = GetRequest().userGuid;
+					var userGuid = '';
+					var isCheck = false;
+					layui.use('form', function() {
+						var form = layui.form;
+					});
+					
+					
+					new Promise(function(resolve,reject){
+						$.post('http://47.94.173.253:8008/workday/getListByCom.ashx', {
+							userGuid: arr_3,
+							page: 0
+						}, function(data) {
+							var data = JSON.parse(data);
+							resolve(data)
+							//console.log(data.items);
+							for (let i = 0; i < data.items.length; i++) {
+								var html = '<div class="box" data-Id="'+ data.items[i].Id +'" data-userGuid="'+ data.items[i].userGuid +'"><div class="header"><div class="header-img"><img src='+ data.items[i].iphoto +
+								'></div><div class="header_p"><p id="header_p1">'+ data.items[i].upname + '</p><p id="header_p2">'+ data.items[i].postName +
+								'</p><p id="header_p3">'+ data.items[i].leaderTime +
+								'</p></div></div><div class="dayx"><ul><li class="on">今日感悟</li><li>我执行的</li><li>我协助的</li><li>我验证的</li></ul></div><div id="main"><div id="main0"><div class="EditText"><textarea id="EditText_1" placeholder="忙碌的一天工作终于结束了,今天遇到哪些好人好事值得您学习的呢,快说说您今天的感悟吧!" readonly="readonly">'+ data.items[i].ganWu +
+								'</textarea></div><p class="ondx">领导批示</p><div class="EditText"><textarea id="EditText_2" placeholder="请对您的员工当天的表现点评一下吧!" readonly="readonly">'+ data.items[i].pingyu +
+								'</textarea></div></div><div id="main1"><div class="target'+ data.items[i].userGuid +'"></div></div><div id="main2"><div class="table'+ data.items[i].userGuid +'"></div></div><div id="main3"><div class="schedule'+ data.items[i].userGuid +'"></div></div></div></div>'
+								$(".content").append(html);
+							}
+						});
+					}).then(res => {
+						//tab类型
+						$(".dayx ul li").click(function() {
+							//console.log(res)
+							$(this).siblings('li').removeClass('on');
+							$(this).addClass('on');
+							var order = '#main'+ $(this).index();
+							$(this).parents('.box').find('#main' + ' ' + order).show().siblings("div").hide();
+							userGuid = $(this).parents('.box').attr('data-userGuid');
+							content(userGuid);
+						});
+					
+							
+							function content(userGuid){
+								/*开始*/
+								/************************  我协助的事项   ****************************/
+								function consta(e, value, index, row) {
+									return value.createTime.split(' ')[0];
+								}
+											
+								function constb(e, value, index, row) {
+									return value.createTime.split(' ')[0];
+								}
+											
+								function constc(e, value, index, row) {
+									return '<div class="Noesult">待执行</div>'
+								}
+								
+								/************************  我执行的   ****************************/
+								Atarget();
+								function Atarget() {
+									setTimeout(function() {
+									$.post('http://47.94.173.253:8008/MyTask/Get_Task_ByRecipient.ashx', {
+										userGuid: userGuid,
+										page: 0,
+										isCheck:isCheck
+									}, function(data) {
+										var data = JSON.parse(data);
+										//console.log(data)
+										$('.target'+userGuid).bootstrapTable({
+											data: data.items,
+											columns: [{
+												field: 'createTime',
+												title: '发布时间',
+												formatter: consta
+											}, {
+												field: 'InitiatorName',
+												title: '发布人'
+											}, {
+												field: 'EndTime',
+												title: '完成时间',
+												formatter: constb
+											}, {
+												field: 'IsCheck',
+												title: '结果',
+												formatter: constc
+											}]
+										})
+										$('.target'+userGuid).bootstrapTable("load", data.items)
+									})
+									},700);
+								}
+								
+								
+								Atable();
+								function Atable() {
+									setTimeout(function() {
+									$.post('http://47.94.173.253:8008/MyTask/Get_Task_ByOther.ashx', {
+										userGuid: userGuid,
+										page: 0,
+										isCheck:isCheck
+									}, function(data) {
+										var data = JSON.parse(data);
+										//console.log(data.items)
+										$('.table'+userGuid).bootstrapTable({
+											data: data.items,
+											columns: [{
+												field: 'createTime',
+												title: '发布时间',
+												formatter: consta
+											}, {
+												field: 'InitiatorName',
+												title: '发布人'
+											}, {
+												field: 'EndTime',
+												title: '完成时间',
+												formatter: constb
+											}, {
+												field: 'IsCheck',
+												title: '结果',
+												background: 'red',
+												formatter: constc
+											}]
+										})
+										$('.table'+userGuid).bootstrapTable("load", data.items)
+									});
+									},400);
+								}
+								
+								
+								/**************************   我验证的事项    *******************************/
+								Aschedule();
+								function Aschedule() {
+									setTimeout(function() {
+									$.post('http://47.94.173.253:8008/MyTask/Get_Task_ByChecker.ashx', {
+										userGuid: userGuid,
+										page: 0,
+										isCheck:isCheck
+									}, function(data) {
+										var data = JSON.parse(data);
+										//console.log(data.items)
+										$(".schedule"+userGuid).bootstrapTable({
+											data: data.items,
+											columns: [{
+												field: 'createTime',
+												title: '发布时间',
+												formatter: consta
+											}, {
+												field: 'InitiatorName',
+												title: '发布人'
+											}, {
+												field: 'EndTime',
+												title: '完成时间',
+												formatter: constb
+											}, {
+												field: 'IsCheck',
+												title: '结果',
+												formatter: constc
+											}]
+										})
+										$(".schedule"+userGuid).bootstrapTable("load", data.items)
+									});
+									},1000)
+								};
+								
+								/*结束*/
+								}
+							})
+							
+				});
+				
+			</script>

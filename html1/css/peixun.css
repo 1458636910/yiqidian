@@ -1,0 +1,6 @@
+body{font-family: "Microsoft YaHei";height: 100%;padding: 8px;min-height: 100%;font-size: 13.5px;color: #444;}
+.title{font-size: 24px;text-align: center;height: 40px;line-height: 40px;font-weight: 700;}
+p{    display: block;    letter-spacing: 3px;text-indent: 2em;font-size: 13.5px;line-height: 30px;margin: 0 0 10px;    word-wrap: break-word;box-sizing: border-box;font-size: 18px}
+h5{    font-family: "Microsoft YaHei UI";font-weight: 600;font-size: 16px;}
+.Link{position: absolute;bottom: 20px;right: 0;left: 0;}
+.Link p{font-size: 13px;margin: 0;color: gray;}

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="icon" href="../image/pic.ico" type="image/x-icon"/>
+  <title>付款页面</title>
+  <link rel="stylesheet" href="../css/reset.css">
+  <link rel="stylesheet" href="../css/bootstrap.min.css">
+  <link rel="stylesheet" href="../css/skin/default/layer.css">
+  <link rel="stylesheet" href="../css/theme/default/laydate.css">
+  <link rel="stylesheet" href="../css/pay.css?ver=201807061617">
+  <script type="text/javascript" src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+  <script type="text/javascript" src="https://cdn.bootcss.com/layer/3.1.0/layer.js"></script>
+  <script type="text/javascript" src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="../js/laydate.js"></script>
+  <script type="text/javascript" src="../js/change.js"></script>
+  <script type="text/javascript" src="../js/qrcode.min.js"></script>
+  <script type="text/javascript" src="../js/pay.js?ver=201807061617"></script>
+</head>
+<body>
+  <div class="top clearfix">
+      <img src="../image/downQRcode.png" alt="" class="pull-left">
+      <span class="comName"></span>
+  </div>
+    <div class="main form-inline">
+    <label for=""><span>企业功能</span><span class="goodName"></span></label><br><br>
+    <label for=""><span>功能简介</span><span class="goodDesc"></span></label><br><br>
+    <label for=""><span>开通日期</span><input type="text" class="form-control" id="testB" autoComplete="off"></label><br><br>
+    <label for=""><span>开通年限</span>
+    <select name="" id="chooseTime" class="form-control">
+        <option value="1">一年</option>
+        <option value="2">两年</option>
+        <option value="3">三年</option>
+    </select>
+    </label><br><br>
+    <label for=""><span>总金额</span><span id="moneyVal"></span>元</label><br><br>
+    <div class="payArea">
+      <button class="payFace">线下付款流程</button>
+      <img src="../image/wechat.png" alt="" class="weChat">
+      <img src="../image/alipay.png" alt="" class="aliPay">
+    </div>
+    <div class="weixinPayDiv">
+      <div class="imgArea"  id="qrcode">
+
+    </div>
+    <p>支付金额 ￥<span class="payVal"></span>元</p>
+    </div>
+</body>
+</html>

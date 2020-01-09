@@ -1,0 +1,371 @@
+
+		<link rel="stylesheet" type="text/css" href="css/apply2.css" />
+		
+		<style type="text/css">
+			#examined {
+				border-bottom-left-radius: 5px;
+				border-bottom-right-radius: 5px;
+				border: none
+			}
+			.w106 {
+				width: 106px;
+				text-align: center;
+				display: contents;
+			}
+
+			.size {
+				font-size: 12px;
+			}
+
+			.agree {
+				color: #00A1E9;
+			}
+
+			.refuse {
+				color: red;
+			}
+
+			.atxe {
+				margin-left: 0 !important;
+			}
+
+			.w133 {
+				width: 133px;
+			}
+		</style>
+
+	
+		<div class="box">
+			<div class="total">
+				<!-- .icon-zelvxuanzefeiyongzhengsanjiaoxingzhichi 上箭头 有需求可以加 -->
+				<div class="pp">
+					<p id="selectedText">未审核</p><span class="iconfont icon-zelvxuanzefeiyongdaosanjiaoxingfandui icons"></span>
+				</div>
+				<div class="totals">
+					<ul>
+						<li id="own" class="on">未审核</li>
+						<li id="examined">已审核</li>
+
+					</ul>
+				</div>
+			</div>
+
+			<!-- modal -->
+			<div class="modal fade" tabindex="-1" role="dialog" id="abb">
+				<form class="layui-form" action="">
+					<div class="modal-dialog" role="document">
+						<div class="modal-content">
+							<div class="modal-header">
+								<h4 class="modal-title text-danger aaa">拒绝理由</h4>
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+							</div>
+							<form class="form-horizontal" method="" action="#">
+								<div class="modal-body">
+									<div class="layui-input-block atxe">
+										<textarea class="layui-textarea" lay-verify="required" id="regard" lay-filter="filter"></textarea>
+									</div>
+								</div>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-default" data-dismiss="modal" id="affirm" lay-submit="" lay-filter="demo">确定</button>
+									<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+								</div>
+							</form>
+						</div><!-- /.modal-content -->
+					</div><!-- /.modal-dialog -->
+				</form>
+			</div><!-- /.modal -->
+
+			<table id="table" border="1" data-show-refresh="true">
+			</table>
+			<div class="pageBtnBox btnArea">
+					<span class="goback">
+						<img src="img/goback.png" alt="" />
+						返回
+					</span>
+					<button type="button" class="btnd" id="pageBtn">下一页</button>
+				</div>
+			</div>
+
+
+		<script type="text/javascript">
+			$(document).ready(function() {
+				//分割当前网页链接
+				var windowUrl = window.location.href; //获取当前url链接		
+				//http://127.0.0.1:8848/shenqing/index.html?userGuid=4bdf57feaf1749748dbfd3b2ebd6b0aa&companyId=46
+				var arr = windowUrl.split("?", 2); //分割url		
+				var arr_1 = arr[1]; //瞎起变量		
+				var arr_2 = arr_1.split('&', 2);
+				var arr_3 = (arr_2[0].split('=', 2))[1];
+				var arr_4 = (arr_2[1].split('=', 2))[1];
+				//console.log(arr_3)       
+				var http_head = "http://47.94.173.253:8008";
+				var page = 0;
+				var types = 0;
+
+				layui.use('form', function() {
+					var form = layui.form;
+
+					form.on('submit(demo)', function(data) {});
+				});
+
+
+				//字符串分割时间段 2019-06-04T19:00:00
+				function consts(e, value, index, row) {
+					//console.log(value)
+					var planStartTime = value.planStartTime.split('T')[0] + ' ';
+					var planStartTimes = value.planStartTime.split('T')[1].split(':')[0] + ':' + value.planStartTime.split('T')[1].split(
+						':')[1];
+					var strtTimed = planStartTime + planStartTimes;
+					var planEndTime = value.planEndTime.split('T')[0] + ' ';
+					var planEndTimes = value.planEndTime.split('T')[1].split(':')[0] + ':' + value.planEndTime.split('T')[1].split(
+						':')[1];
+					var planEndTimed = planEndTime + planEndTimes;
+					var time = strtTimed + ' ~ ' + planEndTimed;
+					return '<div class="size"> ' + time + ' </div>'
+				}
+
+
+				//字符串分割申请时间
+				function constd(e, value, index, row) {
+					var ar = value.createTime;
+					var ar_1 = ar.split("T")[0];
+					var ar_3 = ar.split("T")[1].split(':')[0] + ':' + ar.split("T")[1].split(':')[1];
+					var ar_4 = ar_1 + ' ' + ar_3;
+					// console.log(ar_4)
+					return '<div class="size"> ' + ar_4 + ' </div>'
+
+				}
+
+
+				function consta(e, value, index, row) {
+					//console.log(value)
+					return '<div class=size>' + value.changeShiftCode + '</div>'
+				}
+
+				//给请假原因固定宽
+				function constf(e, value, index, row) {
+					return '<div class=w133>' + value.changeShiftReason + '</div>'
+				}
+
+				//判断后台返回status
+				function progress(e, value, index, row) {
+					//console.log(value.status)
+					if (value.status == 0) {
+						status = '待审批'
+					} else {
+						status = '已审批'
+					}
+					return status
+				}
+
+				function operateFormatter(value, row, index) {
+					//console.log(row)
+					if (types == 0)
+
+					{
+						//未审核的逻辑
+						return [
+							'<div class=w106><a class="agree" href="javascript:void(0)" title="agree" style="margin-right:10px">同意</a><a class="refuse" href="javascript:void(0)" title="refuse" style="margin-right:10px">拒绝</a><a class="detaile" href="javascript:void(0)" title="detaile">详情</a></div>'
+						].join('')
+
+					} else if (types == 1)
+
+					{
+						//已审核逻辑
+						if (row.status == 2)
+
+						{
+							return '<div class=w106><div style="color: red;float:left;margin-left:10px">已拒绝</div><a class="detaile" href="javascript:void(0)" title="detaile">详情</a></div>'
+						} else
+
+						{
+							return '<div class=w106><div style="color: #cccccc;float:left;margin-left:10px">已同意</div><a class="detaile" href="javascript:void(0)" title="detaile">详情</a></div>'
+						}
+
+					} else
+
+					{
+						return '<div style="color: red">未知</div>'
+
+					}
+
+				}
+				// leaveId,userGuid,message,type(1:同意  2:拒绝)
+				window.operateEvents = {
+					'click .agree': function(e, value, row, index) {
+						//console.log(row)								
+						$.post('' + http_head + '/ChangeShifts/Set_ChangeShift_ByChecker.ashx', {
+							changeShiftId: row.id,
+							userGuid: arr_3,
+							message: ' ',
+							type: 1
+						}, function(data) {
+							data = JSON.parse(data);
+							console.log(data);
+							if (data.status == 200) {
+								$('#table').bootstrapTable('remove', {
+									field: 'changeShiftCode',
+									values: [row.changeShiftCode]
+								})
+							}
+						})
+					},
+					'click .refuse': function(e, value, row, index) {
+						$('#abb').modal();
+						$('#affirm').click(function() {
+							$.post('' + http_head + '/ChangeShifts/Set_ChangeShift_ByChecker.ashx', {
+									changeShiftId: row.id,
+									userGuid: arr_3,
+									message: $('#regard').val(),
+									type: 2
+								},
+								function(data) {
+									data = JSON.parse(data);
+									console.log(data);
+									if (data.status == 200) {
+										$('#table').bootstrapTable('remove', {
+											field: 'changeShiftCode',
+											values: [row.changeShiftCode]
+										})
+									}
+								});
+						});
+					},
+					'click .detaile': function(e, value, row, index) {
+						console.log(row);
+						window.open("../bills/tiaoban.html?id=" + row.id + ""); //兼容
+					}
+				}
+
+
+				$("#table").bootstrapTable({
+					url: '' + http_head + '/ChangeShifts/Get_ChangeShift_ByChecker.ashx', //在这里请求接口才能使用它带刷新的功能，不然的话你就再点击刷新的时候再调用这个方法
+					search: true,
+					showRefresh: false, // 是否显示刷新按钮
+					method: 'post',
+					contentType: "application/x-www-form-urlencoded", //post请求的话就加上这个句话				
+					queryParams: function(params) { //自定义参数				
+						params.userGuid = arr_3;
+						params.page = 0;
+						params.type = types;
+						return params
+					},
+					responseHandler: function(res) {
+						page = 1;
+						return res.items.list
+					},
+					columns: [{
+						field: 'changeShiftCode',
+						title: '编号',
+						formatter: consta
+					}, {
+						field: 'ruleName',
+						title: '要调班别'
+					}, {
+						field: 'changeShiftReason',
+						title: '原因'
+					}, {
+						field: 'createTime',
+						title: '申请时间',
+						formatter: constd
+					}, {
+						field: 'status',
+						title: '申请进度',
+						formatter: progress
+					}, {
+						field: 'operate',
+						title: '操作',
+						align: 'center',
+						events: window.operateEvents,
+						formatter: operateFormatter
+					}]
+				})
+
+
+				//下一步点击事件
+				$("#pageBtn").on("click", function() {
+					nextPage();
+				})
+
+				function nextPage() {
+					$.post("" + http_head + "/ChangeShifts/Get_ChangeShift_ByChecker.ashx", {
+						userGuid: arr_3,
+						page: page,
+						type: types
+					}, function(data) {
+						var data = JSON.parse(data);
+						if (data.items.list.length > 0) {
+							page = data.items.page;
+						}
+						if (data.items.list == '') {
+							$('#pageBtn').html('没有更多数据了')
+						} else {
+							$("#table").bootstrapTable({
+								columns: [{
+									formatter: table,
+								}]
+							})
+							$("#table").bootstrapTable("append", data.items.list);
+						}
+					})
+				};
+
+				var Totals = $('.totals ul li');
+				Totals.each(function() {
+					$(this).mouseover(function() {
+						$(this).addClass('on')
+					});
+					$(this).mouseout(function() {
+						$(this).removeClass('on')
+					});
+				});
+
+				//已审核			
+				$('#examined').click(function() {
+					types = 1;
+					page = 0;
+					$('#selectedText').html("已审核")
+					$('#pageBtn').html('下一页');
+					nextSerach();
+
+				})
+
+				//未审核
+				$('#own').click(function() {
+					types = 0
+					page = 0
+					$('#selectedText').html("未审核")
+					$('#pageBtn').html('下一页')
+					nextSerach()
+				})
+
+				function nextSerach() {
+					$.post("" + http_head + "/ChangeShifts/Get_ChangeShift_ByChecker.ashx", {
+						userGuid: arr_3,
+						page: page,
+						type: types
+					}, function(data) {
+						var data = JSON.parse(data);
+						//console.log(data)		
+						if (data.items.list.length > 0) {
+							page = data.items.page;
+						}
+						$("#table").bootstrapTable({
+							columns: [{
+								formatter: table,
+							}]
+						})
+						$("#table").bootstrapTable("load", data.items.list);
+					})
+				};
+				$(".goback").hover(function() {
+					$(this).children("img").attr("src", "img/goback-b.png")
+				}, function() {
+					$(this).children("img").attr("src", "img/goback.png")
+				});
+				$(".goback").on("click", function() {
+					$("#dataTable").replaceWith('<div id="dataTable"></div>');
+					$("#dataTable").load("mpz.html");
+				});
+			});
+		</script>

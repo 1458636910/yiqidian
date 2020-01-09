@@ -1,0 +1,320 @@
+.main {
+	width: 100%;
+	min-width: 1200px;
+	background-color: #f8f8f8
+}
+
+.mainCenter {
+	width: 1200px;
+	margin: 0 auto
+}
+
+.listLeft {
+	width: 910px;
+	padding: 0 20px
+}
+
+.listRight {
+	width: 270px
+}
+
+.topArea {
+	margin-bottom: 0
+}
+
+#acvitityLi {
+	background-color: #fff
+}
+
+#acvitityLi a {
+	color: #0aa2e8
+}
+
+.chooseTypeDiv {
+	background-color: #fff
+}
+
+.activityShow {
+	background-color: #fff;
+	padding-top: 20px
+}
+
+.chooseTypeDiv>p {
+	margin: 0;
+	line-height: 50px
+}
+
+.chooseTypeDiv>p span {
+	width: 100px;
+	display: inline-block;
+	margin-bottom: 5px;
+	text-align: right;
+	color: #666;
+	height: 24px;
+	line-height: 24px
+}
+
+.tuijianTypeDiv {
+	width: 29%;
+	border: 1px solid #ddd;
+	height: 100px;
+	margin-bottom: 10px;
+	padding: 10px
+}
+
+.buttonArea button {
+	border-radius: 5px;
+	padding: 5px 8px;
+	outline: none;
+	border: none;
+	margin: 0 5px;
+	font-size: 12px
+}
+
+.mainFountion #lookActivity {
+	background-color: #fff;
+	color: #29e
+}
+
+.chooseAreaDiv {
+	padding: 0 20px
+}
+
+.select li {
+	list-style: none;
+	padding: 10px 0 5px 100px
+}
+
+#secondType {
+	height: auto;
+	display: none
+}
+
+.activeBtn {
+	background-color: #29e;
+	color: #fff
+}
+
+.seaBtn {
+	cursor: pointer
+}
+
+dl dd {
+	cursor: pointer
+}
+
+#activityListTable {
+	border: none
+}
+
+#activityListTable thead {
+	display: none !important
+}
+
+#activityListTable tr {
+	cursor: pointer;
+	display: block;
+	border: 1px solid #ddd;
+	padding: 10px 0;
+	margin-bottom: 15px;
+	border-radius: 10px
+}
+
+#activityListTable tr:hover {
+	border-left: 1px solid #00368a
+}
+
+.no-records-found td {
+	display: flex;
+	align-items: center;
+	justify-content: center
+}
+
+#activityListTable tr td {
+	border: none;
+	display: block;
+	width: 100%;
+	padding: 0 !important
+}
+
+#imgDiv img {
+	width: 120px;
+	border-radius: 10px;
+	margin: 0 20px 0 10px
+}
+
+.activityDiv {
+	display: flex;
+	align-items: center;
+	position: relative
+}
+
+.realname {
+	padding-left: 7px
+}
+
+#city {
+	display: block
+}
+
+.authen {
+	position: absolute;
+	color: white;
+	right: 20px;
+	background-color: #f7ae16;
+	padding: 5px 10px;
+	font-weight: bold;
+	border-radius: 5px
+}
+
+.userInfor {
+	max-width: 620px;
+	color: #777;
+	font-size: 12px
+}
+
+.userInfor p:nth-child(1) span {
+	color: #333
+}
+
+.userInfor p {
+	text-align: left
+}
+
+.userInfor label {
+	font-size: 14px
+}
+
+.userInfor p span {
+	margin-right: 100px
+}
+
+.information {
+	display: flex;
+	justify-content: space-between;
+	min-width: 400px;
+	max-width: 400px
+}
+
+.information p {
+	text-align: left;
+	display: flex;
+	align-items: center;
+	margin-top: 5px
+}
+
+.newAcvitityDiv,
+.visitMostDiv,
+.signUPMostDiv {
+	margin-bottom: 20px
+}
+
+.newAcvitityTitle,
+.visitMostTitle,
+.signUPMostTitle {
+	height: 46px;
+	background-color: #0aa2e8;
+	line-height: 46px;
+	font-size: 16px;
+	color: #fff
+}
+
+.newAcvitityTitle p,
+.visitMostTitle p,
+.signUPMostTitle p {
+	margin: 0 20px
+}
+
+.newAcvitityTitle p a,
+.visitMostTitle p a,
+.signUPMostTitle p a {
+	text-decoration: none;
+	color: #fff
+}
+
+.newAcvitity,
+.visitMost,
+.signUPMost {
+	height: 486px;
+	overflow: hidden;
+	box-shadow: 1px 3px 5px 1px rgba(0, 0, 0, .1)
+}
+
+.newAcvitity:hover,
+.visitMost:hover,
+.signUPMost:hover {
+	box-shadow: 1px 3px 5px 1px rgba(0, 0, 0, .2)
+}
+
+.newAcvitityArea li,
+.visitMostArea li,
+.signUPMostArea li {
+	padding: 10px;
+	border-bottom: 1px solid #e6e6e6;
+	cursor: pointer;
+	display: flex;
+	height: 81px
+}
+
+.newAcvitityArea li>div,
+.visitMostArea li>div,
+.signUPMostArea li>div {
+	display: flex;
+	align-items: center;
+}
+
+.newAcvitityArea li img,
+.visitMostArea li img,
+.signUPMostArea li img {
+	width: 102px;
+	height: 60px
+}
+
+.newAcvitityArea li>div>div,
+.visitMostArea li>div>div,
+.signUPMostArea li>div>div {
+	/* width: 145px; */
+	padding-left: 10px
+}
+
+.newAcvitityArea li>div p,
+.visitMostArea li>div p,
+.signUPMostArea li>div p {
+	font-size: 14px;
+	display: -webkit-box;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 2
+}
+
+.newAcvitityArea li>div>div p:nth-child(2),
+.visitMostArea li>div>div p:nth-child(2),
+.signUPMostArea li>div>div p:nth-child(2) {
+	font-size: 13px;
+	color: #a7a7a7
+}
+
+.pageDiv>p {
+	width: 50%;
+	margin: 10px auto;
+	display: block
+}
+
+#pick {
+	overflow: hidden
+}
+
+.chooseTypeDiv ul {
+	margin-bottom: 0
+}
+
+#searchBtn span,
+#demandBtn span {
+	margin-right: 8px
+}
+
+.userInfor img {
+	width: 10px;
+	height: 11px
+}

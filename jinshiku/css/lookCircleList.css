@@ -1,0 +1,51 @@
+.main{width: 100%;margin-top: 20px;min-width: 1200px;}
+.mainCenter{width: 1200px;margin: 0 auto;}
+#videoListTable tr th{text-align: center;}
+#videoListTable tr td img{width: 200px;height: 112px;}
+#videoListTable tr td:nth-child(3) p{margin: 0;}
+#videoListTable tr td:nth-child(3) p .researchField{color: #29e;cursor: pointer;}
+#videoListTable tr td a{text-decoration: none;color: #888;cursor: pointer;}
+.deleteVideoTable{display: none;margin: 20px;}
+.changeVideoTable{display: none;margin: 50px 20px}
+.videoLabelTable{display: none;margin: 20px;}
+.videoLabelLeft{width: 110px;}
+.videoLabelLeft p{cursor: pointer;background-color: #29e;color: #fff;height: 30px;line-height: 30px;text-align: center;}
+.videoLabelRight{width: 480px;margin-left: 20px;}
+.videoLabelRight span{display: inline-block;width: 120px;height: 30px;line-height: 30px;}
+#labelA{margin-bottom: 20px;}
+.uploadArea{width: 100%;text-align: right;}
+.uploadVideo{background-color: #29e;border-radius: 5px;padding: 10px 15px;border: none;outline: none;}
+.uploadVideo a{color: #fff;text-decoration: none;font-size: 16px}
+.loadMorePrve,.loadMoreSearchPrve,.loadMoreLabelPrve,.loadMoreNext,.loadMoreSearchNext,.loadMoreLabelNext{width: 44%;height: 50px;line-height: 50px;background-color: #29e;color: #fff;text-align: center;border: none;border-radius: 5px;outline: none;margin: 2.5%;display: none;}
+#videoListTable tr th{display: none;}
+.mainFountion #lookCircle{background-color: #fff;color: #29e;}
+.mainFountion #lookCircle a{color: #29e;}
+.listLeft{width: 25%;text-align: center;}
+.listRight{width: 75%;}
+.listLeft p{height: 40px;line-height: 40px;background-color: #29e;color: #fff;font-size: 16px;}
+.spanList span{display: inline-block;width: 100%;height: 35px;line-height: 35px;cursor: pointer;position: relative;}
+.innerspanList{position: absolute;width: 500px;background-color: #eee;margin-top: -35px;left: 300px;z-index: 100}
+.innerspanList span{display: inline-block;width: 100px;margin: 10px}
+.innerspanList span:hover{color: #f00;}
+#loginBtn{border: none;outline: none;height: 20px;background-color: #fff;}
+.loginName{display: inline-block;margin-right: 10px;}
+.researchField{color: #29e;cursor: pointer;}
+.seaBtn{cursor: pointer;}
+/*#videoListTable tr td{cursor: pointer;}*/
+.advancedTable{display: none;}
+.selestArea{margin: 20px 50px;}
+.selestArea span{display: inline-block;width: 60px;text-align: center;}
+.advanced{margin-left: 20px;line-height: 40px;cursor: pointer;}
+.circleContent{color: #888;margin: 0 10px;}
+.circleContentBtn{color: #29e;cursor: pointer;margin-left: 10px;}
+.innerspanList{border: 1px solid #888;}
+.circleTitle{font-size: 20px;cursor: pointer;}
+#videoListTable tr td img{cursor: pointer;}
+.formWhere span:nth-child(2){font-size:16px;color: #29e;cursor: pointer;}
+.circleOther,.timeCircle{text-align: right;}
+.formWhere,.circleOther,.timeCircle{width: 50%;}
+.timeCircle span{color: #888}
+.writerInfo{margin-bottom: 10px;width: 150px;cursor: pointer;}
+#videoListTable tr td .writerInfo img{width: 40px;height: 40px;border-radius: 20px;}
+#videoListTable tr td .writerInfo p{margin: 0 0 0 10px;}
+.titleArea{text-align: center;}

@@ -1,0 +1,85 @@
+.ccsq{
+	width: 920px;
+	margin:  0 auto;
+	background-color: white;
+	margin-bottom: 5px;
+}
+.addsq{
+	background-color: #29e;
+    color: white;
+    padding: 0px 15px;
+    border-radius: 5px;
+    margin-left: 20px;
+    cursor: pointer;
+    height: 36px;
+    line-height: 36px;
+}
+#status{
+	padding: 5px 10px;
+	border-radius: 5px;
+	cursor:pointer;
+	height:36px;
+	line-height:36px
+}
+.statu{
+    color:red;
+    cursor:pointer
+}
+.applyTable{
+	margin-top: 20px
+}
+.goback:hover{
+	color: #05509a;
+}
+.goback{
+	cursor: pointer;
+	font-weight: bold;
+    color: #a8a8a8;
+}
+.goback img{
+    width:16px;
+	margin-bottom: 5px;
+}
+.btnArea{
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.btnNext{
+    background-color: #29e;
+    color: white;
+    padding: 5px 30px;
+    border-radius: 40px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.applyTable tbody tr td:nth-child(1){
+    white-space: normal;
+    height: 97px;
+    text-align: left;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-break: break-all;
+}
+
+.no-records-found td{text-align: center!important;}
+#latter thead  {
+    display:none!important
+}
+.operate{
+    width:240px;
+    float:left
+}
+.fixed-table-toolbar{
+    width: 360px;
+    float: right;
+}
+.fixed-table-toolbar div{
+    width: 100%;
+    margin: 0!important;
+}
+.fixed-table-toolbar div input{
+    height:36px
+}

@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8"/>
+		<title>讲师认证</title>
+		<link rel="icon" href="img/logo.png" type="image/x-icon"/>
+		<link rel="stylesheet" href="css/reset.css"/>
+		<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.css"/>
+		<link rel="stylesheet" href="css/skin/default/layer.css"/>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.4.2/css/swiper.css"/>
+		<link rel="stylesheet" type="text/css" href="css/approve.css?v=20190607"/>
+	</head>
+	<body>
+		<div class="swiper-container">
+			<div class="swiper-wrapper">
+				<div class="swiper-slide swiper-no-swiping">
+					<div class="content ">
+						<p class="title">
+							<img src="img/tu.png" alt=""/>
+							讲师认证
+						</p>
+						<img class="step_img" src="img/rz1.png" alt=""/>
+						<div class="addPhoto">
+							<ul class="clearfix imgList">	</ul>
+						</div>
+						<div class="tabBox2">
+							<p class="swiper-button-next st1">下一步</p>
+						</div>
+					</div>
+				</div>
+				<div class="swiper-slide swiper-no-swiping">
+					<div class=" content2">
+						<p class="title">
+							<img src="img/tu.png" alt=""/>
+							讲师认证
+						</p>
+						<img class="step_img" src="img/rz2.png" alt=""/>
+						<div class="step">
+							<p class="lab">基本信息</p>
+							<div class="headImgBox">
+								<span>*</span>
+								<span class="">讲师头像：</span>
+								<img id="pic0" src="img/touxiang.png" alt="点击选择上传头像"/>
+								<input id="upload0" name="file" accept="image/*" type="file" style="display: none"/>
+							</div>
+							<br/>
+							<label for="">
+								<span>*</span>
+								<span class="">讲师姓名：</span>
+								<input type="text" class="name form-control" placeholder="授课讲师姓名"/>
+							</label>
+							<br/>
+							<label for="">
+								<span>*</span>
+								<span class="">助理姓名：</span>
+								<input type="text" class="name2 form-control" placeholder="助理姓名"/>
+							</label>
+							<br/>
+							<label for="">
+								<span>*</span>
+								<span class="">性别：</span>
+								<input class="sex2" type="radio" name="sex" value="男" checked="checked"/>
+								男
+								<input class="sex " type="radio" name="sex" value="女"/>
+								女
+							</label>
+							<br/>
+							<label for="">
+								<span>*</span>
+								<span class="">手机号：</span>
+								<input type="text" class="selePhone form-control" placeholder="本人常用手机号"/>
+							</label>
+							<br/>
+							<label for="">
+								<span>*</span>
+								<span class="">助理手机：</span>
+								<input type="text" class="assistantPhone form-control" placeholder="若无可不填"/>
+							</label>
+							<br/>
+							<label for="">
+								<span>*</span>
+								<span class="">QQ：</span>
+								<input type="text" class="qq form-control" placeholder="本人或助理皆可"/>
+							</label>
+							<br/>
+							<label for="">
+								<span>*</span>
+								<span class="">微信：</span>
+								<input type="text" class="weChat form-control" placeholder="本人或助理皆可"/>
+							</label>
+							<br/>
+							<label for="">
+								<span>*</span>
+								<span class="">邮箱：</span>
+								<input type="text" class="email form-control" placeholder="本人邮箱"/>
+							</label>
+							<br/>
+							<label for="">
+								<span>*</span>
+								<span class="">常驻地址：</span>
+								<select id="s_province" name="s_province">	</select>
+								<select id="s_city" name="s_city">	</select>
+								<select id="s_county" name="s_county">	</select>
+							</label>
+							<br/>
+							<label for="">
+								<span>*</span>
+								<span class="">终端报价：</span>
+								<input type="text" class="prices form-control" placeholder="金额需为整数，单位：元/天"/>
+								<p class="price">
+									实际收益
+									<span class="realPrice">	</span>
+									元
+									<img src="img/why.png" class="whyIcon" alt=""/>
+								</p>
+							</label>
+						</div>
+						<div class="tabBox2">
+							<p class="swiper-button-prev st2-1">上一步</p>
+							<p class="swiper-button-next st2-2">下一步</p>
+						</div>
+					</div>
+				</div>
+				<div class="swiper-slide swiper-no-swiping">
+					<div class=" content2">
+						<p class="title">
+							<img src="img/tu.png" alt=""/>
+							讲师认证
+						</p>
+						<img class="step_img" src="img/rz3.png" alt=""/>
+						<div class="step">
+							<p class="lab">基本资料</p>
+							<label for="" class="infoLabel">
+								<span>*</span>
+								<span class="">个人简介：</span>
+								<textarea placeholder="简要叙述" class="form-control" id="info" rows="6"></textarea>
+							</label>
+							<br/>
+							<label for="">
+								<span>*</span>
+								<span class="">曾服务的职位：</span>
+								<input type="text" class="post form-control" placeholder="服务的职位"/>
+							</label>
+							<br/>
+							<label for="">
+								<span>*</span>
+								<span class="">研究领域：</span>
+								<input type="text" class="courseType form-control" placeholder="最多选择5个课程类型"/>
+							</label>
+							<br/>
+							<label for="">
+								<span>*</span>
+								<span class="">品牌课程：</span>
+								<textarea placeholder="简要叙述" type="text" class="couseMain form-control" rows="6"/></textarea>
+							</label>
+							<br/>
+							<label for="">
+								<span>*</span>
+								<span class="">授课风格：</span>
+								<textarea placeholder="简要叙述" type="text" class="TeachStyle form-control" rows="6"/></textarea>
+							</label>
+							<br/>
+							<label for="">
+								<span>*</span>
+								<span class="">授课方式：</span>
+								<textarea placeholder="简要叙述" type="text" class="couseWay form-control" rows="6"/></textarea>
+							</label>
+							<br/>
+							<label for="" class="infoLabel">
+								<span>*</span>
+								<span class="">客户见证：</span>
+								<textarea placeholder="服务过的企业" class="case form-control" rows="6"></textarea>
+							</label>
+							<div class="submit">
+								<button class="subBtn">提交</button>
+							</div>
+						</div>
+						<div class="tabBox2">
+							<p class="swiper-button-prev st1">上一步</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- 如果需要导航按钮 -->
+			<!-- <div class="swiper-button-prev">	</div>
+			<div class="swiper-button-next">	</div> -->
+		</div>
+		<div class="teachAreaTable clearfix">
+			<input type="text" class="form-control" id="labelInfo"/>
+			<div class="tabBox clearfix pull-left">
+				<div class="tableLeft pull-left">	</div>
+			</div>
+			<div class="tableRight pull-left">	</div>
+		</div>
+		<div class="priceBox">实际收益为终端报价的90%</div>
+		<script type="text/javascript" src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+		<script type="text/javascript" src="https://cdn.bootcss.com/layer/3.1.0/layer.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.4.2/js/swiper.js"></script>
+		<script type="text/javascript" src="js/ajaxfileupload.js"></script>
+		<script src="js/approve.js?v=20190613" type="text/javascript" charset="utf-8" async defer></script>
+		<script class="resources library" src="js/area.js?v=20190606" type="text/javascript"></script>
+		<script type="text/javascript">_init_area();</script>
+		<script>        
+		var Gid  = document.getElementById ;
+		    var showArea = function(){
+		            Gid('show').innerHTML = "<h3>省" + Gid('s_province').value + " - 市" +
+		            Gid('s_city').value + " - 县/区" +
+		            Gid('s_county').value + "</h3>"
+		            Gid('s_county').setAttribute('onchange','showArea()');
+		    }		     
+		</script>
+	</body>
+</html>

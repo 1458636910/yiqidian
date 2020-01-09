@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta http-equiv="Cache-Control" CONTENT="no-cache">
+  <link rel="icon" href="../image/jinLogo.png" type="image/x-icon"/>
+  <title>上传视频</title>
+  <link rel="stylesheet" href="../css/reset.css">
+  <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../css/skin/default/layer.css">
+  <link rel="stylesheet" href="../css/updataVideo.css?ver=20180827">
+</head>
+<body>
+<div class="main">
+      <div class="cover"></div>
+      <div class="tltle">上传视频</div>
+      <div class="mainLeft col-lg-3 col-md-3 col-sm-0 col-xs -0"></div>
+      <div class="mainCenter col-lg-6 col-md-6 col-sm-12 col-xs -12">
+            <form action="" class="form-inline" id="upVideo">
+                <label for="" class="tips"><span></span><span>支持优酷视频，请将视频网页地址粘贴到下面的输入框中</span></label>
+                <label for=""><span>*</span><span>视频链接 :</span><input type="text" class="form-control videoUrl" placeholder="视频所在播放网页的地址"><input type="button" id="sureBtn" value="确定"></label><br><br>
+                <label for="" class="videoTitleLabel"><span>*</span><span>视频标题 :</span><input type="text" class="form-control " id="videoName"></label>
+                <label for="" class="videoImgLabel"><span>*</span><span>视频封面 :</span><img src="" alt=""></label>
+                <label for="" class="videoLabel1"><span>*</span><span>视频分类 :</span><input type="text" class="form-control videoLabel" placeholder="最多选择5个类别"></label><br><br>
+                <label for="" class="describe"><span>*</span><span>视频描述 :</span><textarea name="" id="videoDescribe" class="form-control" rows="3"></textarea></label><br><br>
+          </form>
+        <div class="submitArea"><button type="submit" class="submitBtn">提交</button></div>
+      </div>
+      <div class="videoLabelTable clearfix">
+            <input type="text" class="form-control" id="labelInfo">
+            <div class="videoLabelLeft pull-left"></div>
+            <div class="videoLabelRight pull-left"></div>
+      </div>
+      <div class="mainRight col-lg-3 col-md-3 col-sm-0 col-xs-0"></div>
+</div>
+  <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+  <script type="text/javascript" src="http://cdn.bootcss.com/layer/3.1.0/layer.js"></script>
+  <script type="text/javascript" src="http://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="../js/change.js?ver=20180305"></script>
+  <script type="text/javascript" src="../js/updataVideo.js?ver=20180312"></script>
+</body>
+</html>

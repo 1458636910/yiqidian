@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta http-equiv="Cache-Control" CONTENT="no-cache">
+		<link rel="icon" href="../image/jinLogo.png" type="image/x-icon" />
+		<title>视频列表</title>
+		<link rel="stylesheet" href="../css/reset.css">
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.12.1/bootstrap-table.min.css">
+		<link rel="stylesheet" href="../css/skin/default/layer.css">
+		<link rel="stylesheet" href="../css/lookVideoList.css?ver=20180827">
+	</head>
+	<body>
+		<div class="navTitle clearfix">
+			<ul class="clearfix">
+				<li class="pull-left"><a href="http://www.eqidd.com/yqy/article.html" target="_blank">易企阅</a></li>
+				<li class="pull-left"><a href="http://www.jinshiku.com/" target="_blank">金师库</a></li>
+				<li class="pull-left"><a href="http://www.eqidd.com/createrSpace/html/personInfo.html" target="_blank">创客空间</a></li>
+				<li class="pull-left"><a href="http://www.eqidd.com/comSpace/html/qiyeInfo.html" target="_blank">企业空间</a></li>
+				<li class="pull-left"><a href="http://www.eqidd.com/html/download.html" target="_blank">下载</a></li>
+				<li class="pull-left"><a href="http://www.eqidd.com/html/feedback.html" target="_blank">反馈</a></li>
+				<li class="pull-right loginBtn "><button id="loginBtn">登录</button></li>
+				<li class="pull-right quitOut">退出</li>
+				<li class="pull-right infoBtn"><span class="loginName"></span><a href="../../createrSpace/html/personInfo.html"
+					 target="_blank">个人中心</a></li>
+			</ul>
+		</div>
+		<div class="topArea">
+			<div class="loginArea"></div>
+			<div class="search contain clearfix">
+				<div class="searchLeft pull-left"><img src="../image/downQRcode.png" alt=""><a href="../font.html">易企学</a></div>
+				<div class="searchRight pull-left">
+					<div class="input-group input-group-lg searchDiv">
+						<input type="text" class="form-control inputVal">
+						<span class="input-group-addon seaBtn">搜索视频</span>
+						<!--                    <div class="advanced pull-left">
+                      高级设置
+                  </div> -->
+					</div>
+				</div>
+			</div>
+			<div class="ulList">
+				<ul class="mainFountion clearfix">
+					<a href="../font.html">
+						<li class="pull-left">首页</li>
+					</a>
+					<a href="teacherIndex.html">
+						<li class="pull-left">找讲师</li>
+					</a>
+					<a href="lookCourseList.html">
+						<li class="pull-left">选课程</li>
+					</a>
+					<a href="lookDemandList.html">
+						<li class="pull-left" id="lookDemand">找需求</li>
+					</a>
+					<a href="lookCircleList.html">
+						<li class="pull-left">品文章</li>
+					</a>
+					<a href="lookActivity.html">
+						<li class="pull-left">活动</li>
+					</a>
+				</ul>
+			</div>
+		</div>
+		<div class="main">
+			<div class="mainCenter clearfix">
+				<div class="listLeft pull-left">
+					<p>视频分类</p>
+					<div class="spanList"></div>
+				</div>
+				<div class="listRight pull-left">
+					<table id="videoListTable">
+						<thead>
+							<tr>
+								<th data-field="videoImage"></th>
+								<th data-field="videoTitle"></th>
+							</tr>
+						</thead>
+					</table>
+					<br>
+					<button class="loadMore">阅读更多</button>
+					<button class="noMoreBtn">已全部加载</button>
+				</div>
+			</div>
+		</div>
+		<!-- 高级搜索 -->
+		<div class="advancedTable">
+			<div class="selestArea">
+				<p class="form-inline" id="addr-show2"><span>类别 : </span>
+					<select name="" id="detailsChoose" class="form-control">
+						<option>=请选择=</option>
+					</select>
+					<select name="" id="detailsChoose2" class="form-control">
+						<option>=请选择=</option>
+					</select>
+				</p>
+			</div>
+		</div>
+		<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+		<script type="text/javascript" src="http://cdn.staticfile.org/layer/2.3/layer.js"></script>
+		<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.12.1/bootstrap-table.min.js"></script>
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.12.1/locale/bootstrap-table-zh-CN.min.js"></script>
+		<script type="text/javascript" src="../js/change.js?ver=20180305"></script>
+		<script type="text/javascript" src="../js/lookVideoList.js?ver=20180312"></script>
+	</body>
+</html>

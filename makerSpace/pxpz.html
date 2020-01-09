@@ -1,0 +1,393 @@
+
+		<link rel="stylesheet" type="text/css" href="css/apply2.css" />
+		
+		<style type="text/css">
+		.total {			
+			position: initial!important;
+			margin-bottom: 10px;
+		}
+			
+			#examined {
+				border-bottom-left-radius: 5px;
+				border-bottom-right-radius: 5px;
+				border: none
+			}
+			.w106 {
+				width: 106px;
+			}
+		
+			.size {
+				font-size: 12px;
+			}
+		
+			.agree {
+				color: #00A1E9;
+			}
+		
+			.refuse {
+				color: red;
+			}
+		
+			.atxe {
+				margin-left: 0 !important;
+			}
+			.w133{width: 133px;}
+		</style>
+		
+		
+	
+		<div class="box">
+			<div class="total">
+				<!-- .icon-zelvxuanzefeiyongzhengsanjiaoxingzhichi 上箭头 有需求可以加 -->
+				<div class="pp">
+					<p id="selectedText">未审核</p><span class="iconfont icon-zelvxuanzefeiyongdaosanjiaoxingfandui icons"></span>
+				</div>
+				<div class="totals">
+					<ul>	
+						<li id="own" class="on">未审核</li>
+						<li id="examined">已审核</li>
+						
+					</ul>
+				</div>
+			</div>
+			
+			<!-- modal -->
+			<div class="modal fade" tabindex="-1" role="dialog" id="abb">
+				<form class="layui-form" action="">	
+				<div class="modal-dialog" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h4 class="modal-title text-danger aaa">拒绝理由</h4>
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>							
+						</div>
+						<form class="form-horizontal" method="" action="#">
+							<div class="modal-body">				
+								<div class="layui-input-block atxe">
+									<textarea class="layui-textarea" lay-verify="required" id="regard" lay-filter="filter"></textarea>
+								</div>
+							</div>
+							<div class="modal-footer">								
+								<button type="button" class="btn btn-default" data-dismiss="modal" id="affirm" lay-submit="" lay-filter="demo">确定</button>
+								<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+							</div>
+						</form>
+					</div><!-- /.modal-content -->
+				</div><!-- /.modal-dialog -->
+				</form>
+			</div><!-- /.modal -->
+
+			<table id="table" border="1"></table>            
+			<div class="pageBtnBox btnArea">
+					<span class="goback">
+						<img src="img/goback.png" alt="" />
+						返回
+					</span>
+					<button type="button" class="btnd" id="pageBtn">下一页</button>
+				</div>
+			</div>
+			
+
+		<script type="text/javascript">
+			$(document).ready(function() {
+							
+							//分割当前网页链接
+							var windowUrl = window.location.href; //获取当前url链接		
+							//http://127.0.0.1:8848/shenqing/index.html?userGuid=4f47e8c7e40541d4a2f03c3c72304252&companyId=46
+							var arr = windowUrl.split("?", 2); //分割url		
+							var arr_1 = arr[1]; //瞎起变量		
+							var arr_2 = arr_1.split('&', 2);
+							var arr_3 = (arr_2[0].split('=', 2))[1];
+							var arr_4 = (arr_2[1].split('=', 2))[1];
+							//console.log(arr_4)       
+							var http_head = "http://47.94.173.253:8008";
+							var page = 0;
+							var types = 0;
+							var checkerName =[];
+							
+							
+							layui.use('form', function(){
+							  var form = layui.form;
+							  
+							  form.on('submit(demo)', function(data){							
+								});
+							});
+							
+							//培训对象
+							function consta(e, value, index, row) {										
+								return '<div class=w133>' + value.trainees + '</div>'
+							}
+			
+			                //培训类别
+			                function constb(e, value, index, row) {										
+			                	return '<div class=w133>' + value.theCategory + '</div>'
+			                }
+							
+							//字符串分割时间段 2019-06-12T00:00:00
+							function constc(e, value, index, row) {					
+								var ar_1 =value.thedateStart.split('T')[0]+ ':';
+								var ar_2 = (value.thedateStart.split('T')[1]).split(':')[0] + ':' + (value.thedateStart.split('T')[1]).split(':')[1];
+								var thedateStart = ar_1 + ar_2;
+								var ar_3 =value.thedateEnd.split('T')[0]+ ':';
+								var ar_4 = (value.thedateEnd.split('T')[1]).split(':')[0] + ':' + (value.thedateEnd.split('T')[1]).split(':')[1];
+								var thedateEnd = ar_3 + ar_4;					
+								var time = thedateStart + ' ~ ' + thedateEnd;					
+								return  '<div class=w133> '+time+' </div>'   
+							}
+											
+							//培训主题
+							function constd(e, value, index, row) {										
+								return '<div class=w200>' + value.theTheme + '</div>'
+							}
+							
+							//推荐讲师
+							function conste(e, value, index, row) {										
+								return '<div class=w133>' + value.recoDocentName + '</div>'
+							}
+							
+							//预算费用
+							function constf(e, value, index, row) {										
+								return '<div class=w133>' + value.budgetedExpense + '</div>'
+							}
+							
+							//判断后台返回status
+							function progress(e, value, index, row) {
+								//console.log(value.status)
+								if(value.status == 0){
+									status = '待审批'
+								}else{
+									status = '已审批'
+								}
+								return [
+									'<div class="hhhh">' +status+ '</div>'								
+								].join('')
+							}
+							
+							
+							function operateFormatter(value, row, index) {
+								//console.log(row)
+								if (types == 0)
+							
+								{
+									//未审核的逻辑
+									return [
+										'<div class=w106><a class="agree" href="javascript:void(0)" title="agree" style="margin-right:10px">同意</a><a class="refuse" href="javascript:void(0)" title="refuse">拒绝</a></div>'
+									].join('')
+							
+								} else if (types == 1)
+							
+								{
+									//已审核逻辑
+									if (row.status == 2)
+							
+									{
+										return '<div class=w106 style="color: red">已拒绝</div>'
+									} else	
+							
+									{
+										return '<div class=w106 style="color: #cccccc">已同意</div>'
+									}
+							
+								} else
+							
+								{
+									return '<div class=w106 style="color: red">未知</div>'
+							
+								}
+							
+							}
+							
+							//获取个人信息
+							$.ajax({
+								url: 'http://47.94.173.253:8008/getUserDetailByuserGuid.ashx', //你请求的接口
+								type: 'POST', //类型
+								data: {
+									'userGuid': arr_3,
+								}, //数据有则传，没有可以不写
+								success: function(data) {
+									data = JSON.parse(data);
+								  // console.log(data);
+								  checkerName = data.items.realName;
+								   }
+							})
+							
+							 window.operateEvents = {
+								'click .agree': function (e, value, row, index) {
+									console.log(row)								
+									$.post('' + http_head + '/Training/Check_trainingApply.ashx',{
+										applicationId: row.id,
+										userGuid:arr_3,
+										checkerName:checkerName,
+										reason:' ',
+										option:1
+									},function(data) {
+										data = JSON.parse(data);									
+										console.log(data)
+										if (data.status == 200) {
+											$('#table').bootstrapTable('remove', {
+												field: 'id',
+												values: [row.id]
+											  })
+										  }
+									})							 
+								},
+								'click .refuse': function (e, value, row, index) {
+									$('#abb').modal();									
+									   $('#affirm').click(function() {
+											$.post('' + http_head + '/Training/Check_trainingApply.ashx',{
+													applicationId: row.id,
+													userGuid:arr_3,
+													reason:$('#regard').val(),
+													option:-1
+											},
+											function(data) {
+												data = JSON.parse(data);
+												console.log(data);
+												if (data.status == 200) {
+													$('#table').bootstrapTable('remove', {
+														field: 'id',
+														values: [row.id]
+													  })
+												  }
+											});
+											});								   								
+								}
+							}
+							
+							
+							
+							$.post('' + http_head + '/Training/Get_trainingApply_byLeader.ashx',{
+								userGuid:arr_3,
+								comid:arr_4,
+								page: page,
+								type:types					
+							},function(data){
+								var data = JSON.parse(data);
+								page = data.nextpage;
+								$("#table").bootstrapTable({
+									data: data.items,
+									columns: [{
+										field:'trainees',
+										title:'培训对象'	,
+										formatter: consta
+									},{
+										field:'theCategory',
+										title:'培训类别',
+										formatter: constb
+									},{
+										field:'time',
+										title:'时间段',
+									    formatter: constc
+									},{
+										field:'theTheme',
+										title:'培训主题',
+										formatter: constd
+									},{
+										field:'recoDocentName',
+										title:'推荐讲师',
+										formatter: conste
+									},{
+										field:'budgetedExpense',
+										title:'预算费用/元',
+										formatter: constf,
+									},{
+										field:'status',
+										title:'申请进度',							
+									    formatter:progress
+									},{
+										field: 'operate',
+										title: '操作',
+										align: 'center',
+										events: window.operateEvents,
+										formatter: operateFormatter
+										}]
+								})					
+							});
+								
+							//下一步点击事件
+							$("#pageBtn").on("click", function() {				
+								nextPage();
+							})
+							
+							function nextPage() {			
+								$.post("" + http_head + "/Training/Get_trainingApply_byLeader.ashx", {
+									userGuid:arr_3,
+									comid:arr_4,
+									page: page,
+									type:types
+								}, function(data) {
+									var data = JSON.parse(data);						
+									//console.log(page);
+									if(data.items.length > 0){
+										page = data.nextpage;
+									}						
+									if (data.items=='') {
+										$('#pageBtn').html('没有更多数据了')
+									} else {
+										$("#table").bootstrapTable({
+											columns: [{
+												formatter: table,
+											}]
+										})					 
+									    $("#table").bootstrapTable("append", data.items);
+									}
+								})
+							};
+							
+							var Totals = $('.totals ul li');
+							Totals.each(function() {
+								$(this).mouseover(function() {
+									$(this).addClass('on')
+								});
+								$(this).mouseout(function() {
+									$(this).removeClass('on')
+								});
+							});
+							
+							//已审核			
+							$('#examined').click(function(){				
+								types = 1;
+								page = 0;				
+								$('#selectedText').html("已审核")
+								$('#pageBtn').html('下一页');
+								nextSerach();
+								
+							})
+							
+							//未审核
+							$('#own').click(function(){
+								types = 0
+								page = 0
+								$('#selectedText').html("未审核")
+								$('#pageBtn').html('下一页')
+								nextSerach()							
+							})
+							
+							function nextSerach() {
+								$.post("" + http_head + "/Training/Get_trainingApply_byLeader.ashx", {
+									userGuid:arr_3,
+									comid:arr_4,
+									page: page,
+									type:types
+								}, function(data) {
+									var data = JSON.parse(data);
+									//console.log(data)		
+										page = data.nextpage;
+										$("#table").bootstrapTable({						
+											columns: [{
+												formatter: table,
+											}]
+										})					 
+										$("#table").bootstrapTable("load", data.items);					
+								})			
+							};	
+									$(".goback").hover(function() {
+										$(this).children("img").attr("src", "img/goback-b.png")
+									}, function() {
+										$(this).children("img").attr("src", "img/goback.png")
+									});
+									$(".goback").on("click", function() {
+										$("#dataTable").replaceWith('<div id="dataTable"></div>');
+										$("#dataTable").load("mpz.html");
+									});
+							});
+		</script>

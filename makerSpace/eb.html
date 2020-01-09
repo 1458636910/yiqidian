@@ -1,0 +1,634 @@
+<style type="text/css">
+	#dataTable {
+		padding: 0;
+	}
+
+	.labBar {
+		display: flex;
+		justify-content: flex-end;
+		align-items: center;
+		height: 80px;
+		border-bottom: 1px solid silver;
+	}
+
+	.labBar span {
+		margin: 0 20px;
+		cursor: pointer;
+	}
+
+	.ebShow {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		height: 60px;
+		margin: 0 15px;
+		border-bottom: 1px solid silver;
+		font-size: 14px;
+	}
+
+	.ebShow span {
+		margin: 20px;
+	}
+
+	.cz {
+		color: #29e;
+		padding: 2px 10px;
+		border-radius: 5px;
+		cursor: pointer;
+		border: 1px solid #29e;
+	}
+
+	.text1 {
+		color: #f7ae16;
+	}
+
+	.ebNum {
+		margin: 0 !important;
+		color: #f7ae16;
+		font-weight: bold;
+	}
+
+	.sign {
+		display: flex;
+		width: 80%;
+		padding: 0 25px;
+		font-size: 14px;
+	}
+
+	.sign li {
+		margin: 10px;
+	}
+
+	.sign li img {
+		width: 25px;
+		height: 25px;
+		margin-top: 25px;
+	}
+
+	.sign li div {
+		background-color: rgb(238, 238, 238);
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+		align-items: center;
+		padding: 15px 0;
+		border-radius: 7px;
+		cursor: pointer;
+	}
+
+	.sign li div span {
+		width: 100%;
+		text-align: center;
+	}
+
+	.sign li p {
+		margin-top: 10px;
+		margin-top: 10px;
+		text-align: center;
+	}
+
+	.line {
+		border-bottom: 1px solid silver;
+		margin: 15px 15px 0 15px;
+	}
+
+	.text2 {
+		width: 80%;
+		padding: 20px 0;
+		font-size: 14px;
+	}
+
+	.list {
+		display: flex;
+		margin: 0 40px;
+		font-size: 14px;
+		margin-top: 20px;
+	}
+
+	.list li {
+		margin-right: 20px;
+		cursor: pointer;
+	}
+
+	.bline {
+		border-bottom: 2px solid #29e;
+		color: #29e;
+		padding-bottom: 6px;
+	}
+
+	.outer div {
+		font-size: 14px;
+
+	}
+
+	.hignNum {
+		margin-left: 35px;
+		margin-top: 20px;
+		display: flex;
+		justify-content: space-between;
+		width: 73%;
+		align-items: center;
+	}
+
+	.go {
+		border: 1px solid #29e;
+		padding: 5px 15px;
+		border-radius: 5px;
+		color: #29e;
+		cursor: pointer;
+	}
+
+	.goed {
+		padding: 5px 15px;
+		border-radius: 5px;
+		color: white;
+		background-color: rgb(238, 238, 238);
+	}
+
+	.rcrw,
+	.xsrw {
+		margin-left: 35px;
+		width: 73%;
+	}
+
+	.rcrw p,
+	.xsrw p {
+		display: flex;
+		justify-content: space-between;
+		margin-top: 15px;
+	}
+
+	.pageArea {
+		display: flex;
+		justify-content: center;
+		margin-top: 20px;
+		margin-bottom: 30px !important;
+		width: 60%;
+		margin-left: 40px;
+	}
+
+	.pageNext {
+		padding: 5px 20px;
+		background-color: #29e;
+		color: white;
+		border-radius: 20px;
+		cursor: pointer;
+		margin-right: 30px;
+	}
+
+	.ebjlTable {
+		width: 60% !important;
+		margin-left: 40px;
+		margin-top: 20px;
+	}
+
+	.ebjlTable thead {
+		display: none !important;
+	}
+
+	.ebjlTable tbody td {
+		padding: .5em;
+	}
+
+	.ebsc,
+	.ebgz {
+		cursor: pointer;
+	}
+
+	.ebsc:hover,
+	.ebgz:hover {
+		color: #29e;
+	}
+
+	.rcrw,
+	.xsrw,
+	.czjl,
+	.ybjl {
+		display: none;
+	}
+
+	.czDiv {
+		margin-top: 50px;
+		font-size: 12px;
+	}
+
+	.czDiv label {
+		display: flex;
+		align-items: center;
+		margin-left: 25%;
+	}
+
+	.czDiv label input {
+		width: 52%;
+		height: 26px;
+		padding-right: 20px;
+	}
+
+	.czWay {
+		display: flex;
+		align-items: center;
+		margin-left: 25%;
+		margin-top: 20px;
+	}
+
+	.czWay img {
+		cursor: pointer;
+	}
+
+	.layui-layer-title {
+		display: none
+	}
+
+	.layui-layer-content {
+		overflow: hidden !important;
+		height: 100% !important
+	}
+
+	.labt {
+		margin-left: -20px;
+	}
+
+	.atention {
+		color: #f7ae16;
+		margin: 20px auto;
+		margin-left: 25%;
+	}
+
+	.ecodeDiv .layui-layer-setwin a {
+		background: url(img/close.png) no-repeat !important;
+		top: -50px;
+		right: -50px;
+		width: 32px;
+		height: 32px;
+	}
+
+	.ecodeDiv {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		flex-wrap: wrap;
+	}
+
+	.ecode canvas {
+		width: 128px;
+		height: 128px;
+	}
+
+	.ecode {
+		margin-top: 20px;
+	}
+
+	.infom {
+		width: 100%;
+		margin-left: 54px;
+		margin-top: 10px;
+	}
+	.layui-layer-rim {   
+	    border: 3px solid rgba(0,0,0,.3)!important;
+	}
+</style>
+
+<div class="ebShow">
+	<p>
+		<span class="myEb ">总易贝：<span class="ebNum"></span></span>
+		<span class="cz ">充值</span>
+	</p>
+	<p>
+		<span class="ebsc">易贝商城</span>
+		<span class="ebgz">易贝规则</span>
+	</p>
+</div>
+<p class="text-center text2">连续七天签到</p>
+<ul class="sign"></ul>
+<p class="line"></p>
+
+<ul class="list">
+	<li class="bline">高分任务</li>
+	<li>日常任务</li>
+	<li>新手任务</li>
+	<li>充值记录</li>
+	<li class="ebjl">易贝记录</li>
+</ul>
+
+<div class="outer">
+	<div class="hignNum">
+		<span>邀请注册</span><span class="text4">+5000易贝</span> <span class="go1 go">去完成</span>
+	</div>
+	<div class="rcrw"></div>
+	<div class="xsrw"></div>
+	<div class="czjl"></div>
+	<div class="ybjl">
+		<table class="ebjlTable"></table>
+		<p class="pageArea">
+			<span class="pageNext">下一页</span>
+		</p>
+	</div>
+</div>
+
+<div class="czDiv" style="display: none; ">
+	<label><span>充值金额：</span><input type="text" id="moneyNum" class="form-control" /> <span class="labt">元</span></label>
+	<div class="czWay">
+		<span>支付方式：</span><img src="img/aliPay.png" alt="支付宝支付" class="aliPay"><img src="img/wechatPay.png" alt="微信支付" class="weChatPay">
+	</div>
+	<p class="atention">1元=100易贝</p>
+</div>
+
+<div class="ecodeDiv" style="display: none;">
+	<div class="ecode"></div>
+	<div class="infom">
+		<p class="text-success">请使用微信扫码支付</p>
+		<p><span>支付金额：</span><span class="zfje text-success"></span>元</p>
+		<p><span>充值易贝：</span><span class="czjf text-success"></span>易贝</p>
+	</div>
+</div>
+
+<script src="js/jquery.qrcode.min.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+	//积分
+	function jfShow() {
+		$.post(http_head + "BP/getBPFromPerson.ashx", {
+			"userGuid": userGuid
+		}, function(data) {
+			var data = JSON.parse(data);
+			if (data.status === 200) {
+				var bp = data.BP;
+				$(".ebNum").text(bp);
+			};
+		});
+	};
+	jfShow();
+
+	$.post(http_head + "BP/sign/GetBPsign.ashx", {
+		"userGuid": userGuid
+	}, function(data) {
+		var data = JSON.parse(data);
+		if (data.status === 200) {
+			console.log(data)
+			var rules = data.rules;
+			var rulesLength = data.rules.length;
+			var signLength = data.items.length;
+			for (var i = 0; i < rulesLength; i++) {
+				$(".sign").append('<li id="' + rules[i].day + '" title="点击签到"><div><span>+' + rules[i].BP +
+					'易贝</span><img src="img/eb.png"/></div><p>第' + rules[i].day +
+					'天</p></li>');
+			};
+			for (var i = 0; i < signLength; i++) {
+				$(".sign li").eq(i).children("div").css({
+					"backgroundColor": "#f7ae16",
+					"color": "white"
+				}).children("img").attr("src", "img/complete.png");
+			}
+			// 签到		
+			$(".sign li").on("click", function() {
+				var this_id = $(this).attr("id");
+				if ((signLength + 1) === parseInt(this_id)) {
+					$.post(http_head + "BP/sign/setBPsign.ashx", {
+						"userGuid": userGuid
+					}, function(data) {
+						var data = JSON.parse(data);
+						if (data.status === 200) {
+							$(".sign li").eq(i).children("div").css({
+								"backgroundColor": "#f7ae16",
+								"color": "white"
+							}).children("img").attr("src", "img/complete.png");
+							layer.msg(data.msg)
+						} else if (data.status === 210) {
+							layer.msg("请在当天进行签到", {
+								time: 1200
+							})
+						}
+					})
+				} else if (signLength === parseInt(this_id)) {
+					layer.msg("今天已签到", {
+						time: 1200
+					})
+				} else if (signLength > parseInt(this_id)) {
+					layer.msg("已签到", {
+						time: 1200
+					})
+				} else {
+					layer.msg("请在当天进行签到", {
+						time: 1200
+					})
+				}
+			})
+		};
+	});
+
+	$(".list li").on("click", function() {
+		var index = $(this).index();
+		console.log(index)
+		$(this).addClass("bline").siblings("li").removeClass("bline");
+		$(".outer div").eq(index).show("500").siblings("div").hide()
+	})
+
+	// 日常任务
+	$.post(http_head + "BP/taskCenter/getDailyTaskFromPerson.ashx", {
+		"userGuid": userGuid
+	}, function(data) {
+		var data = JSON.parse(data);
+		if (data.status === 200) {
+
+			var items = data.items;
+			var itemsLength = data.items.length;
+			for (var i = 0; i < itemsLength; i++) {
+				$(".rcrw").append('<p><span>' + items[i].remark + '</span><span class="text4">+' + items[i].BP +
+					'易贝</span></p>');
+			};
+		};
+	});
+	//新手任务
+	$.post(http_head + "BP/taskCenter/getPersonTask.ashx", {
+		"userGuid": userGuid
+	}, function(data) {
+		var data = JSON.parse(data);
+		if (data.status === 200) {
+			console.log(data)
+			var items = data.newTask;
+			var itemsLength = data.newTask.length;
+			for (var i = 0; i < itemsLength; i++) {
+				if (items[i].finish === false) {
+					$(".xsrw").append('<p><span>' + items[i].remark + '</span><span class="text4">+' + items[i].BP +
+						'易贝</span><span class="go" id="x' + i + '" >未完成</span></p>');
+				} else {
+					$(".xsrw").append('<p><span>' + items[i].remark + '</span><span class="text4">+' + items[i].BP +
+						'易贝</span><span class="goed" id="x' + i + '" >已完成</span></p>');
+				}
+
+			};
+		};
+	});
+
+	// eb记录
+	var pageNext = 0;
+
+	function loadTable(data) {
+		$('.ebjlTable').bootstrapTable({
+			data: data,
+			columns: [{
+				align: 'center',
+				valign: 'middle',
+				formatter: fun,
+			}, {
+				field: 'createTime',
+				align: 'center',
+				valign: 'middle',
+			}, {
+				align: 'center',
+				valign: 'middle',
+				formatter: fun2
+			}]
+		});
+
+		function fun(e, value, row, index) {
+			var time = value.createTime.split(" ")[0] + " " + value.createTime.split(" ")[1].slice(0, 5);
+			return '<p class="jfName">' + value.remark + '获得积分</p>'
+		}
+
+		function fun2(e, value, row, index) {
+			return '<p>+' + value.credit + '</p>'
+		}
+
+	};
+
+	function loadFirst(page) {
+		$.post(http_head + 'BP/getRecordFromBP.ashx', {
+			"page": page,
+			"userGuid": userGuid
+		}, function(data) {
+			var data = JSON.parse(data);
+			console.log("jl", data)
+			loadTable(data.items);
+			$(".ebjlTable").bootstrapTable('load', data.items);
+			pageNext = data.page;
+			if (data.items.length >= 10) {
+				$('.pageArea').show()
+			} else {
+				$('.pageArea').hide()
+			}
+		});
+	};
+
+	function loadNext(page) {
+		$.post(http_head + 'BP/getRecordFromBP.ashx', {
+			"page": page,
+			"userGuid": userGuid
+		}, function(data) {
+			var data = JSON.parse(data);
+			loadTable(data.items);
+			$(".ebjlTable").bootstrapTable('append', data.items);
+			pageNext = data.page;
+			if (data.items.length >= 10) {
+				$('.pageArea').show()
+			} else {
+				$('.pageArea').hide()
+			}
+		});
+	};
+	loadFirst(pageNext);
+	$('.pageNext').click(function() {
+		loadNext(pageNext)
+	});
+
+	$(".ebsc").on("click", function() {
+		window.open("http://www.eqidd.com/jifen.html")
+	});
+
+	// 充值
+	$(".cz").on("click", function() {
+		layer.open({
+			type: 1,
+			area: ["400px", "200px"],
+			content: $(".czDiv"),
+			skin: 'layui-layer-rim', //加上边框
+		});
+	});
+
+	$(".aliPay").on("click", function() {
+		var this_money = $("#moneyNum").val();
+		var this_bp = $("#moneyNum").val() * 100;
+		$.post(http_head + "pay/payForAlipay.ashx", {
+			"userGuid": userGuid,
+			"type": 2,
+			"companyId": 0,
+			"money": this_money,
+			"BP": this_bp
+		}, function(data) {
+			var data = JSON.parse(data);
+			if (data.status === 200) {
+
+				data.money = this_money;
+				data.bp = this_bp;
+				data.userGuid = userGuid;
+
+				var payString = JSON.stringify(data)
+				localStorage.setItem("payObj", payString);
+
+				window.open("pay.html");
+				var payALTiming = setInterval(function() {
+					$.post(http_head + "pay/setAliPayStatus.ashx", {
+						"outTradeNo": data.out_tradeNo,
+					}, function(data) {
+						console.log("ALstatus", data)
+						var data = JSON.parse(data);
+
+						if (data.status === 200) {
+							clearInterval(payALTiming)
+							jfShow()
+							setTimeout(function() {
+								layer.closeAll();
+							}, 1000)
+						}
+					})
+				}, 500);
+			}
+		})
+	});
+
+	$(".weChatPay").on("click", function() {
+		var this_money = $("#moneyNum").val();
+		var this_bp = $("#moneyNum").val() * 100;
+		$(".zfje").text(this_money);
+		$(".czjf").text(this_bp);
+		$.post(http_head + "pay/payBPForWechat.ashx", {
+			"userGuid": userGuid,
+			"type": 2,
+			"companyId": 0,
+			"money": this_money,
+			"BP": this_bp
+		}, function(data) {
+			var data = JSON.parse(data);
+			console.log("wx", data)
+			if (data.status === 200) {
+				
+				layer.open({
+					type: 1,
+					area: ["250px", "250px"],
+					content: $(".ecodeDiv"),
+					skin: 'layui-layer-rim', //加上边框
+				});
+				$(".ecode").replaceWith('<div class="ecode"></div>')
+				$('.ecode').qrcode(decodeURIComponent(data.items));
+				var payTiming = setInterval(function() {
+					$.post(http_head + "pay/setWechatStatus.ashx", {
+						"outTradeNo": data.out_tradeNo,
+					}, function(data) {
+						console.log("WCstatus", data)
+						var data = JSON.parse(data);
+
+						if (data.status === 200) {
+							clearInterval(payTiming)
+							layer.msg("支付成功", {
+								time: 1500
+							});
+							setTimeout(function() {
+								layer.closeAll();
+								jfShow()
+							}, 1000)
+						}
+					})
+				}, 500);
+			}
+		})
+	});
+</script>

@@ -1,0 +1,12 @@
+.top{background: #fff;height: 52px;border-bottom: 1px solid #d8d9dc;position: fixed;top: 0;right: 0;left: 0;z-index: 100;}
+.top span{font-size: 30px;margin-left: 100px;line-height: 52px;cursor: pointer;}
+.mainshow{margin-top: 60px;}
+.innerbox{width: 80%;margin: 10%;text-align: center;}
+.innerbox span:first-child{width: 80px;height: 80px;}
+.innerbox .p1{margin-top: 30px ;font-size: 30px;}
+.innerbox .p2{margin-top: 20px ;font-size: 20px;color: #999;}
+.innerbox .p2 span{line-height: 20px;text-align: left;}
+.innerbox button{width: 100%;height: 48px;padding-left: 20px;box-sizing: border-box;margin-bottom: 12px;border: none;color: #666;}
+.innerbox button a{color: #666;text-decoration:none;color: #666;font-size: 16px;}
+.innerbox .but1{margin-top: 40px;background-color: #00cc99;}
+.innerbox .but1 a{color: #fff;}

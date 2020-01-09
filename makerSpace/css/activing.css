@@ -1,0 +1,26 @@
+.signupDiv{
+	margin-top: 30px
+}
+#ActivityList thead
+{   background-color: #e4e4e4;
+    font-weight: bold;
+}
+.actFmPic{
+    width: 130px; 
+}
+.inner{
+    padding-bottom:0
+}
+#ActivityList tbody tr td:nth-child(2){
+    cursor:pointer
+}
+#ActivityList tbody tr td:nth-child(2):hover{
+    background-color:#00a2e8;
+    color:White;
+}
+ 
+.viewAct{
+    height: 101px;
+    display: block;
+    line-height: 101px;
+}

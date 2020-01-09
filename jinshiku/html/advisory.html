@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="zh">
+	<head>
+		<meta charset="utf-8"/>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+		<meta http-equiv="expires" content="0">
+		<meta http-equiv="pragma" content="no-cache">
+		<meta http-equiv="cache-control" content="no-cache">
+		<link rel="icon" href="../image/eqdLogo.png" type="image/x-icon"/>
+		<title>咨询师</title>
+		<link rel="stylesheet" href="../css/reset.css"/>
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"/>
+		<link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.14.1/dist/bootstrap-table.min.css"/>
+		<link rel="stylesheet" href="../css/skin/default/layer.css"/>
+		<link rel="stylesheet" href="../css/newTitle.css?ver=20191159"/>
+		<link rel="stylesheet" href="../css/advisory.css?ver=20192755"/>
+	</head>
+	<body>
+		<div class="navTitle">
+		</div>
+		<div class="topArea">
+			<div class="search contain clearfix">
+				<div class="searchLeft pull-left">
+					<img src="../image/eqxLogo.jpg"/>
+				</div>
+				<div class="searchCenter pull-left">
+					<div class="clearfix">
+						<select name="" id="selectType" class="pull-left">
+							<option value="2">找咨询师</option>
+							<option value="1">找讲师</option>				
+							<option value="3">找需求</option>
+							<option value="4">找文章</option>
+							<option value="5">找活动</option>
+							<option value="6">找机构</option>
+							<option value="7">找课程</option>
+						</select>
+						<input type="text" class="pull-left" id="inputSearch"/>
+						<button class="pull-left" id="searchBtn">
+							<span class="glyphicon glyphicon-search">	</span>
+							搜索
+						</button>
+						<span class="pull-left and">或</span>
+						<button class="pull-left" id="demandBtn">
+							<span class="glyphicon glyphicon-pencil">	</span>
+							发布需求
+						</button>
+					</div>
+				</div>
+			</div>
+			<div class="ulList">
+				<ul class="mainFountion clearfix">
+					<li class="pull-left" id="front">
+						<a href="../index.html">首页</a>
+					</li>
+					<li class="pull-left" id="teacherLi">
+						<a href="teacherIndex.html">讲师</a>
+						<img class="hot" src="../image/hot0.png" alt=""/>
+					</li>
+					<li class="pull-left" id="consultant">
+						<a href="advisory.html">咨询师</a>
+					</li>
+					<li class="pull-left" id="mechanism">
+						<a href="organization.html">机构</a>
+					</li>
+					<li class="pull-left" id="courseLi">
+						<a href="lookCourseList.html">课程</a>
+					</li>
+					<li class="pull-left">
+						<a href="lookActivity.html">活动</a>
+					</li>
+					<li class="pull-left" id="demandSquare">
+						<a href="lookDemandList.html">需求广场</a>
+						<img class="hot" src="../image/hot0.png" alt=""/>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div class="main">
+			<div class="showDiv clearfix">
+				<div class="chooseAreaDiv">
+					<ul class="select">
+						<li class="select-list clearfix">
+							<dl id="select1">
+								<dt>咨询师领域 :</dt>
+								<dd class="select-all selected">
+									<a>全部</a>
+								</dd>
+								<span class="more" flag="0">更多>></span>
+							</dl>
+						</li>
+						<li class="select-list clearfix" id="secondType">
+							<dl id="select1Min">
+								<dt>领域二级分类 :</dt>
+							</dl>
+						</li>
+						<li class="select-list clearfix">
+							<dl id="select2" class="clearfix">
+								<dt>活动区域 :</dt>
+								<dd class="select-all selected">
+									<a>全部</a>
+								</dd>
+								<span class="more" flag="0">更多>></span>
+							</dl>
+							<dl id="city" class="clearfix">	</dl>
+						</li>
+						<li class="select-list clearfix">
+							<dl id="select9">
+								<dt>所属行业：</dt>
+								<dd class="select-all selected">
+									<a>全部</a>
+								</dd>
+								<span class="moresp" flag="0">更多>></span>
+							</dl>
+						</li>
+						<li class="select-list clearfix">
+							<dl id="select10">
+								<dt>咨询模式 :</dt>
+								<dd class="select-all selected">
+									<a>全部</a>
+								</dd>
+								<dd>
+									<a>间歇式咨询（定期驻厂）</a>
+								</dd>
+								<dd>
+									<a>驻厂式咨询（全程驻场）</a>
+								</dd>
+							</dl>
+						</li>
+						<li class="select-list clearfix">
+							<dl id="select3">
+								<dt>师资费/天 :</dt>
+								<dd class="select-all selected">
+									<a>全部</a>
+								</dd>
+								<span class="more" flag="0">更多>></span>
+							</dl>
+						</li>
+						<li class="select-list clearfix" id="more">
+							<dl>
+								<dt>	</dt>
+								<dd class="select-all selected" id="showMore">
+									<a>更多选项>></a>
+								</dd>
+							</dl>
+						</li>
+					</ul>
+					<ul id="pick" class="select">
+						<li class="select-list clearfix">
+							<dl id="select4">
+								<dt>性别 :</dt>
+								<dd class="select-all selected">
+									<a>全部</a>
+								</dd>
+								<dd>
+									<a>男</a>
+								</dd>
+								<dd>
+									<a>女</a>
+								</dd>
+							</dl>
+						</li>
+						<li class="select-list clearfix">
+							<dl id="select5">
+								<dt>年龄 :</dt>
+								<dd class="select-all selected">
+									<a>全部</a>
+								</dd>
+							</dl>
+						</li>
+						<li class="select-list clearfix">
+							<dl id="select6">
+								<dt>工作背景 :</dt>
+								<dd class="select-all selected">
+									<a>全部</a>
+								</dd>
+							</dl>
+						</li>
+						<li class="select-list clearfix">
+							<dl id="select7">
+								<dt>曾担任职位 :</dt>
+								<dd class="select-all selected">
+									<a>全部</a>
+								</dd>
+							</dl>
+						</li>
+						<li class="select-list clearfix">
+							<dl id="select8">
+								<dt>实名认证 :</dt>
+								<dd class="select-all selected">
+									<a>全部</a>
+								</dd>
+								<dd>
+									<a>已认证</a>
+								</dd>
+								<dd>
+									<a>未认证</a>
+								</dd>
+							</dl>
+						</li>
+					</ul>
+					<ul class="select">
+						<li class="select-result">
+							<dl>
+								<dt>已选条件：</dt>
+								<dd class="select-no">暂时没有选择过滤条件</dd>
+							</dl>
+						</li>
+					</ul>
+				</div>
+				<div class="clearfix teacherShow">
+					<div class="teacherShowLeft pull-left">
+						<!-- 搜索结果显示表 -->
+						<table id="advisoryTable">	</table>
+						<br/>
+						<div class="pageDiv">
+							<p class="clearfix typeArea">
+								<button class="nextpageBtn pull-right">下一页</button>
+							</p>
+						</div>
+					</div>
+					<div class="teacherShowRight pull-right">
+						<div class="tuijianDiv">
+							<div class="tuijiantitle">
+								<p class="clearfix">
+									<a class="pull-left">推荐师资</a>
+									<a class="pull-right promotion">我也要出现在这里>></a>
+								</p>
+							</div>
+							<div id="tuijianTeacherDiv">
+								<ul id="tuijianTeacher">	</ul>
+							</div>
+						</div>
+						
+						<div class="activeDiv">
+							<div class="activetitle">
+								<p class="clearfix">
+									<a class="pull-left">活跃讲师</a>
+								</p>
+							</div>
+							<div id="activeTeacherDiv">
+								<ul id="activeTeacher">	</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div class="foot"></div>
+		<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+		<script type="text/javascript">
+			var html1 = 'navTitle.html?v=' + Math.random();
+			$('.navTitle').load(html1)
+		</script>
+		<script type="text/javascript" src="../js/layer/layer.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+		<script src="https://unpkg.com/bootstrap-table@1.14.1/dist/bootstrap-table.min.js"></script>
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.12.1/locale/bootstrap-table-zh-CN.min.js"></script>
+        <script src="https://cdn.bootcss.com/jquery_lazyload/1.9.0/jquery.lazyload.min.js"></script>
+        <script src="../js/jquery.ellipsis.js" type="text/javascript" charset="utf-8" async defer></script>
+		<script type="text/javascript" src="../js/china.js"></script>
+		<script type="text/javascript" src="../js/change.js?ver=20191115"></script>
+		<script type="text/javascript">
+			var src = '../js/advisory.js?v=' + Math.random();
+			new_element = document.createElement("script");
+			new_element.setAttribute("type", "text/javascript");
+			new_element.setAttribute("src", src); //此处为要引入的js的地址
+			document.body.appendChild(new_element);
+		</script>
+	</body>
+</html>

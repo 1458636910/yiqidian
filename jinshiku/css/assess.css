@@ -1,0 +1,23 @@
+.contain{width: 1000px;margin: 20px auto;border: 1px solid #000;padding: 20px 0;}
+.assessHead p{line-height: 30px;}
+.assessHead p span{font-size: 16px;}
+.assessHead p span:nth-child(1){display: inline-block;width: 100px;}
+.assessHead .assessName .className{display: inline-block;width: auto;}
+.assessHead .assessName{font-size: 25px;text-align: center;font-weight: bolder;border-bottom: 5px solid #ddd;height: 50px;line-height: 50px;}
+.assessHead .assessName span{font-size: 25px;text-align: center;font-weight: bolder;border-bottom: 5px solid #ddd;height: 50px;line-height: 50px;}
+.tabelDetails{width: 90%;margin: 5px 5%;}
+.tabelDetails tr td{height: 30px;text-align: center;vertical-align: middle;}
+.tabelDetails tr:nth-child(1) td{height: 45px;font-size: 18px;font-weight: bolder;width: 5%;}
+.tabelDetails tr td:nth-child(2){width: 22%;}
+.tabelDetails tr td:last-child{width: 3%;}
+.tabelDetails tr td span{display: inline-block;width: 10%;text-align: center;cursor: pointer;height: 30px;line-height: 30px;}
+.tabelDetails tr td span div{width: 15px;height: 15px;border-radius: 15px;margin-top: 7.5px;display: inline-block;border: 3px solid green;margin: 0}
+.messageDiv,.adviceDiv,.subArea,.toLearner,.assessHead{width: 90%;margin: 5px 5%;}
+textarea{margin: 10px;}
+.mathAll,.math{font-size: 18px;color: #f00;}
+.subArea p{width: 100%;text-align: center;}
+.subArea p:nth-child(1){width: 100%;text-align: left;}
+.subArea p button{padding: 10px 25px;border: none;border-radius: 5px;background-color: #00b050;color: #fff;outline: none;font-size: 20px;margin-left: -50px;}
+.subArea p button:nth-child(2){background-color: #7f7f7f;margin-left: 100px;color: yellow;display: none;}
+.toLearner p:nth-child(2){text-indent: 28px;}
+#active{background-color: #f00}

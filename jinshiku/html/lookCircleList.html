@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+        <meta charset="utf-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"/>
+        <meta name="apple-mobile-web-app-capable" content="yes"/>
+        <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+        <meta http-equiv="Cache-Control" CONTENT="no-cache"/>
+        <link rel="icon" href="../image/jinLogo.png" type="image/x-icon"/>
+        <title>文章列表</title>
+        <link rel="stylesheet" href="../css/reset.css"/>
+        <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+        <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap-table/1.11.1/bootstrap-table.min.css"/>
+        <link rel="stylesheet" href="../css/skin/default/layer.css"/>
+        <link rel="stylesheet" href="../css/newTitle.css?ver=20181016"/>
+        <link rel="stylesheet" href="../css/footer.css?ver=20181016"/>
+        <link rel="stylesheet" href="../css/lookCircleList.css?ver=20181016"/>
+    </head>
+    <body>
+        <div class="navTitle">
+            <ul class="clearfix">
+                <p class="pull-left">欢迎来到金师库！</p>
+                <li class="pull-left">
+                    <a href="http://www.eqidd.com/yqy/article.html" target="_blank">易企阅</a>
+                </li>
+                <li class="pull-left">
+                    <a href="http://www.jinshiku.com" target="_blank">金师库</a>
+                </li>
+                <li class="pull-left">
+                    <a href="http://www.eqidd.com/yiqiBug/html/EQBuy.html" target="_blank">易企购</a>
+                </li>
+                <li class="pull-left">
+                    <a href="http://www.eqidd.com/createrSpace/html/personInfo.html" target="_blank">创客空间</a>
+                </li>
+                <li class="pull-left">
+                    <a href="http://www.eqidd.com/comSpace/eqd.html" target="_blank">企业空间</a>
+                </li>
+                <li class="pull-left">
+                    <a href="service.html" target="_blank">推广页</a>
+                </li>
+                <div class="pull-right">
+                    <li class="pull-left loginBtn">
+                        <a id="loginBtn">   </a>
+                    </li>
+                    <li class="pull-left regBtn">
+                        <a id="regBtn" target="_blank"> </a>
+                    </li>
+                    <li class="pull-left download">
+                        <a href="http://www.eqidd.com/html/download.html" target="_blank">
+                            APP
+                            下载
+                        </a>
+                    </li>
+                    <p class="userOption">后台管理</p>
+                </div>
+            </ul>
+        </div>
+        <div class="topArea">
+            <div class="search contain clearfix">
+                <div class="searchLeft pull-left">
+                    <img src="../image/jinshiku.png" alt=""/>
+                </div>
+                <div class="searchCenter pull-left">
+                    <div class="clearfix">
+                        <select name="" id="selectType" class="pull-left">
+                            <option value="4">品文章</option>
+                            <option value="1">找讲师</option>
+                            <option value="2">选课程</option>
+                            <option value="3">找需求</option>
+                            <option value="5">找活动</option>
+                        </select>
+                        <input type="text" class="pull-left"  id="inputSearch"/>
+                        <button class="pull-left" id="searchBtn">
+                            <span class="glyphicon glyphicon-search">   </span>
+                            搜索
+                        </button>
+                        <span class="pull-left and">或</span>
+                        <button class="pull-left" id="demandBtn">
+                            <span class="glyphicon glyphicon-pencil">   </span>
+                            发布需求
+                        </button>
+                    </div>
+                    <div class="hotSearchDiv">
+                        <span>热门搜索 :</span>
+                        <p class="hotWord">
+                            <span>讲师</span>
+                            <span>课程</span>
+                        </p>
+                    </div>
+                </div>
+                <div class="searchRight pull-left clearfix">
+                    <div class="weCahtImg pull-left">
+                        <img src="../image/downQRcode.jpg" alt=""/>
+                        <p>微信公众号</p>
+                    </div>
+                    <div class="appDown pull-left">
+                        <img src="../image/adjust.png" alt=""/>
+                        <p>APP下载</p>
+                    </div>
+                </div>
+            </div>
+            <div class="ulList">
+                <ul class="mainFountion clearfix">
+                    <li class="pull-left" id="front">
+                        <a href="../index.html">首页</a>
+                    </li>
+                    <li class="pull-left" id="teacherLi">
+                        <a href="teacherIndex.html">讲师</a>
+                        <img class="hot" src="../image/hot0.png" alt=""/>
+                    </li>
+                    <li class="pull-left" id="consultant">
+                        <a href="advisory.html">咨询师</a>
+                    </li>
+                    <li class="pull-left" id="mechanism">
+                        <a href="organization.html">机构</a>
+                    </li>
+                    <li class="pull-left" id="courseLi">
+                        <a href="lookCourseList.html">课程</a>
+                    </li>
+                    <li class="pull-left">
+                        <a href="lookActivity.html">活动</a>
+                    </li>
+                    <li class="pull-left" id="demandSquare">
+                        <a href="lookDemandList.html">需求广场</a>
+                        <img class="hot" src="../image/hot0.png" alt=""/>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="main">
+            <div class="mainCenter clearfix">
+                <div class="listLeft pull-left">
+                    <p>文章分类</p>
+                    <div class="spanList">  </div>
+                </div>
+                <div class="listRight pull-left">
+                    <table id="videoListTable">
+                        <thead>
+                            <tr>
+                                <th data-field="videoImage">    </th>
+                                <th data-field="videoTitle">    </th>
+                            </tr>
+                        </thead>
+                    </table>
+                    <!-- <div id="circleListHot" ></div> -->
+                    <br/>
+                    <p class="clearfix">
+                        <button class="loadMorePrve pull-left">上一页</button>
+                        <button class="loadMoreNext pull-right">下一页</button>
+                    </p>
+                    <p class="clearfix">
+                        <button class="loadMoreSearchPrve pull-left">上一页</button>
+                        <button class="loadMoreSearchNext pull-right">下一页</button>
+                    </p>
+                    <p class="clearfix">
+                        <button class="loadMoreLabelPrve pull-left">上一页</button>
+                        <button class="loadMoreLabelNext pull-right">下一页</button>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <!-- 高级搜索 -->
+        <div class="advancedTable">
+            <div class="selestArea">
+                <p class="form-inline" id="addr-show2">
+                    <span>类别 :</span>
+                    <select name="" id="detailsChoose" class="form-control">
+                        <option>=请选择=</option>
+                    </select>
+                    <select name="" id="detailsChoose2" class="form-control">
+                        <option>=请选择=</option>
+                    </select>
+                </p>
+            </div>
+        </div>
+        <div class="foot"></div>
+        <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+        <script type="text/javascript" src="http://cdn.bootcss.com/layer/3.1.0/layer.js"></script>
+        <script type="text/javascript" src="http://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="http://cdn.bootcss.com/bootstrap-table/1.11.1/bootstrap-table.js"></script>
+        <script type="text/javascript" src="../js/bootstrap-table-zh-CN.min.js"></script>
+        <script type="text/javascript" src="../js/change.js?ver=20181016"></script>
+        <script type="text/javascript" src="../js/lookCircleList.js?ver=20191016"></script>
+    </body>
+</html>

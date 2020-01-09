@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html ng-app="yqd">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+		<meta http-equiv="Cache-Control" content="no-cache" />
+		<link rel="icon" href="img/logo.png" type="image/x-icon"/>
+		<title>登录</title>
+		<link rel="stylesheet" href="css/reset.css" />
+		<link rel="stylesheet" href="css/skin/default/layer.css" />
+		<link rel="stylesheet" href="css/login.css?ver=20190828" />
+		<link rel="stylesheet" href="css/bootstrap.min.css" />
+		<script type="text/javascript" src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+		<script type="text/javascript" src="https://cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+		<script type="text/javascript" src="https://cdn.bootcss.com/layer/3.1.0/layer.js"></script>
+		<script type="text/ecmascript" src="js/jquery.sha1.js"></script>
+		<script src="https://cdn.bootcss.com/angular.js/1.2.29/angular.js"></script>
+	</head>
+	<body ng-controller="loginController">
+		<div class="box col-lg-offset-2 col-lg-8 col-md-offset-2 col-md-8 col-sm-offset-2 col-sm-8 col-xs-12">
+			<div class="tltle col-lg-12 col-md-12 col-sm-12 col-xs-12">易企点</div>
+			<br />
+			<div class="left col-lg-3 col-md-3 col-sm-3 col-xs-12"> </div>
+			<div class="center col-lg-6 col-md-6 col-sm-6 col-xs-12 clearfix">
+				<form name="myForm" ng-model="myForm" novalidate>
+					<div class="number col-lg-12 col-md-12 col-sm-12 col-xs-12">
+						<input type="text" class="inputtel form-control" name="username" ng-model="username" placeholder="请输入手机号"
+						 ng-pattern="/^1[34578]\d{9}$/" required />
+						<br />
+						<span class="input-txt1" ng-hide="username" ng-if="myForm.username.$dirty && myForm.username.$error.required">用户名不能为空!</span>
+					</div>
+					<div class="pwd col-lg-12 col-md-12 col-sm-12 col-xs-12">
+						<input type="password" class="inputpass form-control" ng-minlength="8" ng-maxlength="18" value="" name="password"
+						 ng-model="password" placeholder="密码" required />
+						<br />
+						<span class="input-mima1" ng-show="myForm.password.$dirty && myForm.password.$error.required">密码不能为空!</span>
+						<span class="input-mima2" ng-if="(myForm.password.$error.minlength||myForm.password.$error.maxlength)&&myForm.password.$touched">密码为8-18位</span>
+					</div>
+					<br />
+					<div class="pwd col-lg-12 col-md-12 col-sm-12 col-xs-12">
+						<button type="submit" ng-click="formValid()">
+							<a href="" target="_blank">登录</a>
+						</button>
+					</div>
+					<br />
+				</form>
+				<div class="clearfix" id="regDiv">
+					<a class="pull-left freeReg">免费注册</a>
+					<a class="pull-right forgetPwd">忘记密码</a>
+				</div>
+			</div>
+			<div class="right col-lg-3 col-md-3 col-sm-3 col-xs-12"> </div>
+			<script type="text/javascript">
+				var app = angular.module('yqd', []);
+				app.controller('loginController', ['$scope', '$http', function($scope, $http) {}])
+			</script>
+			<script type="text/javascript">
+				$(document).ready(function() {
+					var href = window.location.href;
+					var back = href.split("href")[1].substring(1);
+					console.log(href)
+					$('button').click(function() {
+						if ($('.inputtel').val().length == 0 || $('.inputpass').val().length == 0) {
+							layer.msg('请完善信息', {
+								time: 1000,
+							});
+						} else {
+							var password1 = $('.inputpass').val() + "EQD";
+							var password2 = hex_sha1(password1);
+							$.post('http://47.94.173.253:8008/User_login1.ashx', {
+								u1: $('.inputtel').val(),
+								u2: password2
+							}, function(data) {
+								var data = JSON.parse(data); //转成json数据
+                                console.log(data)
+								var str = JSON.stringify(data.items); // 将对象转换为字符串
+								localStorage.setItem("GHY_login", str);
+								if (Number(data.status) == 200) {
+									location.href = "index.html?userGuid="+data.items.Guid+"&companyId="+data.items.companyId
+								} else {
+									layer.msg(data.msg, {
+										time: 1000,
+									});
+								}
+							});
+						}
+					});
+					// 免费注册
+					$(".freeReg").on("click", function() {
+						var urlTail = href.split("?")[1]
+						window.location.href = "http://www.eqidd.com/html/reg.html?" + urlTail + "";
+					});
+					// 忘记密码
+					$(".forgetPwd").on("click", function() {
+						var urlTail = href.split("?")[1]
+						window.location.href = "http://www.jinshiku.com/html/resetPwd.html?" + urlTail + "";
+					});
+				})
+			</script>
+	</body>
+</html>

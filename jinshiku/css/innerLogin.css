@@ -1,0 +1,253 @@
+body {
+	font-family: "微软雅黑";
+	background-color: #0AA2E8 !important;
+	position: relative;
+}
+
+input,
+button {
+	outline: none
+}
+
+textarea {
+	resize: none
+}
+
+.container {
+	background-color: white;
+	padding: 0 !important;
+
+}
+
+.content {
+	width: 100%;
+}
+
+.labBar {
+	background-color: #0AA2E8 !important;
+	color: white;
+	padding-bottom: 20px;
+	display: flex;
+	align-items: center;
+}
+
+.welcome {
+	padding-bottom: 6px;
+}
+
+.textBar,
+.textFoot {
+	color: #0aa2e8;
+}
+
+.textFoot {
+	display: flex;
+	justify-content: space-between;
+}
+
+.more {
+	color: #f7ae16;
+	cursor: pointer
+}
+
+.more:hover {
+	text-decoration: none;
+	color: #F7AE16;
+}
+
+.more img {
+	margin-left: 5px;
+	vertical-align: sub;
+}
+
+.ctl {
+	border-right: 1px solid silver;
+	padding: 20px 0;
+}
+
+.box {
+	margin-top: 13%;
+	float: none;
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.tltle {
+	font-size: 30px;
+	color: #00A8FF;
+	text-align: center;
+}
+
+.box .inputtel,
+.box .inputpass,.inputpass1,.inputtel1 {
+	width: 100%;
+	height: 50px;
+	line-height: 50px;
+	margin: 20px 0;
+	position: relative;
+	background-color: white !important;
+	border: none;
+	border-bottom: 1px solid silver;
+	padding-left: 40px;
+}
+
+.box .input-txt1,
+.box .input-txt2 {
+	color: red;
+	text-align: center;
+}
+
+.box .input-mima1,
+.box .input-mima2 {
+	color: red;
+	text-align: center;
+}
+
+.box button {
+	box-sizing: border-box;
+	height: 50px;
+	line-height: 50px;
+	border-radius: 5px;
+	background-color: #00A8FF;
+	border: 2px solid #00A8FF;
+	display: block;
+	text-align: center;
+	margin-top: 15px;
+}
+
+.box button a {
+	color: #fff;
+	text-decoration: none;
+	font-size: 16px;
+}
+
+.glyphicon {
+	position: absolute;
+	top: 5px;
+	left: 28px;
+	z-index: 100;
+}
+
+.left,
+.right {
+	height: 100%;
+}
+
+.reg {
+	margin-top: 10px;
+	text-align: right
+}
+
+.regCom {
+	margin-top: 10px;
+	text-align: left;
+}
+
+.box .inputtel,
+.box .inputpass:-webkit-autofill {
+	background-color: #fff;
+}
+
+.picYz {
+	width: 100%;
+	margin-bottom: 20px;
+}
+
+.picYz img {
+	display: inline-block;
+	height: 50px;
+	cursor: pointer;
+	width: 30%;
+	min-width: 120px;
+}
+
+#picInput {
+	width: 40%;
+}
+
+#regDiv,#regDiv1 {
+	width: 92%;
+	margin: 0 auto;
+}
+
+#regDiv a,#regDiv1 a{
+	padding-top: 10px;
+	cursor: pointer;
+}
+
+.myform button {
+	width: 100%;
+}
+
+.forgetPwd {
+	color: silver;
+}
+
+.freeReg {
+	color: #0AA2E8;
+}
+
+@media screen and (min-width:900px) {
+	.container {
+		margin-top: 100px;
+	}
+}
+
+@media screen and (max-width:768px) {
+	.box {
+		margin-top: 0;
+		background-color: white;
+		padding: 50% 0;
+	}
+
+	.center {
+		margin-left: 10%;
+		width: 80%;
+	}
+
+	.content {
+		background-color: #0AA2E8;
+	}
+}
+
+.number {
+	position: relative;
+}
+
+.pho {
+	position: relative;
+	left: 10px;
+	z-index: 100;
+	top: 53px;
+	width: 18px;
+}
+
+.ecode {
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+	margin: 30px 0;
+}
+
+.ecode p:first-child img {
+	width: 90px;
+}
+
+.ecode p:last-child img {
+	width: 100px;
+}
+.loginChoose ul li{
+	float: left;
+	width: 50%;
+	text-align: center;
+	height: 40px;
+	line-height: 40px;
+	/*border: 1px solid #000000;*/
+	cursor: pointer;
+}
+.selected1{
+	border-bottom: 1px solid #f00;
+}
+.businessLogin{
+	display: none;
+}

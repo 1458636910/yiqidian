@@ -1,0 +1,24 @@
+* {padding: 0;margin: 0}
+body {background-color: #FAFAFA;font-family: "微软雅黑", "Microsoft Yahei", "Arial";font-size: 12px;line-height: 1.5;color: #333;overflow-x: hidden!important;}
+.clearfix::after {clear: both;content: "";display: block;}
+.clearfix {zoom: 1;}
+a{text-decoration: none;color: #000;}
+ul,li{list-style: none;}
+.header{width: 100%;margin-bottom: 20px;}
+.title{margin: 0 auto;font-size: 30px;width: 45%;padding-top: 20px;}
+.title img{width: 20px;margin-right: 10px;}
+.content{width: 100%;padding: 15px 0;}
+.box{margin: 0 auto;width: 95%;}
+.isa{color: #FF0000;}
+.labx{width: 60px!important;text-align: left!important;}
+.inxs{width: 255px!important;float: left;margin-left: 0!important;}
+#myAddrs {color: #757575;}
+.cascade_scroll_selects .scs_container .scs_dialog .scs_selects_group_title{display: none;}
+.cascade_scroll_selects .scs_container .scs_dialog .scs_btns .scs_btn_ok {background-color: #00A2E9!important;color: #fff!important;}
+.cascade_scroll_selects .scs_container .scs_dialog .scs_btns .scs_btn {background-color: #CCC;color: #333333;}
+.cascade_scroll_selects .scs_container .scs_dialog {position: fixed!important;}
+#pics{background-color: #00A2E9!important;}
+.image{width: 50%;margin: 0 auto;}
+.image img{max-width: 100%;}
+.clxk{width: 150px;margin: 0 auto;margin-top: 50px;}
+#refer{width: 150px;background-color: #00A2E9;}

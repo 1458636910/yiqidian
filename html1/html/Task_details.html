@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" href="img/1.png" type="image/x-icon" />
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/"
+		 crossorigin="anonymous">
+		<link rel="stylesheet" type="text/css" href="https://www.layuicdn.com/layui/css/layui.css" />
+		<link rel="stylesheet" type="text/css" href="//at.alicdn.com/t/font_1489406_b67qs5tcsfi.css" />
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css">
+		<link href="https://unpkg.com/bootstrap-table@1.15.5/dist/bootstrap-table.min.css" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="css/Task_details.css" ver="20191129" />
+		<title>工作日志详情</title>
+		<style type="text/css" media="print">
+			.btn {
+				display: none;
+			}
+
+			@page {
+				size: auto;
+				margin: 0mm;
+			}
+		</style>
+	</head>
+	<body>
+		<!-- 头部 -->
+		<div class="box">
+			<div class="header">
+				<div class="title">
+					<p class="title_p"></p>
+					<p>《工作日志详情》</p>
+				</div>
+				<!-- <div id="QR_Code"></div> -->
+			</div>
+
+			<!-- <div class="weekday">
+			<p>今日共 <i>15</i> 项工作</p>
+			<p>已完成 <i>9</i> 项</p>
+			<p>执行率 <i>60%</i></p>
+			</div> -->
+
+			<!-- *****************       我执行的事项         ********************* -->
+			<div class="Last-week-title">
+				<h4>我执行的事项</h4>
+				<!-- <p>今日共 <i>15</i> 项工作</p>
+				<p>已完成 <i>9</i> 项</p>
+				<p>执行率 <i>60%</i></p> -->
+			</div>
+			<div id="target"></div>
+
+			<!-- *****************       我协助的事项         ********************* -->
+			<div class="Last-week-title">
+				<h4>我协助的事项</h4>
+				<!-- <p>今日共 <i>15</i> 项工作</p>
+				<p>已完成 <i>9</i> 项</p>
+				<p>执行率 <i>60%</i></p> -->
+			</div>
+			<div id="table"></div>
+
+			<!-- *****************       我验证的事项         ********************* -->
+
+			<div class="Last-week-title">
+				<h4>我验证的事项</h4>
+				<!-- <p>今日共 <i>15</i> 项工作</p>
+				<p>已完成 <i>9</i> 项</p>
+				<p>执行率 <i>60%</i></p> -->
+			</div>
+			<div id="schedule"></div>
+
+			<!-- *****************       今日感悟         ********************* -->
+			<p class="ondx">今日感悟</p>
+			<div class="EditText">
+				<textarea id="EditText_1" placeholder="忙碌的一天工作终于结束了,今天遇到哪些好人好事值得您学习的呢,快说说您今天的感悟吧!" readonly="readonly"></textarea>
+			</div>
+
+			<p class="ondx">领导批示</p>
+			<div class="EditText">
+				<textarea id="EditText_2" placeholder="请对您的员工当天的表现点评一下吧!" readonly="readonly"></textarea>
+			</div>
+
+			<div class="btn" onclick='print_page()'>打印</div>
+		</div>
+		<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
+		 crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js"></script>
+		<script src="https://unpkg.com/bootstrap-table@1.15.5/dist/bootstrap-table.min.js"></script>
+		<script src="https://www.layuicdn.com/layui/layui.js"></script>
+		<!-- <script type="text/javascript" src="https://cdn.bootcss.com/jquery.qrcode/1.0/jquery.qrcode.min.js"></script> -->
+		<script src="js/Task_details.js" type="text/javascript" charset="utf-8" ver="20191118"></script>
+		<script type="text/javascript">
+			function print_page() {
+				if (!!window.ActiveXObject || "ActiveXObject" in window) {
+					remove_ie_header_and_footer();
+				}
+				window.print();
+			}
+
+			layui.use('form', function() {
+				var form = layui.form;
+			});
+			//获取携带值:
+			function GetRequest() {
+				var url = location.search; //获取url中"?"符后的字串
+				var theRequest = new Object();
+				if (url.indexOf("?") != -1) { //判断是否含有'?'
+					var str = url.substr(1); //从字符中index为1开始抽取
+					strs = str.split("&"); //字符串分割成字符串数组
+					for (var i = 0; i < strs.length; i++) {
+						theRequest[strs[i].split("=")[0]] = decodeURIComponent(strs[i].split("=")[1]);
+					}
+				}
+				return theRequest;
+			}
+			var arr_3 = GetRequest().userGuid;
+			var arr_4 = GetRequest().companyId;
+			var Id = GetRequest().Id;
+			console.log(GetRequest())
+			layui.use('form', function() {
+				var form = layui.form;
+			});
+
+			// jQuery('#QR_Code').qrcode({
+			// 	text: "http://www.eqidd.com/html/Task_details.html?userGuid=" + arr_3 + "&companyId=" + arr_4 + "&Id=" + Id + "",
+			// 	width: "70",
+			// 	height: "70"
+			// });
+
+			// var qrcode = new QRCode(document.getElementById("QR_Code"), {
+			// 	text:"http://www.eqidd.com/html/Task_details.html?userGuid="+ arr_3 +"&companyId="+ arr_4 +"&Id="+ Id +"",
+			// 	width: "70",
+			// 	height: "70"
+			// });
+
+			/************    工作感悟 领导批示详情  **********/
+			AeditText();
+
+			function AeditText() {
+				$.post('http://47.94.173.253:8008/workday/getDetailById.ashx', {
+					Id: Id
+				}, function(data) {
+					var data = JSON.parse(data);
+					console.log(data)
+					if (data.status == 200) {
+						$('#EditText_1').val(data.items.ganWu);
+						$('#EditText_2').val(data.items.pingyu);
+					} else {
+						layer.msg(data.msg, {
+							time: 1000,
+						});
+					}
+				})
+			};
+		</script>
+	</body>
+</html>

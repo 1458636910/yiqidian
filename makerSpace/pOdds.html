@@ -1,0 +1,93 @@
+<link rel="stylesheet" type="text/css" href="css/pOdds.css"/>
+<div class="personShowDiv">
+	<div class="personDiv">
+		<p class="personTitle">个人优势填写</p>
+		
+		<div class="selfAdvanceDiv form-inline">
+			<textarea id="textContent" cols="95" rows="35" maxlength="1000" class="form-control" placeholder="用一段话来说明自己具备哪些能力和优势。让外部对你有需求的人用最短的时间来了解你这个创客的能力和优势，自己能干什么、会干什么、干出过哪些成绩、自己的个性特点等(不超过500字)">	</textarea>
+		</div>
+	</div>
+	<p class="personTitle">个人优势展示</p>
+	<p class="clearfix">
+		<button class="pull-right" id="editorBtn">编辑</button>
+		<button class="pull-right" id="addBtn">添加</button>
+	</p>
+	<textarea name="" class="personShow form-control" style="overflow-y:hidden; height:2000px;" onpropertychange="this.style.height=this.scrollHeight + 'px'" oninput="this.style.height=this.scrollHeight + 'px'" readonly="readonly">
+	</textarea>
+</div>
+<script type="text/javascript" charset="utf-8" async defer>
+	function loadPersondet(){
+              $.post(http_head+'Makerspacey/Get_MakerAdvantage.ashx', {
+                "userGuid": userGuid,
+              }, function(data) {
+                 dataLook = JSON.parse(data);
+                if (dataLook.items.Id == undefined) {
+                  layer.msg('还没完善信息,请完善信息', {
+                                                time: 1000,
+                                              });
+                  $('#addBtn').show()
+                  $('#editorBtn').hide()
+                }else{
+                  $('.personShow').text(dataLook.items.advantage)
+                  $('#addBtn').hide()
+                  $('#editorBtn').show()
+                }
+              });
+        };
+        loadPersondet()
+	// 提交个人优势
+	$('#addBtn').click(function() {
+		$('.personTips').show()
+		layer.open({
+			type: 1,
+			area: ['800px', '100%'],
+			title: ['编辑优势', 'font-size:18px;text-align: center;'],
+			content: $(".personDiv"),
+			btn: '确定',
+			yes: function(index, layero) {
+				$.post(http_head + 'Makerspacey/Add_MakerSpace.ashx', {
+					"userGuid": userGuid,
+					"advantage": $('#textContent').val()
+				}, function(data) {
+					var dataAdded = JSON.parse(data);
+					if (dataAdded.status == 200) {
+						layer.msg('上传成功', {
+							time: 1000,
+						});
+						loadPersondet()
+						layer.close(index)
+					} else {
+						layer.msg(dataAdded.msg, {
+							time: 1000,
+						});
+					}
+				});
+			}
+		})
+	})
+	// 编辑个人优势
+	$('#editorBtn').click(function() {
+		$('.personTips').hide()
+		$('#textContent').val(dataLook.items.advantage)
+		layer.open({
+			type: 1,
+			area: ['800px', '100%'],
+			title: ['编辑优势', 'font-size:18px;text-align: center;'],
+			content: $(".personDiv"),
+			btn: '确定',
+			yes: function(index, layero) {
+				$.post(http_head + 'Makerspacey/Update_MakerAdvantage.ashx', {
+					"userGuid": userGuid,
+					"advantage": $('#textContent').val(),
+					"atgId": dataLook.items.Id
+				}, function(data) {
+					var dataChanged = JSON.parse(data)
+					if (dataChanged.status == 200) {
+						loadPersondet()
+						layer.close(index)
+					}
+				});
+			}
+		})
+	});
+</script>

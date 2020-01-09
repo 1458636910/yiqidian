@@ -1,0 +1,23 @@
+.mainCenter{border: 1px solid #000;padding: 10px 0;margin: 20px 0;}
+.info{width: 100%;height: 180px;padding: 0 10px}
+.info img{width: 150px;height: 180px;margin-right: 10px;}
+@media (max-width: 500px){
+  .info{height: 90px;}
+  .info img{width: 60px;height: 90px;}
+}
+.mainCenter ul{width: 100%;}
+.mainCenter ul li{width: 20%;height: 40px;line-height: 37px;text-align: center;background-color: #29e;color: #fff;cursor: pointer;}
+.mainCenter ul li:hover{border-bottom: 3px solid #f00;}
+.researchField{color: #29e;}
+.name{font-size: 20px;font-weight: bolder;}
+.mainInfoDiv,.coursesDiv,.videoDiv,.photoesDiv,.circleDiv{display: none;padding: 10px 30px;}
+@media (max-width: 500px){
+  .mainInfoDiv,.coursesDiv,.videoDiv,.photoesDiv,.circleDiv{padding: 10px 5px;}
+}
+.glyphicon-user{display: inline-block;margin-right: 5px;color: #fd740c;}
+.tName{color: #000;font-size: 20px;font-weight: bolder;}
+.CooperativePrice{color: #f00;font-size: 20px;font-weight: bold;}
+.tips{color: #29e;margin-left: 5px;}
+.phoneNumber{padding: 2px 5px;border: none;outline: none;background-color: #29e;color: #fff;border-radius: 3px;}
+#coursesList tr th,#coursesList tr td{text-align: center;}
+.more{cursor: pointer;}

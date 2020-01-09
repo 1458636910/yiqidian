@@ -1,0 +1,103 @@
+/* header */
+
+body {
+	background-color: #e7e5f0
+}
+
+.container {
+	min-width: 1200px!important;
+	padding: 0
+}
+
+.page-header {
+	height: 90px;
+	background-color: #00a0e8;
+	align-items: center
+}
+
+.headImg {
+	border-radius: 50%;
+}
+
+.hl {
+	color: white;
+}
+
+.hl img {
+	height: 60px;
+	width: 60px;
+}
+
+.search {
+	width: 60px;
+	background-color: #fff;
+	border-radius: 0 20px 20px 0;
+	line-height: 42px;
+	font-size: 14px;
+	text-align: center;
+	cursor: pointer
+}
+
+.search_input {
+	height: 44px;
+	width: 240px;
+	border-radius: 20px 0 0 20px;
+	border-color: white;
+	background-color: #00a0e8;
+	color: white!important;
+	padding-left: 30px;
+	padding-top: 0
+}
+
+.search_input:focus {
+	box-shadow: none;
+	border-color: white!important;
+	border-right: 1px solid #00a0e8!important;
+	background-color: #00a0e8!important;
+}
+
+.hc {
+	position: relative;
+}
+
+.icon-s {
+	position: absolute!important;
+	left: 10px;
+	top: 12px!important;
+	font-size: 20px!important;
+	color: white;
+	z-index: 10;
+}
+
+.state {
+	cursor: pointer
+}
+
+.hr ul {
+	height: 70px;
+	color: white;
+	margin-bottom: 0
+}
+
+.hr ul li {
+	width: 120px;
+}
+
+.hr ul li {
+	text-align: center;
+	border-right: 1px solid white
+}
+
+.hr ul li:nth-child(1) {
+	border-left: 1px solid white
+}
+
+.hr ul li p {
+	margin-bottom: 5px
+}
+
+.hl span {
+	margin-left: 20px
+}
+
+/* middle */

@@ -1,0 +1,306 @@
+		<link rel="stylesheet" type="text/css" href="css/applyForm2.css" />
+		
+		<style type="text/css">
+			.content_list span {
+				float: left;
+				margin-top: 10px;
+			}
+
+			.dimission {
+				width: 100px !important;
+				text-align: right;
+				display: inline-block !important;
+				margin-right: 10px !important;
+			}
+
+			#dimis {
+				width: 209px !important;
+				height: 38px !important;
+			}
+
+			.content p span {
+				width: 56px !important;
+			}
+
+			#verify {
+				padding-top: 10px;
+			}
+
+			#province_2 {
+				display: none;
+				height: 34px;
+			}
+
+			.aaa {
+				width: 205px;
+				height: 34px;
+				border: 1px solid #d2d2d2;
+				padding-left: 10px;
+				border-radius: 2px;
+			}
+		</style>
+	
+		<div class="header">
+			<p class="header_p1">姓名：<i id="upname"></i></p>
+			<p>工号：<i id="jobNumber"></i></p>
+			<p>部门：<i id="department"></i></p>
+			<p>职位：<i id="post"></i></p>
+		</div>
+
+
+		<div class="box">
+			<div class="content">
+				<form class="layui-form" action="">
+
+					<div class="content_list">
+						<p class="dimission">入职时间：</p>
+						<span id="contract"></span>
+
+					</div>
+
+					<div class="content_list">
+						<p class="dimission">预计离职时间：</p>
+						<input type="text" class="layui-input" id="dimis" placeholder="请选择" lay-verify="required">
+					</div>
+
+
+					<div class="content_list">
+						<p class="dimission">离职类型：</p>
+						<div class="layui-input-inline times nosd">
+							<select name="quiz1" class="industry" lay-verify="required">
+							</select>
+						</div>
+					</div>
+
+
+					<div class="content_list">
+						<p class="dimission">离职原因：</p>
+						<div class="layui-input-inline times nosd" style="margin-right: 20px!important;">
+							<select name="quiz3" id="xcxv" lay-filter="xcxv" lay-verify="required">
+								<option value="">请输入</option>
+							</select>
+						</div>
+
+						<div class="layui-input-inline times nosd" id="province_1">
+							<select name="quiz3" class="province" lay-filter="province" lay-filter="province">
+								<option value=""></option>
+							</select>
+						</div>
+
+						<div class="layui-input-inline times nosd" id="province_2">
+							<input type="text" class="aaa province" placeholder="请输入" value="" id="aaaa" />
+						</div>
+
+					</div>
+
+
+					<div class="content_list">
+						<p><span class="atisd" style="margin-left: 45px;">审核人：</span><i id="verify"></i></p>
+
+					</div>
+
+					<div class="content_list">
+						<div class="layui-form-item">
+							<div class="layui-input-block" style="margin: 0;">
+								<div class="layui-btn btns" id="referd" lay-submit="" lay-filter="demo">立即提交</div>
+							</div>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+		<p class="btnArea">
+			<span class="goback">
+				<img src="img/goback.png" alt="" />
+				返回
+			</span>
+		</p>
+
+		<script type="text/javascript">
+			$(document).ready(function() {
+
+				//获取全局变量
+				let xcxvArr = [];
+				let signEntryTime;
+				let postId = [];
+				let departId = [];
+				let joinNumber = [];
+				let type = true; //原因类型
+				//Demo
+				layui.use('form', function() {
+					var form = layui.form;
+					//监听提交
+					form.on('submit(demo)', function(data) {						
+					});
+
+					// 监听离职原因
+					form.on('select(xcxv)', function(data) {
+						for (let i = 0; i < xcxvArr.length; i++) {
+							//获取子集						
+							if (data.value == '其他原因') {
+								type = true;
+								$('#province_1').hide();
+								$('#province_2').show();
+							} else if (data.value == xcxvArr[i].name) {
+								// 将二级放入select 清除之前的数据
+								type = false;
+								$('#province_1').show();
+								$('#province_2').hide();
+								$(".province").html("")
+								let currentData = xcxvArr[i].subdivision;
+								for (let j = 0; j < currentData.length; j++) {
+									$(".province").append(new Option(currentData[j].name, currentData[j].name))
+								}
+								form.render();
+							}
+						}
+					});
+				});
+
+				layui.use('laydate', function() {
+					var laydate = layui.laydate;
+					//执行一个laydate实例
+					laydate.render({
+						elem: '#dimis' //指定元素
+					});
+				});
+
+
+				//分割当前网页链接
+				var windowUrl = window.location.href; //获取当前url链接		
+				//http://127.0.0.1:8848/shenqing/lizhi.html?userGuid=c912f82a9a7e4e338206ad1df83e1a21&companyId=46
+				var arr = windowUrl.split("?", 2); //分割url		
+				var arr_1 = arr[1]; //瞎起变量		
+				var arr_2 = arr_1.split('&', 2);
+				var arr_3 = (arr_2[0].split('=', 2))[1];
+				var arr_4 = (arr_2[1].split('=', 2))[1];
+				//console.log(arr_4)
+
+				//获取个人信息
+				$.ajax({
+					url: 'http://47.94.173.253:8008/getUserDetailByuserGuid.ashx', //你请求的接口
+					type: 'POST', //类型
+					data: {
+						'userGuid': arr_3,
+					}, //数据有则传，没有可以不写
+					success: function(data) {
+						data = JSON.parse(data);
+						signEntryTime = data.items.signEntryTime;						
+						if (signEntryTime == null) {
+							signEntryTime = '未签定劳动合同'
+						} else {
+
+						}
+						postId = data.items.postId;
+						departId = data.items.departId;
+						joinNumber = data.items.jovNumber;
+						//请求成功后的返回
+						//console.log(data)
+						$('#upname').text(data.items.realName);
+						$('#jobNumber').text(data.items.jovNumber);
+						$('#department').text(data.items.depart);
+						$('#post').text(data.items.post);
+						$('#contract').text(signEntryTime)
+						layui.use('form', function() {
+							var form = layui.form;
+							form.render();
+						})
+					}
+				})
+
+				// 获取离职类型
+				$.ajax({
+					url: 'http://47.94.173.253:8008/Option_AreasAnd.ashx', //你请求的接口
+					type: 'POST', //类型
+					data: {
+						type: '27',
+					}, //数据有则传，没有可以不写
+					success: function(data) {
+						xcxvArr = data
+						//请求成功后的返回
+						for (let i = 0; i < data.length; i++) {
+							$(".industry").append(new Option(data[i].name, data[i].name))
+						};
+						layui.use('form', function() {
+							var form = layui.form;
+							form.render();
+						})
+					}
+				});
+
+				// 获取离职原因
+				$.ajax({
+					url: 'http://47.94.173.253:8008/Option_AreasAnd.ashx', //你请求的接口
+					type: 'POST', //类型
+					data: {
+						type: '26',
+					}, //数据有则传，没有可以不写
+					success: function(data) {
+						xcxvArr = data
+						//请求成功后的返回
+						for (let i = 0; i < data.length; i++) {
+							$("#xcxv").append(new Option(data[i].name, data[i].name))
+						}
+						layui.use('form', function() {
+							var form = layui.form;
+							form.render();
+						})
+					}
+				});
+
+
+				//获取审批人数据
+				$.ajax({
+					url: 'http://47.94.173.253:8008/Com/Get_User_Leader.ashx', //你请求的接口
+					type: 'POST', //类型
+					data: {
+						'userGuid': arr_3,
+						'companyId': arr_4,
+					}, //数据有则传，没有可以不写		
+					success: function(data) {
+						var data = JSON.parse(data);
+						//console.log(data)
+						$("#verify").text(data.items)
+						layui.use('form', function() {
+							var form = layui.form;
+							form.render();
+						})
+					}
+				})
+
+
+				$('#referd').click(function() {
+					$.post('http://47.94.173.253:8008/User_Quit.ashx', {
+							'userGuid': arr_3,
+							'companyId': arr_4,
+							'postId': postId, //是传递参数的id号
+							'departId': departId,
+							'joinTime': signEntryTime, //入职时间
+							'quitReason': $('.province').val(), //辞职原因
+							'quitType': $('.industry').val(),
+							'joinNumber': joinNumber,
+							'quitTime': $('#dimis').val(), //辞职时间
+						},
+						function(data) {
+							data = JSON.parse(data)
+							console.log(data)
+							if (data.status == 200) {
+								$("#dataTable").replaceWith('<div id="dataTable"></div>');
+								$("#dataTable").load("lzsq.html");
+							}
+						});
+				});
+
+				// 返回
+				$(".goback").hover(function() {
+					$(this).children("img").attr("src", "img/goback-b.png")
+				}, function() {
+					$(this).children("img").attr("src", "img/goback.png")
+				});
+				$(".goback").on("click", function() {
+					$("#dataTable").replaceWith('<div id="dataTable"></div>');
+					$("#dataTable").load("lzsq.html");
+				});
+
+			});
+		</script>

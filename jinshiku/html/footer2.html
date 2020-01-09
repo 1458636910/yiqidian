@@ -1,0 +1,153 @@
+<div class="foot">
+	<div class="footer">
+		<ul>
+			<li>
+				<h4>
+					<b>快速通道</b>
+				</h4>
+				<p>
+					<a href="javascript:void(0);" target="_blank">易企购</a>
+				</p>
+				<p>
+					<a href="http://www.jinshiku.com/">易企学</a>
+				</p>
+				<p>
+					<a href="http://www.eqidd.com/yqy/article.html" target="_blank">易企阅</a>
+				</p>
+				<p>
+					<a href="javascript:void(0);">易企聘</a>
+				</p>
+				<p>
+					<a href="http://www.eqidd.com/comSpace/eqd2.html" target="_blank">企业空间</a>
+				</p>
+				<p>
+					<a href="javascript:void(0);" target="_blank" class="gock2">创客空间</a>
+				</p>
+				<p>
+					<a href="javascript:void(0);">应用中心</a>
+				</p>
+			</li>
+			<li>
+				<h4>
+					<b>登录注册</b>
+				</h4>
+				<p>
+					<a class="loginPeo">个人登录</a>
+				</p>
+				<p>
+					<a class="loginCom">企业登录</a>
+				</p>
+				<p>
+					<a class="regPeo">个人注册</a>
+				</p>
+				<p>
+					<a class="regCom">企业注册</a>
+				</p>
+			</li>
+			<li>
+				<h4>
+					<b>玩转易企点</b>
+				</h4>
+				<p>
+					<a href="javascript:void(0);">个人注册流程</a>
+				</p>
+				<p>
+					<a href="javascript:void(0);">企业注册流程</a>
+				</p>
+				<p>
+					<a href="javascript:void(0);">个人登录流程</a>
+				</p>
+				<p>
+					<a href="javascript:void(0);">企业登录流程</a>
+				</p>
+				<p>
+					<a href="javascript:void(0);">企业后台基本功能介绍</a>
+				</p>
+				<p>
+					<a href="javascript:void(0);">APP简介</a>
+				</p>
+				<p>
+					<a href="javascript:void(0);">人事如何使用手册</a>
+				</p>
+			</li>
+			<li class="feedback">
+				<h4>
+					<b>下载与反馈</b>
+				</h4>
+				<p>
+					<a href="http://www.eqidd.com/html/download.html">App下载</a>
+				</p>
+				<p>
+					<a href="http://www.eqidd.com/html/agreement.html" target="_blank">服务协议</a>
+				</p>
+				<p>
+					<a href="http://www.eqidd.com/html/PrivacyPolicy.html" target="_blank">隐私政策</a>
+				</p>
+				<p>
+					<a href="http://www.eqidd.com/fankui.html" target="_blank">反馈</a>
+				</p>
+			</li>
+			<li>
+				<h4>
+					<b>联系我们</b>
+				</h4>
+				<p>
+					<a href="javascript:void(0);">合作热线：0371-65318801</a>
+				</p>
+                <p>
+					<a href="javascript:void(0);">客服热线：400-1789-528</a>
+				</p>
+				<p>
+					<a href="javascript:void(0);">周一至周日9:00-18:00</a>
+				</p>
+				<p>
+					<a href="javascript:void(0);">客服qq：727024586</a>
+				</p>
+				<p>
+					<a href="javascript:void(0);">官网地址：www.eqidd.com</a>
+				</p>
+			</li>
+			<li class="photo">
+				<img src="../img/adjust.png" />
+				<p>扫码下载APP</p>
+			</li>
+			<li class="photo">
+				<img src="../image/downQRcode.jpg" />
+				<p>关注微信公众号</p>
+			</li>
+		</ul>
+	</div>
+	<div class="line">
+		<p>
+			Copyright ©郑州易企点信息科技有限公司
+			<a href="http://beian.miit.gov.cn/" target="_blank">豫ICP备17002858号</a>
+		</p>
+	</div>
+</div>
+
+<script>
+	var href = window.location.href;
+	var loginData = localStorage.getItem("GHY_login");
+	if (loginData) {
+		$(".gock2").on("click", function() {
+
+		})
+	} else {
+		layer.msg("请登录", {
+			time: 1200
+		})
+	};
+
+	$('.loginPeo').click(function() {
+		window.open("http://www.jinshiku.com/html/innerLogin.html?href=" + href + "");
+	});
+	$(".regPeo").on("click", function() {
+		window.open("http://www.eqidd.com/html/reg.html?href=" + href + "")
+	});
+	$('.regCom').click(function() {
+		window.open("http://www.jinshiku.com/html/registerCom.html?href=" + href + "")
+	});
+	$(".loginCom").on("click", function() {
+		window.open("http://www.eqidd.com/html/M_login.html?href=http://www.eqidd.com/html/M_index.html")
+	})
+</script>

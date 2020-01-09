@@ -1,0 +1,215 @@
+<link rel="stylesheet" type="text/css" href="css/msq.css"/>
+<div class="apply">
+	<div class="attendance">
+		<p class="title">考勤</p>
+		<ul>
+			<li class="qjsq">
+				<div class="imgs"> 
+					<img src="img/ask%20for%20leave.png" class="apply_left"/>
+				</div>
+				<p>请假申请</p>
+				<div class="imgs imgd">
+					<img src="img/sw.png" class="apply_right"/>
+				</div>
+			</li>
+			<li class="travel">
+				<div class="imgs">
+					<img src="img/businesstravel.png" class="apply_left"/>
+				</div>
+				<p>出差申请</p>
+				<div class="imgs imgd">
+					<img src="img/sw.png" class="apply_right"/>
+				</div>
+			</li>
+			<li class="jbsq">
+				<div class="imgs">
+					<img src="img/workovertime.png" class="apply_left"/>
+				</div>
+				<p>加班申请</p>
+				<div class="imgs imgd">
+					<img src="img/sw.png" class="apply_right"/>
+				</div>
+			</li>
+			<li class="txsq">
+				<div class="imgs">
+					<img src="img/tx.png" class="apply_left"/>
+				</div>
+				<p>调休申请</p>
+				<div class="imgs imgd">
+					<img src="img/sw.png" class="apply_right"/>
+				</div>
+			</li>
+			<li class="tbsq">
+				<div class="imgs">
+					<img src="img/TB.png" class="apply_left"/>
+				</div>
+				<p>调班申请</p>
+				<div class="imgs imgd">
+					<img src="img/sw.png" class="apply_right"/>
+				</div>
+			</li>
+			<li class="cdsq">
+				<div class="imgs">
+					<img src="img/cchidao.png" class="apply_left"/>
+				</div>
+				<p>迟到申请</p>
+				<div class="imgs imgd">
+					<img src="img/sw.png" class="apply_right"/>
+				</div>
+			</li>
+			<li class="ldksq">
+				<div class="imgs">
+					<img src="img/daka.png" class="apply_left"/>
+				</div>
+				<p>漏打卡</p>
+				<div class="imgs imgd">
+					<img src="img/sw.png" class="apply_right"/>
+				</div>
+			</li>
+		</ul>
+	</div>
+	<div class="attendance">
+		<p class="title">后勤</p>
+		<ul>
+			<li class="ycsq">
+				<div class="imgs">
+					<img src="img/yc.png" class="apply_left"/>
+				</div>
+				<p>用车申请</p>
+				<div class="imgs imgd">
+					<img src="img/sw.png" class="apply_right"/>
+				</div>
+			</li>
+		</ul>
+	</div>
+	<div class="attendance">
+		<p class="title">组织管理</p>
+		<ul>
+			<li class="tzsq">
+				<div class="imgs">
+					<img src="img/tz.png" class="apply_left"/>
+				</div>
+				<p>通知</p>
+				<div class="imgs imgd">
+					<img src="img/sw.png" class="apply_right"/>
+				</div>
+			</li>
+			<li class="llssq">
+				<div class="imgs">
+					<img src="img/lluo.png" class="apply_left"/>
+				</div>
+				<p>联络书</p>
+				<div class="imgs imgd">
+					<img src="img/sw.png" class="apply_right"/>
+				</div>
+			</li>
+			<li class="lzsq">
+				<div class="imgs">
+					<img src="img/lz.png" class="apply_left"/>
+				</div>
+				<p>离职申请</p>
+				<div class="imgs imgd">
+					<img src="img/sw.png" class="apply_right"/>
+				</div>
+			</li>
+			<li class="rlsq">
+				<div class="imgs">
+					<img src="img/rlzy.png" class="apply_left"/>
+				</div>
+				<p>人力需求</p>
+				<div class="imgs imgd">
+					<img src="img/sw.png" class="apply_right"/>
+				</div>
+			</li>
+			<li class="pxsq">
+				<div class="imgs">
+					<img src="img/peixun.png" class="apply_left"/>
+				</div>
+				<p>培训</p>
+				<div class="imgs imgd">
+					<img src="img/sw.png" class="apply_right"/>
+				</div>
+			</li>
+			<li class="tgsq">
+				<div class="imgs">
+					<img src="img/tg.png" class="apply_left"/>
+				</div>
+				<p>调岗</p>
+				<div class="imgs imgd">
+					<img src="img/sw.png" class="apply_right"/>
+				</div>
+			</li>
+		</ul>
+	</div>
+</div>
+<script>
+    $(document).ready(function () {
+        $(".attendance ul li").hover(function () {
+            $(this).children("div.imgd").children("img").attr("src", "img/DSA.png");
+            $(this).css({
+                "box-shadow": "1px 3px 5px 1px rgba(0,0,0,0.2)"
+            })
+        }, function () {
+            $(this).children("div.imgd").children("img").attr("src", "img/sw.png");
+            $(this).css({
+                "box-shadow": "none"
+            })
+        });
+        $('.travel').on("click", function () {
+            $("#dataTable").replaceWith('<div id="dataTable"></div>');
+            $("#dataTable").load("travelApply.html");
+        });
+        $(".qjsq").on("click", function () {
+            $("#dataTable").replaceWith('<div id="dataTable"></div>');
+            $("#dataTable").load("qjlb.html");
+        });
+        $(".txsq").on("click", function () {
+            $("#dataTable").replaceWith('<div id="dataTable"></div>');
+            $("#dataTable").load("txsq.html");
+        });
+        $(".jbsq").on("click", function () {
+            $("#dataTable").replaceWith('<div id="dataTable"></div>');
+            $("#dataTable").load("jbsq.html");
+        });
+        $(".cdsq").on("click", function () {
+            $("#dataTable").replaceWith('<div id="dataTable"></div>');
+            $("#dataTable").load("cdsq.html");
+        });
+        $(".ycsq").on("click", function () {
+            $("#dataTable").replaceWith('<div id="dataTable"></div>');
+            $("#dataTable").load("ycsq.html");
+        });
+        $(".tbsq").on("click", function () {
+            $("#dataTable").replaceWith('<div id="dataTable"></div>');
+            $("#dataTable").load("tbsq.html");
+        });
+        $(".ldksq").on("click", function () {
+            $("#dataTable").replaceWith('<div id="dataTable"></div>');
+            $("#dataTable").load("ldksq.html");
+        });
+        $(".llssq").on("click", function () {
+            $("#dataTable").replaceWith('<div id="dataTable"></div>');
+            $("#dataTable").load("llssq.html");
+        });
+        $(".lzsq").on("click", function () {
+            $("#dataTable").replaceWith('<div id="dataTable"></div>');
+            $("#dataTable").load("lzsq.html");
+        });
+        $(".tzsq").on("click", function () {
+            $("#dataTable").replaceWith('<div id="dataTable"></div>');
+            $("#dataTable").load("tzsq.html");
+        });
+        $(".rlsq").on("click", function () {
+            $("#dataTable").replaceWith('<div id="dataTable"></div>');
+            $("#dataTable").load("rlsq.html");
+        });
+        $(".pxsq").on("click", function () {
+            $("#dataTable").replaceWith('<div id="dataTable"></div>');
+            $("#dataTable").load("pxsq.html");
+        });
+        $(".tgsq").on("click", function () {
+            $("#dataTable").replaceWith('<div id="dataTable"></div>');
+            $("#dataTable").load("tgsq.html");
+        });
+    })
+</script>

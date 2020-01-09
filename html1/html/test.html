@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title></title>
+  <link rel="stylesheet" href="">
+  <link rel="stylesheet" href="../css/bootstrap-table.min.css">
+  <script type="text/javascript" src="http://libs.baidu.com/jquery/2.1.4/jquery.min.js"></script>
+</head>
+<body>
+ <button id="btn" type="button">获取验证码</button>
+<script type="text/javascript">
+  function invokeSettime(obj){
+    var countdown=60;
+    settime(obj);
+    function settime(obj) {
+        if (countdown == 0) {
+            $(obj).attr("disabled",false);
+            $(obj).text("获取验证码");
+            countdown = 60;
+            return;
+        } else {
+            $(obj).attr("disabled",true);
+            $(obj).text("(" + countdown + ") s 重新发送");
+            countdown--;
+        }
+        setTimeout(function() {
+                    settime(obj) }
+                ,1000)
+    }
+}
+$('#btn').click(function() {
+
+  new invokeSettime("#btn");
+});
+</script>
+
+</body>
+</html>

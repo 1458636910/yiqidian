@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="icon" href="img/1.png" type="image/x-icon" />
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css">
+		<link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.14.2/dist/bootstrap-table.min.css">
+		<link rel="stylesheet" type="text/css" href="https://www.layuicdn.com/layui/css/layui.css" />
+		<title>会议纪要</title>
+		<style type="text/css" media="print">
+			.btn,#pageBtn,.apply,.Preservation{
+				display: none;
+			}
+			
+
+			@page {
+				size: auto;
+				margin: 0mm;
+			}
+		</style>
+		<style type="text/css">
+			* {
+				margin: 0;
+				padding: 0;
+			}
+
+			.box {
+				width: 210mm;
+				margin: 60px auto;
+			}
+
+			.content table {
+				width: 100%;
+			}
+
+			.content td,
+			th {
+				text-align: center;
+				padding: 0.75rem;
+			}
+
+			.content th {
+				color: #999999;
+			}
+
+			.content td {
+				color: #333;
+				font-weight: 600;
+			}
+
+			.determine {
+				color: #ccc;
+			}
+
+			.black {
+				color: #000000;
+			}
+
+			.Reason {
+				height: 80px;
+				width: 100%;
+				border: 1px solid #2C2C2C;
+				border-top: none;
+				text-align: center;
+				position: relative;
+			}
+
+			.Reason p {
+				line-height: 80px;
+				height: 80px;
+				width: 132px;
+				border-right: 1px solid #2C2C2C;
+				float: left;
+				color: #999999;
+			}
+
+			.Reason textarea {
+				width: 659px;
+				height: 79px;
+				float: left;
+				border: none;
+				padding: 10px;
+				outline: none;
+				color: #333;
+				font-weight: 600;
+			}
+
+			.Preservation {
+				position: absolute;
+				bottom: 10px;
+				right: 10px;
+				padding: 3px 15px;
+				background-color: #00A0E9;
+				color: #fff;
+				cursor: pointer;
+				border-radius: 15px;
+				font-size: 12px;
+			}
+
+			.apply {
+				width: 20px;
+				height: 20px;
+				background-color: #00A0E9;
+				cursor: pointer;
+				float: right;
+			}
+
+			.apply img {
+				width: 20px;
+				height: 20px;
+			}
+
+			.newEcord,
+			.Decision {
+				display: none;
+				padding: 40px;
+			}
+
+			.dismiss {
+				width: 100px;
+				float: left;
+				margin: 8px 0px;
+			}
+
+			.tesk_1 {
+				width: 250px !important;
+			}
+
+			.tesk_2 {
+				width: 400px !important;
+			}
+
+			#table {
+				margin-top: 30px;
+				text-align: center;
+			}
+
+			#fateh .layui-form-select dl dd {
+				cursor: pointer;
+				width: 250px
+			}
+
+			.xm-label-block {
+				background-color: #5FB878 !important;
+			}
+
+			.xm-option-icon {
+				border-color: #5FB878 !important;
+			}
+
+			.selected .xm-icon-duox {
+				color: #5FB878 !important;
+			}
+
+			#pageBtn {
+				width: 90px;
+				height: 30px;
+				border-radius: 5px;
+				background-color: #00A2E9;
+				color: #FFFFFF;
+				text-align: center;
+				border: none;
+				font-size: 14px;
+				cursor: pointer;
+				float: right;
+				line-height: 30px;
+				outline: none !important;
+				margin-top: 30px;
+			}
+			.btn {
+				width: 90px;
+				height: 35px;
+				color: #fff;
+				border-radius: 5px;
+				background-color: #00A2EA;
+				text-align: center;
+				line-height: 35px;
+				cursor: pointer;
+				margin-left: 100mm;
+				margin-top: 100px;
+				padding: 0;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="box">
+			<div class="content">
+				<table border="1">
+					<tr>
+						<th colspan="6" style="color: #333;font-weight: 600;font-size: 20px;">会议纪要</th>
+					</tr>
+
+					<tr>
+						<th>会议主题</th>
+						<td colspan="5" id="type"></td>
+					</tr>
+					<tr>
+						<th>会议时间</th>
+						<td colspan="2" id="mtime"></td>
+						<th>会议地点</th>
+						<td colspan="2" id="place"></td>
+					</tr>
+					<tr>
+						<th>主持人</th>
+						<td colspan="2" id="compere"></td>
+						<th>记录人</th>
+						<td colspan="2" id="recorder">常小美</td>
+					</tr>
+					<tr>
+						<th>应出席</th>
+						<td colspan="2" id="zongji"></td>
+						<th>实际出席</th>
+						<td colspan="2" id="shiji"></td>
+					</tr>
+					<tr>
+						<th>参会人员</th>
+						<td colspan="5" id="AssistNum"></td>
+					</tr>
+					<tr>
+						<th>缺席人员</th>
+						<td colspan="5" id="quexi"></td>
+					</tr>
+					<tr>
+						<th>迟到人员</th>
+						<td colspan="5" id="chidao"></td>
+					</tr>
+				</table>
+
+				<div class="Reason">
+					<p>缺席原因</p>
+					<textarea type="text" id="Reasontxt" placeholder="请输入缺席原因" /></textarea>
+					<span class="Preservation">保存</span>
+				</div>
+			</div>
+
+
+			<div id="table"></div>
+
+			<div class="newEcord">
+				<form action="" class="layui-form">
+					<div class="layui-form-item">
+						<div class="dismiss">会议决议</div>
+						<div class="layui-input-block tesk_2">
+							<textarea name="" id="preEcord_10" lay-verify="required" cols="70" rows="3" class="form-control" placeholder="其他注意事项说明"></textarea>
+						</div>
+					</div>
+
+					<div class="layui-form-item">
+						<div class="dismiss">父项目</div>
+						<div class="layui-input-block tesk_1" id="fateh">
+							<select id="preEcord_2" lay-filter="faEcord" lay-search>
+								<option value="请选择">请选择</option>
+							</select>
+						</div>
+					</div>
+
+					<div class="layui-form-item">
+						<div class="dismiss">责任人</div>
+						<div class="layui-input-block tesk_1">
+							<select id="preEcord_3" lay-filter="preEcord_3" lay-verify="required" lay-search>
+								<option value="请选择">请选择</option>
+							</select>
+						</div>
+					</div>
+
+					<div class="layui-form-item">
+						<div class="dismiss">协助人</div>
+						<div id="ParentTask1" class="xm-select-demo layui-input-block tesk_1"></div>
+						<div id="demo1-getValue" style="display: none;">获取选中值</div>
+					</div>
+
+					<div class="layui-form-item">
+						<div class="dismiss">验收标准</div>
+						<div class="layui-input-block tesk_1">
+							<input type="text" id="preEcord_7" lay-verify="required" class="form-control" />
+						</div>
+					</div>
+
+					<div class="layui-form-item">
+						<div class="dismiss">验收人</div>
+						<div class="layui-input-block tesk_1">
+							<select id="preEcord_8" lay-filter="preEcord_8" lay-verify="required" lay-search>
+								<option value="请选择">请选择</option>
+							</select>
+						</div>
+					</div>
+
+					<div class="layui-form-item">
+						<div class="dismiss">验收时间</div>
+						<div class="layui-input-block tesk_1">
+							<input type="text" id="preEcord_9" lay-verify="required" class="form-control" autocomplete="off" />
+						</div>
+					</div>
+				</form>
+			</div>
+
+			<div class="Decision">
+				<form class="layui-form" action="">
+					<div class="layui-form-item">
+						<label class="layui-form-label">单选框</label>
+						<div class="layui-input-block">
+							<input type="radio" name="sex" value="ok" title="已完成" lay-filter="filter" checked>
+							<input type="radio" name="sex" value="NG" title="未完成" lay-filter="filter">
+						</div>
+					</div>
+				</form>
+			</div>
+			<div id="pageBtn">下一页</div>
+             
+			<div class="btn" onclick='print_page()'>打印</div>
+
+		</div>
+
+		<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js"></script>
+		<script src="https://unpkg.com/bootstrap-table@1.14.2/dist/bootstrap-table.min.js"></script>
+		<script src="https://www.layuicdn.com/layui/layui.js"></script>
+		<script src="js/xm-select.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			function print_page() {
+				if (!!window.ActiveXObject || "ActiveXObject" in window) { //是否ie
+					remove_ie_header_and_footer();
+				}
+				window.print();
+			}
+
+			$(document).ready(function() {
+				let href = window.location.href;
+				//获取携带值:
+				function GetRequest() {
+					var url = location.search; //获取url中"?"符后的字串
+					var theRequest = new Object();
+					if (url.indexOf("?") != -1) { //判断是否含有'?'
+						var str = url.substr(1); //从字符中index为1开始抽取
+						strs = str.split("&"); //字符串分割成字符串数组
+						for (var i = 0; i < strs.length; i++) {
+							theRequest[strs[i].split("=")[0]] = decodeURIComponent(strs[i].split("=")[1]);
+						}
+					}
+					return theRequest;
+				}
+
+				var userGuid = GetRequest().userGuid;
+				var companyId = GetRequest().comid;
+				var noticeId = GetRequest().noticeId;
+				var type = '';
+				//会议纪要人员
+				$.post('http://47.94.173.253:8008/Meeting/Get_metNoticeDe.ashx', {
+					comid: companyId,
+					userGuid: userGuid,
+					noticeId: noticeId
+				}, function(data) {
+					var data = JSON.parse(data);
+					//console.log(data.items);
+					var arr1 = data.items.startTime.split('T');
+					var arr2 = data.items.endTime.split('T')[1];
+					var startTime = arr1[0] + ' ' + arr1[1].split(':')[0] + ':' + arr1[1].split(':')[1] + ' ' + '-' + ' ';
+					var endTime = arr2.split(':')[0] + ':' + arr2.split(':')[1];
+					var time = startTime + endTime;
+					var zongji = data.items.num_zongji + ' ' + '人';
+					var shiji = data.items.num_shiji + ' ' + '人';
+					type = data.items.type;
+					if (data.items.assitList == '') {
+						var ath = '无';
+						$('#AssistNum').text(ath); //协助人
+					} else {
+						$.each(data.items.list_canhui, function(index, item) {
+							var ath = item.upname + ' ';
+							$('#AssistNum').append(ath);
+						});
+					};
+					if (data.items.assitList == '') {
+						var ath = '无';
+						$('#AssistNum').text(ath); //协助人
+					} else {
+						$.each(data.items.list_quexi, function(index, item) {
+							var ath = item.upname + ' ';
+							$('#quexi').append(ath);
+						});
+					}
+					if (data.items.assitList == '') {
+						var ath = '无';
+						$('#AssistNum').text(ath); //协助人
+					} else {
+						$.each(data.items.list_chidao, function(index, item) {
+							var ath = item.upname + ' ';
+							$('#chidao').append(ath);
+						});
+					};
+					$('#type').text(type);
+					$('#mtime').text(time);
+					$('#place').text(data.items.place);
+					$('#compere').text(data.items.compere.realName);
+					$('#recorder').text(data.items.recorder.realName);
+					$('#zongji').text(zongji);
+					$('#shiji').text(shiji);
+				});
+				//输入缺席原因
+				$('.Preservation').click(function() {
+					$.post('http://47.94.173.253:8008/Meeting/Get_metNoticeDe.ashx', {
+						companyId: companyId,
+						userGuid: userGuid,
+						reason: $('#Reasontxt').val(),
+						meetId: noticeId
+					}, function(data) {
+						var data = JSON.parse(data);
+						if (data.status == 200) {
+							layer.msg('保存成功！', {
+								time: 1000,
+							});
+						} else {
+							layer.msg(data.msg, {
+								time: 1000,
+							});
+						}
+					})
+				})
+
+				//会议决议部分
+				layui.use('form', function() {
+					var form = layui.form;
+					form.on('radio(filter)', function(data) {
+						Decision = data.value;
+					});
+				});
+
+				layui.use('laydate', function() {
+					var laydate = layui.laydate;
+
+					//执行一个laydate实例
+					laydate.render({
+						elem: '#preEcord_9',
+						type: 'datetime'
+					});
+				});
+
+				var nameArr = '';
+				var demo1 = '';
+				var departId = '';
+				var Decision = 'ok';
+				$.post('http://47.94.173.253:8008/Com/User_Search_Info.ashx', {
+					companyId: companyId,
+					para: ' '
+				}, function(data) {
+					var data = JSON.parse(data);
+					var datas = data.items;
+					for (let i = 0; i < datas.length; i++) {
+						var html = "<option value='" + datas[i].upname + "' userGuid='" + datas[i].userGuid + "'>" + datas[i].upname +
+							"</option>";
+						$("#ParentTask").append(html);
+						$("#ParentTask2").append(html);
+						$("#ParentTask4").append(html);
+						$("#ParentTask5").append(html);
+					}
+
+					var demo1 = xmSelect.render({
+						el: '#ParentTask1',
+						filterable: true,
+						toolbar: {
+							show: true
+						},
+						model: {
+							label: {
+								type: 'block',
+								block: {
+									//最大显示数量, 0:不限制
+									showCount: 2,
+									//是否显示删除图标
+									showIcon: true,
+								}
+							}
+						},
+						prop: {
+							name: 'upname',
+							value: 'userGuid',
+						},
+						data: data.items
+					})
+					document.getElementById('demo1-getValue').onclick = function() {
+						//获取当前多选选中的值
+						var selectArr = demo1.getValue();
+						for (let i = 0; i < selectArr.length; i++) {
+							if (i == selectArr.length - 1) {
+								nameArr += selectArr[i].userGuid
+							} else {
+								nameArr += selectArr[i].userGuid + ";";
+							}
+						}
+					}
+
+					layui.use('form', function() {
+						var form = layui.form;
+						form.render();
+					})
+				});
+
+
+				function minEcord() {
+					//获取父项目
+					$.ajax({
+						url: 'http://47.94.173.253:8008/MyTask/Get_Task_BySearch.ashx', //你请求的接口
+						type: 'POST', //类型
+						data: {
+							'para': '',
+							'companyId': companyId
+						}, //数据有则传，没有可以不写		
+						success: function(data) {
+							var data = JSON.parse(data);
+							datas = data.items
+							for (let i = 0; i < datas.length; i++) {
+								var html = "<option value='" + datas[i].TaskDesc + "' data-id='" + datas[i].Id + "'>" + datas[i].TaskDesc +
+									"</option>";
+								$("#preEcord_2").append(html);
+							}
+							layui.use('form', function() {
+								var form = layui.form;
+								form.render();
+							})
+						}
+					});
+					//获取个人信息
+					$.ajax({
+						url: 'http://47.94.173.253:8008/Com/User_BusinessCard.ashx', //你请求的接口
+						type: 'POST', //类型
+						data: {
+							'myGuid': userGuid,
+							'userGuid': userGuid
+						}, //数据有则传，没有可以不写		
+						success: function(data) {
+							var data = JSON.parse(data);
+							departId = data.items.departId;
+						}
+					});
+
+				}
+				var num5 = 0
+				if (num5 == 0) {
+					$.post('http://47.94.173.253:8008/Com/User_Search_Info.ashx', {
+						companyId: companyId,
+						para: ' '
+					}, function(res) {
+						var data = JSON.parse(res)
+						var data1 = data.items
+						var len = data1.length;
+						num5++
+						for (let i = 0; i < data1.length; i++) {
+							var html = "<option value='" + data1[i].upname + "' userGuid='" + data1[i].userGuid + "'>" + data1[i].upname +
+								"</option>";
+							$("#preEcord_3").append(html);
+							$("#preEcord_8").append(html);
+						}
+						layui.use('form', function() {
+							var form = layui.form;
+							form.render()
+						});
+					})
+				}
+				Atable();
+
+				//责任部门/责任人
+				function confa(e, value, index, row) {
+					return value.newRecipient.name
+				}
+
+				//字符串分割时间段 2019-06-04 19:00:00
+				function confb(e, value, index, row) {
+					return value.CheckTime.split(' ')[0]
+				}
+
+				//验证部门/验证人
+				function confc(e, value, index, row) {
+					return value.newChecker.name
+				}
+
+				//协助人
+				function confd(e, value, index, row) {
+					//console.log(value.newAssist)
+					if (value.newAssist.length == 0) {
+						return '无'
+					} else {
+						var name = "";
+						$.each(value.newAssist, function(index, item) {
+							var ath = item.name;
+							name = name + " " + ath;
+						});
+						return name;
+					};
+				}
+
+				//判定结果
+				function confe(e, value, index, row) {
+					if (value.CompleteMessage == '') {
+						return '<div class=determine>点击判定结果</div>'
+					} else {
+						return '<div class="determine black">' + value.CompleteMessage + '</div>'
+					}
+				}
+
+				var page = 0;
+				var xzz = '<div class="apply"><img src="img/append.png"></div>'
+
+				function Atable() {
+					setTimeout(function() {
+						$.post('http://47.94.173.253:8008/Meeting/task/Get_MeetingTask.ashx', {
+							"meetingNoticeId": noticeId,
+							"companyId": companyId,
+							"page": page
+						}, function(data) {
+							var data = JSON.parse(data);
+							//console.log(data.items)
+							$("#table").bootstrapTable({
+								data: data.items,
+								disabled: true,
+								columns: [{
+									title: '序号',
+									width: '50px',
+									formatter: function(value, row, index) {
+										//获取每页显示的数量
+										var pageSize = $('#table').bootstrapTable('getOptions').pageSize;
+										//获取当前是第几页
+										var pageNumber = $('#table').bootstrapTable('getOptions').pageNumber;
+										//返回序号，注意index是从0开始的，所以要加上1
+										return pageSize * (pageNumber - 1) + index + 1;
+									}
+								}, {
+									field: 'TaskDesc',
+									title: '会议决议' + xzz,
+									width: '150px'
+								}, {
+									field: 'CheckStandard',
+									title: '验证标准',
+									width: '80px'
+								}, {
+									title: '责任部门/责任人',
+									width: '122px',
+									formatter: confa
+
+								}, {
+									title: '配合部门人员',
+									formatter: confd
+								}, {
+									title: '完成时间',
+									width: '90px',
+									formatter: confb
+								}, {
+									field: 'verifierName',
+									title: '验证部门/验证人',
+									width: '122px',
+									formatter: confc
+								}, {
+									field: 'decisionOutcomes',
+									title: '判定结果',
+									width: '76px',
+									events: window.decisionEvents,
+									formatter: confe
+								}]
+							})
+							$("#table").bootstrapTable("load", data.items)
+						});
+					}, 400);
+
+
+					// 添加会议决议
+					var AtaskDesc = "TaskDesc";
+					$(document).on("click", "th", function() {
+						var field = $(this).attr("data-field"); // 获取表格标题的data-field属性
+						var num2 = 0
+						//console.log(field)
+						if (field == AtaskDesc) {
+							if (num2 == 0) {
+								minEcord();
+								num2++
+							}
+							layer.open({
+								type: 1,
+								area: ['800px', '500px'],
+								title: ['添加新的会议决议', 'font-size:18px;'],
+								shadeClose: true, //点击遮罩关闭
+								content: $('.newEcord'),
+								btn: '确定',
+								yes: function(index, layero) {
+									layer.closeAll();
+									$('#demo1-getValue').click();
+									$.post('http://47.94.173.253:8008/Meeting/task/Add_MeetingTask.ashx', {
+										"userGuid": userGuid,
+										"companyId": companyId,
+										"TaskName": type,
+										"ParentTaskId": $('#preEcord_2 option:selected').attr('data-id'),
+										"recipient": $('#preEcord_3 option:selected').attr('userguid'),
+										"assist": $('xm-select .xm-select-default').val(),
+										"startTime": $('#preEcord_9').val(),
+										"endTime": $('#preEcord_9').val(),
+										"checkStandard": $('#preEcord_7').val(),
+										"checker": $('#preEcord_8 option:selected').attr('userguid'),
+										"checkTime": $('#preEcord_9').val(),
+										"departId": departId,
+										"taskDesc": $('#preEcord_10').val(),
+										"aim": ' ', //提前准备要求
+										"meetingNoticeId": noticeId
+									}, function(data) {
+										var dataMeets = JSON.parse(data);
+										if (dataMeets.status == 200) {
+											layer.msg('添加成功！', {
+												time: 1000,
+											});
+											$(".newEcord form input").each(function() {
+												$(this).val('');
+											});
+											$(".newEcord form textarea").each(function() {
+												$(this).val('');
+											});
+											$('.toolbar-tag').click()
+											Atable()
+										} else {
+											layer.msg(dataMeets.msg, {
+												time: 1000,
+											});
+										}
+									});
+								}
+							});
+						}
+					})
+				}
+
+
+				//判定结果
+				window.decisionEvents = {
+					'click .determine': function(e, value, row, index) {
+						layer.open({
+							type: 1,
+							area: ['500px', '300px'],
+							title: ['选择判定结果', 'font-size:18px;'],
+							shadeClose: true, //点击遮罩关闭
+							content: $('.Decision'),
+							btn: '确定',
+							yes: function(index, layero) {
+								layer.closeAll();
+								$.post('http://47.94.173.253:8008/MyTask/Set_CheckTask.ashx', {
+									"message": Decision,
+									"userGuid": userGuid,
+									"taskId": row.id
+								}, function(data) {
+									var dataMeet = JSON.parse(data);
+									console.log(dataMeet)
+									if (dataMeet.status == 200) {
+										layer.msg('验收成功！', {
+											time: 1000,
+										});
+										Atable();
+									} else {
+										layer.msg(dataMeet.msg, {
+											time: 1000,
+										});
+									}
+								});
+							}
+						});
+					}
+				}
+
+				//下一页
+				$("#pageBtn").on("click", function() {
+					nextPage();
+				})
+
+				function nextPage() {
+					$.post('http://47.94.173.253:8008/Meeting/task/Get_MeetingTask.ashx', {
+						"meetingNoticeId": noticeId,
+						"companyId": companyId,
+						"page": page + 1
+					}, function(data) {
+						var data = JSON.parse(data);
+						console.log(data)
+						if (data.items.length > 0) {
+							page = data.page;
+							console.log(page)
+						}
+						if (data.items == '') {
+							$('#pageBtn').html('没有更多数据');
+						} else {
+							$("#table").bootstrapTable({
+								columns: [{
+									formatter: table,
+								}]
+							})
+							$("#table").bootstrapTable("append", data.items);
+						}
+					})
+				};
+
+
+
+
+			}) //结束
+		</script>
+	</body>
+</html>

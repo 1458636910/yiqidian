@@ -1,0 +1,207 @@
+<link rel="stylesheet" type="text/css" href="css/applyForm.css"/>
+<div class="sqDiv">
+    <ul>
+        <li>
+            <span>姓名：</span>
+            <span class="name"> </span>
+        </li>
+        <li>
+            <span>工号：</span>
+            <span class="code"> </span>
+        </li>
+        <li>
+            <span>部门：</span>
+            <span class="depart">   </span>
+        </li>
+        <li>
+            <span>职位：</span>
+            <span class="job">  </span>
+        </li>
+    </ul>
+    <form action="">
+        <label for="">
+            <span>时段1开始时间：</span>
+            <span>
+                <input type="text" class="timeStart form-control" placeholder="请选择开始时间"/>
+            </span>
+        </label>
+        <label for="">
+            <span>时段1结束时间：</span>
+            <span>
+                <input type="text" class="timeEnd form-control" placeholder="请选择结束时间"/>
+            </span>
+        </label>
+        <label for="">
+            <span>时段2开始时间：</span>
+            <span>
+                <input type="text" class="timeStart2 form-control" placeholder="请选择开始时间"/>
+            </span>
+        </label>
+        <label for="">
+            <span>时段2结束时间：</span>
+            <span>
+                <input type="text" class="timeEnd2 form-control" placeholder="请选择结束时间"/>
+            </span>
+        </label>
+        <label for="">
+            <span class="piece">调休时长：</span>
+            <span >
+                <input type="text" class="timeLong form-control" disabled placeholder="选择结束时间后自动计算"/>
+            </span>
+            <span class="unit2">天</span>
+        </label>
+        <label for="">
+            <span>审核人：</span>
+            <span class="checkName">    </span>
+        </label>
+        <label>
+            <span class="submit2">提交</span>
+        </label>
+    </form>
+</div>
+<p class="btnArea">
+    <span class="goback">
+        <img src="img/goback.png" alt=""/>
+        返回
+    </span>
+</p>
+<div id="location">
+</div>
+<script >
+    $(document).ready(function() {
+    var applyPage = 0;
+    var type = 2;
+    // 申请
+    laydate.render({
+        elem: '.timeStart',
+        type: 'datetime',
+        trigger: 'click'
+    });
+    laydate.render({
+        elem: '.timeEnd',
+        type: 'datetime',
+        trigger: 'click', //解决闪退bug
+        done: function(value, date, endDate) {
+            var date1 = new Date($(".timeStart").val());
+            var date2 = new Date(value);
+            var s1 = date1.getTime();
+            var s2 = date2.getTime();
+            var total = (s2 - s1) / 1000;
+            var day = parseInt(total / (24 * 60 * 60)); //计算整数天数
+            var afterDay = (total - day * 24 * 60 * 60) / 60 / 60; //取得算出天数后剩余的小时
+            if (afterDay < 5 && afterDay > 0) {
+                var days = day + 0.5;
+                $(".timeLong").val(days); //选择完毕自动显示天数
+            } else if (afterDay == 0) {
+                $(".timeLong").val(day);
+            } else {
+                var days = day + 1;
+                $(".timeLong").val(days);
+            }
+        }
+    });
+    laydate.render({
+        elem: '.timeStart2',
+        type: 'datetime',
+        trigger: 'click'
+    });
+    laydate.render({
+        elem: '.timeEnd2',
+        type: 'datetime',
+        trigger: 'click', //解决闪退bug
+    });
+    setTimeout(function() {
+        $.post(http_head + "getUserDetailByuserGuid.ashx", {
+            "userGuid": userGuid
+        }, function(data) {
+            var data = JSON.parse(data);
+            $(".name").text(data.items.realName);
+            $(".code").text(data.items.jovNumber);
+            $(".depart").text(data.items.depart);
+            $(".job").text(data.items.post);
+        })
+    }, 350);
+    $(".goback").hover(function() {
+        $(this).children("img").attr("src", "img/goback-b.png")
+    }, function() {
+        $(this).children("img").attr("src", "img/goback.png")
+    });
+    $(".goback").on("click", function() {
+        $("#dataTable").replaceWith('<div id="dataTable"></div>');
+        $("#dataTable").load("txsq.html");
+    });
+    $(".area").focus(function() {
+        layer.open({
+            type: 1,
+            area: ['700px', '600px'],
+            title: ['选择地点', 'font-size:18px;text-align: center;'],
+            content: $("#location"),
+            btn: '确定',
+            yes: function(index, layero) {
+                layer.close(index)
+            }
+        })
+    });
+    var map = new BMap.Map("location");
+    var point;
+    map.centerAndZoom("郑州", 15);
+    var geocoder = new BMap.Geocoder();
+    //单击获取点击的经纬度
+    map.addEventListener("click", function(e) {
+        pt = e.point;
+        point = e.point.lat + "," + e.point.lng
+        geocoder.getLocation(pt, function(rs) {
+            var addComp = rs.addressComponents;
+            var address = addComp.province + addComp.city + addComp.district + addComp.street + addComp.streetNumber;
+            $(".area").val(address);
+        });
+        layer.closeAll()
+    });
+    $(".submit2").on("click", function() {
+        $.post(http_head + "Offs/Add_Off.ashx", {
+            "userGuid": userGuid,
+            "companyId": companyId,
+            "planStartTime": $(".timeStart").val(),
+            "planEndTime": $(".timeEnd").val(),
+            "offStartTime": $(".timeStart").val(),
+            "offEndTime": $(".timeEnd2").val(),
+            "offTimes": $(".timeLong").val(),
+            
+        }, function(data) {
+            var data = JSON.parse(data);
+            console.log(data)
+            if (data.status == 200) {
+            	var ii = layer.load(2, {
+				  shade: [0.2,'#000'] //0.1透明度的白色背景
+				});
+				var Text=setTimeout(function(){
+			      layer.close(ii);
+			      layer.msg('提交成功', {
+					time: 1000,
+				  });
+				  
+				   clearTimeout(Text)
+                  
+			    }, 1000);
+			    setTimeout(function(){
+			    	layer.closeAll();
+			    	 $("#dataTable").replaceWith('<div id="dataTable"></div>');
+				    $("#dataTable").load("txsq.html");
+			    },1500)
+               
+            }
+        })
+    });
+    setTimeout(function(){
+        $.post(http_head+"Com/Get_User_Leader.ashx",{
+            "userGuid": userGuid,
+            "companyId": companyId
+        },function(data){
+            var data = JSON.parse(data);
+            if(data.status==200){
+                $(".checkName").text(data.items)
+            }
+        })
+    },450)
+})
+</script>

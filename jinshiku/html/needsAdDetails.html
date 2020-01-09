@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta http-equiv="Cache-Control" CONTENT="no-cache">
+		<link rel="icon" href="../image/eqdLogo.png" type="image/x-icon" />
+		<title>需求详情</title>
+		<link rel="stylesheet" href="../css/reset.css">
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.12.1/bootstrap-table.min.css">
+		<link rel="stylesheet" href="../css/skin/default/layer.css">
+		<link rel="stylesheet" href="../css/newTitle.css">
+		<link rel="stylesheet" href="../css/needsAdDetails.css">
+	</head>
+	<body>
+		<div class="navTitle">
+			<ul class="clearfix">
+				<p class="pull-left">欢迎来到易企学！</p>
+				<li class="pull-left">
+					<a  target="_blank" class="hold">易企购</a>
+				</li>
+				<li class="pull-left">
+					<a href="http://www.jinshiku.com" target="_blank">易企学</a>
+				</li>
+				<li class="pull-left">
+					<a href="http://www.eqidd.com/yqy/index.html" target="_blank">易企阅</a>
+				</li>
+				<li class="pull-left">
+					<a  target="_blank" class="hold">易企聘</a>
+				</li>
+				<li class="pull-left">
+					<a  target="_blank" class="gock">创客空间</a>
+				</li>
+				<li class="pull-left">
+					<a href="http://www.eqidd.com/comSpace/eqd2.html" target="_blank">企业空间</a>
+				</li>
+				<li class="pull-left">
+					<a href="http://www.eqidd.com/tuiguang.html" target="_blank">推广页</a>
+				</li>
+				<span class="kf">
+					服务热线：400-1789-528
+				</span>
+				<div class="pull-right">
+					<li class="pull-left loginBtn">
+						<a id="loginBtn"> </a>
+					</li>
+					<li class="pull-left regBtn">
+						<a id="regBtn" target="_blank"> </a>
+					</li>
+					<li class="pull-left download">
+						<a href="http://www.eqidd.com/html/download.html" target="_blank">APP 下载</a>
+					</li>
+					<li class="pull-left introduce">
+						<a href="http://www.eqidd.com/" target="_blank">易企点介绍</a>
+					</li>
+					<p class="userOption">后台管理</p>
+				</div>
+			</ul>
+		</div>
+		<div class="topArea">
+			<div class="search contain clearfix">
+				<div class="searchLeft pull-left"><img src="../image/eqxLogo.jpg" alt=""></div>
+				<div class="searchCenter pull-left">
+					<div class="clearfix">
+						<select name="" id="selectType" class="pull-left">
+							<option value="3">找需求</option>
+							<option value="1">找讲师</option>
+							<option value="2">选课程</option>
+							<option value="4">品文章</option>
+							<option value="5">找活动</option>
+						</select>
+						<input type="text" class="pull-left" id="inputSearch">
+						<button class="pull-left" id="searchBtn"><span class="glyphicon glyphicon-search"></span>搜索</button>
+						<span class="pull-left and">或</span>
+						<button class="pull-left" id="demandBtn"><span class="glyphicon glyphicon-pencil"></span>发布需求</button>
+					</div>
+					
+				</div>
+				
+			</div>
+			<div class="ulList">
+				<ul class="mainFountion clearfix">
+					<li class="pull-left" id="front"><a href="../index.html">首页</a></li>
+					<li class="pull-left" id="teacherLi"><a href="teacherIndex.html">讲师</a><img class="hot" src="../image/hot0.png"
+						 alt=""></li>
+					<li class="pull-left" id="consultant"><a href="">咨询师</a></li>
+					<li class="pull-left" id="mechanism"><a href="organization.html">机构</a></li>
+					<li class="pull-left" id="courseLi"><a href="lookCourseList.html">课程</a></li>
+					<li class="pull-left" id="acvitityLi"><a href="lookActivity.html">活动</a></li>
+					<li class="pull-left" id="demandSquare"><a href="lookDemandList.html">需求广场</a><img class="hot" src="../image/hot0.png"
+						 alt=""></li>
+				</ul>
+			</div>
+		</div>
+		<div class="main">
+			<div class="showDiv clearfix">
+				
+				<div class="clearfix teacherShow">
+					<div class="teacherShowLeft pull-left">
+						<div class="demandInfoDiv">
+							<div class="titleDiv clearfix">
+								<p class="pull-left needTitle"></p>
+								<p class="pull-right isfinnished"></p>
+							</div>
+							<div class="basicDiv">
+								<p>需求基本情况</p>
+								<div class="clearfix">
+									<p class="pull-left"><span>培训领域 : </span><span class="needLabel"></span></p>
+									<p class="pull-left"><span>预算 : </span><span class="budgetedExpense"></span>元</p>
+								</div>
+								<div class="clearfix">
+									<p class="pull-left"><span>关键字 : </span><span class="keywords"></span></p>
+									<p class="pull-left"><span>培训时间 : </span><span class="demandTime"></span></p>
+								</div>
+								<div class="clearfix">
+									<p class="pull-left"><span>发布时间 : </span><span class="creatTime"></span></p>
+									<p class="pull-right"><span></span><span></span></p>
+								</div>
+							</div>
+							<div class="detailsDiv">
+								<p>需求详情</p>
+								<div id="otherDemand"></div>
+							</div>
+							<div class="contentDiv">
+								<p>联系方式</p>
+								<button class="getNumberBtn"><span class="glyphicon glyphicon-eye-open"></span>查看需求方信息</button>
+							</div>
+						</div>
+						<div class="teacherRequireDiv">
+							<p>讲师要求</p>
+							<p><span>专业要求 : </span><span class="lecturerMagor"></span></p>
+							<p><span>学历要求 : </span><span class="lecturerEducation"></span></p>
+							<p><span>性别要求 : </span><span class="lecturerSex"></span></p>
+							<p><span>年龄要求 : </span><span class="lecturerAge"></span></p>
+							<p><span>属相要求 : </span><span class="lecturerShuXiang"></span></p>
+							<p><span>禁忌属相要求 : </span><span class="lecturerJinJIShuXiang"></span></p>
+							<p><span>常住地要求 : </span><span class="lecturerAddress"></span></p>
+							<p><span>职称要求 : </span><span class="lecturerZhiCheng"></span></p>
+							<p><span>外语要求 : </span><span class="lecturerLanguages"></span></p>
+							<p><span>工作背景要求 : </span><span class="lecturerWorkBackground"></span></p>
+							<p><span>职位要求 : </span><span class="lecturerPost"></span></p>
+						</div>
+					</div>
+					<!--  -->
+					<div class="infoDiv">
+						<p><span>姓名</span><span class="contactsName"></span></p>
+						<p><span>电话</span><span class="phone"></span></p>
+						<p><span>手机</span><span class="handset"></span></p>
+						<p><span>QQ</span><span class="qq"></span></p>
+					</div>
+					<div class="teacherShowRight pull-right">
+						<div class="lanuchDemandDiv">
+							<p>我是企业管理人，也要发需求</p>
+							<button id="sendDemand"><span class="glyphicon glyphicon-send"></span>立即发布需求</button>
+						</div>
+						<!-- 匹配的讲师 -->
+						<div class="mateLecturerDiv">
+							<div class="matelecturertitle">
+								<p>匹配的讲师</p>
+							</div>
+							<div id="matelecturerDiv">
+								<ul id="mateLecturer"></ul>
+							</div>
+						</div>
+						<!-- 匹配的课程 -->
+						<div class="mateCourseDiv">
+							<div class="mateCoursetitle">
+								<p>匹配的课程</p>
+							</div>
+							<div id="matecourseDiv">
+								<ul id="mateCourse"></ul>
+							</div>
+						</div>
+						<!-- 本类其他需求 -->
+						<div class="otherDemandDiv">
+							<div class="otherDemandtitle">
+								<p>本类其他需求</p>
+							</div>
+							<div id="otherdemandArea">
+								<ul id="otherdemand"></ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="foot"></div>
+		<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+		<script type="text/javascript" src="http://cdn.bootcss.com/layer/3.1.0/layer.js"></script>
+		<script type="text/javascript" src="http://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="http://cdn.bootcss.com/bootstrap-table/1.11.1/bootstrap-table.js"></script>
+		<script type="text/javascript" src="../js/bootstrap-table-zh-CN.min.js"></script>
+		<script type="text/javascript" src="../js/change.js?ver=20191016"></script>
+		<script type="text/javascript" src="../js/needsAdDetails.js"></script>
+	</body>
+</html>

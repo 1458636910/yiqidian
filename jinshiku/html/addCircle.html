@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="utf-8">
+  <link rel="icon" href="../image/jinLogo.png" type="image/x-icon"/>
+  <title>添加课程</title>
+  <link rel="stylesheet" href="../css/reset.css">
+  <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.css">
+  <link rel="stylesheet" href="../css/skin/default/layer.css">
+  <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap-table/1.11.1/bootstrap-table.min.css">
+  <link rel="stylesheet" href="../css/addCircle.css?ver=20181016">
+</head>
+<body>
+<div class="cover"></div>
+<div class="main">
+      <div class="mainCenter col-lg-12 col-md-12 col-sm-12 col-xs-12">
+      <p class="title">添加文章</p>
+        <form action="" id="addCourseForm" class="form-inline">
+          <label for=""><span>*</span><span>课程标题</span><span><input type="text" class="courseTheme form-control"></span></label>
+          <label for=""><span>*</span><span>课程类型</span><span><input type="text" class="courseChoose form-control"></span></label>
+          <label for="" class="courseMain"><p>课程内容</p></label>
+          <div id="editor"></div>
+        </form>
+        <div class="videoLabelTable clearfix">
+            <input type="text" class="form-control" id="labelInfo">
+            <div class="videoLabelLeft pull-left"></div>
+            <div class="videoLabelRight pull-left"></div>
+      </div>
+      <div class="departmentTable">
+         <div class="col-lg-12">
+                                       <table id="departmentTable" >
+                                           <thead>
+                                               <tr>
+                                                  <th data-checkbox="true">请选择</th>
+                                                  <th data-field="departName">部门名称</th>
+                                              </tr>
+                                        </thead>
+                                      </table>
+                                      <br>
+                        </div>
+      </div>
+        <p class="submitArea"><button type="submit" class="submitBtn">提交</button></p>
+      </div>
+</div>
+  <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+  <script type="text/javascript" src="http://cdn.bootcss.com/layer/3.1.0/layer.js"></script>
+  <script type="text/javascript" src="http://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="http://cdn.bootcss.com/bootstrap-table/1.11.1/bootstrap-table.js"></script>
+  <script type="text/javascript" src="../js/bootstrap-table-zh-CN.min.js"></script>
+  <script type="text/javascript" src="../js/wangEditor.js"></script>
+  <script type="text/javascript" src="../js/ajaxfileupload.js"></script>
+  <script type="text/javascript" src="../js/change.js?ver=20181016"></script>
+  <script type="text/javascript" src="../js/addCircle.js?ver=20181016"></script>
+</body>
+</html>

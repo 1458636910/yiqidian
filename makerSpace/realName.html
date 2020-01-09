@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="css/skin/default/layer.css"/>
+		<style>
+			body{
+				margin: 0;
+				padding: 0;
+				background: #f7f9f9;
+				margin: auto;
+			}
+			.regcomTitle {
+				height: 80px;
+				width: 100%;
+				line-height: 60px;
+				background-color: #fff;
+				text-align: center;
+				font-size: 25px;
+				display: flex;
+			}
+			.regcomTitle img {
+				height: 40px;
+				width: 40px;
+				margin-right: 10px
+			}
+			.comName {
+				display: flex;
+				line-height: 40px;
+				padding-top: 20px;
+				padding-left: 65px;
+				font-size: 30px;
+				color:#353535;
+			}
+			.uname {
+			    line-height: 40px;
+			    padding-top: 20px;
+			    padding-right: 65px;
+			    width: 200px;
+			    font-size: 18px;
+				text-align: left;
+			}
+			.regcomTitle p:nth-child(2) {
+				margin: 0 auto;
+				width: 430px;
+				line-height: 80px;
+				text-align: center;
+				font-size: 32px;
+				font-weight: 400;
+			}
+			.centerFrom {
+				color: #343434;
+				font-size: 14px;
+				margin: auto;
+				margin-top:2.5%;
+				width: 1200px;
+				height: 700px;
+				background: #fff;
+			}
+			.inputFirst li{
+				list-style: none;
+			}
+			.centerFrom input{
+				width: 400px;
+				height: 25px;
+				margin-top: 30px;
+				margin-left: 50px;
+			}
+			.centerFrom select{
+				margin-top: 30px;
+			}
+			.centerFrom input[type='text'],.centerFrom input[type='email'] .centerFrom select option{
+				border: 1px solid #fff;
+				border-bottom: 1px solid #e5e9eb;
+				outline-color: #fff;
+			}
+			.basic select{
+				width: 120px;
+				height: 30px;
+				margin-left: 50px;
+				padding: 5px 8px;
+				color: #555;
+				border-radius: 5px;
+				outline-color: #fff;
+				font-weight: 550;
+				
+			}
+			.userIdentity input{
+				opacity: 0;
+				position: absolute;
+				width: 170px;
+				height: 100px;
+				cursor: pointer;
+			}
+			.userIdentity img{
+				width: 170px;
+				height: 100px;
+
+			}
+			.userImg{
+				margin-left: 8%;
+				display: flex;
+				flex-wrap:wrap;
+				width: 50%;
+			}
+			.userImg .userIdentity{
+				margin-left: 50px;
+				margin-top: 30px;
+				
+			} 
+			.centerFrom input[type='submit']{
+				width: 110px;
+				height: 35px;
+				background: #1fabe9;
+				border: none;
+				color: white;
+				cursor: pointer;
+				margin-right: 130px;
+				margin-left: 12%;
+			}
+			.address1 #prov{
+				margin-left: 48px;
+			}
+			#city{
+				width: 90px;
+			}
+			#country{
+				width: 110px;
+			}
+			.address1 select{
+				width: 100px;
+				height: 30px;
+				margin-left: 10px;
+				padding: 5px 8px;
+				color: #555;
+				border-radius: 5px;
+				outline-color: #fff;
+				font-weight: 550;
+			}
+			.nameone input{
+				width: 100px;
+			}
+			.nameone input:nth-child(1){
+				margin-right: 80px;
+			}
+			.nameone input:nth-child(2){
+				width: 200px;
+			}
+			.nameone span{
+				letter-spacing:32px;
+			}
+			.basic{
+				display: flex;
+				justify-content: flex-start;
+			}
+			.basicTwo span{
+				margin-left: 70px;
+				letter-spacing:26px;
+				
+			}
+			.basicTwo select{
+				width: 80px;
+			}
+			select option{
+				border: none;
+			}
+			.address1{
+				display: flex;
+				justify-content: flex-start;
+			}
+			.province span{
+				letter-spacing:34px;
+				text-indent:7px
+			}
+			.userImg input{
+				margin: 0;
+			}
+			.register{
+			}
+			.register input{
+				margin-left: 36px;
+			}
+		</style>
+		
+		<script src="https://cdn.bootcss.com/jquery/2.2.3/jquery.min.js"></script>
+		<script src="js/layer.js" type="text/javascript" charset="utf-8"></script>
+		<script src="./localResizeIMG/dist/lrz.bundle.js"></script>
+	</head>
+	<body>
+		<div class="regcomTitle">
+            <div class="comName">
+                <img src="img/downQRcode.png" alt=""/>
+                易企点平台
+            </div>
+            <p>实名认证</p>
+			<div class=" uname"></div>
+        </div>
+		<div  class="centerFrom">
+			<ul class="inputFirst">
+				<li class="nameone">
+					真实姓名<input type="text" placeholder="请输入您的姓名" name="name" class=""/>
+					身份证号<input type="text" placeholder="请输入您的身份证号" name="idnum" /><br />
+				</li>
+				<li>
+					<div class="basic">
+						<div class="basicOne">
+							户口类型<select id="residence" name="">
+								<option value="">户口类型</option>
+							</select>
+						</div>
+						<div class="basicTwo">
+							<span>民</span>族<select id="Nation1" name="" >
+								<option value="">民族</option>
+							</select>
+						</div>
+						
+					</div>
+				</li>
+				<li>
+					<div class="address1">
+						
+						<div class="province">所在地址
+							<select id="prov" name="">
+								<option value="">省份</option>
+							</select>
+						</div>
+						<div class="town">
+							<select id="city" name="">
+								<option value="">地级市</option>
+							</select>
+						</div>
+						<div>
+							<select id="country" name="">
+								<option value="">市·县级市</option>
+							</select>
+						</div>
+						
+					</div>
+				</li>
+				<li class="register">
+					<span>户籍所在地</span><input type="text" placeholder="请输入您的户籍所在地" name="houseadress"/><br />
+				</li>
+			</ul>
+			<div class="userImg">
+				<div class="userIdentity1 userIdentity">
+					<input type="file" id="userFront1" name="idumfrontphoto"  accept="image/*" title="请上传身份证正面图片" />
+					<img src="img/shen fen zheng zheng mian.png" alt="" class="userFrontImg1"/><br />
+					身份证正面
+				</div>
+				<div class="userIdentity2 userIdentity">
+					<input type="file" id="userFront2" name="idumbackphoto" title="请上传身份证反面图片"/>
+					<img src="img/shen fen zheng fan mian.png" alt="" class="userFrontImg2"/> <br />
+					身份证反面
+				</div>
+				<div class="userIdentity3 userIdentity">
+					<input type="file" id="userFront3" name="withidumphoto" title="请上传手持身份证图片" />
+					<img src="img/shou  chi shen fen zheng.png" alt="" class="userFrontImg3"/><br />
+					手持身份证
+				</div>
+			</div>
+			<input type="submit" value="确认并提交"/>
+		</div>
+		<script src="js/city.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			$(document).ready(function(){
+				$('input[type="submit"]').eq(0).on('click',function(){
+					var formd=new FormData()
+					var userHousetype = $("#residence option:eq(" + (parseInt($("#residence").val())+1) + ")").text();
+				   	var userNation=$("#Nation1 option:eq(" + (parseInt($("#Nation1").val())+1) + ")").text()
+					var userPnative=provice[current.prov].name + '' + provice[current.prov]["city"][current.city].name + '' + provice[current.prov]["city"][current.city].districtAndCounty[current.country]+'-'+'0371'
+					var science=$('input').eq(0).val()
+					var Idnumber=$('input').eq(1).val()
+					var userHouseadress=$('input').eq(2).val()
+					var userFrontValue1=file1
+					var userFrontValue2=file2
+					var userFrontValue3=file3
+					var userGuid=window.location.href.split('?')[1].split('=')[1]
+					console.log(userGuid)
+					formd.append('name',science)
+					formd.append('idnum',Idnumber)
+					formd.append('nation',userNation)
+					formd.append('housetype',userHousetype)
+					formd.append('houseadress',userHouseadress)
+					formd.append('pnative',userPnative)
+					formd.append('idumfrontphoto',userFrontValue1)
+					formd.append('idumbackphoto',userFrontValue2)
+					formd.append('withidumphoto',userFrontValue3)
+					formd.append('userGuid',userGuid)
+					var _http='http://47.94.173.253:8008/'
+					$.ajax({
+						type:"post",
+						url:_http+"Com_InsertStaffInfo.aspx",
+						data:formd,
+						contentType: false, //必须
+       					processData: false, //  // jQuery不要去设置Content-Type请求头
+						success:function(data){
+							console.log(JSON.parse(data))
+							var data=JSON.parse(data)
+							if(data.status=='200'){
+								var ii = layer.load(2, {
+								  shade: [0.2,'#000'] //0.1透明度的白色背景
+								});
+								var Text1=setTimeout(function(){
+							      layer.close(ii);
+							      layer.alert('实名认证成功',function(){
+							      	window.close()
+							      });
+								  clearTimeout(Text1)
+							    }, 1000);
+							}
+						}
+					});
+				})
+				$('.centerFrom input').eq(0).focus()
+				$('.userImg input').change(function(){
+					console.log(this.files[0].size)
+					for (var  i = 0; i < this.files.length; i++) {   //遍历files 然后判断上传的每个文件大小，如果不符合要求则返回
+       				 var  size = Math.floor(this.files[i].size / 1024);
+       				 if (size > 5 * 1024 * 1024) {
+       				 	layer.msg('图片大小不可大于5M')
+       				 }else{
+       				 	layer.msg('上传成功')
+       				 }
+       				}
+				})
+				var arrImg=[]
+				$('#userFront1').on('change',function(){
+					file1 = this.files[0];
+					var reader = new FileReader();
+				    reader.readAsDataURL(file1); 
+				    reader.onload = function(e){ 
+					 	$('.userFrontImg1').attr('src',reader.result)
+					 	lrz(file1).then(function(res){
+							console.log('压缩前' + (file1.size / 1024).toFixed(2) + "kb");
+	            			console.log('压缩后' + (res.fileLen / 1024).toFixed(2) + "kb");
+						}).catch(function () {
+				            layer.alert(压缩失败)
+				       });
+		       		}
+				})
+				$('#userFront2').change(function(){
+					file2 = this.files[0];
+					var reader = new FileReader();
+					 reader.readAsDataURL(file2); 
+					 reader.onload = function(){  
+					 	$('.userFrontImg2').attr('src',reader.result)
+					 	lrz(file2).then(function(res){
+							console.log('压缩前' + (file2.size / 1024).toFixed(2) + "kb");
+	            			console.log('压缩后' + (res.fileLen / 1024).toFixed(2) + "kb");
+						}).catch(function () {
+				            layer.alert(压缩失败)
+				       });
+	               }
+				})
+				$('#userFront3').change(function(){
+					 file3 = this.files[0]; 
+					var reader = new FileReader();
+					 reader.readAsDataURL(file3); 
+					 reader.onload = function(){  
+					 	$('.userFrontImg3').attr('src',reader.result)
+					 	lrz(file3).then(function(res){
+							console.log('压缩前' + (file3.size / 1024).toFixed(2) + "kb");
+	            			console.log('压缩后' + (res.fileLen / 1024).toFixed(2) + "kb");
+						}).catch(function () {
+				            layer.alert(压缩失败)
+				       });
+	               }
+				})
+				var prov = $('#prov');
+				var city = $('#city');
+				var country = $('#country');
+				var addrShow = $('#addr-show');
+				var current = {
+				    prov: '',
+				    city: '',
+				    country: ''
+				};
+				
+	
+				/*自动加载省份列表*/
+				(function showProv() {
+				    var len = provice.length;
+				    for (var i = 0; i < len; i++) {
+				        var provOpt = document.createElement('option');
+				        provOpt.innerText = provice[i]['name'];
+				        provOpt.value = i;
+				        prov.append(provOpt);
+				    }
+				})();
+				$.get('http://47.94.173.253:8008/Option_AreasAnd.ashx?type=20',function(res){
+				    var len = res.length;
+				    for (var i = 0; i < len; i++) {
+				        var provOpt = document.createElement('option');
+				        provOpt.innerText = res[i]['name'];
+				        provOpt.value = i;
+				        $('#residence').append(provOpt);
+				    }
+				})
+				$.get('http://47.94.173.253:8008/Option_AreasAnd.ashx?type=14',function(res){
+				    var len = res.length;
+				    for (var i = 0; i < len; i++) {
+				        var provOpt = document.createElement('option');
+				        provOpt.innerText = res[i]['name'];
+				        provOpt.value = i;
+				        $('#Nation1').append(provOpt);
+				    }
+				})
+				 $('#residence').change(function(){
+				 	 var ID = $("#residence").val();
+				     var Text = $("#residence option:eq(" + (parseInt(ID)+1) + ")").text();
+				     console.log(Text)
+//				     $("#Input1").val(Text);
+				 })
+				$('#prov').change(function(obj){
+				    var val = this.options[this.selectedIndex].value;
+				    if (val != current.prov) {
+				        current.prov = val;
+				        addrShow.value = '';
+				    }
+				    //console.log(val);
+				    if (val != null) {
+				        city.length = 1;
+				        var cityLen = provice[val]["city"].length;
+				        for (var j = 0; j < cityLen; j++) {
+				            var cityOpt = document.createElement('option');
+				            cityOpt.innerText = provice[val]["city"][j].name;
+				            cityOpt.value = j;
+				            city.append(cityOpt);
+				        }
+				    }
+				})
+				$('#city').change(function(obj){
+					var val = this.options[this.selectedIndex].value;
+				    current.city = val;
+				    if (val != null) {
+				        country.length = 1; //清空之前的内容只留第一个默认选项
+				        var countryLen = provice[current.prov]["city"][val].districtAndCounty.length;
+				        if (countryLen == 0) {
+				            addrShow.value = provice[current.prov].name + '-' + provice[current.prov]["city"][current.city].name;
+				            return;
+				        }
+				        for (var n = 0; n < countryLen; n++) {
+				            var countryOpt = document.createElement('option');
+				            countryOpt.innerText = provice[current.prov]["city"][val].districtAndCounty[n];
+				            countryOpt.value = n;
+				            country.append(countryOpt);
+				        }
+				    }
+				})
+				$('#country').change(function(){
+					 current.country = this.options[this.selectedIndex].value;
+				})
+				
+			})
+		</script>
+	</body>
+</html>

@@ -1,0 +1,323 @@
+
+		<link rel="stylesheet" type="text/css" href="css/applyForm2.css" />
+	
+		<style type="text/css">
+			.content_list p{margin-right: 10px;}
+			
+			#lotdis{font-style: normal;margin-left: 10px;}
+			.lisg {
+				float: left;
+				width: 209px;
+				height: 38px;
+			}
+			.select {
+				width: 209px;
+				position: absolute;
+				cursor: pointer;
+				z-index: 99;
+				background-color: #fff;
+			}
+			
+			.select_default {
+				height: 36px;
+				line-height: 36px;
+				padding: 0 10px;
+				border: solid 1px #CCCCCC;
+				border-radius: 2px;
+			}
+			
+			.select_default:after {
+				content: "";
+				border-left: 5px solid transparent;
+				border-right: 5px solid transparent;
+				border-bottom: 5px solid #999;
+				transition: all .5s ease;
+				position: absolute;
+				right: 5px;
+				top: 14px;
+			}
+			
+			.select_default.rotate:after {
+				transform: rotate(180deg);
+			}
+			
+			.select_item {
+				margin: 0;
+				padding: 0;
+				display: none;
+				border: 1px solid #CCCCCC;
+			}
+			
+			.select_item li {
+				height: 36px;
+				padding: 10px 0 0 20px;
+				background-color: #FFFFFF;
+				color: #828482 !important;
+				margin-top: 4px;
+			}
+			
+			.select_item li.hover {
+				background: #f2f2f2;
+				color: #fff;
+			}
+			
+	#question {
+    position: absolute;
+    top: 98px;
+    left: 359px;
+    border: 1px solid #CCCCCC;
+    width: 209px;
+    z-index: 99;
+    background-color: #FFFFFF;
+    display: none;
+}
+
+.question_title {
+    width: 100%;
+    text-align: center;
+    line-height: 40px;
+    background-color: #EEEEEE;
+    font-size: 16px;
+}
+
+.question_p {
+	width: 90% !important;
+	margin-top: 15px !important;
+	padding-left: 5% !important;
+	margin-bottom: 15px !important;
+}
+
+#atisd{margin-left: 13px;}
+			
+		</style>
+	</head>
+	<body>
+
+		<div class="header">
+			<p class="header_p1">姓名：<i id="upname"></i></p>
+			<p>工号：<i id="jobNumber"></i></p>
+			<p>部门：<i id="department"></i></p>
+			<p>职位：<i id="post"></i></p>
+
+		</div>
+
+
+		<div class="box">
+			<div class="content">
+				<form class="layui-form" action="">	
+				<div class="content_list">
+					<p>所在班别：<i id="lotdis"></i></p>
+					</div>
+					<div class="content_list">
+						<p>要调班别：</p>
+						  <div class="lisg">
+								<div class="select">
+									<div class="select_default"></div>
+									<ul class="select_item">				
+									</ul>
+								</div>
+								</div>
+								<div id="question">
+									<div class="question_title"></div>
+									<p class="question_p"></p>
+								</div>
+						
+					</div>
+
+					<div class="content_list">
+						<p>调班原因：</p>
+						<div class="layui-input-block dist">
+							<textarea class="layui-textarea" lay-verify="required" id="leaveReason"></textarea>
+						</div>
+					</div>
+                    <div class="content_list">
+					<p><span class="atisd">审核人：</span><i id="verify"></i></p>
+                       </div>
+					<div class="content_list">
+						<div class="layui-form-item">
+							<div class="layui-input-block" style="margin: 0;"> 
+								<div class="layui-btn btns" id="referd" lay-submit="" lay-filter="demo">立即提交</div>
+							</div>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+         <p class="btnArea">
+			<span class="goback">
+				<img src="img/goback.png" alt=""/>
+				返回
+			</span>
+		</p>
+
+		<script type="text/javascript">
+			$(document).ready(function() {
+				//Demo
+				layui.use('form', function() {
+					var form = layui.form;					
+				});
+				
+				//分割当前网页链接
+				var windowUrl = window.location.href; //获取当前url链接		
+				//http://127.0.0.1:8848/shenqing/index.html?userGuid=4f47e8c7e40541d4a2f03c3c72304252&companyId=46
+				var arr = windowUrl.split("?", 2); //分割url		
+				var arr_1 = arr[1]; //瞎起变量		
+				var arr_2 = arr_1.split('&', 2);
+				var arr_3 = (arr_2[0].split('=', 2))[1];
+				var arr_4 = (arr_2[1].split('=', 2))[1];
+				var changeShiftId = '';
+				//console.log(arr_4)
+			
+				//获取个人信息
+				$.ajax({
+					url: 'http://47.94.173.253:8008/getUserDetailByuserGuid.ashx', //你请求的接口
+					type: 'POST', //类型
+					data: {
+						'userGuid': arr_3,
+					}, //数据有则传，没有可以不写
+					success: function(data) {
+						data = JSON.parse(data)
+						//请求成功后的返回
+						//console.log(data)
+						$('#upname').text(data.items.realName);
+						$('#jobNumber').text(data.items.jovNumber);
+						$('#department').text(data.items.depart);
+						$('#post').text(data.items.post);
+						layui.use('form', function() {
+							var form = layui.form;
+							form.render();
+						})
+					}
+				})
+			
+			
+			
+				//获取所在班别
+				$.ajax({
+					url: 'http://47.94.173.253:8008/SetUp/Get_User_Shift.ashx', //你请求的接口
+					type: 'POST', //类型
+					data: {
+						'userGuid': arr_3,
+						'companyId': arr_4,
+					}, //数据有则传，没有可以不写		
+					success: function(data) {
+						var data = JSON.parse(data);
+						//console.log(data)
+						$("#lotdis").text(data.items.ruleName)
+						layui.use('form', function() {
+							var form = layui.form;
+							form.render();
+						})
+					}
+				})
+			
+			
+			
+			
+			
+				//获取要调班别类型
+				$.ajax({
+					url: 'http://47.94.173.253:8008/SetUp/Get_RuleShift.ashx', //你请求的接口
+					type: 'POST', //类型
+					data: {
+						'companyId': arr_4,
+					}, //数据有则传，没有可以不写		
+					success: function(data) {
+						//请求成功后的返回
+						data = JSON.parse(data);
+						datas = data.items;
+						for (let i = 0; i < datas.length; i++) {
+							var html = "<li data-id='" + datas[i].Id + "'>" + datas[i].ruleName + "</li>"
+							$(".select_item").append(html);
+						}
+						var $sel = $(".select"),
+							$sel_default = $(".select_default"),
+							$sel_item = $(".select_item"),
+							$sel_item_li = $(".select_item li"),
+							$sel_question = $('#question')
+						$sel_default.text($(".select_item li:first").text());
+			
+						$sel.hover(function() {
+							$sel_item.show();
+							$sel_default.addClass("rotate");
+							$sel_item_li.hover(function() {
+								$index = $sel_item_li.index(this);
+								$sel_item_li.eq($index).addClass("hover");
+								$('.question_title').text(datas[$index].ruleDescribe);
+								$('.question_p').text(datas[$index].weeks)
+								$('#question').show();
+								$sel_question.show();
+							}, function() {
+								$sel_item_li.removeClass("hover");
+							})
+						}, function() {
+							$sel_item.hide();
+							$sel_default.removeClass("rotate");
+							$sel_question.hide();
+						});
+			
+						$sel_item_li.click(function() {
+							changeShiftId = $(this).attr("data-id")
+							console.log(changeShiftId)
+							$sel_default.text($(this).text());
+							$sel_item.hide();
+						});
+					}
+				})
+			
+			
+			
+				//获取审批人数据
+				$.ajax({
+					url: 'http://47.94.173.253:8008/Com/Get_User_Leader.ashx', //你请求的接口
+					type: 'POST', //类型
+					data: {
+						'userGuid': arr_3,
+						'companyId': arr_4,
+					}, //数据有则传，没有可以不写		
+					success: function(data) {
+						var data = JSON.parse(data);
+						//console.log(data)
+						$("#verify").text(data.items)
+						layui.use('form', function() {
+							var form = layui.form;
+							form.render();
+						})
+					}
+				})
+			
+			
+			
+				$('#referd').click(function() {
+					$.post('http://47.94.173.253:8008/ChangeShifts/Add_ChangeShift1.ashx', {
+							'userGuid': arr_3,
+							'companyId': arr_4,
+							'changeShiftId': changeShiftId,
+							'changeShiftReason': $('#leaveReason').val(),
+						},
+						function(data) {
+							data = JSON.parse(data)
+							console.log(data)
+							if (data.status == 200) {					
+								$("#dataTable").replaceWith('<div id="dataTable"></div>');
+								$("#dataTable").load("tbsq.html");
+							} 
+						}
+					)
+				});
+				
+				// 返回
+				$(".goback").hover(function() {
+				    $(this).children("img").attr("src", "img/goback-b.png")
+				}, function() {
+				    $(this).children("img").attr("src", "img/goback.png")
+				});
+				$(".goback").on("click", function() {
+				    $("#dataTable").replaceWith('<div id="dataTable"></div>');
+				    $("#dataTable").load("tbsq.html");
+				});
+			
+			});
+			
+		</script>
+	

@@ -1,0 +1,229 @@
+<!-- <link rel="stylesheet" type="text/css" href="css/main.css?v=20190832"/> -->
+<style type="text/css">
+	#dataTable {
+	    background-color: rgb(238,238,238);
+		padding: 0;
+	}
+	#dataTable tbody tr {
+		margin: 20px 0;
+		display: block;
+		background-color: white;
+	    border-radius: 10px;
+		cursor: pointer;
+		overflow: hidden;
+	}
+	
+	#dataTable tbody tr td {
+		border: none;
+		padding-bottom: 0;
+	}
+	
+	.nextpageBtn {
+		padding: 5px 20px;
+	    background-color: #29e;
+	    color: white;
+	    border-radius: 20px;
+	    cursor: pointer;
+	    margin-right: 30px;
+	}
+	
+	#dataTable thead {
+		display: none!important;
+	}
+	
+	#dataTable tbody {
+		display: block;
+	}
+	
+	#dataTable tbody tr,
+	#dataTable tbody tr td {
+		display: block;
+	}
+	#dataTable tbody tr:first-child{
+	    margin-top: 0;
+	    border-radius: 0 0 10px 10px;
+	}
+	#dataTable tbody tr:last-child{
+		border-radius: 10px 10px 0 0;
+	    margin-bottom: 0;
+	}
+	.mainItem{
+		margin: 5px;
+	}
+	
+	.mh{
+		display: flex;
+	}
+	.mh img{
+		width: 30px;
+	    border-radius: 50%;
+	    height:30px;
+	}
+	.mh p{
+		display: flex;
+	    flex-wrap: wrap;
+	    margin-left: 10px;
+	}
+	.mh p span{
+		width: 100%;
+	    text-align: left;
+	}
+	.mnr{
+		display: flex;
+	    flex-wrap: wrap;
+		padding-left: 55px;
+	}
+	.mnr img{
+		width: 20%;
+		height: 20%;
+	    margin-top: 10px;
+	    border-radius: 10px;
+	}
+	.mnr p{
+		width: 100%;
+	    text-align: left;
+	}
+	
+	.mnr p span:first-child{
+		color: #f7ae16;
+	    padding: 0 5px;
+	}
+	.mfoot{
+	    display: flex;
+	    align-items: center;
+	}
+	.mfoot p{
+		display: flex;
+		padding-left: 55px;
+	}
+	.mfoot p span{
+		line-height: 30px;
+	    height: 30px;
+	    display: block;
+	    margin-right: 20px;
+		font-size: 12px;
+		color: silver;
+	}
+	.typeArea{
+		background-color: white;
+	    padding-bottom: 10px;
+	}
+</style>
+<p class="titleData">好友动态</p>
+<table id="mainTable"></table>
+<p class="clearfix typeArea">
+    <span class="nextpageBtn pull-right">下一页</span>
+</p>
+<script  type="text/javascript" >
+    $(document).ready(function() {
+    var mainPage = 0;
+    function loadTable(data) {
+        $("#mainTable").bootstrapTable({
+			onPostBody: function(name, args) {
+				$("img.lazy-lecturer").lazyload({
+				    effect: "fadeIn",
+				    threshold: 80
+				});
+				$("img.lazyImg").lazyload({
+				    effect: "fadeIn",
+				    threshold: 80
+					
+				});
+			},
+            columns: [{
+                align: 'center',
+                valign: 'middle',
+                formatter: dataFun,
+                events: viewDetails
+            }],
+            data: data
+        });
+
+        function dataFun(e, value, row, index) {
+			var time = value.createTime.split("T")[0]+" "+value.createTime.split("T")[1].substr(0,5);
+			
+			if(value.image.indexOf("image")>0 || value.image.indexOf("https")>=0){
+				return '<div class="mainItem"> <div class="mtop"> <div class="mh"><img class="lazy-lecturer" data-original="'+value.iphoto+'"/><p> <span>'+value.upname+'</span> <span style="color: #ccc;font-size: 12px;">'+time+'</span>   </p>   </div>  <div class="mnr"><p>更新了 <span>'+value.type+'</span> <span>'+value.contents+'</span></p> <img class="img-fluid lazyImg" data-original="'+value.image+'" />   </div>    </div>  <div class="mfoot"><p> <span>浏览量：<label>'+value.num_liulan+'</label></span> <span>点赞：<label>'+value.num_zan+'</label></span> <span>评论：<label>'+value.num_pinglun+'</label></span> </p> </div></div>'
+			}else{
+				return '<div class="mainItem"> <div class="mtop"> <div class="mh"><img class="lazy-lecturer" data-original="'+value.iphoto+'"/><p> <span>'+value.upname+'</span> <span style="color: #ccc;font-size: 12px;">'+time+'</span>   </p>   </div>  <div class="mnr"><p>更新了 <span>'+value.type+'</span> <span>'+value.contents+'</span></p>   </div>    </div>  <div class="mfoot"><p> <span>浏览量：<label>'+value.num_liulan+'</label></span> <span>点赞：<label>'+value.num_zan+'</label></span> <span>评论：<label>'+value.num_pinglun+'</label></span> </p> </div></div>'
+			}   
+        }
+    };
+	window.viewDetails = {
+		'click .mainItem':function(e,value,row,index){
+			
+			if(row.typeint == 3){
+				var code_index = row.url_video.indexOf("==");
+				var videoId = row.url_video.substr(code_index - 15, 17);
+				window.open("http://www.eqidd.com/player/index.html?id=" + videoId);
+			}else if(row.typeint == 1){
+				window.open("http://www.eqidd.com/changke/html/logDetail2.html?useruid="+row.userGuid+"&id="+row.Id);
+			}else if(row.typeint == 5){
+				window.open("http://www.eqidd.com/changke/html/activityDetails.html?id="+row.Id);
+			}else if(row.typeint == 2){
+			    localStorage.setItem("comck",0);
+				window.open("http://www.eqidd.com/changke/index_start.html?useruid="+row.userGuid);
+			}
+		}
+	}
+    loadDataFirst(0);
+    function loadDataFirst(page) {
+        $.post(http_head + 'Admin/HomeSpaceUser_QueryByGuid.ashx', {
+            "userGuid": userGuid,
+            "page": mainPage,
+        }, function(data) {
+            var data = JSON.parse(data);
+			console.log(data)
+            if(data.items.length>0){
+                layer.msg("加载完成",{
+                    time:1200
+                })
+                loadTable(data.items);
+                $("#mainTable").bootstrapTable("load",data.items);
+            }else{
+                layer.msg("暂无数据",{
+                    time:3000
+                })
+            }
+            
+            mainPage = data.page;
+            if(data.items.length>=10){
+                $(".nextpageBtn").fadeIn()
+            }else{
+                $(".nextpageBtn").hide()
+            }
+        })
+    };
+
+    function loadDataNext(page) {
+        $.post(http_head + 'Admin/HomeSpaceUser_QueryByGuid.ashx', {
+            "userGuid": userGuid,
+            "page": mainPage,
+        }, function(data) {
+            var data = JSON.parse(data);
+            console.log("下一页",data)
+            if(data.items.length>0){
+                layer.msg("加载完成",{
+                    time:1200
+                })
+                loadTable(data.items);
+                $("#mainTable").bootstrapTable("append",data.items);
+            }else{
+                layer.msg("已无更多",{
+                    time:1200
+                })
+            }
+            mainPage = data.page;
+            if(data.items.length>=10){
+                $(".nextpageBtn").fadeIn()
+            }else{
+                $(".nextpageBtn").hide()
+            }
+        })
+    };
+    $(".nextpageBtn").on("click",function(){
+        loadDataNext(mainPage)
+    })
+})
+    
+</script>

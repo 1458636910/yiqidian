@@ -1,0 +1,415 @@
+
+		<link rel="stylesheet" type="text/css" href="css/applyForm2.css" />		
+		<style type="text/css">
+			.content_list span {
+				float: left;
+				margin: 10px 20px 0 20px;
+			}
+			.atisd{margin: 0!important;padding-left: 14px;}
+			
+		</style>
+
+             <div class="header">
+				 <p class="header_p1">姓名：<i id="upname"></i></p>
+				 <p>工号：<i id="jobNumber"></i></p>
+				 <p>部门：<i id="department"></i></p>
+				 <p>职位：<i id="post"></i></p>				 
+				 </div>
+
+
+		<div class="box">
+			<div class="content">
+				<form class="layui-form" action="">
+				
+				<div class="content_list">
+					<p class="dimission">培训对象：</p>
+					<div class="layui-input-inline times nosd">
+						<select name="quiz1" class="industry" lay-verify="required" id="trainees">								
+						</select>
+					</div>						
+				</div>
+				
+				<div class="content_list">
+				 <p class="dimission">培训类别：</p>
+				<div class="layui-input-inline times nosd" style="margin-right: 20px!important;">
+					  <select name="quiz3" id="xcxv" lay-filter="xcxv" lay-verify="required">
+					    <option value="">请输入</option>  	   
+					  </select>
+					</div>
+					
+					<div class="layui-input-inline times nosd">
+						  <select name="quiz3" id="province" lay-filter="province" lay-filter="province">
+						    <option value=""></option>
+						  </select>
+						</div>
+				</div>
+				
+				<div class="content_list">
+					<p class="dimission">培训主题：</p>
+					<div class="layui-input-block dist add">
+						<input type="text" name="username" lay-verify="required" autocomplete="off" placeholder="请输入培训主题" class="layui-input" id="newsTheme">
+					</div>
+				</div>
+				
+				<div class="content_list">
+					<p class="dimission">推荐讲师：</p>
+					<div class="layui-input-block dist add">
+						<input type="text" name="username" lay-verify="required" autocomplete="off" placeholder="请输入讲师名字" class="layui-input" style="width: 209px;" id="recoDocentName">
+					</div>
+				</div>
+				
+				<div class="content_list">
+					<p class="dimission">预算费用：</p>
+					<div class="layui-row">
+						<input type="text" lay-verify="required" autocomplete="off" class="layui-input times" onkeyup="this.value=this.value.replace(/[^\d]/g,'')" maxlength='6' id="budgetedExpense" placeholder="请输入">					
+					<span>元</span>
+					</div>
+				</div>
+				
+				
+				
+				<div class="content_list">
+					<p class="dimission">开始时间：</p>
+					<div class="layui-row">
+						<input type="text" name="start" lay-verify="required" id="start" placeholder="请选择" autocomplete="off" readonly="readonly" class="layui-input times">
+					</div>					
+				</div>
+				
+				<div class="content_list">
+				<p class="dimission">结束时间：</p>
+				<div class="layui-row">
+					<input type="text" name="end" lay-verify="required" id="end" placeholder="请选择" autocomplete="off" readonly="readonly" class="layui-input times">
+				</div>
+				 </div>
+				
+				
+				<div class="content_list">
+					<p class="dimission">培训要求：</p>
+					<div class="layui-input-block dist">
+						<textarea class="layui-textarea" lay-verify="required" id="theDemand"></textarea>
+					</div>
+				</div>
+				
+				<div class="content_list">
+					<p class="dimission">申请理由：</p>
+					<div class="layui-input-block dist">
+						<textarea class="layui-textarea" lay-verify="required" id="theReason"></textarea>
+					</div>
+				</div>				
+								
+                   <div class="content_list">
+					   <p><span class="atisd">审核人：</span><i id="verify"></i></p>
+					
+					</div>
+
+					<div class="content_list">
+						<div class="layui-form-item">
+							<div class="layui-input-block" style="margin: 0;">
+								<div class="layui-btn btns" id="referd" lay-submit="" lay-filter="demo1">立即提交</div>
+							</div>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+		<p class="btnArea">
+			<span class="goback">
+				<img src="img/goback.png" alt=""/>
+				返回
+			</span>
+		</p>
+		
+		
+		<script type="text/javascript">
+			
+			//分割当前网页链接
+			var windowUrl = window.location.href; //获取当前url链接		
+			//http://127.0.0.1:8848/shenqing/index.html?userGuid=4f47e8c7e40541d4a2f03c3c72304252&companyId=46
+			var arr = windowUrl.split("?", 2); //分割url		
+			var arr_1 = arr[1]; //瞎起变量		
+			var arr_2 = arr_1.split('&', 2);
+			var arr_3 = (arr_2[0].split('=', 2))[1];
+			var arr_4 = (arr_2[1].split('=', 2))[1];
+			//console.log(arr_4)
+			
+			function formateDay(time) {
+				var date = new Date(time);
+				var seperator1 = "-";
+				var seperator2 = ":";
+				var month = date.getMonth() + 1;
+				var strDate = date.getDate();
+				var Hours = date.getHours();
+				var Minutes = date.getMinutes();
+				var Seconds = date.getSeconds();
+				if (month >= 1 && month <= 9) {
+					month = "0" + month;
+				}
+				if (strDate >= 0 && strDate <= 9) {
+					strDate = "0" + strDate;
+				}
+				if (Hours >= 1 && Hours <= 9) {
+					Hours = "0" + Hours;
+				}
+				if (Minutes >= 0 && Minutes <= 9) {
+					Minutes = "0" + Minutes;
+				}
+				if (Seconds >= 0 && Seconds <= 9) {
+					Seconds = "0" + Seconds;
+				}
+				let formateTime = date.getFullYear() + seperator1 + month + seperator1 + strDate +
+					" " + Hours + seperator2 + Minutes +
+					seperator2 + Seconds;
+				return formateTime;
+			}
+			var xcxvArr =[];
+			
+			//Demo
+			layui.use('form', function() {
+				var form = layui.form;
+				//监听提交
+				form.on('submit(demo1)', function(data) {					
+				});
+			
+				// 监听培训
+				form.on('select(xcxv)', function(data) {
+					for (let i = 0; i < xcxvArr.length; i++) {
+						//获取子集
+						if (data.value == xcxvArr[i].name) {
+							// 将二级放入select 清除之前的数据
+							$("#province").html("")
+							let currentData = xcxvArr[i].sub;
+							for (let j = 0; j < currentData.length; j++) {
+								$("#province").append(new Option(currentData[j].name, currentData[j].name))
+							}
+							form.render();
+						}
+					}
+				});
+			
+			});
+			
+			// 获取培训类别数据
+					$.ajax({
+						url:'http://47.94.173.253:8008/Option_AreasAnd.ashx',//你请求的接口
+						type:'POST',//类型
+						data:{
+							type:'45',
+						},//数据有则传，没有可以不写
+						success:function(data){
+							xcxvArr = data
+							//请求成功后的返回
+							for(let i = 0; i < data.length; i++){
+								$("#xcxv").append(new Option(data[i].name,data[i].name))
+							}
+							layui.use('form', function() {
+								var form = layui.form;
+								form.render();
+							})
+						}
+				});
+			
+			
+			
+			layui.use(['form', 'layedit', 'laydate', "jquery"], function() {
+				var form = layui.form,
+					layer = layui.layer,
+					$ = layui.jquery,
+					laydate = layui.laydate;
+				var nowTime = new Date().valueOf();
+			
+				//开始日期
+				var time_on = new Date();
+				var time_end = new Date(new Date().getTime() + 24 * 60 * 60 * 1000);
+				auto(time_on, time_end)
+				var start = laydate.render({
+					elem: '#start',
+					type: 'datetime',
+					min: nowTime,
+					value: new Date(),
+					done: function(value, date) {
+						endMax = end.config.max;
+						time_on = value;
+						end.config.min = date;
+						end.config.min.month = date.month - 1;
+						auto(time_on, time_end)
+					},
+			
+				});
+			
+				//结束日期
+				var end = laydate.render({
+					elem: '#end',
+					type: 'datetime',
+					min: nowTime,
+					value: new Date(new Date().getTime() + 24 * 60 * 60 * 1000),
+					done: function(value, date) {
+						if ($.trim(value) == '') {
+							var curDate = new Date();
+							date = {
+								'date': curDate.getDate(),
+								'month': curDate.getMonth() + 1,
+								'year': curDate.getFullYear()
+							};
+						}
+						time_end = value;
+						start.config.max = date;
+						start.config.max.month = date.month - 1;
+						auto(time_on, time_end)
+					}
+				});
+			
+				function auto(time_on, time_end) {
+					// 转换日期格式
+					if (time_on.toString().indexOf("-") < 0) {
+						time_on = formateDay(time_on);
+					}
+					if (time_end.toString().indexOf("-") < 0) {
+						time_end = formateDay(time_end);
+					}
+					let date3 = time_on.replace(/-/g, '/');
+					let date4 = time_end.replace(/-/g, '/');
+					// 创建日期对象
+					var date1 = new Date(date3);
+					var date2 = new Date(date4);
+					//转换成秒
+					var s1 = date1.getTime(),
+						s2 = date2.getTime();
+					var total = (s2 - s1) / 1000;
+				}
+			});
+			
+			
+			var IsAdmin = [];
+			var departId = [];
+			//获取个人信息
+			$.ajax({
+				url: 'http://47.94.173.253:8008/getUserDetailByuserGuid.ashx', //你请求的接口
+				type: 'POST', //类型
+				data: {
+					'userGuid': arr_3,
+				}, //数据有则传，没有可以不写
+				success: function(data) {
+					data = JSON.parse(data)
+					//请求成功后的返回
+					IsAdmin = data.items.IsAdmin;
+					departId = data.items.departId;
+					//console.log(data)
+					$('#upname').text(data.items.realName);
+					$('#jobNumber').text(data.items.jovNumber);
+					$('#department').text(data.items.depart);
+					$('#post').text(data.items.post);
+			
+					if (IsAdmin <= 0) {
+						// 获取下拉框数据
+						$.ajax({
+							url: 'http://47.94.173.253:8008/Com_SelectPost.ashx', //你请求的接口
+							type: 'POST', //类型
+							data: {
+								'departId': departId,
+								'companyId': arr_4,
+							}, //数据有则传，没有可以不写
+							success: function(data) {
+								//请求成功后的返回
+								data = JSON.parse(data);
+								datas = data.items;
+								//console.log(data)
+								for (let i = 0; i < datas.length; i++) {
+									$(".industry").append(new Option(datas[i].name))
+								}
+								layui.use('form', function() {
+									var form = layui.form;
+									form.render();
+								})
+							}
+						})
+					} else {
+						// 获取下拉框数据
+						$.ajax({
+							url: 'http://47.94.173.253:8008/User_getcompost.ashx', //你请求的接口
+							type: 'POST', //类型
+							data: {
+								'userGuid': arr_3,
+								'comid': arr_4,
+							}, //数据有则传，没有可以不写
+							success: function(data) {
+								//请求成功后的返回
+								data = JSON.parse(data);
+								datas = data.items;
+								//console.log(data)
+								for (let i = 0; i < datas.length; i++) {
+									$(".industry").append(new Option(datas[i].name))
+								}
+								layui.use('form', function() {
+									var form = layui.form;
+									form.render();
+								})
+							}
+						})
+					}
+				}
+			})
+			
+			
+			
+			
+			
+			
+			
+			
+			//获取审批人数据
+			$.ajax({
+				url: 'http://47.94.173.253:8008/Com/Get_User_Leader.ashx', //你请求的接口
+				type: 'POST', //类型
+				data: {
+					'userGuid': arr_3,
+					'companyId': arr_4,
+				}, //数据有则传，没有可以不写		
+				success: function(data) {
+					var data = JSON.parse(data);
+					//console.log(data.items)
+					$("#verify").text(data.items)
+					layui.use('form', function() {
+						var form = layui.form;
+						form.render();
+					})
+				}
+			})              
+			
+			var recoDocentGuid = ' ';
+			
+			    $('#referd').click(function() {
+			    	$.post('http://47.94.173.253:8008/Training/Add_trainingApply.ashx', {
+			    			'applicantGuid': arr_3,//申请人guid
+			    			'trainees': $('#trainees').val(),//培训对象（受训人员，按岗位，可多选，前端自行拼接，怎么拼接怎么分割）
+			    			'theCategory': $('#province').val(),//培训类别
+			    			'theTheme': $('#newsTheme').val(),//培训主题
+			    			'recoDocentGuid': recoDocentGuid,//推荐讲师的guid（没有传空）
+			    			'recoDocentName': $('#recoDocentName').val(),//讲师的名字
+			    			'budgetedExpense': $('#budgetedExpense').val(),//预算费用
+			    			'thedateStart': $('input:text[name="start"]').val(),//培训日期（开始）
+			    			'thedateEnd': $('input:text[name="end"]').val(),//培训日期（结束）
+							'theDemand': $('#theDemand').val(),//培训要求
+							'theReason': $('#theReason').val(),	//申请理由			
+			    		},
+			    		function(data) {
+							data = JSON.parse(data)
+			    			console.log(data)
+			    			if (data.status == 200) {					
+			    				$("#dataTable").replaceWith('<div id="dataTable"></div>');
+			    				$("#dataTable").load("pxsq.html");
+			    			}
+			    		}
+			    	)
+			    });
+				
+			// 返回
+					$(".goback").hover(function() {
+					    $(this).children("img").attr("src", "img/goback-b.png")
+					}, function() {
+					    $(this).children("img").attr("src", "img/goback.png")
+					});
+					$(".goback").on("click", function() {
+					    $("#dataTable").replaceWith('<div id="dataTable"></div>');
+					    $("#dataTable").load("pxsq.html");
+					});
+		</script>

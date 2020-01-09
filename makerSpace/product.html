@@ -1,0 +1,269 @@
+<!-- <link rel="stylesheet" type="text/css" href="css/product.css?v=20190928" /> -->
+<style type="text/css">
+	.title {
+		font-weight: bold;
+		margin: 20px 0;
+	}
+
+	.tableTop {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		height: 64px;
+	}
+
+	.addProduct {
+		padding: 0 15px;
+		background-color: #29e;
+		color: #fff;
+		border: none;
+		outline: none;
+		width: 170px;
+		height: 36px;
+		line-height: 36px;
+		border-radius: 5px;
+		cursor: pointer;
+		text-align: center;
+	}
+
+	.addProduct img {
+		padding-right: 10px;
+		padding-bottom: 3px;
+	}
+
+	#productTable thead {
+		background-color: #e4e4e4;
+		font-weight: bold;
+	}
+
+	#productTable tbody {}
+
+	#productTable tbody tr {
+		border: 1px solid #8a8a8a;
+	}
+    #productTable tbody tr td:last-child{
+		min-width: 160px;
+	}
+	.deleteDiv {
+		display: none
+	}
+
+	#delete {
+		cursor: pointer;
+		color: #337ab7;
+		margin: 0 10px
+	}
+
+	.deleteDiv {
+		margin-top: 30px;
+		text-align: center;
+	}
+	.table td, .table th{
+		padding: 0rem;
+	}
+	.table{
+		font-size: 12px;
+	}
+	#see {
+		line-height: 35px;
+		cursor: pointer;
+		margin: 0 10px
+	}
+	.nextpageBtn {
+		padding: 5px 20px;
+	    background-color: #29e;
+	    color: white;
+	    border-radius: 20px;
+	    cursor: pointer;
+	    margin-right: 30px;
+	}
+	.typeArea{
+		background-color: white;
+	    margin-top: 20px;
+	}
+	#productTable tbody td{
+		padding: 0f;
+	}
+</style>
+<div class="tableTop">
+	<p class="title">产品设置</p>
+	<p class="addProduct">
+		<img src="img/2add.png" alt="" />
+		添加课程
+	</p>
+</div>
+<!--<div style="width: 100%;height: 600px;">-->
+<table id="productTable"  >
+</table>
+<!--</div>-->
+<p class="clearfix typeArea">
+	    <span class="nextpageBtn pull-right">下一页</span>
+	</p>
+<div class="deleteDiv">
+	<p>确定删除</p>
+</div>
+<script type="text/javascript" charset="utf-8">
+	$(document).ready(function() {
+		var pdtPage = 0;
+
+		function loadTable(data) {
+			$("#productTable").bootstrapTable({
+				columns: [{
+						field: 'num',
+						title: '编号',
+						align: 'center',
+						valign: 'middle',
+						formatter: function(value, row, index) {
+							return index + 1;
+						}
+					}, {
+						field: 'courseTheme',
+						title: '课程主题',
+						align: 'center',
+						valign: 'middle',
+					},
+					{
+						field: 'courseType',
+						title: '课程类型',
+						align: 'center',
+						valign: 'middle',
+					},
+					{
+						field: 'objecter',
+						title: '课程对象',
+						align: 'center',
+						valign: 'middle'
+					},
+					{
+						field: 'createTime',
+						title: '发布时间',
+						align: 'center',
+						valign: 'middle',
+						formatter: timeFun
+					},
+					{
+						field: 'option',
+						title: '课程操作',
+						align: 'center',
+						valign: 'middle',
+						formatter: dataFun,
+						events: optionEvents
+					}
+				],
+				data: data,
+				onClickRow: function(row, $element) {
+					console.log(row)
+				}
+			});
+
+			function timeFun(e, value, index, row) {
+				var time = value.createTime.split("T")[0];
+				return '<span>' + time + '</span>'
+			};
+
+			function dataFun(e, value, row, index) {
+				return ['<span id="delete" class="text-danger">删除</span>',
+					'<span id="see" class="text-primary">详情</span>',
+				].join('');
+			};
+		};
+
+		loadDataFirst(0);
+		window.optionEvents = {
+			'click #delete': function(e, value, row, index) {
+				layer.open({
+					type: 1,
+					area: ['400px', '170px'],
+					title: ['删除', 'font-size:18px;text-align: center;'],
+					content: $(".deleteDiv"),
+					btn: '确定',
+					yes: function(index, layero) {
+						$.post('' + http_head + 'Lectures/course/Delete_LectureCourse.ashx', {
+							"userGuid": row.creater,
+							"courseId": row.Id
+						}, function(data) {
+							var daraDelete = JSON.parse(data);
+
+							if (daraDelete.status == 200) {
+								layer.msg('删除成功', {
+									time: 1000,
+								});
+								$("#dataTable").load("product.html");
+								//loadDataFirst(0);
+							}
+						});
+						layer.close(index)
+					}
+				})
+			},
+			'click #see': function(e, value, row, index) {
+				window.open("http://www.jinshiku.com/html/courseDetails.html?id=" + row.Id)
+			}
+
+		};
+
+		function loadDataFirst(page) {
+			console.log(userGuid,pdtPage)
+			$.post(http_head + 'Lectures/course/Get_MyCourse.ashx', {
+				"userGuid": userGuid,
+				"page": page,
+			}, function(data) {
+				var data = JSON.parse(data);
+				console.log("第一页",data)
+				if (data.items.rows.length > 0) {
+					layer.msg("加载完成", {
+						time: 1200
+					})
+					loadTable(data.items.rows);
+					$("#productTable").bootstrapTable("load", data.items.rows);
+				} else {
+					layer.msg("暂无数据", {
+						time: 1200
+					})
+				}
+				pdtPage = data.items.page;
+				if (data.items.rows.length >= 10) {
+					$(".nextpageBtn").fadeIn()
+				} else {
+					$(".nextpageBtn").hide()
+				}
+			})
+		};
+
+		function loadDataNext(page) {
+			console.log(userGuid,pdtPage)
+			$.post(http_head + 'Lectures/course/Get_MyCourse.ashx', {
+				"userGuid": userGuid,
+				"page": page,
+			}, function(data) {
+				var data = JSON.parse(data);
+				console.log("下一页",data)
+				if (data.items.rows.length > 0) {
+					layer.msg("加载完成", {
+						time: 1200
+					})
+					loadTable(data.items.rows);
+					$("#productTable").bootstrapTable("append", data.items.rows);
+				} else {
+					layer.msg("已无更多", {
+						time: 1200
+					})
+				}
+				pdtPage = data.items.page;
+				if (data.items.rows.length >= 10) {
+					$(".nextpageBtn").fadeIn()
+				} else {
+					$(".nextpageBtn").hide()
+				}
+			})
+		};
+		$(".nextpageBtn").on("click", function() {
+			loadDataNext(pdtPage)
+		});
+		var hrefStr = href.split("?")[1];
+		$(".addProduct").on("click", function() {
+			window.open('addTeacherCourse.html?' + hrefStr);
+			// window.open("http://www.jinshiku.com/html/addTeacherCourse.html")
+		})
+	})
+</script>

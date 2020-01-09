@@ -1,0 +1,271 @@
+<link rel="stylesheet" type="text/css" href="css/applyForm.css"/>
+<div class="sqDiv">
+    <ul>
+        <li>
+            <span>姓名：</span>
+            <span class="name"> </span>
+        </li>
+        <li>
+            <span>工号：</span>
+            <span class="code"> </span>
+        </li>
+        <li>
+            <span>部门：</span>
+            <span class="depart">   </span>
+        </li>
+        <li>
+            <span>职位：</span>
+            <span class="job">  </span>
+        </li>
+    </ul>
+    <form action="">
+        <div class="labelBox">
+            <label for="">
+                <span>开始时间：</span>
+                <span>
+                    <input type="text" class="timeStart form-control" placeholder="请选择开始时间"/>
+                </span>
+            </label>
+            <label for="">
+                <span>结束时间：</span>
+                <span>
+                    <input type="text" class="timeEnd form-control" placeholder="请选择结束时间"/>
+                </span>
+            </label>
+            <label for="">
+                <span>车号：</span>
+                <span>
+                    <input type="text" class="carCode form-control" placeholder="请选择车辆"/>
+                </span>
+            </label>
+        </div>
+        <div class="labelBox">
+            <label for="">
+                <span>出发地：</span>
+                <span>
+                    <input type="text" class="departure form-control" placeholder="请填写出发地"/>
+                </span>
+            </label>
+            <label for="">
+                <span>目的地：</span>
+                <span>
+                    <input type="text" class="destination form-control" placeholder="请填写目的地"/>
+                </span>
+            </label>
+            <label for="">
+                <span>司机：</span>
+                <span>
+                    <input type="text" class="driver form-control" placeholder="请填写司机"/>
+                </span>
+            </label>
+        </div>
+        <label for="">
+            <span>乘坐人数：</span>
+            <span>
+                <input type="text" class="cusNum form-control" placeholder="请填写乘坐人数"/>
+            </span>
+        </label>
+        <label for="" class="yc">
+            <span>用车说明：</span>
+            <span>
+                <textarea type="text" class="reason form-control textyc" placeholder="请输入用车说明"/>    </textarea>
+            </span>
+        </label>
+        <label for="">
+            <span>审核人：</span>
+            <span class="checkName">    </span>
+        </label>
+        <label>
+            <span class="submit">提交</span>
+        </label>
+    </form>
+</div>
+<p class="btnArea">
+    <span class="goback">
+        <img src="img/goback.png" alt=""/>
+        返回
+    </span>
+</p>
+<div class="carBox">
+    <table class="carTable">
+    </table>
+    
+</div>
+<script>
+$(document).ready(function() {
+    var applyPage = 0;
+    var departId;
+    var departName;
+    var userName;
+    // 申请
+    laydate.render({
+        elem: '.timeStart',
+        type: 'datetime',
+        trigger: 'click'
+    });
+    laydate.render({
+        elem: '.timeEnd',
+        type: 'datetime',
+        trigger: 'click', //解决闪退bug
+        done: function(value, date, endDate) {
+                $.post(http_head+"Com/Vehicle/GetAvaVehiclesByTime.ashx",{
+                    "comid":companyId,
+                    "startTime":$(".timeStart").val(),
+                    "endTime":value
+                },function(data){
+                    var data = JSON.parse(data);
+                    if(data.status == 200){
+                        if(data.items.length>0){
+                            layer.msg("加载完成", {
+                                time: 1200
+                            });
+                        }else{
+                            layer.msg("暂无数据", {
+                                time: 1200
+                            })
+                        };
+                        loadTable(data.items);
+                        $(".checkTable").bootstrapTable('load', data.items);
+                    }
+              });
+        }
+    });
+    setTimeout(function() {
+        $.post(http_head + "getUserDetailByuserGuid.ashx", {
+            "userGuid": userGuid
+        }, function(data) {
+            var data = JSON.parse(data);
+            departName = data.items.depart;
+            departId = data.items.departId;
+            userName = data.items.realName;
+            $(".name").text(userName);
+            $(".code").text(data.items.jovNumber);
+            $(".depart").text(departName);
+            $(".job").text(data.items.post);     
+        })
+    }, 350);
+    // 选车
+    function loadTable(data){
+        $(".carTable").bootstrapTable({
+            data:data,
+            columns:[{ 
+                checkbox: true 
+            },{
+                field: "pic1",
+                title: "图片",
+                align: 'center',
+                valign: 'middle',
+                formatter:carImg
+            },{
+                field: "plateNumber",
+                title: "车牌",
+                align: 'center',
+                valign: 'middle'
+            },{
+                field: "vehicleType",
+                title: "车类",
+                align: 'center',
+                valign: 'middle'
+            },{
+                field: "seats",
+                title: "座位",
+                align: 'center',
+                valign: 'middle'
+            }, ],
+            singleSelect:true,
+            onCheck:function(row){
+                $(".carCode").val(row.plateNumber)    
+            },
+        });
+        function carImg(e,value,row,index){
+            if(value.pic1){
+                return '<img class="carImg" src="'+value.pic1+'"/>'
+            }else{
+                return '<span>暂无</span>'
+            }
+            
+        }
+    };
+    function loadFirst(){
+        
+    };
+  
+    $(".carCode").focus(function(){
+        layer.open({
+            type:1,
+            area: ['800px', '800px'],
+            title: ['车辆选择', 'font-size:18px;text-align: center;'],
+            content: $(".carBox"),
+            btn: '确定',
+            yes: function(index, layero) {
+                layer.close(index)
+            }
+        })
+    });
+    
+    $(".submit").on("click", function() {
+        if ($(".timeStart").val().length > 0 && $(".timeEnd").val().length > 0 && $(".carCode").val().length > 0 && $(".reason").val().length > 0 && $(".departure").val().length > 0&& $(".destination").val().length > 0&& $(".driver").val().length > 0) {
+            $.post(http_head + "Com/Vehicle/Add_vehicleApply.ashx", {
+                "applyer": userGuid,
+                "comid": companyId,
+                "applyerName":userName,
+                "applyerDepId":departId,
+                "applyerDepName":departName,
+                "plateNumber":$(".carCode").val(),
+                "startTime": $(".timeStart").val(),
+                "endTime": $(".timeEnd").val(),
+                "origin":$(".departure").val(),
+                "destination":$(".destination").val(),
+                "theDriverName":$(".driver").val(),
+                "theReason": $(".reason").val(),
+                "personCount":$(".cusNum").val(),
+                "theCustomer": "",
+                "theProject": "",
+                "vehicleId":4
+            }, function(data) {
+                var data = JSON.parse(data);
+                if (data.status == 200) {
+                	var ii = layer.load(2, {
+					  shade: [0.2,'#000'] //0.1透明度的白色背景
+					});
+					setTimeout(function(){
+				      layer.close(ii);
+				      layer.msg('提交成功', {
+						time: 1000,
+					  });
+				    }, 1000);
+                   setTimeout(function(){
+                   		layer.closeAll();
+                   		$("#dataTable").replaceWith('<div id="dataTable"></div>');
+                    	$("#dataTable").load("ycsq.html");
+                   },1500)
+                }
+            })
+        }else{
+            layer.msg("请完善信息", {
+                time: 2000
+            });
+        }
+    });
+    setTimeout(function() {
+        $.post(http_head + "Com/Get_User_Leader.ashx", {
+            "userGuid": userGuid,
+            "companyId": companyId
+        }, function(data) {
+            var data = JSON.parse(data);
+            if (data.status == 200) {
+                $(".checkName").text(data.items)
+            }
+        })
+    }, 450);
+    $(".goback").hover(function() {
+        $(this).children("img").attr("src", "img/goback-b.png")
+    }, function() {
+        $(this).children("img").attr("src", "img/goback.png")
+    });
+    $(".goback").on("click", function() {
+        $("#dataTable").replaceWith('<div id="dataTable"></div>');
+        $("#dataTable").load("ycsq.html");
+    });
+})
+</script>

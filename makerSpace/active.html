@@ -1,0 +1,333 @@
+<!-- <link rel="stylesheet" type="text/css" href="css/active.css?v=20190919"/> -->
+<style type="text/css">
+	#activityList tr td img {
+		width: 100px;
+		max-height: 100px;
+		border-radius: 5px;
+	}
+
+	#activityList tr td span {
+		cursor: pointer;
+	}
+    #activityList tr td:last-child{
+		min-width: 186px;
+	}
+	#activityList thead {
+		background-color: #e4e4e4;
+		font-weight: bold;
+	}
+
+
+	.approvalingArea,
+	.approvaledArea {
+		display: none;
+	}
+
+	.changeDemandDiv label {
+		display: flex;
+	}
+
+	.addjigouDiv label,
+	.addteamDiv label {
+		display: flex;
+	}
+
+	.addActivity {
+		padding: 0 15px;
+		background-color: #29e;
+		color: #fff;
+		border: none;
+		outline: none;
+		width: 170px;
+		height: 36px;
+		line-height: 36px;
+		border-radius: 5px;
+		cursor: pointer
+	}
+
+	.addActivity img {
+		padding-right: 5px;
+		padding-bottom: 3px;
+	}
+
+	.nav-pills li {
+		padding: 0 15px;
+		background-color: silver;
+		color: #fff !important;
+		margin-right: 10px;
+		border: none;
+		outline: none;
+		width: 170px;
+		height: 36px;
+		line-height: 36px;
+		border-radius: 5px;
+		cursor: pointer
+	}
+
+	.active {
+		background-color: #29e !important
+	}
+
+	.nav-pills li a {
+		color: white !important;
+		text-decoration: none
+	}
+
+	.nav-pills {
+		width: 60%;
+		margin-top: 30px;
+		margin-bottom: 20px
+	}
+
+	.publish {
+		margin-top: 30px
+	}
+
+	.nav-pills li img {
+		width: 22px;
+		margin-right: 5px;
+		margin-bottom: 3px;
+		margin-left: 30px;
+	}
+
+	.changeActivity,
+	.see {
+		cursor: pointer;
+		margin: 0 10px
+	}
+
+	.delDiv {
+		display: none;
+		text-align: center;
+		color: red;
+		margin-top: 50px;
+	}
+</style>
+<div class="comActivityDiv" id="comActivityDiv">
+	<p class="publish">
+		<button class="addActivity pull-right">
+			<img src="img/2fb.png" alt="" />
+			发布活动
+		</button>
+	</p>
+	<ul class="nav nav-pills nav-justified" style="display: none;">
+		<li id="approvaling">
+			<img src="img/2dai.png" alt="" />
+			<a href="javascript:;">待审批</a>
+		</li>
+		<li id="approvaled" class="active">
+			<img src="img/2daied.png" alt="" />
+			<a href="javascript:;">已审批</a>
+		</li>
+	</ul>
+	<table id="activityList">
+		<thead>
+			<tr>
+				<th data-field="activeImg"> </th>
+				<th data-field="activeTitle"> </th>
+				<th data-field="activeCity"> </th>
+				<th data-field="activer"> </th>
+				<th data-field="option"> </th>
+			</tr>
+		</thead>
+	</table>
+	<br />
+	<p class="clearfix approvalingArea">
+		<button class="activityLoadNext pull-right">下一页</button>
+	</p>
+	<p class="clearfix approvaledArea">
+		<button class="activityedLoadNext pull-right">下一页</button>
+	</p>
+	<div class="delDiv">
+		<p>确认删除该活动</p>
+	</div>
+</div>
+<script type="text/javascript" charset="utf-8" async defer>
+	// 公司活动
+	var dataActivityPage;
+	var actType = 0;
+	lookactivityFirst(1, 0);
+	// 发布活动
+	$('.addActivity').click(function() {
+		window.open("http://www.eqidd.com/qiyeSpace/html/addActicity.html")
+	});
+
+	function lookactivityFirst(type, page) {
+		$.post(http_head + 'Activity/Get_ActiveByCreater.ashx', {
+			"userGuid": userGuid,
+			"type": type,
+			"page": page
+		}, function(data) {
+			var datalookactivity = JSON.parse(data);
+			console.log(datalookactivity)
+			if (datalookactivity.items.length > 0) {
+				layer.msg("加载完成", {
+					time: 1200
+				});
+
+			} else {
+				layer.msg("暂无数据", {
+					time: 1200
+				})
+			}
+			loadActivityTable(datalookactivity.items);
+			$("#activityList").bootstrapTable('load', datalookactivity.items);
+			dataActivityPage = datalookactivity.page;
+			if (datalookactivity.items.length >= 9) {
+				$('.activityLoadNext').fadeIn()
+			} else {
+				$('.activityLoadNext').hide()
+			}
+			if (datalookactivity.items.length >= 9) {
+				$('.activityedLoadNext').fadeIn()
+			} else {
+				$('.activityedLoadNext').hide()
+			}
+		});
+	};
+
+	function lookactivityNext(type, page) {
+		$.post(http_head + 'Activity/Get_ActiveByCreater.ashx', {
+			"userGuid": userGuid,
+			"type": type,
+			"page": page
+		}, function(data) {
+			var datalookactivity = JSON.parse(data);
+
+			if (datalookactivity.items.length > 0) {
+				layer.msg("加载完成", {
+					time: 1200
+				});
+			} else {
+				layer.msg("暂无数据", {
+					time: 1200
+				})
+			}
+			loadActivityTable(datalookactivity.items);
+			$("#activityList").bootstrapTable('append', datalookactivity.items);
+			dataActivityPage = datalookactivity.page;
+			if (datalookactivity.items.length > 9) {
+				$('.activityLoadNext').fadeIn()
+			} else {
+				$('.activityLoadNext').hide()
+			}
+			if (datalookactivity.items.length > 9) {
+				$('.activityedLoadNext').fadeIn()
+			} else {
+				$('.activityedLoadNext').hide()
+			}
+		});
+	};
+	$('.activityLoadNext').click(function() {
+		lookactivityNext(0, Number(dataActivityPage))
+	});
+	$('.activityedLoadNext').click(function() {
+		lookactivityNext(1, Number(dataActivityPage))
+	});
+	$('#approvaling').click(function() {
+		$(this).addClass('active').siblings('li').removeClass('active');
+		$('.approvalingArea').fadeIn().siblings('.approvaledArea').hide()
+		lookactivityFirst(0, 0);
+		actType = 0;
+	});
+	$('#approvaled').click(function() {
+		$(this).addClass('active').siblings('li').removeClass('active')
+		$('.approvaledArea').fadeIn().siblings('.approvalingArea').hide()
+		lookactivityFirst(1, 0);
+		actType = 1;
+	});
+
+	function loadActivityTable(data) {
+		$('#activityList').bootstrapTable({
+			data: data,
+			columns: [{
+				field: 'num',
+				title: '编号',
+				align: 'center',
+				valign: 'middle',
+				formatter: function(value, row, index) {
+					return index + 1;
+				}
+			}, {
+				field: 'activeImg',
+				title: '活动封面',
+				align: 'center',
+				valign: 'middle',
+				formatter: imgFormatter
+			}, {
+				field: 'activeTitle',
+				title: '主题',
+				align: 'center',
+				valign: 'middle',
+			}, {
+				field: 'activeCity',
+				title: '举办地',
+				align: 'center',
+				valign: 'middle',
+			}, {
+				field: 'activer',
+				title: '负责人',
+				align: 'center',
+				valign: 'middle'
+			}, {
+				field: 'option',
+				title: '操作',
+				align: 'center',
+				valign: 'middle',
+				formatter: optionActivityFormatter,
+				events: optionActivityEvents
+			}]
+		});
+
+		function imgFormatter(e, value, row, index) {
+			var imgUrl = value.activeImg.replace(/.png/, "min.png")
+			return ['<img src="' + imgUrl + '" alt="">'].join('');
+		};
+
+		function optionActivityFormatter(e, value, row, index) {
+			return '<span class="del text-danger">删除</span><span class="changeActivity text-success">修改活动</span><span class="see text-primary">详情</span>';
+		};
+	};
+	window.optionActivityEvents = {
+		'click .changeActivity': function(e, value, row, index) {
+			window.open("http://www.eqidd.com/qiyeSpace/html/changeActivity.html?id=" + row.Id)
+		},
+		'click .see': function(e, value, row, index) {
+			window.open("http://www.eqidd.com/changke/html/activityDetails.html?id=" + row.Id)
+		},
+		'click .del': function(e, value, row, index) {
+			layer.open({
+				type: 1,
+				area: ['300px', '200px'],
+				title: ['活动删除', 'font-size:18px;text-align: center;'],
+				content: $('.delDiv'),
+				btn: ['确认'],
+				yes: function(index, layero) {
+					$.post(http_head + "Activity/Delete_Activity.ashx", {
+						"userGuid": userGuid,
+						"actId": row.Id
+					}, function(data) {
+						var data = JSON.parse(data)
+						console.log(data)
+						if (data.status == 200) {
+							var ii = layer.load(2, {
+							  shade: [0.2,'#000'] //0.1透明度的白色背景
+							});
+							setTimeout(function(){
+						      layer.close(ii);
+						      layer.msg("删除成功", {
+								time: 1000,
+							  });
+						    }, 1000);
+							setTimeout(function() {
+								layer.closeAll();
+								$("#dataTable").replaceWith('<div id="dataTable"></div>');
+								$("#dataTable").load('active.html')
+							}, 1500)
+						}
+					})
+				}
+			})
+		},
+	};
+</script>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>文章回收站</title>
+  <link rel="icon" href="img/logo.png" type="image/x-icon"/>
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.css">
+  <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap-table/1.11.1/bootstrap-table.min.css">
+  <link rel="stylesheet" href="css/skin/default/layer.css">
+  <link rel="stylesheet" href="css/writeCircle.css">
+  <link rel="stylesheet" href="css/recycle.css?ver=20180330">
+</head>
+<body>
+<div class="recycleDiv">
+  <div class="recycleTitle">回收站</div>
+  <div class="col-lg-12">
+            <table id="recycleTable"  data-search="true" >
+                  <thead>
+                        <tr>
+                              <th data-field="createTime">发布时间</th>
+                              <th data-field="deleteTime">删除时间</th>
+                              <th data-field="title">文章标题</th>
+                              <th data-field="option">更多操作</th>
+                        </tr>
+                  </thead>
+            </table>
+            <br>
+  </div>
+  <div class="deleteTable">删除后将不可恢复</div>
+  <div class="recoveryTable">撤回后将恢复到文章列表</div>
+  <div class="circleDetails">
+ <!--  <div class="div1"></div>
+  <div class="div2"></div> -->
+  </div>
+</div>
+  <script type="text/javascript" src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+  <script type="text/javascript" src="https://cdn.bootcss.com/layer/3.1.0/layer.js"></script>
+  <script type="text/javascript" src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="https://cdn.bootcss.com/bootstrap-table/1.11.1/bootstrap-table.js"></script>
+  <script type="text/javascript" src="js/bootstrap-table-zh-CN.min.js"></script>
+  <script type="text/javascript" src="js/wangEditor.js"></script>
+  <script type="text/javascript" src="js/change.js"></script>
+  <script type="text/javascript" src="js/recycle.js?ver=20180817"></script>
+</body>
+</html>

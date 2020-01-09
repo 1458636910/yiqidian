@@ -1,0 +1,68 @@
+.title {
+	font-weight: bold;
+	margin: 20px 0!important;
+}
+#dataTable{
+    margin-bottom:10px  
+}
+
+#lodTable thead {
+	background-color: #e4e4e4;
+	font-weight: bold;
+}
+
+.deleteCircleDiv {
+	display: none;
+	margin-top: 30px;
+	text-align: center;
+}
+
+.layui-layer-btn .layui-layer-btn0 {
+	border-color: #1E9FFF;
+	background-color: #1E9FFF;
+	color: #fff!important;
+}
+#lodTable tr td:nth-child(3) {
+	width: 310px;
+}
+#lodTable tr td:nth-child(5) {
+	width: 120px
+}
+#lodTable tr td:nth-child(4) {
+	width: 130px
+}
+#lodTable tr td:nth-child(5) span {
+	color: #337ab7;
+	margin: 0 10px;
+	cursor: pointer;
+}
+
+.setBox
+{
+    display:flex;
+    justify-content:space-between;
+    align-items:center
+}
+.writeLog
+{
+    padding: 0 15px;
+    background-color: #29e;
+    color: #fff;
+    border: none;
+    outline: none;
+    width: 170px;
+    height: 36px;
+    line-height: 36px;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+}
+.writeLog img
+{
+    padding-right: 10px;
+    padding-bottom: 5px;
+}
+.deleteCircle,.see{
+   
+
+}

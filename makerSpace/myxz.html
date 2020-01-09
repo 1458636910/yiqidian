@@ -1,0 +1,257 @@
+<link rel="stylesheet" type="text/css" href="css/apply2.css" />
+<div class="box">
+			<div class="total">
+				<!-- .icon-zelvxuanzefeiyongzhengsanjiaoxingzhichi 上箭头 有需求可以加 -->
+				<div class="pp">
+					<p id="selectedText">未完成</p><span class="iconfont icon-zelvxuanzefeiyongdaosanjiaoxingfandui icons"></span>
+				</div>
+				<div class="totals">
+					<ul>	
+					<li id="own" class="on">未完成</li>
+					<li id="examined">已完成</li>
+					</ul>
+				</div> 
+			</div>
+			<div class="apply">发任务</div>
+			<table id="table" border="1" data-show-refresh="true" style="min-width:1500px;">
+			</table>            
+			<div class="pageBtnBox">
+				<button type="button" class="btnd" id="pageBtn">下一页</button>
+			</div>
+		</div>
+		<script type="text/javascript">
+			$(document).ready(function() {
+				//分割当前网页链接
+				var windowUrl = window.location.href; //获取当前url链接		
+				//http://127.0.0.1:8848/shenqing/index.html?userGuid=4bdf57feaf1749748dbfd3b2ebd6b0aa&companyId=46
+				var arr = windowUrl.split("?", 2); //分割url		
+				var arr_1 = arr[1]; //瞎起变量		
+				var arr_2 = arr_1.split('&', 2);
+				var arr_3 = (arr_2[0].split('=', 2))[1];
+				var arr_4 = (arr_2[1].split('=', 2))[1];
+				//console.log(arr_3)       
+				var http_head = "http://47.94.173.253:8008";
+				var page = 0;
+				var isCheck = false;
+				layui.use('form', function(){
+				  var form = layui.form;
+				});
+				
+				
+				//字符串分割时间段 2019-06-04T19:00:00
+				function consts(e, value, index, row) {
+					//console.log(value)
+					var createTime =value.createTime.split(' ')[0]+ ' ';
+					var createTimes =value.createTime.split(' ')[1].split(':')[0]+':'+value.createTime.split(' ')[1].split(':')[1];
+					var time = createTime + createTimes;					
+					return  '<div class="size"> '+time+' </div>'
+				}
+				
+				function operateIsCheck(value, row, index) {							
+				// /console.log(row)
+				if(row.IsCheck == false){
+					return  '<div class="Noesult">待执行</div>'
+				}else{
+					return  '<div class="esult">ok</div>'
+				}
+				  }
+					
+				function operateFormatter(value, row, index) {							
+				// /console.log(row)
+				return '<div class="like">详情</div>'
+				  }
+					 
+				  window.operateEvents = {
+					'click .like': function (e, value, row, index) {
+					window.open ("http://www.eqidd.com/html/Toik_.html?userGuid="+ arr_3 +"&companyId=" + arr_4 + "&taskId=" + row.Id + "");						 
+					}
+				  }
+			
+											
+				$("#table").bootstrapTable({
+					url:'' + http_head + '/MyTask/Get_Task_ByOther.ashx', //在这里请求接口才能使用它带刷新的功能，不然的话你就再点击刷新的时候再调用这个方法
+					search:true,
+					showRefresh : false, // 是否显示刷新按钮
+					method:'post',
+					contentType: "application/x-www-form-urlencoded",//post请求的话就加上这个句话				
+					queryParams: function (params) {//自定义参数				
+					  params.userGuid = arr_3;
+					  params.page = 0;
+					  params.isCheck = isCheck;
+					  return params
+					},
+					responseHandler: function(res) {
+						page = 1;								
+						return res.items
+					},
+					columns: [{
+					title: '序号',
+					formatter: function(value, row, index) {
+					//获取每页显示的数量
+					var pageSize = $('#table').bootstrapTable('getOptions').pageSize;
+					//获取当前是第几页
+					var pageNumber = $('#table').bootstrapTable('getOptions').pageNumber;
+					//返回序号，注意index是从0开始的，所以要加上1
+					return pageSize * (pageNumber - 1) + index + 1;
+					}
+					},{
+						title:'发布人/部门',
+						width: '100px',
+						formatter: function(value, row, index) {
+						return row.InitiatorDepartName + ' ' + row.InitiatorName;
+						}
+					},{
+						field:'createTime',
+						title:'发布时间',
+						width: '120px',
+						formatter: consts
+					},{
+						field:'parentName',
+						title:'父事项',
+						width: '200px',
+						formatter: function(value, row, index) {
+						return '<div class="warp">'+ row.parentName +'</div>'
+						}
+					},{
+						field:'TaskDesc',
+						title:'具体事项',
+						width: '200px',
+						formatter: function(value, row, index) {
+						return '<div class="warp">'+ row.TaskDesc +'</div>'
+						}
+					},{
+						title:'执行部门/人',
+						width: '100px',
+						formatter: function(value, row, index) {
+						return row.recipientDepartName + ' ' + row.recipientName;
+						}
+					},{
+						title:'协助部门/人',
+						width: '100px',
+						formatter: function(value, row, index) {
+						return row.AssistNum + '人';
+						}
+					},{
+						field:'EndTime',
+						title:'计划完成时间',
+						width: '120px',
+					},{
+						field:'CheckStandard',
+						title:'验证标准',
+						width: '200px',
+						formatter: function(value, row, index) {
+						return '<div class="warp">'+ row.CheckStandard +'</div>'
+						}
+					},{
+						title:'验证部门/人',
+						width: '100px',
+						formatter: function(value, row, index) {
+						return row.CheckerDepartName + ' ' + row.CheckerName;
+						}
+					},{
+						field:'Duty',
+						title:'注意事项',
+						width: '200px',
+						formatter: function(value, row, index) {
+						return '<div class="warp">'+ row.Duty +'</div>'
+						}
+					},{
+						title:'结果',
+						width: '50px',
+						formatter: operateIsCheck
+					},{
+						field: 'operate',
+						title: '操作',
+						align: 'center',
+						events: window.operateEvents,
+						formatter: operateFormatter
+					}]				
+				})
+				
+				$(".apply").on("click", function() {
+					$(document).ready(function() {
+						$("#dataTable").replaceWith('<div id="dataTable"></div>');
+						$("#dataTable").load('farenwu.html')
+					})
+				});
+					
+				//下一步点击事件
+				$("#pageBtn").on("click", function() {
+					nextPage();
+				})
+				
+				function nextPage() {
+					$.post("" + http_head + "/MyTask/Get_Task_ByOther.ashx", {
+						userGuid: arr_3,
+						isCheck: isCheck,
+						page: page
+					}, function(data) {
+						var data = JSON.parse(data);
+						if(data.items.length > 0){
+							page = data.page;
+						}
+						if (data.items == '') {
+							$('#pageBtn').html('没有更多数据了')
+						} else {
+							$("#table").bootstrapTable({
+								columns: [{
+									formatter: table,
+								}]
+							})					 
+							$("#table").bootstrapTable("append", data.items);
+						}
+					})
+				};
+				
+				var Totals = $('.totals ul li');
+				Totals.each(function(){			
+					$(this).mouseover(function(){
+						$(this).addClass('on')
+					});
+					$(this).mouseout(function(){
+						$(this).removeClass('on')
+					});			
+				});	
+				
+				//未完成	
+				$('#own').click(function(){
+					isCheck = false;
+					page = 0;
+					$('#selectedText').html("未完成")
+					$('#pageBtn').html('下一页')
+					nextSerach()							
+				})
+				
+				//已完成		
+				$('#examined').click(function(){				
+					isCheck = true;
+					page = 0;
+					$('#selectedText').html("已完成")
+					$('#pageBtn').html('下一页');
+					nextSerach();
+					
+				})
+				
+				function nextSerach() {	
+					$.post("" + http_head + "/MyTask/Get_Task_ByOther.ashx", {
+						userGuid: arr_3,
+						isCheck: isCheck,
+						page: page
+					}, function(data) {
+						var data = JSON.parse(data);
+						//console.log(data)
+							if(data.items.length > 0){
+							  page = data.page;
+							}
+							$("#table").bootstrapTable({						
+								columns: [{
+									formatter: table,
+								}]
+							})					 
+							$("#table").bootstrapTable("load", data.items);					
+					})			
+				};			
+				});
+									
+								
+		</script>

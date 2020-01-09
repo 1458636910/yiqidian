@@ -1,0 +1,154 @@
+<!-- <link rel="stylesheet" type="text/css" href="css/activing.css?v=20190606"/> -->
+<style type="text/css">
+	.signupDiv{
+		margin-top: 30px
+	}
+	#ActivityList thead
+	{   background-color: #e4e4e4;
+	    font-weight: bold;
+	}
+	.actFmPic{
+	    width: 130px; 
+	}
+	.inner{
+	    padding-bottom:0
+	}
+	#ActivityList tbody tr td:nth-child(2){
+	    cursor:pointer
+	}
+	#ActivityList tbody tr td:nth-child(2):hover{
+	    background-color:#00a2e8;
+	    color:White;
+	}
+	 
+	.viewAct{
+	    height: 101px;
+	    display: block;
+	    line-height: 101px;
+	}
+</style>
+<div class="signupDiv">
+	<table id="ActivityList">
+		<thead>
+			<tr>
+				<th data-field="activeImg">	</th>
+				<th data-field="activeTitle">	</th>
+				<th data-field="activeCity">	</th>
+				<th data-field="activer">	</th>
+				<th data-field="baomingTime">	</th>
+				<th data-field="option">	</th>
+			</tr>
+		</thead>
+	</table>
+	<br/>
+	<p class="clearfix approvalingArea">
+		<button class="ActivityNext pull-right">下一页</button>
+	</p>
+</div>
+<script type="text/javascript" charset="utf-8" async defer>
+	var pageSignUp;
+	$('.signupDiv').show().siblings('div').hide()
+	loadActivityFirst(0)
+	function loadActivityFirst(page) {
+		$.post(http_head + 'Activity/Get_BaoMingActive.ashx', {
+			"userGuid": userGuid,
+			"page": page,
+		}, function(data) {
+			var datasignUp = JSON.parse(data);
+            console.log(datasignUp)
+			loadTable(datasignUp.items);
+			$("#ActivityList").bootstrapTable('load', datasignUp.items);
+
+			pageSignUp = datasignUp.page;
+			if (datasignUp.items.length > 9) {
+					$('.ActivityNext').show()
+				} else {
+					$('.ActivityNext').hide()
+				}
+		});
+	};
+	function loadActivityNext(page) {
+		$.post(http_head + 'Activity/Get_BaoMingActive.ashx', {
+			"userGuid": userGuid,
+			"page": page,
+		}, function(data) {
+			var datasignUp = JSON.parse(data);
+			loadTable(datasignUp.items);
+			$("#ActivityList").bootstrapTable('append', datasignUp.items);
+
+			pageSignUp = datasignUp.page;
+			if (datasignUp.items.length > 9) {
+					$('.ActivityNext').show()
+				} else {
+					$('.ActivityNext').hide()
+				}
+		});
+	}
+	$('.ActivityNext').click(function() {
+		loadActivityNext(pageSignUp)
+	});
+
+	// 报名活动的表格
+	function loadTable(data) {
+		$('#ActivityList').bootstrapTable({
+			data: data,
+			columns: [{
+					field: 'activeImg',
+					title: '活动封面',
+					align: 'center',
+					valign: 'middle',
+					formatter: img2Formatter
+				},
+				{
+					field: 'activeTitle',
+					title: '主题',
+					align: 'center',
+					valign: 'middle',
+					formatter: actName,
+					events: viewAct
+				},
+				{
+					field: 'activeCity',
+					title: '举办地',
+					align: 'center',
+					valign: 'middle',
+				},
+				{
+					field: 'username',
+					title: '负责人',
+					align: 'center',
+					valign: 'middle'
+				},
+				{
+					field: 'baomingTime',
+					title: '报名时间',
+					align: 'center',
+					valign: 'middle'
+				},
+				{
+					field: 'phone',
+					title: '手机号',
+					align: 'center',
+					valign: 'middle'
+				},
+			]
+		});
+
+		function img2Formatter(e, value, row, index) {
+			var imgUrl = value.activeImg.replace(/.png/, "min.png")
+			return [
+				'<img class="actFmPic" src="' + imgUrl + '" alt="">'
+			].join('');
+		};
+
+		function actName(e, value, row, index) {
+			return '<span class="viewAct">'+value.activeTitle+'</span>'
+		};
+	};
+	window.viewAct = {
+		'click .viewAct': function(e, value, row, index) {
+			console.log(row)
+			window.open("http://www.eqidd.com/changke/html/activityDetails.html?id=" + row.activeId );
+		}
+	};
+</script>

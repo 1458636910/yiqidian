@@ -1,0 +1,57 @@
+#visitorList tr td img{
+    width: 45px;
+    height: 45px;
+    border-radius: 22.5px;
+    margin-right: 15px;
+    cursor: pointer;
+}
+
+.visitorLoadNext{
+	width: 280px;
+	height: 50px;
+	line-height: 50px;
+	background-color: #29e;
+	color: #fff;
+	text-align: center;
+	border: none;
+	border-radius: 40px;
+	outline: none;
+	margin: 2.5%;
+	display: none;
+}
+#visitorList{border: none;}
+#visitorList thead{
+    display: none!important;
+}
+#visitorList tbody tr {
+    margin-top: 10px;
+    display: block;
+    cursor:pointer
+}
+#visitorList tbody tr td {
+    display: block;
+    border: 1px solid #ddd;
+}
+#visitorList tr td div > .vcontent p {
+    line-height: 20px;
+    margin-bottom: 10px;
+}
+#visitorList tr td div > div p{
+    margin: 0;
+    text-align: left;
+}
+
+#visitorList tr td div > .vcontent
+{
+    margin-top:0
+}
+.personInfo{
+	margin-top: 10px;
+    display: flex;
+}
+.lyData{
+
+}
+.allVisitorDiv{
+    margin-top:10px
+}

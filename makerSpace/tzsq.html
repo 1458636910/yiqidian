@@ -1,0 +1,217 @@
+<link rel="stylesheet" type="text/css" href="css/apply2.css" />
+
+<style type="text/css">
+	.total,
+	.apply {
+		z-index: 100000;
+	}
+
+	#examined {
+		border-bottom-left-radius: 5px;
+		border-bottom-right-radius: 5px;
+		border: none
+	}
+
+	.total .pp p {
+		float: left;
+		margin: 0 !important;
+		padding-left: 21px;
+	}
+</style>
+
+<div class="box">
+	<div class="total">
+		<!-- .icon-zelvxuanzefeiyongzhengsanjiaoxingzhichi 上箭头 有需求可以加 -->
+		<div class="pp">
+			<p id="selectedText">待审核</p><span class="iconfont icon-zelvxuanzefeiyongdaosanjiaoxingfandui icons"></span>
+		</div>
+		<div class="totals">
+			<ul>
+				<li class="on" id="own">待审核</li>
+				<li id="examined">已审核</li>
+			</ul>
+		</div>
+	</div>
+
+	<div class="apply"><img src="img/2xrz.png" alt=""/>新的通知</div>
+
+	<table id="table" border="1" data-show-refresh="true">
+	</table>
+
+	<div class="pageBtnBox btnArea">
+		<span class="goback">
+			<img src="img/goback.png" alt="" />
+			返回
+		</span>
+		<button type="button" class="btnd" id="pageBtn">下一页</button>
+	</div>
+</div>
+
+<script type="text/javascript">
+	$(document).ready(function() {
+		//分割当前网页链接
+		var windowUrl = window.location.href; //获取当前url链接		
+		//http://127.0.0.1:8848/shenqing/tongzhi.html?userGuid=4f47e8c7e40541d4a2f03c3c72304252&companyId=46
+		var arr = windowUrl.split("?", 2); //分割url		
+		var arr_1 = arr[1]; //瞎起变量		
+		var arr_2 = arr_1.split('&', 4);
+		var arr_3 = (arr_2[0].split('=', 2))[1];
+		var arr_4 = (arr_2[1].split('=', 2))[1];
+		//console.log(arr_4)       
+		var http_head = "http://47.94.173.253:8008";
+		var page = 0;
+		var type = 0;
+
+
+		//判断后台返回status
+		function progress(e, value, index, row) {
+			//console.log(value.status)
+			if (value.status == 0) {
+				status = '待审批'
+			} else {
+				status = '已审批'
+			}
+			return [
+				'<div class="hhhh">' + status + '</div>'
+			].join('')
+		}
+
+		$("#table").bootstrapTable({
+			url: '' + http_head + '/Notices/Get_Notice_ByCreater.ashx', //在这里请求接口才能使用它带刷新的功能，不然的话你就再点击刷新的时候再调用这个方法
+			search: true,
+			showRefresh: true, // 是否显示刷新按钮
+			method: 'post',
+			contentType: "application/x-www-form-urlencoded", //post请求的话就加上这个句话				
+			queryParams: function(params) { //自定义参数				
+				params.userGuid = arr_3;
+				params.companyId = arr_4;
+				params.page = 0;
+				params.type = type;
+				params.notieName = '通知';
+				return params
+			},
+			responseHandler: function(res) {
+				page = 1;
+				return res.items.list
+			},
+			columns: [{
+				field: 'noticeCode',
+				title: '编号'
+			}, {
+				field: 'noticeCycle',
+				title: '处理时限'
+			}, {
+				field: 'noticeContent',
+				title: '公文内容'
+			}, {
+				field: 'createTime',
+				title: '申请时间'
+			}, {
+				field: 'duty',
+				title: '责任'
+			}, {
+				field: 'status',
+				title: '申请进度',
+				events: window.operateEvents,
+				formatter: progress
+			}]
+		})
+
+
+		//下一步点击事件
+		$("#pageBtn").on("click", function() {
+			nextPage();
+		})
+
+		function nextPage() {
+			$.post("" + http_head + "/Notices/Get_Notice_ByCreater.ashx", {
+				userGuid: arr_3,
+				companyId: arr_4,
+				page: page,
+				type: type,
+				notieName: '通知'
+			}, function(data) {
+				var data = JSON.parse(data);
+				if (data.items.list.length > 0) {
+					page = data.items.page;
+				}
+				if (data.items.list == '') {
+					$('#pageBtn').html('没有更多数据了')
+				} else {
+					$("#table").bootstrapTable({
+						columns: [{
+							formatter: table,
+						}]
+					})
+					$("#table").bootstrapTable("append", data.items.list);
+				}
+			})
+		};
+
+		var Totals = $('.totals ul li');
+		Totals.each(function() {
+			$(this).mouseover(function() {
+				$(this).addClass('on')
+			});
+			$(this).mouseout(function() {
+				$(this).removeClass('on')
+			});
+		});
+
+		//待审核
+		$('#own').click(function() {
+			type = 0;
+			page = 0;
+			$('#selectedText').html("待审核");
+			$('#pageBtn').html('下一页')
+			nextSerach();
+		});
+
+		//已审核			
+		$('#examined').click(function() {
+			type = 1;
+			page = 0;
+			$('#selectedText').html("已同意")
+			$('#pageBtn').html('下一页');
+			nextSerach();
+
+		});
+
+		function nextSerach() {
+			$.post("" + http_head + "/Notices/Get_Notice_ByCreater.ashx", {
+				userGuid: arr_3,
+				companyId: arr_4,
+				page: page,
+				notieName: '通知',
+				type: type
+			}, function(data) {
+				var data = JSON.parse(data);
+				console.log(data)
+				if (data.items.list.length > 0) {
+					page = data.items.page;
+				}
+				$("#table").bootstrapTable({
+					columns: [{
+						formatter: table,
+					}]
+				})
+				$("#table").bootstrapTable("load", data.items.list);
+			})
+		};
+
+		$(".goback").hover(function() {
+			$(this).children("img").attr("src", "img/goback-b.png")
+		}, function() {
+			$(this).children("img").attr("src", "img/goback.png")
+		});
+		$(".goback").on("click", function() {
+			$("#dataTable").replaceWith('<div id="dataTable"></div>');
+			$("#dataTable").load("msq.html");
+		});
+		$(".apply").on("click", function() {
+			$("#dataTable").replaceWith('<div id="dataTable"></div>');
+			$("#dataTable").load("tzsqForm.html?v="+Math.random());
+		});
+
+	});
+</script>

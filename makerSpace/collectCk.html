@@ -1,0 +1,187 @@
+<!-- <link rel="stylesheet" type="text/css" href="css/collectCk.css"/> -->
+<style type="text/css">
+	.cancle {
+		display: none;
+		margin-top: 60px;
+		text-align: center;
+		color: red;
+	}
+
+	#cltTable thead {
+		background-color: #e4e4e4;
+		font-weight: bold;
+	}
+
+	.cltDiv {
+		margin-top: 30px
+	}
+
+	.createrName {
+		font-size: 20px;
+		font-weight: bolder;
+		height: 30px;
+		color: #f00;
+	}
+
+	#cltTable tbody tr td p span {
+		margin-right: 20px
+	}
+
+	.cltPic {
+		width: 160px;
+	}
+
+	.inner {
+		padding-bottom: 0
+	}
+</style>
+<div class="cltDiv">
+	<table id="cltTable">
+		<thead>
+			<tr>
+				<th data-field="makerImg"> </th>
+				<th data-field="more"> </th>
+			</tr>
+		</thead>
+	</table>
+	<br />
+	<p class="clearfix">
+		<button class="cltNext ">下一页</button>
+	</p>
+	<!-- 取消收藏 -->
+	<div class="cancle">
+		<p>确定取消收藏?</p>
+	</div>
+</div>
+<script type="text/javascript" charset="utf-8" async defer>
+	var createrPage;
+	loadCreaterFirst(0)
+
+	function loadCreaterFirst(page) {
+		$.post(http_head + 'Makerspacey/MakerCollection/Get_OtherMakerCollect.ashx', {
+			"userGuid": userGuid,
+			"page": page
+		}, function(data) {
+			var dataCreater = JSON.parse(data)
+			createrPage = dataCreater.page
+			loadcreaterTable(dataCreater.items);
+			$("#cltTable").bootstrapTable('load', dataCreater.items);
+			if (dataCreater.items.length >= 10) {
+				$('.cltNext').show()
+			} else {
+				$('.cltNext').hide()
+			}
+		});
+	};
+
+	function loadCreaterNext(page) {
+		$.post(http_head + 'Makerspacey/MakerCollection/Get_OtherMakerCollect.ashx', {
+			"userGuid": userGuid,
+			"page": page
+		}, function(data) {
+			var dataCreater = JSON.parse(data)
+			createrPage = dataCreater.page
+			loadcreaterTable(dataCreater.items);
+			$("#cltTable").bootstrapTable('append', dataCreater.items);
+			if (dataCreater.items.length >= 10) {
+				$('.cltNext').show()
+			} else {
+				$('.cltNext').hide()
+			}
+		});
+	}
+	$('.cltNext').click(function() {
+		loadCreaterNext(createrPage)
+	});
+
+	function loadcreaterTable(data) {
+		$('#cltTable').bootstrapTable({
+			data: data,
+			columns: [{
+					title: '头像',
+					field: 'makerImg',
+					align: 'center',
+					valign: 'middle',
+					formatter: img2Formatter
+				},
+				{
+					title: '信息',
+					field: 'more',
+					align: 'left',
+					valign: 'middle',
+					formatter: demand3Formatter,
+				},
+				{
+					title: '操作',
+					field: 'option',
+					align: 'center',
+					valign: 'middle',
+					formatter: createrFormatter,
+					events: createrEvents
+				}
+			]
+		});
+
+		function img2Formatter(e, value, row, index) {
+			var imgUrl = value.makerImg.replace(/.png/, "min.png")
+			return [
+				'<img class="cltPic" src="' + imgUrl + '" alt="">'
+			].join('');
+		};
+
+		function createrFormatter(e, value, row, index) {
+			return [
+				'<a class="cancleCreater"  title="取消收藏">',
+				'<span id="cancleCreater">取消收藏</span>',
+				'</a>',
+				'<a class="lookCreater"  title="查看">',
+				'<span id="lookCreater">查看</span>',
+				'</a>',
+			].join('');
+		};
+
+		function demand3Formatter(e, value, row, index) {
+			return [
+				'<p class="createrName">' + value.makerName + '</p>',
+				'<p><span>性别：</span><span>' + value.makerSex + '</span></p>',
+				'<p><span>所在城市：</span><span class="belongCity">' + value.makerCity + '</span></p>',
+				'<p><span>善长行业：</span><span>' + value.ResearchField + '</span></p>',
+			].join('');
+		};
+	}
+
+	window.createrEvents = {
+		'click .cancleCreater': function(e, value, row, index) {
+			layer.open({
+				type: 1,
+				area: ['300px', '220px'],
+				title: ['取消收藏', 'font-size:18px;text-align: center;'],
+				content: $(".cancle"),
+				btn: '确定',
+				yes: function(index, layero) {
+					$.post(http_head + 'Makerspacey/MakerCollection/Cancle_MakerCollection.ashx', {
+						"collectId": row.Id,
+						"userGuid": userGuid,
+					}, function(data) {
+						var dataDel = JSON.parse(data);
+						if (dataDel.status == 200) {
+							layer.msg('取消成功', {
+								time: 1000,
+							})
+							loadCreaterFirst(0)
+						} else {
+							layer.msg(dataDel.msg, {
+								time: 1000,
+							})
+						}
+					});
+					layer.close(index)
+				}
+			})
+		},
+		'click .lookCreater': function(e, value, row, index) {
+
+			// window.open("../html/visitCreaterInfo.html?guid==" + row.makerGuid + "&&name=" + row.makerName + "&app=易企点")
+		}
+	}
+</script>

@@ -1,0 +1,219 @@
+body {
+	background-color: #f6f8f9;
+}
+
+.regcomTitle {
+	height: 80px;
+	width: 100%;
+	line-height: 60px;
+	background-color: #fff;
+	text-align: center;
+	font-size: 25px;
+	display: flex;
+}
+
+.regcomTitle img {
+	height: 40px;
+	width: 40px;
+	margin-right: 10px
+}
+
+.regcomTitle div {
+	display: flex;
+	line-height: 40px;
+	padding-top: 20px;
+	padding-left: 65px;
+	font-size: 30px;
+}
+
+.regcomTitle p:nth-child(2) {
+	margin: 0 auto;
+	width: 430px;
+	line-height: 80px;
+	text-align: left;
+	font-size: 30px;
+	font-weight: bold;
+}
+
+.regCom {
+	width: 100%;
+	margin-top: 50px
+}
+
+.content {
+	background-color: #fff;
+	width: 1200px;
+	margin: 0 auto;
+	padding: 30px
+}
+
+#activityInfoForm > label,
+#activityContentForm > label,
+#activityHolderForm > label {
+	display: block;
+	line-height: 50px;
+}
+
+#activityInfoForm > label > span:nth-child(1),
+#activityContentForm > label > span:nth-child(1),
+#activityHolderForm > label > span:nth-child(1) {
+	display: inline-block;
+	width: 10px;
+	color: #f00;
+}
+
+#activityInfoForm > label > input {
+	width: 400px;
+}
+
+#activityInfoForm > label > span:nth-child(2),
+#activityContentForm > label span:nth-child(2),
+#activityHolderForm > label span:nth-child(2) {
+	display: inline-block;
+	width: 90px;
+	color: #909090;
+}
+
+.activityInfo,
+.activityContent,
+.activityHolderInfo {
+	border-bottom: 1px solid #29e;
+	font-size: 20px;
+	font-weight: bold;
+	padding-bottom: 10px
+}
+
+#pic3Img {
+	width: 380px;
+	height: auto;
+	border-radius: 20px;
+	margin: 10px 0;
+}
+
+#pic3 {
+	background-color: #05509a;
+	color: #fff;
+	border: none;
+	border-radius: 3px;
+	outline: none;
+	padding: 0 22px;
+	font-size: 14px;
+	height: 36px;
+	line-height: 36px;
+}
+
+#pic3:hover {
+	background-color: #0344aa;
+}
+
+.imgDiv div:nth-child(1) {
+	width: 200px;
+	vertical-align: middle;
+	font-size: 16px;
+	color: #909090
+}
+
+.imgDiv div:nth-child(1) span:nth-child(1) {
+	display: inline-block;
+	width: 10px;
+	color: #f00;
+}
+
+.imgDiv div:nth-child(2) {
+	width: 400px;
+	text-align: center;
+}
+
+.activityDesc,
+.activitySchedule {
+	margin: 20px 0;
+}
+
+.activityDesc p,
+.activitySchedule p {
+	width: 100px;
+}
+
+.activityDesc p span:nth-child(1),
+.activitySchedule p span:nth-child(1) {
+	display: inline-block;
+	width: 10px;
+	color: #f00;
+}
+
+#activityDesc,
+#activitySchedule {
+	width: 70%;
+}
+
+#activityContentForm > label > label,
+#activityInfoForm > label > label {
+	width: 80px;
+	line-height: 25px;
+	margin: 0 20px;
+	text-align: center;
+	cursor: pointer;
+}
+
+#activityInfoForm > label > label,
+#activityHolderForm > label > label {
+	width: 80px;
+	line-height: 25px;
+	margin: 0 5px;
+	text-align: center;
+	cursor: pointer;
+}
+
+.priceInput {
+	display: none;
+}
+
+.submitArea {
+	text-align: center;
+}
+
+.submitArea button:hover {
+	background-color: #0344aa;
+}
+
+.submitArea button {
+	background-color: #05509a;
+	color: #fff;
+	border: none;
+	border-radius: 3px;
+	outline: none;
+	padding: 0 22px;
+	margin-top: 30px;
+	font-size: 14px;
+	height: 36px;
+	line-height: 36px;
+	width: 120px;
+}
+
+.w-e-text {
+	background-color: #fff;
+}
+
+#changeAddressBtn,
+#changeClassifyBtn {
+	background-color: #29e;
+	padding: 5px 8px;
+	margin-left: 20px;
+	color: #fff;
+	cursor: pointer;
+}
+
+#activityInfoForm #newAddress {
+	display: none;
+}
+
+#activityInfoForm #newClassify {
+	display: none;
+}
+
+.activityDesc p span:nth-child(2),
+.activitySchedule p span:nth-child(2) {
+	width: 90px;
+	color: #909090;
+	font-weight: bold;
+}

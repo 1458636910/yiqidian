@@ -1,0 +1,301 @@
+
+		<link rel="stylesheet" type="text/css" href="css/applyForm2.css" />
+		
+		<style type="text/css">
+			.atis {
+				width: 115px !important;
+				text-align: right;
+				margin: 0 !important;
+				display: inline-block !important;
+				margin-right: 10px !important;
+			}
+
+			#test {
+				width: 200px;
+
+				left: 180px;
+				top: 0;
+				display: none;
+				border: none !important;
+			}
+			
+			.content_list p{margin-left: 0!important;}
+		</style>
+
+		<div class="header">
+			<p class="header_p1">姓名：<i id="upname"></i></p>
+			<p>工号：<i id="jobNumber"></i></p>
+			<p>部门：<i id="department"></i></p>
+			<p>职位：<i id="post"></i></p>
+		</div>
+
+
+		<div class="box">
+			<div class="content">
+				<form class="layui-form" action="">
+
+					<div class="content_list">
+						<p class="atis">公文类型：</p>
+						<p>通知</p>
+					</div>
+
+					<div class="content_list">
+						<p class="atis">发布对象：</p>
+						<div class="layui-input-inline times nosd">
+							<select name="quiz1" class="industry"></select>
+						</div>
+					</div>
+
+
+					<div class="content_list">
+						<p class="atis">公文主题：</p>
+						<div class="layui-input-block dist add">
+							<input type="text" name="username" lay-verify="required" autocomplete="off" placeholder="请输入标题" class="layui-input"
+							 id="newsTheme">
+						</div>
+					</div>
+
+
+					<div class="content_list">
+						<p class="atis">公文内容：</p>
+						<div class="layui-input-block dist">
+							<textarea class="layui-textarea" lay-verify="required" id="leaveReason"></textarea>
+						</div>
+					</div>
+
+					<div class="content_list">
+						<p class="atis">处理时限：</p>
+						<div class="layui-input-inline times nosd">
+							<select name="quiz1" id="newsCycle">
+								<option value="1小时内">1小时内</option>
+								<option value="2小时内">2小时内</option>
+								<option value="4小时内">4小时内</option>
+								<option value="8小时内">8小时内</option>
+								<option value="24小时内">24小时内</option>
+								<option value="两个工作日内">两个工作日内</option>
+								<option value="三个工作日内">三个工作日内</option>
+							</select>
+						</div>
+					</div>
+
+
+					<div class="content_list">
+						<p class="atis">责任：</p>
+						<div class="layui-input-block dist">
+							<textarea class="layui-textarea" lay-verify="required" id="duty"></textarea>
+						</div>
+					</div>
+
+
+					<div class="content_list">
+						<p class="atis">是否定时发送：</p>
+						<div class="layui-unselect layui-form-switch" lay-skin="switch" id="test1" lay-filter="filter">
+							<em></em>
+							<i></i>
+						</div>
+						<input type="text" class="layui-input" id="test">
+
+					</div>
+
+					<div class="content_list">
+						<p><span class="atis">审核人：</span><i id="verify"></i></p>
+					</div>
+
+					<div class="content_list">
+						<div class="layui-form-item">
+							<div class="layui-input-block" style="margin: 0;">
+								<div class="layui-btn btns" id="referd" lay-submit="" lay-filter="demo">立即提交</div>
+							</div>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+
+		<p class="btnArea">
+			<span class="goback">
+				<img src="img/goback.png" alt="" />
+				返回
+			</span>
+		</p>
+
+		<script type="text/javascript">
+			//分割当前网页链接
+			var windowUrl = window.location.href; //获取当前url链接		
+			//http://127.0.0.1:8848/shenqing/tongzhi.html?userGuid=4f47e8c7e40541d4a2f03c3c72304252&companyId=46
+			var arr = windowUrl.split("?", 2); //分割url
+			var arr_1 = arr[1]; //瞎起变量		
+			var arr_2 = arr_1.split('&', 4);
+			var arr_3 = (arr_2[0].split('=', 2))[1];
+			var arr_4 = (arr_2[1].split('=', 2))[1];
+			//console.log(arr_4)
+			var lxd = '';
+			var createDepartId = 0;
+			var objectDepartId = 0;
+			var ParentId = 0;
+			var IsAdmin = [];
+			var isTimer = false;
+
+			//Demo
+			layui.use('form', function() {
+				var form = layui.form;
+				//监听提交
+				form.on('submit(demo)', function(data) {
+					
+				});
+				form.on('switch(filter)', function(data) {});
+
+
+
+			});
+
+			layui.use('laydate', function(e) {
+				var laydate = layui.laydate;
+				//执行一个laydate实例
+				//外部事件调用
+				lay('#test1').on('click', function() { //假设 test1 是一个按钮				
+					if ($('#test').css('display') == 'none') {
+						$(this).addClass('layui-form-onswitch');
+						isTimer = true;
+						$('#layui-laydate1').show();
+						$('#test').show();
+						laydate.render({
+							elem: '#test',
+							show: true, //直接显示
+							type: 'datetime',
+							closeStop: '#test1' //这里代表的意思是：点击 test1 所在元素阻止关闭事件冒泡。如果不设定，则无法弹出控件
+						});
+					} else {
+						$(this).removeClass('layui-form-onswitch');
+						isTimer = false;
+						$('#test').hide();
+						$('#layui-laydate1').hide();
+						laydate.render({
+							elem: '#test',
+							show: false, //直接显示
+							closeStop: '#test1' //这里代表的意思是：点击 test1 所在元素阻止关闭事件冒泡。如果不设定，则无法弹出控件
+						})
+					}
+				});
+			});
+
+
+
+			//获取个人信息
+			$.ajax({
+				url: 'http://47.94.173.253:8008/getUserDetailByuserGuid.ashx', //你请求的接口
+				type: 'POST', //类型
+				data: {
+					'userGuid': arr_3,
+				}, //数据有则传，没有可以不写
+				success: function(data) {
+					data = JSON.parse(data)
+					//请求成功后的返回
+					//console.log(data);		
+					IsAdmin = data.items.IsAdmin;
+					$('#upname').text(data.items.realName);
+					$('#jobNumber').text(data.items.jovNumber);
+					$('#department').text(data.items.depart);
+					$('#post').text(data.items.post);
+					layui.use('form', function() {
+						var form = layui.form;
+						form.render();
+					})
+				}
+			})
+
+
+
+			// 获取下拉框数据
+			$.ajax({
+				url: 'http://47.94.173.253:8008/Com_SelectDepartment.ashx', //你请求的接口
+				async: false,
+				type: 'POST', //类型
+				data: {
+					companyId: arr_4,
+					ParentId: ParentId,
+				}, //数据有则传，没有可以不写
+				success: function(data) {
+					//请求成功后的返回
+					data = JSON.parse(data);
+					datas = data.items;
+					//console.log(datas);
+					for (let i = 0; i < datas.length; i++) {
+						$(".industry").append(new Option(datas[i].departName));
+					}
+					layui.use('form', function() {
+						var form = layui.form; //只有执行了这一步，部分表单元素才会自动修饰成功
+						lxi = $('#department').text();
+						if (IsAdmin <= 0) {
+							$('select').find('option:contains(' + lxi + ')').prop('selected', true).siblings().prop('disabled', true);
+							lxd = 1;
+						} else {
+							lxd = 0;
+						}
+						form.render('select');
+					});
+
+				}
+			});
+
+			//获取审批人数据
+			$.ajax({
+				url: 'http://47.94.173.253:8008/Com/Get_User_Leader.ashx', //你请求的接口
+				type: 'POST', //类型
+				data: {
+					'userGuid': arr_3,
+					'companyId': arr_4,
+				}, //数据有则传，没有可以不写		
+				success: function(data) {
+					var data = JSON.parse(data);
+					//console.log(data)
+					$("#verify").text(data.items)
+					layui.use('form', function() {
+						var form = layui.form;
+						form.render();
+					})
+				}
+			}); 
+
+
+			$('#referd').click(function() {
+				$.post('http://47.94.173.253:8008/Notices/Add_Notice.ashx', {
+						'userGuid': arr_3,
+						'companyId': arr_4,
+						'objectType': lxd, //针对类型  0:全体员工,1:针对部门
+						'objectDepartId': objectDepartId, //如果是对公司的话，传0				
+						'noticeTheme': $('#newsTheme').val(),
+						'noticeContent': $('#leaveReason').val(),
+						'noticeName': '通告',
+						'createDepartId': createDepartId, //人事的话就传0
+						'duty': $('#duty').val(),
+						'noticeCycle': $('#newsCycle').val(), //周期
+						'isTimer': isTimer,
+						'noticeTime': $('#test').val(),
+						'isAdmin': IsAdmin, //0部门领导 //1人事
+					},
+					function(data) {
+						data = JSON.parse(data)
+						console.log(data)
+					if (data.status == 200) {
+						$("#dataTable").replaceWith('<div id="dataTable"></div>');
+						$("#dataTable").load("tzsq.html");
+					}else{
+						layer.msg(data.msg, {
+							time: 1000,
+						});
+					}
+					})
+			});
+
+			// 返回
+			$(".goback").hover(function() {
+				$(this).children("img").attr("src", "img/goback-b.png")
+			}, function() {
+				$(this).children("img").attr("src", "img/goback.png")
+			});
+			$(".goback").on("click", function() {
+				$("#dataTable").replaceWith('<div id="dataTable"></div>');
+				$("#dataTable").load("tzsq.html");
+			});
+		</script>

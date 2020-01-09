@@ -1,0 +1,966 @@
+<link rel="stylesheet" href="css/swiper.min.css">
+<style>
+*,
+::after,
+::before {
+	box-sizing: inherit !important;
+}
+body{
+	background: #fff !important;
+}
+.header {
+	width: 100%;
+	height: 26px;
+	display: inline-block;
+	line-height: 26px;
+	margin: 0 auto;
+	/*margin-right:30px;*/
+	
+}
+.w1200 {
+	width: 1200px;
+	margin: 0 auto;
+	background: #fff;
+}
+
+.welcome {
+	float: left;
+	font-size: 12px;
+	color: #24A8EA;
+	height: 33px;
+	line-height: 33px;
+	margin-right: 10px;
+	padding-left: 12%;
+}
+
+.purchase {
+	width: 560px;
+	float: left;
+}
+
+.purchase li {
+	float: left;
+	margin-left: 10px;
+	height: 33px;
+	line-height: 33px;
+	font-size: 12px;
+}
+
+.purchase li a {
+	color: #848484;
+}
+
+.purchase li a:hover {
+	color: #24A8EA;
+}
+
+.register {
+	width: 280px;
+	float: right;
+	margin-right: 6%;
+}
+
+.register li {
+	float: right;
+	margin-left: 10px;
+	height: 33px;
+	line-height: 33px;
+	font-size: 12px;
+}
+
+.register li a {
+	color: #3FAEEB;
+}
+.seat {
+	position: relative;
+}
+
+#regBtn,
+#loginBtn {
+	cursor: pointer;
+}
+
+.seat ul {
+	position: absolute;
+	top: 33px;
+	left: -14px;
+	background-color: #00A2EA;
+	color: #FFFFFF;
+	width: 60px;
+	display: none;
+}
+
+.seat ul li {
+	width: 100%;
+	text-align: center;
+	cursor: pointer;
+}
+
+.dist {
+	width: 50px !important;
+	height: 1px !important;
+	background: #FFFFFF;
+	margin-right: 5px;
+}
+
+.backdrop {
+	height: 65px;
+	width: 100%;
+	margin: 0 auto;
+	background-color: #FFFFFF;
+	display: inline-block;
+	margin-top: 0;
+}
+.backdrop {
+	height: 65px;
+	width: 100%;
+	margin: 0 auto;
+	background-color: #FFFFFF;
+	display: inline-block;
+	margin-top: 0;
+}
+.nav {
+	height: 50px;
+	background-color: #00A2EA;
+	display: -webkit-box !important;
+	float: left;
+	width: 100%;
+}
+.nav .nav_1 {
+	width: 700px;
+	height: 50px;
+	margin-left: 260px;
+	box-sizing: border-box;
+}
+.nav .nav_1 li:hover {
+	font-weight: 800;
+	font-size: 18px !important;
+	transition: 0.5s;
+}
+.nav .nav_1 li span {
+	width: 40px;
+	height: 3px;
+	background: #FFFFFF;
+	display: inline-block;
+	position: absolute;
+	bottom: 7px;
+	left: 34px;
+}
+.nav .nav_1 li {
+	float: left;
+	font-size: 16px;
+	color: #FFFFFF;
+	width: 100px;
+	height: 50px;
+	text-align: center;
+	line-height: 50px;
+	position: relative;
+	cursor: pointer;
+}
+#yqyChara:hover{
+	font-weight: normal;
+	font-size: 28px !important;
+	transition: 0s;
+	cursor: auto;
+}
+.on {
+	font-weight: 800;
+	font-size: 18px !important;
+}
+
+.more {
+	width: 110px;
+	height: 50px;
+	line-height: 50px;
+	font-size: 16px;
+	position: relative;
+	cursor: pointer;
+}
+
+.more p {
+	color: #FFFFFF;
+	padding-right: 15px;
+}
+
+.more span {
+	margin-left: 5px;
+}
+
+.more ul {
+	width: 133px;
+	height: 600px;
+	
+	position: absolute;
+	top: 50px;
+	left: -47px;
+	box-shadow: -20px 15px 20px 12px rgba(0, 0, 0, 0.1);
+	display: none;
+	border-bottom-left-radius: 6px;
+	border-bottom-right-radius: 6px;
+	z-index: 99;
+}
+
+.more ul li {
+	font-size: 14px;
+	width: 133px;
+	color: #00A2EA;
+	text-align: center;
+	border-bottom: 1px solid #F5F5F5;
+	background-color: #FFFFFF;
+}
+
+.more ul li:hover {
+	background-color: #00A2EA;
+	color: #FFFFFF;
+}
+
+.more:hover ul {
+	display: block;
+}
+.nav{
+	margin: 0 !important;
+	z-index: 999;
+}
+.nav-active{
+	position: fixed !important;
+	top:0 !important;
+	z-index: 1000 !important;
+}
+.readMore{
+	background: #00A2EA;
+	border: none;
+	height: 40px;
+	line-height: 40px;
+	color: #fff;
+	margin-top: 20px;
+	margin-bottom: 30px;
+}
+blockquote{
+	text-indent:0px !important;
+}
+
+.essay_pp{
+	height: 260px !important;
+}
+.essay_p11{
+	font-size: 42px !important;
+	height: 70px !important;
+	line-height: 70px !important;
+	width: 600px !important;
+	margin-top: 10px !important;
+	font-weight: 600 !important;
+	color: #323232 !important;
+}
+.essay_p22{
+	height: 88px !important;
+	font-size: 31px !important;
+	line-height: 47px !important;
+	width: 900px !important;
+	color: #5d5d5d !important;
+}
+#yqyChara{
+	font-size: 28px !important;
+	margin-right: 60px;
+}
+.backdrop {
+	float: right;
+}
+.backdrop .sreach {
+	width: 440px;
+	float: left;
+	height: 30px;
+	position: relative;
+	margin-top: 10px;
+}
+.backdrop .sreach .sreach_input {
+	width: 230px;
+	height: 30px;
+	border: 0.5px solid rgba(255,255,255,0.4);
+	float: left;
+	border-radius: 20px;
+	padding-left: 15px;
+	color: #fff;
+	background: #00A2EA;
+}
+.backdrop .sreach .sreach_input::-webkit-input-placeholder{
+	color: #fff;
+}
+.backdrop .sreach .sreach_button {
+	width: 22px;
+	height: 22px;
+	
+	line-height: 24px;
+	color:rgba(255,255,255,0.5);
+	font-size: 16px;
+	outline: none;
+	border: none;
+	/*border: 1px solid #000000;*/
+	background: #00A2EA;
+	cursor: pointer;
+	position: absolute;
+	left: 200px;
+	top:2px
+}
+
+.backdrop .sreach .sreach_button span {
+	padding-right: 10px;
+}
+.debate {
+	width: 381px;
+	height: 328px;
+	background-color: #FFFFFF;
+	position: absolute;
+	top: 47px;
+	left: 0;
+	z-index: 99;
+	color: #323232;
+	display: none;
+}
+
+.debate h6 {
+	color: #F5A05C;
+	margin: 10px 0 10px 15px;
+}
+
+.debate ul li {
+	margin-left: 15px;
+	margin-bottom: 7px;
+	width: 335px;
+	height: 22px;
+	cursor: pointer;
+}
+
+.debate ul li span {
+	width: 22px;
+	height: 22px;
+	display: inline-block;
+	border-radius: 100%;
+	background-color: #989898;
+	color: #FFFFFF;
+	text-align: center;
+	margin-right: 10px;
+	float: left;
+}
+
+.debate ul li p {
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+
+.debate ul li:hover {
+	color: #43B0EB;
+}
+.publish {
+	width: 120px;
+	height: 29px;
+	background-color: #00A2EA;
+	color: rgba(255,255,255);
+	float: right;
+	border: 0.5px solid rgba(255,255,255,0.4);
+	border-radius: 20px;
+	text-align: center;
+	line-height: 29px;
+	font-size: 18px;
+	cursor: pointer;
+}
+
+.publish img {
+	padding-right: 10px;
+}
+ .essay_p44{
+ 	height: 88px !important;
+	font-size: 31px !important;
+	line-height: 47px !important;
+	width: 630px !important;
+	color: #5d5d5d !important;
+ }
+ .img1{
+ 	margin-right: 25px !important;
+ 	width: 240px !important;
+ 	height: 190px !important;
+ 	margin-top: 30px;
+ }
+ .essay_p33{
+ 	font-size: 26px !important;
+ 	width: 720px !important;
+ 	bottom: 30px !important;
+ }
+ .time1{
+ 	width: 270px !important;
+ 	margin-left: 20%;
+ }
+ .img2{
+ 	width: 26px !important;
+ 	height: 26px !important;
+ }
+ .readMore1{
+ 	font-size: 26px !important;
+ 	height: 70px !important;
+ }
+ .welcome1{
+ 	font-size:  34px !important;
+ 	height: 60px !important;
+ 	line-height: 60px !important;
+ }
+ .header1{
+ 	height: 60px !important;
+ 	line-height: 60px !important;
+ }
+ .register1{
+ 	width: 450px !important;
+ 	height: 60px !important;
+ 	line-height: 60px !important;
+ }
+ .register1 li{
+ 	margin-left: 18px !important;
+ }
+ .regli{
+ 	font-size:  26px !important;
+ 	height: 60px !important;
+ 	line-height: 60px !important;
+ }
+.swiper-container1{
+		width: 85%;
+		height: 80px;
+		float: left;
+	}
+.swiper-container1 .swiper-slide{
+	width: auto;
+	margin-left: 30px;
+	margin-right: 30px;
+	text-align: center;
+	line-height: 80px;
+	font-size: 36px;
+}
+.active{
+	color: #3FAEEB;
+}
+.swiper-slide li span{
+	width:80%;
+	height: 3px;
+	background: #3FAEEB;
+	display: inline-block;
+	position: absolute;
+	bottom: 1px;
+	left: 50%;
+	margin-left: -40%;
+}
+.mintone{
+	width: 100%;
+	height: 80px;
+	border-bottom: 0.3px solid #999999;
+	background: #fff;
+}
+.searchMob,.publishMob{
+	float: left;
+	width: 7%;
+	height: 80px;
+	line-height: 80px;
+}
+.searchOne{
+	position: fixed;
+	z-index: 1001;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	background: #EEEEEE;
+	display: none;
+}
+.searchOne .input-group{
+	float: left;
+	height: 80px;
+	width: 84%;
+	margin-left: 30px;
+	text-align: center;
+	position: relative;
+}
+.input-group .search1{
+	position: absolute;
+	left: 20px;
+	top: 50%;
+}
+.input-group .close{
+	display: none;
+	position: absolute;
+	right: 20px;
+	top: 50%;
+}
+.searchOne .searchOneHeader{
+	width: 100%;
+	height: 120px;
+	background: #fff;
+}
+.searchOne .input-group	.form-control1{
+	font-size: 34px;
+	height: 70px;
+	margin-top: 20px;
+	border: none;
+	width: 100%;
+	border-radius: 4px;
+	background: #e4e4e6;
+	color: #888888;
+	outline:none;
+	padding-left: 80px;
+-webkit-appearance: none;
+}
+.searchOne span{
+	display: inline-block;
+	color: #666666;
+	font-size: 36px;
+	height: 68px;
+	line-height: 68px;
+	margin-left: 20px;
+	margin-top: 20px;
+}
+.searchOne .searchOneBody{
+	width: 100%;
+	height: 500px;
+	background: #fff;
+	margin-top: 20px;
+}
+</style>
+<div class="headerone">
+			<div class="header">
+				<p class="welcome">欢迎来到易企点 !</p>
+				<div class="purchase visible-lg-block visible-md-block">
+					<ul>
+						<li><a href="javascript:void(0);" class="develop">易企购</a></li>
+						<li>|</li>
+						<li><a href="http://www.jinshiku.com" target="_blank">易企学</a></li>
+						<li>|</li>
+						<li><a href="index.html">易企阅</a></li>
+						<li>|</li>
+						<li><a href="javascript:void(0);" class="develop">易企聘</a></li>
+						<li>|</li>
+						<li><a href="#" class="ckkj">创客空间</li>
+						<li>|</li>
+						<li><a href="http://www.eqidd.com/comSpace/eqd2.html" target="_blank">企业空间</li>
+						<li>|</li>
+						<li><a href="http://www.eqidd.com/tuiguang.html" target="_blank">推广页</a></li>
+					</ul>
+				</div>
+
+				<div class="register">
+					<ul>
+						<li><a href="" target="_blank">易企点介绍</a></li>
+						<li><a href="http://www.eqidd.com/html/download.html" target="_blank">APP 下载</a></li>
+						<li><a id="regBtn">注册</a></li>
+						<li class="seat"><a id="loginBtn">登录</a>
+							<ul>
+								<li>创客空间</li>
+								<li class="dist">
+									<p></p>
+								</li>
+								<li class="userOption">企业后台</li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+			<!--</div>-->
+		</div>
+		<div class="mintone visible-sm-block visible-xs-block">
+			<div class="swiper-container1">
+				<section class="swiper-container">
+				    <div class="swiper-wrapper">
+				        <div class="swiper-slide active">
+							<a href="index.html" >
+								<li>首页<span style="display: none";></span></li>
+							</a>
+						</div>
+				        <div class="swiper-slide">
+							<a href="hlw.html">
+								<li>互联网<span style="display: none;"></span></li>
+							</a>
+						</div>
+				        <div class="swiper-slide">
+							<a href="js.html">
+								<li>技术<span style="display: none;"></span></li>
+							</a>
+						</div>
+				        <div class="swiper-slide">
+							<a href="cp.html">
+								<li>产品<span style="display: none;"></span></li>
+							</a>
+						</div>
+				        <div class="swiper-slide">
+							<a href="znzz.html">
+								<li>智能制造<span style="display: none;"></span></li>
+							</a>
+						</div>
+				        <div class="swiper-slide">
+				        	<a href="xkj.html">
+				        		<li>新科技<span style="display: none;"></span></li>
+				        	</a>
+				        </div>
+						<div class="swiper-slide">
+							<a href="zcsj.html">
+								<li>职场/社交<span style="display: none;"></span></li>
+							</a>
+						</div>
+						<div class="swiper-slide">
+				        	<a href="rlzy.html">
+				        		<li>人力资源经理<span style="display: none;"></span></li>
+				        	</a>
+				        </div>
+						<div class="swiper-slide">
+							<a href="scgl.html">
+								<li>生产管理<span style="display: none;"></span></li>
+							</a>
+						</div>
+						<div class="swiper-slide">
+							<a href="xzgl.html">
+								<li>行政管理<span style="display: none;"></span></li>
+							</a>
+						</div>
+						<div class="swiper-slide">
+							<a href="jrcwtz.html">
+								<li>金融/财务/投资<span style="display: none;"></span></li>
+							</a>
+						</div>
+						<div class="swiper-slide">
+							<a href="hdzh.html">
+								<li>活动/展会<span style="display: none;"></span></li>
+							</a>
+						</div>
+						<div class="swiper-slide">
+							<a href="gylgl.html">
+								<li>供应链管理<span style="display: none;"></span></li>
+							</a>
+						</div>
+						<div class="swiper-slide">
+							<a href="ldl.html">
+								<li>领导力<span style="display: none;"></span></li>
+							</a>
+						</div>
+						<div class="swiper-slide">
+							<a href="qyzl.html">
+								<li>企业策略<span style="display: none;"></span></li>
+							</a>
+						</div>
+						<div class="swiper-slide">
+							<a href="gylgl.html">
+								<li>供应链管理<span style="display: none;"></span></li>
+							</a>
+						</div>
+						<div class="swiper-slide">
+							<a href="xsyyx.html">
+								<li>销售与营销<span style="display: none;"></span></li>
+							</a>
+						</div>
+						<div class="swiper-slide">
+							<a href="sj.html">
+								<li>设计<span style="display: none;"></span></li>
+							</a>
+						</div>
+				    </div>
+				</section>
+			</div>
+			<div class="searchMob"><img src="img/search.svg" /></div>
+			<div class="publishMob"><img src="img/increase.svg" /></div>
+		</div>
+		<div class="searchOne">
+			<div class="searchOneHeader">
+				<div class="input-group">
+					<input type="text" class="form-control1" placeholder="请输入要搜索的内容">
+					<img class="search1" src="img/search1.svg" style="width: 40px;height: 40px;">
+					<img class="close" src="img/close.svg" style="width: 40px;height: 40px;">
+				</div><!-- /input-group -->
+				<span>取消</span>
+			</div>
+			<div class="searchOneBody">
+				<ul>
+					
+				</ul>
+			</div>
+		</div>
+		
+		<div class="backdrop visible-lg-block visible-md-block">
+			<div class="nav">
+				<ul class="nav_1 visible-lg-block visible-md-block">
+						<li id="yqyChara">
+							易企阅
+						</li>
+						<a href="index.html" >
+							<li>首页<span style="display: none";></span></li>
+						</a>
+						<a href="hlw.html">
+							<li>互联网<span style="display: none;"></span></li>
+						</a>
+						<a href="js.html">
+							<li>技术<span style="display: none;"></span></li>
+						</a>
+						<a href="cp.html">
+							<li>产品<span style="display: none;"></span></li>
+						</a>
+						<a href="znzz.html">
+							<li>智能制造<span style="display: none;"></span></li>
+						</a>
+						
+
+					</ul>
+					<div class="more visible-lg-block visible-md-block">
+						<p>更多<span class="iconfont icon-xiasanjiaoxing"></span></p>
+						<ul>
+							<a href="xkj.html">
+								<li>新科技</li>
+							</a>
+							<a href="zcsj.html">
+								<li>职场/社交</li>
+							</a>
+							<a href="rlzy.html">
+								<li>人力资源管理</li>
+							</a>
+							<a href="scgl.html">
+								<li>生产管理</li>
+							</a>
+							<a href="xzgl.html">
+								<li>行政管理</li>
+							</a>
+							<a href="jrcwtz.html">
+								<li>金融/财务/投资</li>
+							</a>
+							<a href="hdzh.html">
+								<li>活动/展会</li>
+							</a>
+							<a href="gylgl.html">
+								<li>供应链管理</li>
+							</a>
+							<a href="ldl.html">
+								<li>领导力</li>
+							</a>
+							<a href="qyzl.html">
+								<li>企业战略</li>
+							</a>
+							<a href="xsyyx.html">
+								<li>销售与营销</li>
+							</a>
+							<a href="sj.html">
+								<li style="border-bottom-left-radius: 6px;border-bottom-right-radius: 6px;">设计</li>
+							</a>
+						</ul>
+					</div>
+					<div class=" col-xs-1 visible-xs-block visible-sm-block">
+						
+					</div>
+					<div class="sreach col-xs-10">
+						<input type="text" class="sreach_input" placeholder="搜索" id="sreach_input" autocomplete="off" value="" />
+						<button type="button" class="sreach_button"><img src="img/search1.png" alt="" style="width: 24px;height: 24px;"/></button>
+						<div class="debate">
+							<h6>十大热门</h6>
+							<ul></ul>
+						</div>
+						<div class="publish">写日志</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.0.2/js/swiper.min.js"></script>
+		<script type="text/javascript">
+			function cles1() {
+						setTimeout(function() {
+						$.post("http://47.94.173.253:8008/Articles/Get_Hot_Article.ashx", {}, function(data) {
+							var data = JSON.parse(data);
+							console.log(data)
+							if (data.status == 200) {
+								let index = 0;
+			//					for (var itemValue of data.items){
+									for(var i=0;i<data.items.length;i++){
+										index++;
+										var str = '<li data-id="'+ data.items[i].Id +'" data-useruid="'+ data.items[i].Guid +'" ><span>'+ index +'</span><p>' + data.items[i].title + '</p></li>';
+										$('.searchOneBody ul').append(str);
+									}
+			//					};
+								$(".searchOneBody ul li").on("click", function() {
+									var Id = $(this).attr("data-id");
+									var useruid = $(this).attr("data-useruid");
+									window.open("http://www.eqidd.com/changke/html/logDetail2.html?useruid=" + useruid + "&id=" + Id);
+								})
+							}
+							//搜索键下拉数据
+							$('.sreach_input').mouseover(function() {
+			//					$('.debate').show();
+							});
+							$('.sreach_input').mouseout(function() {
+			//					$('.debate').hide();
+							});
+							var debateLi = $('.debate ul li');	
+							debateLi.mouseover(function() {
+								$(this).siblings('li').find('span').removeClass('od');
+								$(this).find('span').addClass('od')
+							});
+							debateLi.mouseout(function() {
+								$(this).find('span').removeClass('od');
+							});
+						})
+					},200);
+				}
+				cles1();
+			$(".searchOne .input-group .form-control1").bind("input propertychange", function() {
+				if($('.searchOne .input-group	.form-control1').val()!==''){
+					$('.input-group .close').show()
+				}else{
+					$('.input-group .close').hide()
+				}
+			});
+			$('.input-group .close').click(function(){
+				$('.searchOne .input-group	.form-control1').val('')
+				$('.input-group .close').hide()
+			})
+			// $('.searchOne .input-group .form-control1').change(function(){
+			// 	console.log($('.searchOne .input-group	.form-control1').val())
+			// 	console.log(11)
+				
+			// })
+			$('.searchMob').click(function(){
+				$('.searchOne').fadeIn(300)
+			})
+			$('.searchOne span').click(function(){
+				$('.searchOne').fadeOut(300)
+			})
+			var swiper = new Swiper('.swiper-container', {
+			    slidesPerView: 'auto',
+			    spaceBetween: 10,
+			    pagination: {
+			        el: '.swiper-pagination',
+			        clickable: true,
+			    },
+			});
+			$(document).ready(function(){
+			    $('.swiper-container>.swiper-wrapper>.swiper-slide').click(function(){
+			        $(this).addClass("active").siblings().removeClass("active");
+			    });
+			});
+			var href = window.location.href;
+			var dataC = localStorage.getItem("GHY_login");
+			if (dataC != null) {
+				var dataInfo = JSON.parse(dataC);
+				//console.log(dataInfo)
+				$('.listd').text(dataInfo.username);
+				 $('.publish').click(function(){
+		//			window.open("http://www.eqidd.com/makerSpace/writeCircle.html?source=0%userGuid" + dataInfo.Guid + "&companyId=" + dataInfo.companyId);
+					window.open("http://www.eqidd.com/makerSpace/writing.html?source=0%userGuid="+dataInfo.Guid+"&companyId="+dataInfo.companyId)
+		//			http://www.eqidd.com/makerSpace/writing.html?source=0%userGuid=4f47e8c7e40541d4a2f03c3c72304252&companyId=46
+				});
+				$('.publishMob').click(function(){
+					window.open("http://www.eqidd.com/makerSpace/writing.html?source=0%userGuid="+dataInfo.Guid+"&companyId="+dataInfo.companyId)
+				});
+				$('.ckkj').click(function(){
+					window.open("http://www.eqidd.com/makerSpace/innerLogin.html?href=http://www.eqidd.com/makerSpace/index.html");
+				});
+				if (dataInfo.iphoto == "http://47.94.173.253:8008") {
+		
+				} else {
+					$('#pics').attr("src", dataInfo.iphoto);
+				};
+				$('#loginBtn').text(dataInfo.username);
+				console.log(dataInfo.username)
+				$("#regBtn").on("click", function() {
+					localStorage.removeItem("GHY_login");
+					window.location.reload();
+				}).text("退出");
+				var flag2 = 0;
+				$("#loginBtn").on("click", function() {
+					if (flag2 == 0) {
+						$(".userOption").toggle("500");
+						flag2 = 1;
+					} else {
+						$(".userOption").hide("500");
+						flag2 = 0;
+					}
+				});
+				$(".userOption").on("click", function() {
+					window.open("http://www.eqidd.com/createrSpace/html/personInfo.html");
+				})
+			} else {
+				$('#loginBtn').click(function() {
+					location.href = "./innerLogin.html?href=" +window.location.href + "";
+				}).text("登录");
+				$("#regBtn").on("click", function() {
+					location.href = "http://www.eqidd.com/html/reg.html?href=" + window.location.href + "";
+				}).text("注册")
+				 $('.publish').click(function(){
+				 	layer.msg('请先登录')
+				 })
+				 $('.publishMob').click(function(){
+				 	layer.msg('请先登录')
+				 })
+			};
+
+
+	//导航
+	$(".nav .nav_1 li").click(function() {
+		$(this).siblings('li').removeClass('on');
+		$(this).siblings('li').find('span').remove();
+		$(this).addClass('on');
+		$(this).append('<span></span>');
+	});
+			var type = 'html';
+			var page = 0;
+			$('.sreach_button').click(function() {
+				if ($('#sreach_input').val().length == 0) {
+					layer.msg('搜索关键字不能为空', {
+						time: 1000,
+					});
+				} else {
+					trade()
+					$('.debate').hide();
+				}
+			});
+			 
+			$('#sreach_input').keydown(function(event) {
+				if (event.keyCode === 13) {
+					if ($('#sreach_input').val().length == 0) {
+						layer.msg('搜索关键字不能为空', {
+							time: 1000,
+						});
+					} else {
+						trade()
+						$('.debate').hide();
+					}
+				}
+			});
+			
+			function trade(page) {
+				   setTimeout(function() {
+				$.post("http://47.94.173.253:8008/Articles/Get_Article_BySearch.ashx?", {
+					para: $('#sreach_input').val(),
+					type: type,
+					page: page
+				}, function(data) {
+					var data = JSON.parse(data);
+					console.log(data)
+					window.open("search.html?searchKey=" + $('#sreach_input').val() + "");
+				})
+				},200);
+			}
+			window.addEventListener('scroll', function(){
+			 	let t = $('body, html').scrollTop();   // 目前监听的是整个body的滚动条距离
+			 	if(t>26){
+					// $('.header').addClass('nav-active')
+					$('.mintone').addClass('nav-active')
+				}else{
+					// $('.headeronbe').removeClass('nav-active')
+					$('.mintone').removeClass('nav-active')
+				}
+			 })
+			 // s.substring(s.lastIndexOf("/")+1);
+			 var href= window.href.substring(window.href.lastIndexOf("/")+1)
+			 if(href==''){
+				 $('.swiper-container1 .swiper-slide').eq(0).children('a').children('li').addClass('active').children('span').show()
+			 }
+			// var href= window.href.split('yiqiyue/')[1]
+			var arrHtml=['index.html','hlw.html']
+			for(var i=0;i<arrHtml.length;i++){
+				if(href==arrHtml[i]){
+					$('.nav_1 li').eq(i+1).addClass('on').children('span').show()
+					$('.swiper-container1 .swiper-slide').eq(i).children('a').children('li').addClass('active').children('span').show()
+				}
+			}
+//			if(href=='index.html'){
+//				$('.nav_1 li').eq(1).addClass('on').children('span').show()
+//			}else if(href=='hlw.html'){
+//				$('.nav_1 li').eq(2).addClass('on').children('span').show()
+//			}
+		</script>

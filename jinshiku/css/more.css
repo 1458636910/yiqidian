@@ -1,0 +1,125 @@
+body {
+	background-color: #f5f5f5;
+}
+
+/* header */
+.navTitle {
+	width: 100%;
+	height: 36px;
+	line-height: 36px;
+	z-index: 999999;
+	border-bottom: .5px solid #eee;
+	background-color: #f5f5f5
+}
+
+.navTitle ul {
+	z-index: 20;
+	padding: 0;
+	width: 1230px;
+	margin: 0 auto
+}
+
+.navTitle>ul>li,
+.navTitle>ul>div>li {
+	line-height: 36px;
+	text-align: center;
+	cursor: pointer;
+	color: #000;
+	color: #555
+}
+
+.navTitle>ul>p {
+	color: #848484
+}
+
+.navTitle>ul>li>a,
+.navTitle>ul>div>li>a {
+	text-decoration: none;
+	color: #848484;
+	width: 100%;
+	padding: 0 15px;
+	border-right: 1px solid #c8c8c8;
+	font-size: 14px;
+	font-family: "微软雅黑"
+}
+
+.navTitle>ul>li>a:hover,
+.navTitle>ul>div>li>a:hover {
+	color: #0287d1
+}
+
+.navTitle>ul>div .download a {
+	position: relative
+}
+
+.introduce a {
+	border-right: none !important
+}
+
+.userOption {
+	position: absolute;
+	top: 30px;
+	background-color: #fafafa;
+	color: #848484;
+	width: 70px;
+	height: 40px;
+	line-height: 40px;
+	font-size: 12px;
+	text-align: center;
+	cursor: pointer;
+	display: none
+}
+
+.userOption:hover {
+	text-decoration: underline
+}
+
+.kf {
+	margin-left: 15px;
+	color: #0aa2e8;
+}
+.loginDiv li a,.wel{
+	color: #0aa2e8!important;
+}
+/* body */
+.container,
+.labBar {
+	padding: 0;
+}
+
+.item1 {
+	background-color: white;
+	display: flex;
+	align-items: center;
+	padding-top: 20px;
+	padding-bottom: 30px;
+}
+
+.item2 {
+	background-color: #f5f5f5;
+	display: flex;
+	align-items: center;
+	padding-top: 20px;
+	padding-bottom: 30px;
+}
+
+.title {
+	padding: 0;
+}
+
+.item3 {
+	background-color: white;
+	padding-top: 20px;
+	padding-bottom: 30px;
+}
+
+.join {
+	display: flex;
+	align-items: center;
+	padding: 30px 0;
+}
+.join1{
+	
+	display: flex;
+	justify-content: center;
+}

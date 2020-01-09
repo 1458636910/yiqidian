@@ -1,0 +1,247 @@
+<link rel="stylesheet" type="text/css" href="css/apply.css"/>
+<div class="ccsq">
+    
+    <table class="applyTable">
+        <p class="form-inline operate" >
+            <select name="" id="status">
+                <option value="2">全部</option>
+                <option value="0">未审核</option>
+                <option value="1">已审核</option>
+            </select>
+            <span class="addsq">
+                <img src="img/2xrz.png" alt=""/>
+                调休申请
+            </span>
+        </p>
+    </table>
+    <p class="btnArea">
+        <span class="goback">
+            <img src="img/goback.png" alt=""/>
+            返回
+        </span>
+        <span class="btnNext ">下一页</span>
+    </p>
+</div>
+<!-- modal -->
+<div class="modal fade" tabindex="-1" role="dialog" id="abb">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form class="form-horizontal" method="" action="#">
+                <div class="modal-body">
+                    <table id="latter">   </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">确定</button>
+                </div>
+            </form>
+        </div>
+        <!-- /.modal-content  -->
+    </div>
+    <!-- /.modal-dialog  -->
+</div>
+<!-- /.modal  -->
+<script>
+    $(document).ready(function() {
+        var applyPage = 0;
+        var type = 2;
+        $(".addsq").on("click", function() {
+            $("#dataTable").replaceWith('<div id="dataTable"></div>');
+            $("#dataTable").load("txsqForm.html?v="+Math.random());
+        });
+
+        // 列表
+        function applyTable(data) {
+            $(".applyTable").bootstrapTable({       
+                search: true,
+                data: data,
+                columns: [{
+                    field: "offCode",
+                    title: "编号",
+                    align: 'center',
+                    valign: 'middle'
+                }, {
+                    field: "planStartTime",
+                    title: "时间段1开始时间",
+                    align: 'center',
+                    valign: 'middle',
+                    formatter:timeStart1
+                }, {
+                    field: "planEndTime",
+                    title: "时间段1结束时间",
+                    align: 'center',
+                    valign: 'middle',
+                    formatter:timeEnd1
+                }, {
+                    field: "createTime",
+                    title: "申请时间",
+                    align: 'center',
+                    valign: 'middle',
+                    formatter:createTime
+                }, {
+                    title: "审批进度",
+                    align: 'center',
+                    valign: 'middle',
+                    events: operateEvents,
+                    formatter: applyStatu
+                }]
+            });
+            function timeStart1(e,value,row,idnex){
+                var this_time = value.planStartTime;
+                var time = this_time.split("T")[0]+"~"+this_time.split("T")[1];
+                
+                return '<span>'+time+'</span>'
+            };
+            function timeEnd1(e,value,row,idnex){
+                var this_time = value.planEndTime;
+                var time = this_time.split("T")[0]+"~"+this_time.split("T")[1];
+                
+                return '<span>'+time+'</span>'
+            };
+            function createTime(e,value,row,idnex){
+               
+                var this_time = value.createTime;
+                var time = time = this_time.split("T")[0]+"~"+this_time.split("T")[1];
+                return '<span>'+time+'</span>'
+            };
+            function applyStatu(e, value, row, index) {
+                var statu;
+                if (value.status == 0) {
+                    statu = "待审批"
+                } else {
+                    statu = "已审批"
+                }
+                return '<span class="statu">' + statu + '<span/>'
+            };
+
+        };
+        $('#abb').on('hidden.bs.modal', function() {
+            let latter = document.createElement("table");
+            latter.id = 'latter'
+            $(".modal-body").html("");
+            $(".modal-body").append(latter)
+        });
+        window.operateEvents = {
+            'click .statu': function(e, value, row, index) {
+                $.post('' + http_head + 'Offs/Get_Off_Check.ashx', {
+                    "offId": row.id
+                }, function(data) {
+                    var data = JSON.parse(data);
+                    console.log(data.items)
+                    $("#latter").bootstrapTable({
+                        data: data.items,
+                        columns: [{
+                            formatter: latter,
+                        }],
+                    });
+
+                    function latter(e, value, index, row) {
+                        console.log(value.status)
+                        var status = value.status;
+                        if (value.status == -1) {
+                            status = '待审批'
+                        } else if (value.status == 1) {
+                            status = '拒绝'
+                        } else {
+                            status = '同意'
+                        };
+                        if (value.createTime != null) {
+                            ar = value.createTime;
+                            ar_1 = ar.split("T")[0];
+                            ar_3 = ar.split("T")[1].split(':')[0] + ':' + ar.split("T")[1].split(':')[1];
+                            ar_4 = ar_1 + ' ' + ar_3;
+                        } else {
+                            ar_4 = null
+                        }
+                        return '<div class="layui-timeline"><div class="layui-timeline-item"><i class="layui-icon layui-timeline-axis">&#xe63f;</i><div class="layui-timeline-content layui-text"><h3 class="layui-timeline-title">' +
+                            status + '</h3><p class="name_1">' + value.uname + '<span class="cxk">' + ar_4 + '</span></p><p>' + value
+                            .message + '</p></div></div></div>'
+                    }
+                })
+                $('#abb').modal()
+            }
+        };
+        
+        function loadFirst(page, type) {
+            $.post(http_head + "Offs/Get_Off_ByCreater.ashx", {
+                "userGuid": userGuid,
+                "companyId": companyId,
+                "page": page,
+                "type": type
+            }, function(data) {
+                var data = JSON.parse(data);
+                
+                if (data.status == 200) {
+                    if (data.items.list.length > 0) {
+                        layer.msg("加载完成", {
+                            time: 1200
+                        });
+                    } else {
+                        layer.msg("暂无数据", {
+                            time: 1200
+                        })
+                    }
+                    applyTable(data.items.list);
+                    $(".applyTable").bootstrapTable('load', data.items.list);
+                    applyPage = data.items.page;
+                    if (data.items.list.length >= 10) {
+                        $('.btnNext').fadeIn()
+                    } else {
+                        $('.btnNext').hide()
+                    }
+                }
+            })
+        };
+        loadFirst(applyPage, type);
+
+        function loadNext(page, type) {
+            $.post(http_head + "Offs/Get_Off_ByCreater.ashx", {
+                "userGuid": userGuid,
+                "companyId": companyId,
+                "page": page,
+                "type": type
+            }, function(data) {
+                var data = JSON.parse(data);
+                if (data.status == 200) {
+                    if (data.items.list.length > 0) {
+                        layer.msg("加载完成", {
+                            time: 1200
+                        });
+                    } else {
+                        layer.msg("暂无数据", {
+                            time: 1200
+                        })
+                    }
+                    applyTable(data.items.list);
+                    $(".applyTable").bootstrapTable('append', data.items.list);
+                    applyPage = data.items.page;
+                    if (data.items.list.length >= 10) {
+                        $('.btnNext').fadeIn()
+                    } else {
+                        $('.btnNext').hide()
+                    }
+                }
+            })
+        };
+        $(".btnNext").on("click", function() {
+            loadNext(applyPage, type)
+        });
+        $("#status").change(function() {
+            loadFirst(0, $(this).val())
+            console.log($(this).val())
+        });
+        $(".goback").hover(function() {
+            $(this).children("img").attr("src", "img/goback-b.png")
+        }, function() {
+            $(this).children("img").attr("src", "img/goback.png")
+        });
+        $(".goback").on("click", function() {
+            $("#dataTable").replaceWith('<div id="dataTable"></div>');
+            $("#dataTable").load("msq.html");
+        })
+    })
+</script>

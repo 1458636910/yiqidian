@@ -1,0 +1,32 @@
+.apply{
+    margin-top:20px
+}
+.title{font-size: 14px;color: #9E9E9E;margin-bottom: 10px!important;
+    font-weight: bold;}
+.attendance ul{width: 100%;display: inline-block;}
+.attendance ul li{width:239px;height: 73px;float: left;margin-right: 10px;background-color: #e8e8e8;margin-bottom: 15px;border-radius: 5px;cursor: pointer }	
+.attendance ul li p{height: 73px;line-height: 73px;width: 100px;float: left;}
+.imgs{height: 73px;line-height: 73px;float: left;}
+.imgd{float: right;}
+.apply_left{border-radius: 5px;width: 37px;height: 37px;vertical-align: middle;margin: 0 21px;}
+.apply_right{width: 13px;height: 13px;vertical-align: middle;margin-right: 21px;}
+.attendance{margin-bottom: 20px;}
+.addmc {
+    background-color: #29e;
+    color: #fff;
+    border: none;
+    outline: none;
+    width: 120px;
+    height: 36px;
+    line-height: 36px;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    margin-bottom: 20px!important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.addmc img{
+    margin-right: 10px;
+}

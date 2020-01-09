@@ -1,0 +1,173 @@
+<!-- <link rel="stylesheet" type="text/css" href="css/collectPdt.css?v=20190607"/> -->
+<style type="text/css">
+	.cancle{
+		display: none;
+		margin-top: 60px;
+		text-align: center;
+		color: red;
+	}
+	#cltTable thead
+	{   background-color: #e4e4e4;
+	    font-weight: bold;
+	 }
+	 .cltDiv{
+	 	margin-top: 30px
+	 }
+	 .cltPIc{
+	         width: 160px;
+	 }
+	 .inner{
+	    padding-bottom:0
+	}
+</style>
+<div class="cltDiv">
+	<table id="cltTable">
+		<thead>
+			<tr>
+				<th data-field="productName">	</th>
+				<th data-field="productImage">	</th>
+				<th data-field="company">	</th>
+				<th data-field="productPrice">	</th>
+			</tr>
+		</thead>
+	</table>
+	<br/>
+	<p class="clearfix">
+		<button class="cltNext pull-right">下一页</button>
+	</p>
+	<!-- 取消收藏 -->
+	<div class="cancle">
+		<p>确定取消收藏?</p>
+	</div>
+</div>
+<script type="text/javascript" charset="utf-8" async defer>
+	var demandPage;
+    loadCltPdtFirst (0) ;
+	function loadCltPdtFirst(page) {
+		$.post(http_head + 'Makerspacey/MakerCollection/Get_MakerCollectionProduct.ashx', {
+			"userGuid": userGuid,
+			"page": page
+		}, function(data) {
+			var data = JSON.parse(data);
+			demandPage = data.page
+			loadTable(data.items);
+			$("#cltTable").bootstrapTable('load', data.items);
+			if (data.items.length >= 10) {
+					$('.cltNext').show()
+				} else {
+					$('.cltNext').hide()
+				}
+		});
+	};
+	function loadCltPdtNext(page) {
+		$.post(http_head + 'Makerspacey/MakerCollection/Get_MakerCollectionProduct.ashx', {
+			"userGuid": userGuid,
+			"page": page
+		}, function(data) {
+			var data = JSON.parse(data);
+			demandPage = data.page
+			loadTable(data.items);
+			$("#cltTable").bootstrapTable('append', data.items);
+			if (data.items.length >= 10) {
+					$('.cltNext').show()
+				} else {
+					$('.cltNext').hide()
+				}
+		});
+	};
+
+	$('.cltNext').click(function() {
+		loadCltPdtNext(demandPage)
+	});
+
+	function loadTable(data) {
+		$('#cltTable').bootstrapTable({
+			data: data,
+			columns: [{
+					field: 'productImage',
+					title: '图片',
+					align: 'center',
+					valign: 'middle',
+					formatter: imgFormatter
+				},
+				{
+					field: 'productName',
+					title: '名称',
+					align: 'center',
+					valign: 'middle',
+				},
+				{
+					field: 'company',
+					title: '公司',
+					align: 'center',
+					valign: 'middle',
+				},
+				{
+					field: 'productPrice',
+					title: '价格',
+					align: 'center',
+					valign: 'middle'
+				},
+				{
+					field: 'option',
+					title: '操作',
+					align: 'center',
+					valign: 'middle',
+					formatter: demandFormatter,
+					events: demandEvents
+				}
+			]
+		});
+
+		function imgFormatter(e, value, row, index) {
+			var imgUrl = value.productImage.replace(/.png/, "min.png")
+			return [
+				'<img class="cltPIc" src="' + imgUrl + '" alt="">'
+			].join('');
+		};
+
+		function demandFormatter(e, value, row, index) {
+			return [
+				'<a class="cancleCollection"  title="取消收藏">',
+				'<span id="cancleCollection">取消收藏</span>',
+				'</a>  ',
+				'<a class="lookProduct"  title="查看">',
+				'<span id="lookProduct">查看</span>',
+				'</a>',
+			].join('');
+		};
+	}
+	window.demandEvents = {
+		'click .cancleCollection': function(e, value, row, index) {
+			layer.open({
+				type: 1,
+				area: ['300px', '220px'],
+				title: ['取消收藏', 'font-size:18px;text-align: center;'],
+				content: $(".cancle"),
+				btn: '确定',
+				yes: function(index, layero) {
+					$.post(http_head + 'Makerspacey/MakerCollection/Cancle_MakerCollection.ashx', {
+						"collectId": row.Id,
+						"userGuid": userGuid,
+					}, function(data) {
+						var dataDel = JSON.parse(data);
+						if (dataDel.status == 200) {
+							layer.msg('取消成功', {
+								time: 1000,
+							})
+							loadCltPdtFirst(0)
+						} else {
+							layer.msg(dataDel.msg, {
+								time: 1000,
+							})
+						}
+					});
+					layer.close(index)
+				}
+			})
+		},
+		'click .lookProduct': function(e, value, row, index) {
+			window.open("https://www.eqidd.com/qiyeSpace/html/product.html?id=" + row.productId + "")
+		}
+	}
+</script>

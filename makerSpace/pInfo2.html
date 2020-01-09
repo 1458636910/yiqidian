@@ -1,0 +1,2289 @@
+<link rel="stylesheet" type="text/css" href="css/tab2.css" />
+<style type="text/css">
+	.cd-tabs {
+		margin: 0 auto;
+		width: 100% !important;
+		margin-top: 0;
+		font-size: 18px;
+		padding: 30px;
+		margin-top: 20px;
+	}
+
+	.recDiv {
+		padding-left: 0px !important;
+	}
+
+	.cd-tabs-content {
+		width: 100% !important;
+		margin-top: 30px;
+	}
+
+	.cd-tabs-content li {
+		padding: 0;
+	}
+
+	.cd-tabs-navigation li {
+		color: white;
+		width: auto;
+	}
+
+	.cd-tabs nav {
+		display: flex;
+		align-items: center;
+		overflow: hidden;
+	}
+
+	.cd-tabs nav span {
+		width: 100px;
+		margin-bottom: 5px;
+		left: -100px;
+		text-align: right;
+		color: #666;
+		height: 33px;
+		line-height: 33px;
+		font-weight: bold;
+	}
+
+	.cd-tabs-navigation a.selected {
+		background-color: #29e !important;
+		color: white;
+		/* transition: all .5s; */
+		/* box-shadow: none; */
+	}
+
+	.cd-tabs-navigation a.selected:hover {
+		color: white;
+	}
+
+	.cd-tabs-navigation a {
+		height: 45px !important;
+		line-height: 45px !important;
+		text-align: center;
+		font-size: 14px;
+		padding: 0 30px;
+		text-decoration: none;
+		color: darkgray;
+	}
+
+	.cd-tabs-navigation li:nth-child(2) a {
+		min-width: 200px;
+	}
+
+	body {
+		min-width: 100px
+	}
+
+	.contain {
+		display: flex;
+		justify-content: center
+	}
+
+	.title {
+		margin: 0 auto;
+		text-align: center;
+		display: block;
+		font-size: 26px;
+		margin-bottom: 30px;
+		min-width: 1100px;
+		width: 1100px;
+		border-bottom: 1px solid silver;
+		padding-bottom: 30px;
+		padding-top: 30px;
+	}
+
+	.step_img {
+		margin: 20px auto;
+		display: block
+	}
+
+	.addPhoto {
+		display: flex;
+		align-items: center;
+		margin: 0 auto;
+	}
+
+	#info {
+		height: 300px;
+	}
+
+	.headImgBox {
+		align-items: flex-start;
+		display: flex;
+	}
+
+	.imgList {
+
+		width: 100%;
+	}
+
+	.imgRead {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-between;
+		width: 100%;
+	}
+
+	.imgList li {
+		margin-bottom: 20px;
+		text-align: center;
+		display: block;
+		margin-right: 20px;
+		width: 22%;
+		height: 120px;
+	}
+
+	.imgRead span {
+		width: 23%;
+		margin-bottom: 30px;
+		text-align: center;
+		display: block;
+	}
+
+	.imgRead span img {
+		min-width: 160px;
+		max-width: 160px;
+		cursor: pointer
+	}
+
+	.imgList li img {
+		cursor: pointer;
+		width: 100%;
+		height: 100%;
+	}
+
+	.labp {
+		width: 100%;
+		font-size: 14px !important;
+		color: #333 !important;
+		font-weight: bold;
+		margin-bottom: 10px !important;
+	}
+
+	.labp span {
+		display: inline-block;
+		color: #f00;
+		height: 30px;
+		font-weight: bold;
+	}
+
+	/* 2 */
+	.lab {
+		font-size: 24px;
+		padding-bottom: 20px
+	}
+
+	.form {
+		width: 800px;
+		margin: 0 auto;
+		margin-bottom: 60px;
+		font-size: 14px;
+	}
+
+	.form label {
+		display: flex;
+		margin-bottom: 30px;
+	}
+
+	.headImgBox span:nth-child(1) {
+		display: inline-block;
+		color: #f00;
+		height: 30px;
+		font-weight: bold
+	}
+
+	.headImgBox span:nth-child(2) {
+		min-width: 103px;
+		display: inline-block;
+		height: 30px;
+		font-weight: bold
+	}
+
+	.form label span:nth-child(2) {
+		min-width: 100px;
+		display: inline-block;
+		height: 30px;
+		font-weight: bold;
+	}
+
+	.form label input,
+	.form label textarea {
+		font-size: 14px !important;
+		color: black;
+	}
+
+	.sex {
+		margin-left: 20px !important
+	}
+
+	.form label select {
+		width: 120px;
+		margin-right: 10px;
+		height: 35px !important;
+	}
+
+	.tableLeft {
+		width: 130px;
+		height: 312px;
+		overflow-y: auto;
+		margin-top: 20px;
+	}
+
+	.tableLeft p {
+		cursor: pointer;
+		background-color: #29e;
+		color: #fff !important;
+		height: 30px;
+		line-height: 30px !important;
+		text-align: center;
+		font-size: 14px !important;
+
+	}
+
+	.tableLeft p:hover {
+		background-color: #5BB85D !important;
+		transition: all 0.5s
+	}
+
+	.tableRight {
+		width: 480px;
+		margin-left: 20px;
+		margin-top: 20px;
+	}
+
+	.tableSel,
+	.tableSel2,
+	.tableSel3 {
+		margin-left: 20px;
+		margin-top: 20px;
+	}
+
+	.tableSel label,
+	.tableSel2 label,
+	.tableSel3 label {
+		margin: 10px;
+		cursor: pointer;
+	}
+
+	.tableRight label {
+		display: inline-block;
+		width: 120px;
+		height: 30px;
+		line-height: 30px;
+		cursor: pointer
+	}
+
+	.teachAreaTable,
+	.teachAd,
+	.teachAd2,
+	.teachAd3 {
+		display: none;
+		margin: 20px;
+	}
+
+	.contain {
+		width: 1000px;
+		margin: 50px auto;
+		background-color: white;
+		padding: 30px;
+		box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.05);
+	}
+
+	.tabBox {
+		width: 110px;
+		overflow: hidden;
+	}
+
+	.submit {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+
+	.submit .subBtn {
+		background-color: #29e;
+		color: #fff;
+		border: none;
+		border-radius: 5px;
+		outline: none;
+		padding: 5px 30px;
+		margin-top: 30px;
+		font-size: 14px;
+		cursor: pointer;
+	}
+
+	.st1 {
+		background-image: none;
+		position: relative;
+		top: 25%;
+		width: 120px;
+		text-align: center;
+		background: #29e;
+		height: 34px;
+		line-height: 34px;
+		color: white;
+		border-radius: 20px;
+		margin-left: 50px
+	}
+
+	.st2-2,
+	.st2-1 {
+		background-image: none;
+		width: 120px;
+		text-align: center;
+		background: #29e;
+		height: 34px;
+		line-height: 34px;
+		color: white;
+		border-radius: 20px;
+	}
+
+	.tabBox2 {
+		height: 60px;
+		width: 360px;
+		margin-top: 60px;
+		position: relative;
+		margin: 0 auto;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+
+	#pic0 {
+		width: 80px;
+		cursor: pointer;
+		border-radius: 50%;
+		height: 80px;
+	}
+
+	#s_county {
+		display: none
+	}
+
+	.realPrice {
+		color: red;
+		width: auto !important;
+	}
+
+	.price {
+		display: none !important;
+		height: 34px;
+		line-height: 34px;
+		width: 360px;
+		margin-left: 10px
+	}
+
+	.whyIcon {
+		width: 20px;
+		cursor: pointer
+	}
+
+	.priceBox {
+		display: none;
+		text-align: center;
+		margin-top: 30px;
+	}
+
+	.sex,
+	.sex2 {
+		cursor: pointer;
+		margin-top: 3px;
+	}
+
+	#distpicker {
+		display: flex;
+		height: 35px;
+	}
+
+	.fwb {
+		width: 100%;
+	}
+
+	.w-e-text-container {
+		height: 300px !important;
+	}
+
+	/* 咨询师 */
+
+	.w1000 {
+		width: 1000px;
+		margin: 0 auto;
+	}
+
+	.lists {
+		margin-top: 30px;
+	}
+
+	.main {
+		margin-top: 30px;
+	}
+
+	.main p {
+		color: #A9A9A9;
+	}
+
+	.poin {
+		width: 500px !important;
+		padding-left: 20px !important;
+	}
+
+	.poins {
+		min-height: 169px !important;
+		width: 709px !important;
+		padding-left: 20px !important;
+		padding-top: 10px !important;
+		max-height: 169px !important;
+	}
+
+	.btnd {
+		min-height: 169px !important;
+		max-height: 169px !important;
+		width: 709px;
+		padding-left: 20px;
+		padding-top: 10px;
+		border-color: #E6E6E6;
+	}
+
+	.refer {
+		background-color: #29e;
+		color: #fff;
+		border: none;
+		border-radius: 5px;
+		outline: none;
+		padding: 5px 30px;
+		margin-top: 30px;
+		font-size: 14px !important;
+		cursor: pointer;
+		width: 88px;
+		margin: 30px 0 30px 410px;
+	}
+
+	#refers {
+		color: white !important;
+	}
+
+	.seek {
+		border-bottom: 1px solid #E6E6E6;
+		padding-bottom: 30px;
+		padding-top: 30px
+	}
+
+	.seek p {
+		font-size: 36px;
+		text-align: center;
+		background: url(../img/1.jpg) left no-repeat;
+		width: 200px;
+		margin: 0 auto;
+		padding-left: 10px;
+	}
+
+	.load {
+		margin: 30px 10px 20px 0;
+		float: left;
+		background-color: #6C6C6C !important;
+		width: 80px !important;
+		height: 80px !important;
+		border-radius: 100% !important;
+		font-size: 20px !important;
+	}
+
+	#pics {
+		background-size: 100% 100% !important;
+	}
+
+	.lius {
+		height: 140px;
+	}
+
+	.list {
+		height: 140px;
+		line-height: 140px !important;
+		color: #494949;
+	}
+
+	.ras {
+		color: #00A0E9;
+		font-size: 14px;
+		margin-bottom: 20px !important;
+	}
+
+	.isa,
+	#xcc,
+	#xccs {
+		color: red;
+		display: none;
+	}
+
+	.xoc {
+		color: #A9A9A9;
+		height: 38px;
+		line-height: 38px;
+	}
+
+	#lis_2 {
+		display: none;
+	}
+
+	.ass {
+		width: 500px !important;
+	}
+
+	.layui-form-label {
+		padding: 9px 0 !important;
+		width: 120px !important;
+		text-align: left !important;
+		color: #333333 !important;
+		font-weight: bold;
+	}
+
+	.industry {
+		width: 500px !important;
+		margin-right: 10px;
+		float: left;
+		height: 38px;
+	}
+
+	.realm {
+		width: 284px !important;
+	}
+
+	.residence {
+		width: 224px !important;
+	}
+
+	.layui-form-radio>i {
+		color: #CDCDCD !important;
+	}
+
+	.layui-form-radio>i:hover,
+	.layui-form-radioed>i {
+		color: #19A9EB !important;
+	}
+
+	.intermit {
+		border: none;
+		width: 60px;
+		border-bottom: 1px solid #999999;
+		text-align: center;
+	}
+
+	.lis {
+		color: #999999;
+		padding: 9px 0;
+		float: left;
+		margin-right: 30px;
+	}
+
+	.lis span {
+		color: #00A0E9;
+	}
+
+	.sdds {
+		width: 14px;
+		height: 14px;
+		border-radius: 100%;
+		text-align: center;
+		display: inline-block;
+		font-style: normal;
+		color: #00A0E9;
+		border: 1px solid #00A0E9;
+		cursor: pointer;
+		line-height: 12px;
+		background-color: #fff;
+	}
+
+	.business {
+		width: 407px !important;
+	}
+
+	.business ul li {
+		width: 45%;
+		float: left;
+		display: block !important;
+	}
+
+	.excursion .layui-form-radio>i {
+		margin-left: 8px;
+	}
+
+	.foots {
+		color: #A9A9A9;
+		font-size: 16px;
+		width: 882px;
+		margin-bottom: 10px;
+	}
+
+	.preImg {
+		max-width: 200px;
+		margin: 10px 0 20px 110px;
+		border: 1px dashed silver;
+		padding: 10px;
+		display: inline-block;
+		overflow: hidden;
+		text-align: center;
+		vertical-align: middle;
+	}
+
+	.realImg {
+		display: none
+	}
+
+	#showImg {
+		max-width: 200px;
+		display: block;
+		max-width: 100%;
+		height: auto;
+	}
+
+	.reging {
+		margin: 0 auto;
+		display: block;
+		width: 120px;
+	}
+
+	.btn-group-sm>.btn,
+	.btn-sm {
+		padding: 5px 10px;
+		font-size: 12px;
+		line-height: 1.5;
+		border-radius: 3px;
+	}
+
+	.btn-primary {
+		color: #fff;
+		background-color: #337ab7;
+		border-color: #2e6da4;
+	}
+
+	.content {
+		width: 1200px;
+		margin: 60px auto;
+		box-shadow: 1px 3px 5px 1px rgba(0, 0, 0, 0.2);
+		padding-bottom: 60px
+	}
+
+	.refer {
+		color: White !important;
+		line-height: 45px
+	}
+
+	.formAd {
+		font-size: 14px;
+	}
+
+	.teachAd {
+		display: none;
+	}
+
+	#distpicker2 select {
+		width: 120px;
+	}
+
+	#distpicker2 {
+		display: flex;
+	}
+
+	.labcase {
+		position: absolute;
+		right: 70px;
+		height: 35px;
+		line-height: 35px;
+	}
+
+	.cd-tabs-content li p {
+		color: black !important;
+	}
+
+	.MsoNormal span {
+		width: auto !important;
+		display: inline !important;
+	}
+
+	.atention {
+		font-size: 12px !important;
+		color: darkgrey;
+		margin-bottom: 10px !important;
+		display: block;
+	}
+
+	.case {
+		display: none;
+	}
+
+	.delzz {
+		display: none;
+	}
+
+	.delzzImg {
+		color: red;
+		margin: 100px;
+	}
+
+	.sortp,
+	.sortc {
+		width: 260px;
+		color: #495057;
+		max-height: 40px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		border: 1px solid #ced4da;
+		background: white;
+		border-radius: 3px;
+	}
+
+	.sortp .selectivity-single-select input,
+	.sortc .selectivity-single-select input {
+		min-width: 170px;
+	}
+
+	.selectivity-single-selected-item {
+		margin-left: 45px;
+		color: #495057;
+	}
+
+	.selectivity-placeholder {
+		text-align: center;
+		color: #495057;
+	}
+
+	.selectivity-single-select {
+		border: 1px solid #ced4da;
+		background: white;
+		border-radius: 3px;
+	}
+
+	.field {
+		display: flex;
+	}
+</style>
+<div class="cd-tabs">
+	<nav>
+		<ul class="cd-tabs-navigation ">
+			<li><a data-content="inbox" class="selected li1" href="#0">我的讲师信息</a></li>
+			<li><a data-content="new" class="li2" href="#0">我的咨询师信息</a></li>
+		</ul>
+	</nav>
+	<ul class="cd-tabs-content tabList">
+		<li data-content="inbox" class="selected lijs">
+			<div class="form">
+
+				<div class="headImgBox">
+					<span></span>
+					<span class="">讲师头像：</span>
+					<img id="pic0" src="img/touxiang.png" alt="点击选择上传头像" />
+					<input id="upload0" name="file" accept="image/*" type="file" style="display: none" />
+				</div>
+				<br />
+				<label for="">
+					<span></span>
+					<span class="">讲师姓名：</span>
+					<input type="text" class="name form-control" placeholder="授课讲师姓名" />
+				</label>
+
+				<label for="">
+					<span></span>
+					<span class="">性别：</span>
+					<span><input class="sex2" type="radio" name="sex" value="男" checked />
+						男</span>
+					<span><input class="sex " type="radio" name="sex" value="女" />
+						女</span>
+
+				</label>
+				<label for="">
+					<span></span>
+					<span class="">手机号：</span>
+					<input type="text" class="selePhone form-control" placeholder="本人常用手机号" />
+				</label>
+
+				<label for="">
+					<span></span>
+					<span class="">QQ：</span>
+					<input type="text" class="qq form-control" placeholder="本人或助理皆可" />
+				</label>
+				<label for="">
+					<span></span>
+					<span class="">微信：</span>
+					<input type="text" class="weChat form-control" placeholder="本人或助理皆可" />
+				</label>
+				<label for="">
+					<span></span>
+					<span class="">邮箱：</span>
+					<input type="text" class="email form-control" placeholder="本人邮箱" />
+				</label>
+				<label for="">
+					<span></span>
+					<span class="">助理姓名：</span>
+					<input type="text" class="name2 form-control" placeholder="助理姓名" />
+				</label>
+				<label for="">
+					<span></span>
+					<span class="">助理手机：</span>
+					<input type="text" class="assistantPhone form-control" placeholder="若无可不填" />
+				</label>
+				<label for="">
+					<span></span>
+					<span class="">常驻地址：</span>
+					<div id="distpicker">
+						<div class="form-group">
+							<label class="sr-only" for="province4">Province</label>
+							<select class="form-control" id="province4"></select>
+						</div>
+						<div class="form-group">
+							<label class="sr-only" for="city4">City</label>
+							<select class="form-control" id="city4"></select>
+						</div>
+					</div>
+				</label>
+				<label for="">
+					<span></span>
+					<span class="">老师售价：</span>
+					<input type="text" class="prices form-control" placeholder="金额需为整数，单位：元/天" />
+					<span class="labcase">元/天</span>
+					<p class="price">
+						实际收益
+						<span class="realPrice"> </span>
+						元
+						<img src="img/why.png" class="whyIcon" alt="" />
+					</p>
+				</label>
+				<label>
+					<span></span>
+					<span class="">资质预览：</span>
+					<div class="imgRead"></div>
+				</label>
+				<div class="addPhoto">
+					<ul class="clearfix imgList">
+						<p class="labp">资质上传：</p>
+					</ul>
+				</div>
+				<label for="" class="infoLabel">
+					<span></span>
+					<span class="">个人简介：</span>
+					<textarea placeholder="简要叙述" class="form-control" id="info" rows="6"></textarea>
+
+				</label>
+				<label for="">
+					<span></span>
+					<span class="">曾服务企业：</span>
+					<div class="fwb post"> </div>
+				</label>
+				<label for="">
+					<span style="display: block;color: red;width: 10px;">*</span>
+					<span class="">研究领域：</span>
+					<input type="text" class="courseType form-control" placeholder="最多选择5个课程类型" />
+				</label>
+				<label for="">
+					<span></span>
+					<span class="">品牌课程：</span>
+					<div class="couseMain fwb"> </div>
+				</label>
+				<label for="">
+					<span></span>
+					<span class="">授课风格：</span>
+					<div class="TeachStyle fwb"> </div>
+				</label>
+				<label for="">
+					<span></span>
+					<span class="">授课方式：</span>
+					<div class="couseWay fwb"> </div>
+				</label>
+				<label for="" class="infoLabel">
+					<span></span>
+					<span class="">客户见证：</span>
+					<span>请上传授课现场照片、咨询现场照片、企业合影等到【相册】</span>
+					<div class="case fwb"> </div>
+				</label>
+				<div class="submit">
+					<button class="subBtn">提交</button>
+				</div>
+				<div class="teachAreaTable clearfix">
+					<input type="text" class="form-control" id="labelInfo" />
+					<div class="tabBox clearfix pull-left">
+						<div class="tableLeft pull-left"> </div>
+					</div>
+					<div class="tableRight pull-left"> </div>
+				</div>
+				<!-- <div class="teachAd clearfix">
+					<input type="text" class="form-control" id="labelShow" />
+					<div class="tableRight pull-left"> </div>
+				</div> -->
+
+				<div class="priceBox">实际收益为终端报价的90%</div>
+
+			</div>
+		</li>
+		<li data-content="new" class="lizxs">
+			<div class="formAd">
+				<div class="w1000 lius">
+					<input type="button" class="layui-btn load chooseImg" value="图片" id="pics" />
+					<p class="list">请上传头像</p>
+				</div>
+				<input id="headImg" name="file" accept="image/*" type="file" style="display: none;" />
+				<div class="preImg" style="display: none;">
+					<img src=" " alt="" id="showImg" />
+					<img src=" " class="realImg" />
+				</div>
+				<div class="means w1000">
+					<span class="atention">
+						个人资料完善程度决定与咨询需求方的匹配程度，资料越完善越容易匹配到咨询项目；您的信息将被严格保密，仅供申请/匹配项目时使用(<span class="isa">*</span>
+						号为必填项)
+					</span>
+					<form class="layui-form" action="">
+						<div class="layui-form-item">
+							<label class="layui-form-label">
+								<span class="isa">*</span>
+								咨询师姓名：
+							</label>
+							<input type="text" lay-verify="required" placeholder="请输入" class="layui-input adname ass" />
+
+						</div>
+						<div class="layui-form-item">
+							<label class="layui-form-label">
+								<span class="isa">*</span>
+								咨询师定位：
+							</label>
+							<div class="layui-input-block">
+								<input type="text" name="title" lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input ass"
+								 id="ass" />
+							</div>
+						</div>
+						<div class="layui-form-item">
+							<label class="layui-form-label">
+								<span class="isa">*</span>
+								擅长行业：
+							</label>
+							<input type="text" name="title" lay-verify="required" placeholder="请选择" class="layui-input industry" />
+
+
+						</div>
+						<div class="layui-form-item field">
+							<label class="layui-form-label">
+								<span class="isa">*</span>
+								擅长领域：
+							</label>
+							<div class="sortp"> </div>
+						</div>
+						<div class="layui-form-item field">
+							<label class="layui-form-label">
+								<span class="isa">*</span>
+								擅长领域细分：
+							</label>
+							<div class="sortc">请先选择领域 </div>
+						</div>
+
+						<div class="layui-form-item">
+							<label class="layui-form-label">
+								<span class="isa">*</span>
+								咨询模式：
+							</label>
+							<div class="site-demo-button" style="margin-bottom: 0;">
+								<div class="layui-input-block" id="news">
+									<input type="radio" name="mode" value="1" title="间歇式咨询 ( 定期驻厂 )" checked="" lay-filter="test" />
+									<input type="radio" name="mode" value="2" title="驻厂式咨询 ( 长期驻厂 )" lay-filter="test" />
+									<input type="radio" name="mode" value="0" title="不限" lay-filter="test" />
+								</div>
+							</div>
+						</div>
+						<div class="layui-form-item">
+							<label class="layui-form-label">
+								<span class="isa">*</span>
+								师资费用：
+							</label>
+							<div class="site-demo-button" style="margin-bottom: 0;">
+								<p class="lis" id="lis_1">
+									间歇式咨询:
+									<input type="text" class="intermit" id="lxx" value="0" />
+									<span>元/天</span>
+									<!-- ( 实际收益
+									<span id="xcc">0</span>
+									元
+									<i class="sdds">!</i>
+									) -->
+								</p>
+								<p class="lis" id="lis_2">
+									驻厂式咨询:
+									<input type="text" class="intermit" id="lxxs" value="0" />
+									<span>元/天</span>
+									<!-- ( 实际收益
+									<span id="xccs">0</span>
+									元
+									<i class="sdds">!</i>
+									) -->
+								</p>
+							</div>
+						</div>
+						<div class="layui-form-item">
+							<label class="layui-form-label">
+								<span class="isa">*</span>
+								岗位类别：
+							</label>
+							<div class="layui-input-block">
+								<input type="text" name="title" lay-verify="required" placeholder="请输入岗位类别" autocomplete="off" class="layui-input ass"
+								 id="gangwei" />
+							</div>
+						</div>
+						<div class="layui-form-item">
+							<label class="layui-form-label">
+								<span class="isa">*</span>
+								工作背景：
+							</label>
+							<div class="layui-input-block business">
+								<ul class="bg">
+									<li>
+										<input type="radio" name="sexs" value="世界500强企业" title="世界500强企业" />
+									</li>
+									<li>
+										<input type="radio" name="sexs" value="中国500强企业" title="中国500强企业" />
+									</li>
+									<li>
+										<input type="radio" name="sexs" value="大型国有企业" title="大型国有企业" />
+									</li>
+									<li>
+										<input type="radio" name="sexs" value="大型民营企业" title="大型民有企业" />
+									</li>
+									<li class="excursion">
+										<input type="radio" name="sexs" value="知名日/韩企业" title="知名日/韩企业" />
+									</li>
+									<li class="excursion">
+										<input type="radio" name="sexs" value="港/澳/台企业" title="港/澳/台企业" />
+									</li>
+									<li class="excursion">
+										<input type="radio" name="sexs" value="欧美外资企业" title="欧美外资企业" />
+									</li>
+									<li class="excursion">
+										<input type="radio" name="sexs" value="国外工作" title="国外工作" />
+									</li>
+									<li class="excursion">
+										<input type="radio" name="sexs" value="其他" title="其他" />
+									</li>
+								</ul>
+							</div>
+						</div>
+					</form>
+				</div>
+				<div class="layui-form-item ">
+					<label class="layui-form-label">
+						<span class="isa">*</span>
+						常驻地：
+					</label>
+					<div id="distpicker2">
+						<div class="form-group" style="margin-right: 10px;">
+							<label class="sr-only" for="province2">Province</label>
+							<select class="form-control" id="province2"></select>
+						</div>
+						<div class="form-group">
+							<label class="sr-only" for="city2">City</label>
+							<select class="form-control" id="city2"></select>
+						</div>
+					</div>
+				</div>
+				<div class="main w1000">
+					<form class="layui-form" action="">
+						<div class="layui-form-item lists">
+							<label class="layui-form-label">
+								<span class="isa">*</span>
+								曾担任职位：
+							</label>
+							<div class="layui-input-block">
+								<input type="text" name="title" required lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input poin"
+								 id="job" />
+							</div>
+						</div>
+						<div class="layui-form-item layui-form-text lists">
+							<label class="layui-form-label">
+								<span class="isa">*</span>
+								咨询师简介：
+							</label>
+							<div class="layui-input-block">
+								<textarea name="desc" lay-verify="required" placeholder="请对个人经历（包括曾经工作所在地、企业名称、担任职位、任职年限、取得成果、创造业绩）等详细描述 （字数最多3000个）"
+								 class="layui-textarea poins" id="briefly"></textarea>
+							</div>
+						</div>
+						<div class="layui-form-item layui-form-text lists">
+							<label class="layui-form-label">
+								<span class="isa">*</span>
+								服务的客户：
+							</label>
+							<div class="layui-input-block">
+								<textarea name="desc" lay-verify="required" placeholder="请对个人经历（包括曾经工作所在地、企业名称、担任职位、任职年限、取得成果、创造业绩）等详细描述 （字数最多3000个）"
+								 class="layui-textarea poins" id="serve"></textarea>
+							</div>
+						</div>
+						<div class="layui-form-item layui-form-text lists">
+							<label class="layui-form-label">
+								<span class="isa">*</span>
+								其他要求：
+							</label>
+							<div class="layui-input-block">
+								<textarea name="desc" lay-verify="required" placeholder="包括交通费、交通工具要求、餐食、饮食习惯要求、住宿、住宿条件要求、接送的要求等（字数最多300字）"
+								 class="btnd" id="restd"></textarea>
+							</div>
+						</div>
+						<div class="layui-form-item">
+							<p class=" refer" id="refers">提交</p>
+						</div>
+					</form>
+				</div>
+			</div>
+			<div class="teachAd clearfix">
+				<input type="text" class="form-control" id="labelAd" />
+				<div class="tableSel pull-left"> </div>
+			</div>
+			<div class="teachAd2 clearfix">
+				<input type="text" class="form-control" id="labelAd2" />
+				<div class="tableSel2 pull-left"> </div>
+			</div>
+			<div class="teachAd3 clearfix">
+				<input type="text" class="form-control" id="labelAd3" />
+				<div class="tableSel3 pull-left"> </div>
+			</div>
+
+		</li>
+
+	</ul>
+</div>
+<div class="delzz">
+	<p class="delzzImg">确定要删除该资质图片吗？</p>
+</div>
+<script src="js/tab2.js"></script>
+<script type="text/javascript" src="js/ajaxfileupload.js"></script>
+<!-- <script src="js/distpicker.data.js"></script>
+<script src="js/distpicker.js"></script> -->
+<script type="text/javascript" src="js/wangEditor.js"></script>
+<script>
+	$(document).ready(function() {
+		let href = window.location.href;
+		let userGuid = href.split("?")[1].split("&")[0].split("=")[1];
+		let companyId = href.split("?")[1].split("&")[1].split("=")[1];
+		// 创建富文本编辑框
+		var E = window.wangEditor
+		var editor = new E('.case')
+		// editor.customConfig.uploadImgShowBase64 = true;
+		// **************************************自动上传图片开始*********************************
+		var dataImg;
+		editor.customConfig.customUploadImg = function(files, insert) {
+			var iformdata = new FormData();
+			var imgU = files[0];
+			iformdata.append('image', imgU);
+			$.ajax({
+				type: 'post',
+				url: '' + http_head + 'Articles/CommitImage.ashx',
+				data: iformdata,
+				cache: false,
+				processData: false, // 不处理发送的数据，因为data值是Formdata对象，不需要对数据做处理
+				contentType: false, // 不设置Content-type请求头
+				success: function(data) {
+					dataImg = JSON.parse(data)
+					var imgSrc = (dataImg.items).substring(25)
+					imgUrl = imgSrc
+					insert(dataImg.items)
+				}
+			});
+		};
+		editor.create();
+		// **************************************自动上传图片结束*********************************
+
+		var F = window.wangEditor
+		var editor2 = new F('.couseWay')
+		// editor.customConfig.uploadImgShowBase64 = true;
+		// **************************************自动上传图片开始*********************************
+		var dataImg2;
+		editor2.customConfig.customUploadImg = function(files, insert) {
+			var iformdata = new FormData();
+			var imgU = files[0];
+			iformdata.append('image', imgU);
+			$.ajax({
+				type: 'post',
+				url: '' + http_head + 'Articles/CommitImage.ashx',
+				data: iformdata,
+				cache: false,
+				processData: false, // 不处理发送的数据，因为data值是Formdata对象，不需要对数据做处理
+				contentType: false, // 不设置Content-type请求头
+				success: function(data) {
+					console.log(data)
+					dataImg2 = JSON.parse(data)
+					var imgSrc = (dataImg2.items).substring(25)
+					imgUrl = imgSrc
+					insert(dataImg2.items)
+				}
+			});
+		};
+		editor2.create();
+		// **************************************自动上传图片结束*********************************
+		var D = window.wangEditor
+		var editor3 = new D('.couseMain')
+		// editor.customConfig.uploadImgShowBase64 = true;
+		// **************************************自动上传图片开始*********************************
+		var dataImg3;
+		editor3.customConfig.customUploadImg = function(files, insert) {
+			var iformdata = new FormData();
+			var imgU = files[0];
+			iformdata.append('image', imgU);
+			$.ajax({
+				type: 'post',
+				url: '' + http_head + 'Articles/CommitImage.ashx',
+				data: iformdata,
+				cache: false,
+				processData: false, // 不处理发送的数据，因为data值是Formdata对象，不需要对数据做处理
+				contentType: false, // 不设置Content-type请求头
+				success: function(data) {
+					console.log(data)
+					dataImg3 = JSON.parse(data)
+					var imgSrc = (dataImg3.items).substring(25)
+					imgUrl = imgSrc
+					insert(dataImg3.items)
+				}
+			});
+		};
+		editor3.create();
+		// **************************************自动上传图片结束*********************************
+		var C = window.wangEditor
+		var editor4 = new C('.post')
+		// editor.customConfig.uploadImgShowBase64 = true;
+		// **************************************自动上传图片开始*********************************
+		var dataImg4;
+		editor4.customConfig.customUploadImg = function(files, insert) {
+			var iformdata = new FormData();
+			var imgU = files[0];
+			iformdata.append('image', imgU);
+			$.ajax({
+				type: 'post',
+				url: '' + http_head + 'Articles/CommitImage.ashx',
+				data: iformdata,
+				cache: false,
+				processData: false, // 不处理发送的数据，因为data值是Formdata对象，不需要对数据做处理
+				contentType: false, // 不设置Content-type请求头
+				success: function(data) {
+					console.log(data)
+					dataImg4 = JSON.parse(data)
+					var imgSrc = (dataImg4.items).substring(25)
+					imgUrl = imgSrc
+					insert(dataImg4.items)
+				}
+			});
+		};
+		editor4.create();
+		// **************************************自动上传图片结束*********************************
+		var B = window.wangEditor
+		var editor5 = new B('.TeachStyle')
+		// editor.customConfig.uploadImgShowBase64 = true;
+		// **************************************自动上传图片开始*********************************
+		var dataImg5;
+		editor5.customConfig.customUploadImg = function(files, insert) {
+			var iformdata = new FormData();
+			var imgU = files[0];
+			iformdata.append('image', imgU);
+			$.ajax({
+				type: 'post',
+				url: '' + http_head + 'Articles/CommitImage.ashx',
+				data: iformdata,
+				cache: false,
+				processData: false, // 不处理发送的数据，因为data值是Formdata对象，不需要对数据做处理
+				contentType: false, // 不设置Content-type请求头
+				success: function(data) {
+					console.log(data)
+					dataImg5 = JSON.parse(data)
+					var imgSrc = (dataImg5.items).substring(25)
+					imgUrl = imgSrc
+					insert(dataImg5.items)
+				}
+			});
+		};
+		editor5.create();
+		// **************************************自动上传图片结束*********************************
+		var arrOld;
+		// 读取
+		$.post(http_head + 'Lectures/Get_Lecture_ByCreater.ashx', {
+			"userGuid": userGuid,
+		}, function(data) {
+			var data = JSON.parse(data);
+			if (data.status == 200) {
+				var headSrc = data.items.headimage;
+				if (data.items.headimage.indexOf(".jpg") > 0 || data.items.headimage.indexOf(".png") > 0 || data.items.headimage
+					.indexOf(".jpeg") > 0) {
+					$("#pic0").attr("src", headSrc);
+				} else if (data.items.headimage.indexOf("img/touxiang.png")) {
+					$("#pic0").attr("src", headSrc.split("http://47.94.173.253:8008")[1]);
+				}
+				$(".name").val(data.items.realname);
+				$(".name2").val(data.items.Assistant);
+				$(".selePhone").val(data.items.phone);
+				$(".assistantPhone").val(data.items.AssistantPhone);
+				$(".qq").val(data.items.QQ);
+				$(".weChat").val(data.items.wechat);
+				$(".email").val(data.items.email);
+				$(".prices").val(data.items.CooperativePrice);
+				$(".courseType").val(data.items.ResearchField);
+				$("#info").val(data.items.LecturerBackground)
+				editor5.txt.html('<p>' + data.items.TeachStyle + '</p>');
+				editor4.txt.html('<p>' + data.items.ServiceCom + '</p>');
+				editor2.txt.html('<p>' + data.items.WorkingMethod + '</p>');
+				editor.txt.html('<p>' + data.items.CustCase + '</p>');
+				editor3.txt.html('<p>' + data.items.courses + '</p>');
+				$('#distpicker').distpicker({
+					province: data.items.province,
+					city: data.items.city,
+				});
+				if (data.items.sex == '男') {
+					$(".sex2").attr("checked", "checked");
+					$(".sex").removeAttr("checked")
+				} else if (data.items.sex == '女') {
+					$(".sex").attr("checked", "checked");
+					$(".sex2").removeAttr("checked")
+				};
+				var imgSrc;
+				arrOld = data.items.Qualifications;
+				if (data.items.Qualifications.indexOf(".jpg") > 0 || data.items.Qualifications.indexOf(".jpeg") > 0 || data.items
+					.Qualifications.indexOf(".png") > 0) {
+					function showImg() {
+						if (data.items.Qualifications.indexOf(";") > 0) {
+							var imgArr = data.items.Qualifications.split(";");
+							for (var i = 0; i < imgArr.length - 1; i++) {
+								imgSrc = "http://47.94.173.253:8008" + imgArr[i];
+								$(".imgRead").prepend('<span class="pull-left" title="点击删除图片"><img  src="' + imgSrc + '"/></span>');
+							};
+						} else {
+							if (data.items.Qualifications) {
+								imgSrc = "http://47.94.173.253:8008" + data.items.Qualifications.split(";");
+								$(".imgRead").prepend('<span class="pull-left" title="点击删除图片"><img src="' + imgSrc + '"></span>');
+							}
+						}
+					};
+					showImg();
+					$(".imgRead span").on("click", function() {
+						var index = $(this).index();
+						var maxIndex = $(".imgRead span").length - 1;
+						var recStr = $(this).children("img").attr("src").split("http://47.94.173.253:8008")[1] + ";";
+						layer.open({
+							type: 1,
+							area: ['400px', '300px'],
+							title: ['选择行业', 'font-size:18px;text-align: center;'],
+							content: $('.delzz'),
+							btn: '确定',
+							shade: false,
+							yes: function() {
+								showImg();
+								arrOld = arrOld.replace(recStr, '');
+								$('.subBtn').click();
+								layer.closeAll()
+							}
+						});
+
+					});
+				}
+
+				if ($(".prices").val()) {
+					$(".price").show();
+					$(".realPrice").html($(".prices").val() * 0.9)
+				} else {
+					$(".price").hide()
+				}
+			}
+		});
+
+		// 上传图片
+		var arr2 = [];
+		for (var i = 1; i <= 20; i++) {
+			$('.imgList').append('<li class="pull-left li' + i + '"><img id="pic' + i +
+				'" src="" alt="点击选择上传图片"><input id="upload' + i +
+				'" name="file" accept="image/*" type="file" style="display: none"/></li>');
+		}
+		$(".imgList li img").attr("src", "img/zz.png");
+		$("#pic1").click(function() {
+			var thisImg = $(this)
+			$("#upload1").click(); //隐藏了input:file样式后，点击头像就可以本地上传
+			$("#upload1").on("change", function() {
+				var imgFile = this.files[0];
+				uploadImg(imgFile, thisImg)
+				$('.li2').show()
+			});
+		});
+		$("#pic2").click(function() {
+			var thisImg = $(this)
+			$("#upload2").click(); //隐藏了input:file样式后,点击头像就可以本地上传
+			$("#upload2").on("change", function() {
+				var imgFile = this.files[0];
+				uploadImg(imgFile, thisImg)
+				$('.li3').show()
+			});
+		});
+		$("#pic3").click(function() {
+			var thisImg = $(this)
+			$("#upload3").click(); //隐藏了input:file样式后,点击头像就可以本地上传
+			$("#upload3").on("change", function() {
+				var imgFile = this.files[0];
+				uploadImg(imgFile, thisImg)
+				$('.li4').show()
+			});
+		});
+		$("#pic4").click(function() {
+			var thisImg = $(this)
+			$("#upload4").click(); //隐藏了input:file样式后,点击头像就可以本地上传
+			$("#upload4").on("change", function() {
+				var imgFile = this.files[0];
+				uploadImg(imgFile, thisImg)
+				$('.li5').show()
+			});
+		});
+		$("#pic5").click(function() {
+			var thisImg = $(this)
+			$("#upload5").click(); //隐藏了input:file样式后,点击头像就可以本地上传
+			$("#upload5").on("change", function() {
+				var imgFile = this.files[0];
+				uploadImg(imgFile, thisImg)
+				$('.li6').show()
+			});
+		});
+		$("#pic6").click(function() {
+			var thisImg = $(this)
+			$("#upload6").click(); //隐藏了input:file样式后,点击头像就可以本地上传
+			$("#upload6").on("change", function() {
+				var imgFile = this.files[0];
+				uploadImg(imgFile, thisImg)
+				$('.li7').show()
+			});
+		});
+		$("#pic7").click(function() {
+			var thisImg = $(this)
+			$("#upload7").click(); //隐藏了input:file样式后,点击头像就可以本地上传
+			$("#upload7").on("change", function() {
+				var imgFile = this.files[0];
+				uploadImg(imgFile, thisImg)
+				$('.li8').show()
+			});
+		});
+		$("#pic8").click(function() {
+			var thisImg = $(this)
+			$("#upload8").click(); //隐藏了input:file样式后,点击头像就可以本地上传
+			$("#upload8").on("change", function() {
+				var imgFile = this.files[0];
+				uploadImg(imgFile, thisImg)
+				$('.li9').show()
+			});
+		});
+		$("#pic9").click(function() {
+			var thisImg = $(this)
+			$("#upload9").click(); //隐藏了input:file样式后,点击头像就可以本地上传
+			$("#upload9").on("change", function() {
+				var imgFile = this.files[0];
+				uploadImg(imgFile, thisImg)
+				$('.li10').show()
+			});
+		});
+		$("#pic10").click(function() {
+			var thisImg = $(this)
+			$("#upload10").click(); //隐藏了input:file样式后,点击头像就可以本地上传
+			$("#upload10").on("change", function() {
+				var imgFile = this.files[0];
+				uploadImg(imgFile, thisImg)
+				$('.li11').show()
+			});
+		});
+		$("#pic11").click(function() {
+			var thisImg = $(this)
+			$("#upload11").click(); //隐藏了input:file样式后,点击头像就可以本地上传
+			$("#upload11").on("change", function() {
+				var imgFile = this.files[0];
+				uploadImg(imgFile, thisImg)
+				$('.li12').show()
+			});
+		});
+		$("#pic12").click(function() {
+			var thisImg = $(this)
+			$("#upload12").click(); //隐藏了input:file样式后,点击头像就可以本地上传
+			$("#upload12").on("change", function() {
+				var imgFile = this.files[0];
+				uploadImg(imgFile, thisImg)
+				$('.li13').show()
+			});
+		});
+		$("#pic13").click(function() {
+			var thisImg = $(this)
+			$("#upload13").click(); //隐藏了input:file样式后,点击头像就可以本地上传
+			$("#upload13").on("change", function() {
+				var imgFile = this.files[0];
+				uploadImg(imgFile, thisImg)
+				$('.li14').show()
+			});
+		});
+		$("#pic14").click(function() {
+			var thisImg = $(this)
+			$("#upload14").click(); //隐藏了input:file样式后,点击头像就可以本地上传
+			$("#upload14").on("change", function() {
+				var imgFile = this.files[0];
+				uploadImg(imgFile, thisImg)
+				$('.li15').show()
+			});
+		});
+		$("#pic15").click(function() {
+			var thisImg = $(this)
+			$("#upload15").click(); //隐藏了input:file样式后,点击头像就可以本地上传
+			$("#upload15").on("change", function() {
+				var imgFile = this.files[0];
+				uploadImg(imgFile, thisImg)
+				$('.li16').show()
+			});
+		});
+		$("#pic16").click(function() {
+			var thisImg = $(this)
+			$("#upload16").click(); //隐藏了input:file样式后,点击头像就可以本地上传
+			$("#upload16").on("change", function() {
+				var imgFile = this.files[0];
+				uploadImg(imgFile, thisImg)
+				$('.li17').show()
+			});
+		});
+		$("#pic17").click(function() {
+			var thisImg = $(this)
+			$("#upload17").click(); //隐藏了input:file样式后,点击头像就可以本地上传
+			$("#upload17").on("change", function() {
+				var imgFile = this.files[0];
+				uploadImg(imgFile, thisImg)
+				$('.li18').show()
+			});
+		});
+		$("#pic18").click(function() {
+			var thisImg = $(this)
+			$("#upload18").click(); //隐藏了input:file样式后,点击头像就可以本地上传
+			$("#upload18").on("change", function() {
+				var imgFile = this.files[0];
+				uploadImg(imgFile, thisImg)
+				$('.li19').show()
+			});
+		});
+		$("#pic19").click(function() {
+			var thisImg = $(this)
+			$("#upload19").click(); //隐藏了input:file样式后,点击头像就可以本地上传
+			$("#upload19").on("change", function() {
+				var imgFile = this.files[0];
+				uploadImg(imgFile, thisImg)
+				$('.li20').show()
+			});
+		});
+		$("#pic20").click(function() {
+			var thisImg = $(this)
+			$("#upload20").click(); //隐藏了input:file样式后,点击头像就可以本地上传
+			$("#upload20").on("change", function() {
+				var imgFile = this.files[0];
+				uploadImg(imgFile, thisImg)
+			});
+		});
+		$('.addPhoto ul li:gt(0)').css('display', 'none');
+
+		function uploadImg(file, imgdx) {
+			var imgData = new FormData();
+			imgData.append('willcompress', "true");
+			imgData.append('file', file);
+			$.ajax({
+				type: 'post',
+				url: 'http://47.94.173.253:8008/Reimburse/Upload_Files.ashx',
+				data: imgData,
+				cache: false,
+				processData: false, // 不处理发送的数据，因为data值是Formdata对象，不需要对数据做处理
+				contentType: false, // 不设置Content-type请求头
+				success: function(data) {
+					var data = JSON.parse(data);
+					if (data.status == 200) {
+						layer.msg('上传成功', {
+							time: 1000,
+						});
+						var szz = data.items.split(";")[0];
+						arr_imgHref = 'http://47.94.173.253:8008' + data.items.split(";")[0];
+						imgdx.attr("src", arr_imgHref); //表格图片	
+						arr2.push(szz)
+					}
+				}
+			});
+		};
+		var headImg;
+		var imgTail;
+		$("#pic0").click(function() {
+			$("#upload0").click(); //隐藏了input:file样式后，点击头像就可以本地上传
+			$("#upload0").on("change", function() {
+				var imgFile = this.files[0];
+				var imgData = new FormData();
+				imgData.append('willcompress', "true");
+				imgData.append('file', imgFile);
+				$.ajax({
+					type: 'post',
+					url: 'http://47.94.173.253:8008/Reimburse/Upload_Files.ashx',
+					data: imgData,
+					cache: false,
+					processData: false, // 不处理发送的数据，因为data值是Formdata对象，不需要对数据做处理
+					contentType: false, // 不设置Content-type请求头
+					success: function(data) {
+						var data = JSON.parse(data);
+						if (data.status == 200) {
+							layer.msg('上传成功', {
+								time: 1000,
+							});
+							console.log(data)
+							var szz = data.items.split(";")[0];
+							arr_imgHref = 'http://47.94.173.253:8008' + data.items.split(";")[0];
+							$("#pic0").attr("src", arr_imgHref);
+							imgTail = data.items.split(";")[0];
+							console.log(imgTail)
+
+						}
+					}
+				});
+
+			});
+		});
+
+		var str_label2 = "";
+		var arr_label2 = [];
+		// 删除类别操作
+		function removeByValue(arr, val) {
+			for (var i = 0; i < arr.length; i++) {
+				if (arr[i] == val) {
+					arr.splice(i, 1);
+					break;
+				}
+			}
+		};
+		$('.courseType').click(function() {
+			$.post('http://47.94.173.253:8008/Option_AreasAnd.ashx', {
+				"type": 45
+			}, function(data) {
+				layer.open({
+					type: 1,
+					area: ['800px', '515px'],
+					title: ['研究领域', 'font-size:18px;text-align: center;'],
+					content: $('.teachAreaTable'),
+					btn: '确定',
+					shade: false
+				});
+				if ($('.tableLeft p').length == 0) {
+					for (var i = 0; i < data.length; i++) {
+						$('.tableLeft').append('<p class="' + i + '">' + data[i].name + '</p>');
+						$('.tableLeft').children('p').eq(0).attr('id', 'firstP');
+						document.getElementById('firstP').click();
+						$('.tableLeft .' + i + '').click(function() {
+							$(this).css('backgroundColor', '#5BB85D').siblings('p').css('backgroundColor', '#29e');
+							var m = $(this).attr('class');
+							$('.tableRight label').remove();
+							for (var j = 0; j < data[m].sub.length; j++) {
+								$('.tableRight').append('<label><input type="checkbox" value="' + data[m].sub[j].name +
+									'" name="label">' + data[m].sub[j].name + '</label>')
+							}
+							$("input:checkbox[name='label']").click(function() {
+								var aaa = $(this).prop("checked");
+								if (aaa === true) {
+									if (arr_label2.length > 4) {
+										layer.msg('最多选择5个', {
+											time: 1000,
+										});
+										$(this).prop("checked", false)
+										$(this).removeAttr('checked');
+										removeByValue(arr_label2, $(this).val());
+									} else {
+										arr_label2.push($(this).val());
+										$('#labelInfo').val(arr_label2);
+									}
+								} else {
+									removeByValue(arr_label2, $(this).val());
+									$('#labelInfo').val(arr_label2);
+								}
+							});
+						});
+					}
+				} else {}
+				$('.layui-layer-btn0').click(function() {
+					for (var i = 0; i < arr_label2.length; i++) {
+						str_label2 += arr_label2[i] + ","
+					}
+					var labelArea = str_label2.substring(0, Number(str_label2.length) - 1)
+					$('.courseType').val($('#labelInfo').val());
+					arr_label2 = [];
+					$('#labelInfo').val("");
+					$("input:checkbox[name='label']").removeAttr('checked');
+				});
+				$('.layui-layer-close').click(function() {
+					$("input:checkbox[name='label']").removeAttr('checked');
+					arr_label2 = [];
+					$('#labelInfo').val("");
+				});
+			})
+		});
+		$('.subBtn').click(function() {
+			if (imgTail == "img/touxiang.png") {} else {
+				imgTail = $("#pic0").attr("src").split("http://47.94.173.253:8008")[1]
+			}
+			$(".load5").show()
+			var Iformdata = new FormData();
+			var imgStr = '';
+			if (arr2.length > 0) {
+				imgStr = arr2.join(";") + ";" + arrOld;
+			} else {
+				imgStr = arrOld + " ";
+			}
+			var addressNow = $('#province4').val() + $('#city4').val();
+			var provice = $('#province4').val();
+			var city = $('#city4').val();
+			console.log(imgTail)
+			Iformdata.append('lectureImage', imgTail);
+
+			Iformdata.append('sex', $('input[name="sex"]:checked').val());
+			var teaName;
+			var assName;
+			var phone;
+			var email;
+			var assPhone;
+			var qq;
+			var wechat;
+			var info;
+			if ($('.name2').val()) {
+				assName = $('.name2').val();
+			} else {
+				assName = ' ';
+			};
+			if ($('.name').val()) {
+				teaName = $('.name').val();
+			} else {
+				teaName = ' ';
+			};
+			if ($('.selePhone').val()) {
+				phone = $('.selePhone').val()
+			} else {
+				phone = ' ';
+			};
+			if ($('.email').val()) {
+				email = $('.email').val()
+			} else {
+				email = ' ';
+			};
+			if ($('.assistantPhone').val()) {
+				assPhone = $('.assistantPhone').val();
+			} else {
+				assPhone = ' ';
+			};
+			if ($('.qq').val()) {
+				qq = $('.qq').val();
+			} else {
+				qq = ' ';
+			};
+			if ($('.weChat').val()) {
+				wechat = $('.weChat').val();
+			} else {
+				wechat = ' ';
+			};
+			if ($("#info").val()) {
+				info = $("#info").val()
+			} else {
+				info = ' '
+			}
+			Iformdata.append('realname', teaName);
+			Iformdata.append('Assistant', assName);
+			Iformdata.append('phone', phone);
+			Iformdata.append('email', email);
+			Iformdata.append('AssistantPhone', assPhone);
+			Iformdata.append('QQ', qq);
+			Iformdata.append('wechat', wechat);
+
+			Iformdata.append('CooperativePrices', $('.prices').val());
+			Iformdata.append('province', provice);
+			Iformdata.append('city', city);
+			Iformdata.append('address', addressNow);
+			Iformdata.append('LecturerBackground', info);
+			Iformdata.append('post', $('.post').val());
+			Iformdata.append('ResearchField', $.trim($('.courseType').val()));
+			Iformdata.append('courses', editor3.txt.html());
+			Iformdata.append('TeachStyle', editor5.txt.html());
+			Iformdata.append('WorkingMethod', editor2.txt.html());
+			Iformdata.append('CustCase', editor.txt.html());
+			Iformdata.append('ServiceCom', editor4.txt.html());
+			Iformdata.append('workBg', ' ');
+			Iformdata.append('userGuid', userGuid);
+			Iformdata.append('companyId', companyId);
+			Iformdata.append('Qualifications', imgStr);
+			$.ajax({
+				type: 'POST',
+				url: 'http://47.94.173.253:8008/Lectures/Add_Lecture.ashx',
+				data: Iformdata,
+				cache: false,
+				processData: false, // 不处理发送的数据，因为data值是Formdata对象，不需要对数据做处理
+				contentType: false, // 不设置Content-type请求头
+				success: function(data) {
+					var data2 = JSON.parse(data);
+					if (data2.status == 200) {
+						setTimeout(function() {
+							$(".load5").hide()
+							layer.msg(data2.msg, {
+								time: 1000,
+							});
+							$("#dataTable").replaceWith('<div id="dataTable"></div>');
+							$("#dataTable").load("pInfo2.html");
+						}, 500)
+					} else {
+						$(".load5").hide()
+						layer.msg(data2.msg, {
+							time: 1000,
+						});
+					}
+				},
+				error: function(msg) {
+					console.log(msg)
+				}
+			});
+		});
+
+		$(".prices").bind("input propertychange", function(event) {
+			if ($(".prices").val().length > 0) {
+				$(".price").show();
+				$(".realPrice").html($(".prices").val() * 0.9)
+			} else {
+				$(".price").hide()
+			}
+		});
+		$(".whyIcon").on("click", function() {
+			layer.open({
+				type: 1,
+				area: ['250px', '150px'],
+				title: ['收益说明', 'text-align: center'],
+				content: $('.priceBox'),
+				btn: '确定',
+				shade: false
+			});
+		});
+
+
+		//获取全局变量
+		let xcxvArr = [];
+		let lingyuArr = [];
+		layui.use('upload', function() {
+			var upload = layui.upload;
+			//执行实例
+			var uploadInst = upload.render({
+				elem: '#test1' //绑定元素
+					,
+				url: '/upload/' //上传接口
+					,
+				done: function(res) {
+					//上传完毕回调
+				},
+				error: function() {
+					//请求异常回调
+				}
+			});
+		});
+
+		// 添加图片
+		var imgFile;
+		$(".chooseImg").click(function() {
+			$("#headImg").click(); //隐藏了input:file样式后，点击头像就可以本地上传
+		});
+		$("#headImg").on("change", function() {
+			imgFile = this.files[0];
+			ajaxFileUpload(imgFile);
+		});
+		//建立一個可存取到該file的url
+		function getObjectURL(file) {
+			var url = null;
+			if (window.createObjectURL != undefined) { // basic
+				url = window.createObjectURL(file);
+			} else if (window.URL != undefined) { // mozilla(firefox)
+				url = window.URL.createObjectURL(file);
+			} else if (window.webkitURL != undefined) { // webkit or chrome
+				url = window.webkitURL.createObjectURL(file);
+			}
+			return url;
+		}
+		// 上传图片
+		function ajaxFileUpload(file) {
+			var imgData = new FormData();
+			imgData.append('willcompress', "true");
+			imgData.append('file', file);
+			$.ajax({
+				type: 'post',
+				url: 'http://47.94.173.253:8008/Reimburse/Upload_Files.ashx',
+				data: imgData,
+				cache: false,
+				processData: false, // 不处理发送的数据，因为data值是Formdata对象，不需要对数据做处理
+				contentType: false, // 不设置Content-type请求头
+				success: function(data) {
+					var data = JSON.parse(data);
+					if (data.status == 200) {
+						layer.msg('上传成功', {
+							time: 1000,
+						});
+						var szz = data.items.split(";")[0];
+						arr_imgHref = 'http://47.94.173.253:8008' + data.items.split(";")[0];
+						arr_img = [];
+						$(".realImg").attr("src", data.items.split(";")[0]); //表格图片
+						$("#showImg").attr("src", arr_imgHref); //弹窗已选图片										
+						$('#pics').css({
+							"background": "url('" + arr_imgHref + "') no-repeat center center",
+							"display": "block"
+						}).val('');
+						$('.list').hide();
+					}
+				},
+			});
+		};
+		//Demo
+		layui.use('form', function() {
+			var form = layui.form;
+			//监听radio单选
+			form.on('radio(test)', function(data) {
+				if (data.value == "1") {
+					$('#lis_1').show();
+					$('#lis_2').hide();
+				} else if (data.value == "2") {
+					$('#lis_2').show();
+					$('#lis_1').hide();
+				} else if (data.value == "0") {
+					$('#lis_1').show();
+					$('#lis_2').show();
+				}
+			});
+
+		});
+
+		$(".industry").on("click", function() {
+			layer.open({
+				type: 1,
+				area: ['800px', '505px'],
+				title: ['选择行业', 'font-size:18px;text-align: center;'],
+				content: $('.teachAd'),
+				btn: '确定',
+				shade: false,
+				yes: function() {
+					$('.industry').val($('#labelAd').val());
+					arr_label3 = [];
+					$('#labelAd').val("");
+					$("tableSel label input").prop('checked', false);
+					layer.closeAll()
+				}
+			});
+		});
+		var str_label3 = "";
+		var arr_label3 = [];
+
+		// 获取下拉框数据
+		$.ajax({
+			url: 'http://47.94.173.253:8008/Option_AreasAnd.ashx', //你请求的接口
+			type: 'POST', //类型
+			data: {
+				type: '52'
+			}, //数据有则传，没有可以不写
+			success: function(data) {
+				//请求成功后的返回
+				for (let i = 0; i < data.length; i++) {
+					$(".tableSel").append('<label><input type="checkbox" value="' + data[i].industry +
+						'" name="label">' + data[i].industry + '</label>')
+				}
+				$("input:checkbox[name='label']").click(function() {
+					var aaa = $(this).prop("checked");
+					if (aaa === true) {
+						if (arr_label3.length > 4) {
+							layer.msg('最多选择5个', {
+								time: 1000,
+							});
+							$(this).prop("checked", false)
+							removeByValue(arr_label3, $(this).val());
+						} else {
+							arr_label3.push($(this).val());
+							$('#labelAd').val(arr_label3);
+						}
+					} else {
+						removeByValue(arr_label3, $(this).val());
+						$('#labelAd').val(arr_label3);
+					}
+				});
+				layui.use('form', function() {
+					var form = layui.form;
+					form.render();
+				})
+			}
+		});
+		// 岗位类别
+		var str_label4 = "";
+		var arr_label4 = [];
+		var post = ["总经理", "副总", "总监", "部门经理/主管", "高级工程师", "一般管理人员", "其他"];
+		$("#gangwei").on("click", function() {
+			$(".tableSel2").replaceWith('<div class="tableSel2 pull-left"> </div>');
+			for (let i = 0; i < post.length; i++) {
+				$(".tableSel2").append('<label><input type="checkbox" value="' + post[i] +
+					'" name="label">' + post[i] + '</label>')
+			}
+			$("input:checkbox[name='label']").click(function() {
+				var aaa = $(this).prop("checked");
+				if (aaa === true) {
+					if (arr_label4.length > 4) {
+						layer.msg('最多选择5个', {
+							time: 1000,
+						});
+						$(this).prop("checked", false)
+						removeByValue(arr_label4, $(this).val());
+					} else {
+						arr_label4.push($(this).val());
+						$('#labelAd2').val(arr_label4);
+					}
+				} else {
+					removeByValue(arr_label4, $(this).val());
+					$('#labelAd2').val(arr_label4);
+				}
+			});
+			layer.open({
+				type: 1,
+				area: ['800px', '505px'],
+				title: ['选择行业', 'font-size:18px;text-align: center;'],
+				content: $('.teachAd2'),
+				btn: '确定',
+				shade: false,
+				yes: function() {
+					$('#gangwei').val($('#labelAd2').val());
+					arr_label4 = [];
+					$('#labelAd2').val("");
+					$("tableSel2 label input").prop('checked', false);
+					layer.closeAll()
+				}
+			});
+		});
+		// 曾任职
+		var str_label5 = "";
+		var arr_label5 = [];
+		$("#job").on("click", function() {
+			$(".tableSel3").replaceWith('<div class="tableSel3 pull-left"> </div>');
+			for (let i = 0; i < post.length; i++) {
+				$(".tableSel3").append('<label><input type="checkbox" value="' + post[i] +
+					'" name="label">' + post[i] + '</label>')
+			}
+			$("input:checkbox[name='label']").click(function() {
+				var aaa = $(this).prop("checked");
+				if (aaa === true) {
+					if (arr_label5.length > 4) {
+						layer.msg('最多选择5个', {
+							time: 1000,
+						});
+						$(this).prop("checked", false)
+						removeByValue(arr_label5, $(this).val());
+					} else {
+						arr_label5.push($(this).val());
+						$('#labelAd3').val(arr_label5);
+					}
+				} else {
+					removeByValue(arr_label5, $(this).val());
+					$('#labelAd3').val(arr_label5);
+				}
+			});
+			layer.open({
+				type: 1,
+				area: ['800px', '505px'],
+				title: ['选择行业', 'font-size:18px;text-align: center;'],
+				content: $('.teachAd3'),
+				btn: '确定',
+				shade: false,
+				yes: function() {
+					$('#job').val($('#labelAd3').val());
+					arr_label5 = [];
+					$('#labelAd3').val("");
+					$("tableSel3 label input").prop('checked', false);
+					layer.closeAll()
+				}
+			});
+		});
+
+		// 获取下拉框数据
+		$.ajax({
+			url: 'http://47.94.173.253:8008/Option_AreasAnd.ashx', //你请求的接口
+			type: 'POST', //类型
+			data: {
+				type: '0',
+			}, //数据有则传，没有可以不写
+			success: function(data) {
+				xcxvArr = data
+				//请求成功后的返回
+				for (let i = 0; i < data.length; i++) {
+					$("#xcxv").append(new Option(data[i].name, data[i].name))
+				}
+				layui.use('form', function() {
+					var form = layui.form;
+					form.render();
+				})
+			}
+		});
+		// 领域获取下拉框数据
+		var sortp;
+		var sortc;
+		setTimeout(function() {
+			$.ajax({
+				url: 'http://47.94.173.253:8008/Option_AreasAnd.ashx', //你请求的接口
+				type: 'POST', //类型
+				data: {
+					type: '51',
+				}, //数据有则传，没有可以不写
+				success: function(data) {
+					var parent = [];
+					var child = [];
+					var childChange = [];
+					for (let i = 0; i < data.length; i++) {
+						parent.push(data[i].product);
+					}
+					$(".sortp").selectivity({
+						allowClear: true,
+						items: parent,
+						placeholder: '请选择'
+					});
+					$(".sortp").on("change", function(e) {
+						sortp = e.value;
+						$('.sortp').text(sortp);
+						console.log(e)
+						child = [];
+						for (let k = 0; k < data.length; k++) {
+							if (sortp == parent[k]) {
+								for (let j = 0; j < data[k].child.length; j++) {
+									child.push(data[k].child[j].product)
+								}
+								$(".sortc").selectivity({
+									allowClear: true,
+									items: child,
+									placeholder: '请选择'
+								});
+								$(".sortc").on("change", function(e) {
+									sortc = e.value;
+									$(".sortc").text(sortc)
+								})
+							}
+						}
+					});
+					$(".sortc").on("click", function() {
+						if (child.length == 0) {
+							layer.msg("请先选择领域")
+						}
+					})
+				}
+			});
+		}, 300);
+		//小计
+		$('#lxx').keyup(function() {
+			var price = parseFloat(0.9);
+			var count = $(this).val();
+			var SubTotal = parseFloat(price * count).toFixed(2);
+			$('#xcc').html(SubTotal);
+		});
+		$('#lxxs').keyup(function() {
+			var price = parseFloat(0.9);
+			var count = $(this).val();
+			var SubTotal = parseFloat(price * count).toFixed(2);
+			$('#xccs').html(SubTotal);
+		})
+		// 读取
+		setTimeout(function() {
+			$.post(http_head + 'Advisers/get_advisersByUserguid.ashx', {
+				"userGuid": userGuid,
+			}, function(data) {
+				var data = JSON.parse(data);
+				if (data.status == 200) {
+					$('#ass').val(data.items.A_location);
+					$(".adname").val(data.items.name);
+					$(".industry").val(data.items.A_industry);
+					$('.sortp').text(data.items.A_lingYu);
+					$('.sortc').text(data.items.A_lingYuDetail);
+					$('#distpicker2').distpicker({
+						province: data.items.A_province,
+						city: data.items.A_city,
+					});
+					$('#gangwei').val(data.items.A_postType);
+					$('#job').val(data.items.A_depart);
+					$("#briefly").val(data.items.A_profile);
+					$("#serve").val(data.items.A_CRMServer);
+					$("#restd").val(data.items.A_other);
+
+					if (data.items.A_photo.indexOf(".jpg") > 0 || data.items.A_photo.indexOf(".png") > 0 || data.items.A_photo.indexOf(
+							".jpeg") > 0) {
+						var imgStr = "http://47.94.173.253:8008" + data.items.A_photo;
+						$('#pics').css({
+							"background": "url('" + imgStr + "') no-repeat center center",
+							"display": "block"
+						}).val(' ');
+						$(".list").hide()
+					}
+
+					$(".realImg").attr("src", data.items.A_photo)
+					if (data.items.A_mode == 1) {
+						$("#news input").eq(0).attr("checked", "checked");
+
+					} else if (data.items.A_mode == 2) {
+						$("#news input").eq(1).attr("checked", "checked")
+
+					} else if (data.items.A_mode == 0) {
+						$("#news input").eq(2).attr("checked", "checked")
+					}
+
+					$('#lxx').val(data.items.A_costTemp);
+					$('#lxxs').val(data.items.A_costAll);
+
+					var bgArr = ["世界500强企业", "中国500强企业", "大型国有企业", "大型民营企业", "知名日/韩企业", "港/澳/台企业", "欧美外资企业", "国外工作", "其他"];
+					for (var i = 0; i < bgArr.length; i++) {
+						if (bgArr[i] == data.items.A_workBg) {
+							$(".bg li").eq(i).children("input").attr("checked", "checked")
+						}
+					}
+				}
+			});
+		}, 500)
+
+		$('#refers').click(function() {
+			// console.log(sortp,$('.sortp').text(),$(".sortc").text())
+			if ($('#job').val().length > 0 && $('#briefly').val().length > 0 && $('#serve').val().length > 0 && $('#restd').val()
+				.length > 0) {
+				$(".load5").show()
+				$.post('http://47.94.173.253:8008/Advisers/Add_advisters.ashx', {
+					"userGuid": userGuid,
+					"name": $(".adname").val(),
+					"A_location": $('#ass').val(),
+					"A_industry": $(".industry").val(), //行业
+					"A_lingYu": $('.sortp').text(), //领域
+					"A_lingYuDetail": $(".sortc").text() ,//领域细分
+					"A_province": $('#province2').val(), //常驻地区
+					"A_city": $('#city2').val(), //				
+					"A_mode": $('input:radio[name="mode"]:checked').val(), //咨询模式
+					"A_costTemp": $('#lxx').val(), //间歇式咨询 费用
+					"A_costAll": $('#lxxs').val(), //驻厂区咨询费用 /天
+					"A_postType": $('#gangwei').val(), //职位类别
+					"A_workBg": $('input:radio[name="sexs"]:checked').val(), //工作背景
+					"A_depart": $('#job').val(), //曾担任职务
+					"A_profile": $("#briefly").val(), //咨询师简介
+					"A_CRMServer": $("#serve").val(), //曾服务过的客户
+					"A_other": $("#restd").val(), //其他要求
+					"A_photo": $(".realImg").attr("src"), //咨询师的头像		
+				}, function(data) {
+					var data = JSON.parse(data);
+					console.log(data)
+					if (data.status == 200) {
+						setTimeout(function() {
+							$(".load5").hide()
+							layer.msg("更新成功", {
+								time: 1200
+							});
+							$("#dataTable").replaceWith('<div id="dataTable"></div>');
+							$("#dataTable").load("pInfo2.html");
+							localStorage.setItem("show", 1)
+						}, 500)
+					}
+				});
+			} else {
+				layer.msg("请完善咨询师资料", {
+					time: 2000
+				})
+			}
+		});
+		if (localStorage.getItem("show")) {
+			$(".li2").addClass("selected")
+			$(".li1").removeClass("selected")
+			$(".lizxs").addClass("selected")
+			$(".lijs").removeClass("selected")
+		} else {
+			$(".li1").addClass("selected")
+			$(".li2").removeClass("selected")
+			$(".lijs").addClass("selected")
+			$(".lizxs").removeClass("selected")
+		}
+		$(".pInfo").on("click", function() {
+			localStorage.removeItem("show")
+		})
+
+	})
+</script>

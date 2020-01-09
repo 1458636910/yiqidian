@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html ng-app="fpwd">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+		<meta http-equiv="Cache-Control" content="no-cache" />
+		<link rel="icon" href="img/logo.png" type="image/x-icon" />
+		<title>修改手机号</title>
+		<link rel="stylesheet" href="css/reset.css" />
+		<link rel="stylesheet" href="css/skin/default/layer.css" />
+		<link rel="stylesheet" href="css/changePassword.css?ver=20190929" />
+		<link rel="stylesheet" href="css/bootstrap.min.css" />
+		<script type="text/javascript" src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+		<script type="text/javascript" src="js/jquery.cookie.js"></script>
+		<script type="text/javascript" src="https://cdn.bootcss.com/layer/3.1.0/layer.js"></script>
+		<script type="text/javascript" src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<script type="text/ecmascript" src="js/jquery.sha1.js"></script>
+		<script type="text/javascript" src="js/angular.1.2.29.js"></script>
+		<style>
+			form div{
+				display: flex;
+				align-items: center;
+			}
+			.labs{
+				min-width: 83px;
+				text-align: left;
+				line-height: 50px;
+				height: 50px;
+				float: left;
+			}
+			.pwd, .pwd2 {
+			    margin: 0;
+			}
+			.box .inputtel, .box .inputpass1, .box .inputpass2 {
+			    margin: 20px 0;
+			}
+		</style>
+	</head>
+	<body ng-controller="loginController">
+		<div class="box col-lg-offset-2 col-lg-8 col-md-offset-2 col-md-8 col-sm-offset-2 col-sm-8 col-xs-12">
+			<div class="tltle col-lg-12 col-md-12 col-sm-12 col-xs-12">
+				易企点
+				<span>(修改手机号)</span>
+			</div>
+			<br />
+			<div class="left col-lg-3 col-md-3 col-sm-3 col-xs-12"> </div>
+			<div class="center col-lg-6 col-md-6 col-sm-6 col-xs-12">
+				<form name="myForm" ng-model="myForm" novalidate>
+					<div class="number col-lg-12 col-md-12 col-sm-12 col-xs-12">
+						<span class="labs">旧手机号：</span>
+						<input type="text" class="inputtel pull-left form-control" name="username" ng-model="username" placeholder="请输入旧手机号"
+						 ng-pattern="/^1[34578]\d{9}$/" required disabled />
+						<br />
+						<span class="input-txt1" ng-hide="username" ng-if="myForm.username.$dirty && myForm.username.$error.required">手机号不能为空</span>
+						<span class="input-txt2" ng-hide="username" ng-if="myForm.username.$dirty &&myForm.username.$touched ">请输入正确的手机号!</span>
+					</div>
+					<div class="pwd col-lg-12 col-md-12 col-sm-12 col-xs-12">
+						<span class="labs">密码：</span>
+						<label for="password1"> </label>
+						<input type="password" class="inputpass1 form-control" ng-minlength="8" ng-maxlength="18" value="" name="password1"
+						 ng-model="password1" placeholder="请输入密码" required />
+						<br />
+						<span class="input-mima1" ng-show="myForm.password1.$dirty && myForm.password1.$error.required">密码不能为空!</span>
+						<span class="input-mima2" ng-if="(myForm.password1.$error.minlength || myForm.password1.$error.maxlength) && myForm.password1.$touched">密码为8-18位</span>
+					</div>
+					<div class="pwd2 col-lg-12 col-md-12 col-sm-12 col-xs-12">
+						<span class="labs">新手机号：</span>
+						<label for="password2"> </label>
+						<input type="text" class="inputpass2 form-control" ng-minlength="8" ng-maxlength="18" value="" name="password2"
+						 ng-model="password2" placeholder="输入新手机号" required />
+						<br />
+					</div>
+					<div class=" col-lg-12 col-md-12 col-sm-12 col-xs-12">
+						<span class="labs"></span>
+						<button type="submit" ng-click="formValid()" class="finished">完成</button>
+					</div>
+				</form>
+				<div class="reg col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					<span class="labs"></span>
+					<a target="_blank" class="pull-left reGet">去登录</a>
+					<a class="pull-right forgetPwd">忘记密码</a>
+				</div>
+			</div>
+			<div class="right col-lg-3 col-md-3 col-sm-3 col-xs-12"> </div>
+		</div>
+		<script type="text/javascript">
+			var app = angular.module('fpwd', []);
+			app.controller('loginController', ['$scope', '$http', function($scope, $http) {}])
+		</script>
+		<script type="text/javascript">
+			$(document).ready(function() {
+				$(".inputpass1").val();
+				$('.inputtel').val();
+				var href = location.href;
+				var userGuid = href.split("userGuid=")[1].split("&")[0];
+				var phone = href.split("phone=")[1].split("%")[0];
+				var companyId = href.split("companyId=")[1];
+				$('.inputtel').val(phone);
+				// 找回密码
+				$('.reGet').click(function() {
+					window.open("innerLogin.html?href=" + href + "")
+				});
+				// 忘记密码
+				$(".forgetPwd").on("click", function() {
+					var urlTail = href.split("?")[1]
+					window.location.href = "http://www.jinshiku.com/html/resetPwd.html?" + urlTail + "";
+				});
+
+				$('.finished').click(function() {
+
+					if ($('.inputpass1').val().length == 0) {
+						layer.msg('请输入密码', {
+							time: 1200,
+						});
+					} else if ($('.inputpass2').val().length == 0) {
+						layer.msg('请输入新手机号', {
+							time: 1200,
+						});
+					} else {
+
+						var passwordO = $('.inputpass1').val() + "EQD";
+						var passwordN = $('.inputpass2').val();
+						// var passwordN2 = hex_sha1(passwordN);
+						var passwordO2 = hex_sha1(passwordO);
+					
+						$.post('http://47.94.173.253:8008/userashx/Update_loginphoneno.ashx', {
+							"userGuid": userGuid,
+							"password": passwordO2,
+							"uname": passwordN
+						}, function(data) {
+							var dataFpwd = JSON.parse(data);
+							console.log(dataFpwd)
+							if (dataFpwd.status == 200) {
+								layer.msg('修改成功即将前往登录页', {
+									time: 3500,
+								});
+								setTimeout(function() {
+									location.href = "innerLogin.html?href=" + "http://www.eqidd.com/makerSpace/index.html?userGuid=" +
+										userGuid + "&companyId=" + companyId;
+								}, 2000)
+							} else {
+								layer.msg(dataFpwd.msg, {
+									time: 2000,
+								});
+							}
+						});
+
+					}
+
+
+
+				});
+			})
+		</script>
+	</body>
+</html>

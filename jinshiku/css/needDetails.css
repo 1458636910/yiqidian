@@ -1,0 +1,389 @@
+.main {
+	width: 100%;
+	background-color: #f1f1f1;
+}
+
+#demandSquare {
+	background-color: #fff;
+}
+
+#demandSquare a {
+	color: #00368a
+}
+
+.topArea {
+	height: 185px;
+	margin-bottom: 0
+}
+
+.navTitle {
+	background-color: #f1f1f1
+}
+
+.showDiv {
+	width: 1200px;
+	margin: 0 auto;
+	padding-top: 20px
+}
+
+.showDiv>p {
+	color: #868686;
+	font-size: 14px
+}
+
+.showDiv>p span:nth-child(1) {
+	margin-right: 10px
+}
+
+.teacherShowLeft {
+	width: 900px;
+}
+
+.teacherShowLeft>div {
+	padding: 30px 50px 40px 37px;
+	background-color: #fff;
+	margin-bottom: 30px
+}
+
+.demandInfoDiv {
+	padding: 0 10px
+}
+
+.titleDiv {
+	border-bottom: 1px solid #eaeaea;
+	margin-bottom: 20px
+}
+
+.titleDiv p {
+	height: 60px;
+	line-height: 60px;
+	margin-bottom: 0
+}
+
+.titleDiv p #adjustShow1 {
+	color: #c1c1c1;
+	border: 1px solid #c1c1c1;
+	margin-left: 10px;
+	height: 30px;
+	line-height: 22px;
+	padding: 3px 5px;
+	display: block;
+	cursor: pointer;
+	width: 80px;
+	margin: 0 auto;
+	text-align: center;
+	margin-top: 10px;
+}
+
+.titleDiv p #adjustShow {
+	color: #0344aa;
+	border: 1px solid #0344aa;
+	margin-left: 10px;
+	height: 30px;
+	line-height: 22px;
+	padding: 3px 5px;
+	display: block;
+	cursor: pointer;
+	width: 80px;
+	margin: 0 auto;
+	text-align: center;
+	margin-top: 10px;
+}
+
+.needTitle {
+	font-size: 18px;
+	color: #00368a;
+	font-weight: bolder;
+}
+
+.basicDiv>div>p {
+	height: 60px;
+	line-height: 60px;
+	margin-bottom: 0;
+	border-bottom: 1px solid #eaeaea;
+}
+
+.basicDiv>p,
+.detailsDiv>p,
+.contentDiv>p {
+	height: 30px;
+	line-height: 30px;
+	margin-bottom: 0;
+	font-size: 16px;
+	color: #202020;
+	font-weight: bold;
+}
+
+.basicDiv>div>p:nth-child(1) {
+	min-width: 50%;
+	margin-right: 20px;
+}
+
+.basicDiv>div>p:nth-child(2) {}
+
+.basicDiv>div>p span:nth-child(1) {
+	color: #b4b4b4;
+	display: inline-block;
+	margin-right: 10px
+}
+
+.basicDiv>div>p span:nth-child(2) {
+	color: #767676;
+}
+
+#otherDemand {
+	color: #767676;
+	text-indent: 30px;
+	line-height: 25px;
+	letter-spacing: 1px
+}
+
+.detailsDiv,
+.contentDiv {
+	margin-top: 25px;
+	border-bottom: 1px solid #eaeaea;
+	padding-bottom: 20px;
+}
+
+.contentDiv>button {
+	width: 214px;
+	height: 54px;
+	background-color: #f7ae16;
+	color: #fff;
+	text-align: center;
+	border: none;
+	outline: none;
+	border-radius: 5px;
+	font-size: 16px;
+	margin-top: 30px;
+}
+
+.contentDiv>button span,
+.lanuchDemandDiv>button span {
+	margin-right: 10px;
+	font-size: 14px
+}
+
+.teacherRequireDiv {
+	padding-top: 30px
+}
+
+.teacherRequireDiv>p {
+	height: 60px;
+	line-height: 60px;
+	border-bottom: 1px solid #eaeaea;
+	margin-bottom: 0;
+	padding: 0 10px
+}
+
+.teacherRequireDiv>p span:nth-child(1) {
+	color: #b4b4b4;
+	display: inline-block;
+	margin-right: 10px
+}
+
+.teacherRequireDiv>p span:nth-child(2) {
+	color: #767676;
+}
+
+.teacherRequireDiv>p:nth-child(1) {
+	border-bottom: none;
+	height: 30px;
+	line-height: 30px;
+	margin-bottom: 0;
+	font-size: 16px;
+	color: #202020;
+	font-weight: bold;
+}
+
+.teacherShowRight {
+	width: 280px;
+}
+
+.lanuchDemandDiv {
+	background-color: #0aa2e8;
+	height: 160px;
+	text-align: center;
+	padding: 35px 0;
+	margin-bottom: 33px
+}
+
+.lanuchDemandDiv>p {
+	color: #fff;
+	font-size: 18px;
+	font-weight: bold;
+	margin: 0 0 25px 0;
+}
+
+.lanuchDemandDiv>button {
+	width: 160px;
+	height: 46px;
+	background-color: #f7ae16;
+	color: #fff;
+	text-align: center;
+	border: none;
+	outline: none;
+	border-radius: 5px;
+	font-size: 16px;
+	line-height: 44px;
+	margin-top: 25px;
+}
+
+.matelecturertitle p,
+.mateCoursetitle p,
+.otherDemandtitle p {
+	height: 56px;
+	background-color: #0aa2e8;
+	line-height: 56px;
+	text-align: center;
+	font-size: 16px;
+	color: #fff;
+	font-weight: bold;
+}
+
+#matecourseDiv {
+	height: 480px;
+	overflow: hidden;
+}
+
+#mateCourse li {
+	height: 81px;
+	padding: 10px ;
+	border-bottom: 1px solid #eaeaea;
+	cursor: pointer;
+}
+
+#mateCourse li p {
+	height: 30px;
+	line-height: 30px;
+	margin-bottom: 0;
+}
+
+#mateCourse li p:nth-child(1) {
+	font-size: 14px;
+	color: #7a7a7a;
+}
+
+#mateCourse li p:nth-child(2) span:nth-child(1) {
+	color: #c1c1c1;
+	margin-right: 10px;
+	display: inline-block;
+}
+
+.mateLecturerDiv,
+.mateCourseDiv {
+	background-color: #fff;
+}
+
+#mateCourse li p:nth-child(2) span:nth-child(2) {
+	display: inline-block;
+	width: 160px;
+	height: 30px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	color: #c1c1c1
+}
+
+#matelecturerDiv {
+	height: 400px;
+	overflow: hidden;
+	margin-bottom: 20px
+}
+
+#mateLecturer li {
+	padding: 15px 0 15px 0;
+	border-bottom: 1px solid #eaeaea;
+	margin: 0 15px
+}
+
+#mateLecturer li img {
+	width: 60px;
+	height: 60px;
+	border-radius: 30px
+}
+
+#mateLecturer li div {
+	width: 180px;
+}
+
+#mateLecturer li div p {
+	height: 30px;
+	line-height: 30px;
+	margin-bottom: 0;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	padding-left: 10px
+}
+
+#mateLecturer li div p:nth-child(1) {
+	color: #7a7a7a;
+	font-size: 15px
+}
+
+#mateLecturer li div p:nth-child(2) {
+	color: #c3c3c3;
+	font-size: 13px
+}
+
+/*本类其他需求*/
+#otherdemandArea {
+	background-color: #fff;
+	overflow: hidden;
+	height: 490px;
+	margin-bottom: 20px
+}
+
+#otherdemand {
+	overflow: hidden;
+	width: 100%;
+	margin: 0
+}
+
+#otherdemandArea ul li {
+	height: 81px;
+	border-bottom: 1px solid #eeeeee;
+	padding: 10px;
+	cursor: pointer;
+}
+
+#otherdemandArea ul li p {
+	height: 30px;
+	line-height: 30px;
+	margin-bottom: 0;
+}
+
+#otherdemandArea ul li p:nth-child(1) {
+	font-size: 14px;
+	color: #7a7a7a
+}
+
+#otherdemandArea ul li p:nth-child(2) {
+	font-size: 14px;
+	color: #a7a7a7
+}
+
+/*查看联系方式*/
+.infoDiv {
+	display: none;
+	margin: 20px;
+}
+
+.infoDiv p {
+	height: 30px;
+	line-height: 30px;
+}
+
+.infoDiv p span:nth-child(1) {
+	display: inline-block;
+	margin-right: 10px;
+	color: #c3c3c3
+}
+
+.infoDiv p span:nth-child(2) {
+	color: #7a7a7a
+}
+.otherDemandDiv{
+	margin-top: 20px;
+}

@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta http-equiv="Cache-Control" CONTENT="no-cache">
+  <link rel="icon" href="../image/jinLogo.png" type="image/x-icon"/>
+  <title>评价列表</title>
+  <link rel="stylesheet" href="../css/reset.css">
+  <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap-table/1.11.1/bootstrap-table.min.css">
+  <link rel="stylesheet" href="../css/skin/default/layer.css">
+  <link rel="stylesheet" href="../css/newTitle.css">
+  <link rel="stylesheet" href="../css/assess.css?ver=20181016">
+</head>
+<body>
+  <div class="navTitle">
+          <ul class="clearfix">
+                <li class="pull-left"><a href="http://www.eqidd.com/yqy/article.html" target="_blank">易企阅</a></li>
+                <li class="pull-left"><a href="http://www.jinshiku.com" target="_blank">金师库</a></li>
+                <li class="pull-left"><a href="http://www.eqidd.com/createrSpace/html/personInfo.html" target="_blank">创客空间</a></li>
+                <li class="pull-left"><a href="http://www.eqidd.com/comSpace/eqd.html" target="_blank">企业空间</a></li>
+                <li class="pull-left"><a href="http://www.eqidd.com/html/download.html" target="_blank">下载</a></li>
+                <li class="pull-left"><a href="http://www.eqidd.com/html/feedback.html" target="_blank">反馈</a></li>
+                <li class="pull-right loginBtn" ><a id="loginBtn">登录</a></li>
+                <li class="pull-right regBtn" ><a id="regBtn" href="http://www.eqidd.com/html/reg.html" target="_blank">注册</a></li>
+                <li class="pull-right quitOut">退出</li>
+                <li class="pull-right infoBtn" ><span class="loginName"></span><a href="../../createrSpace/html/personInfo.html" target="_blank">个人中心</a></li>
+          </ul>
+  </div>
+    <div class="main contain clearfix">
+    <div class="assessHead">
+        <p class="assessName">《<span class="className"></span>》课程培训综合评估表</p>
+        <p><span>主办部门</span><span class="departName"></span></p>
+        <p><span>培训负责人</span><span class="dutyPerson"></span></p>
+        <p><span>培训老师</span><span class="teacher "></span></p>
+        <p class="clearfix"><span class="pull-left">培训时间</span><span class="assessTime pull-left"></span></p>
+    </div>
+    <div class="toLearner">
+        <p>亲爱的学员：</p>
+        <p>
+            感谢您参与并完成本次培训！为进一步提高后期的培训质量，请您根据此次培训填写并完成以内容。您的建议是提升培训质量的源泉，再次感谢您的支持！
+        </p>
+    </div>
+    <div class="assessTable">
+      <table border="2" bordercolor="black" width="100%" cellspacing="0" cellpadding="5" class="tabelDetails">
+        <tr>
+          <td >评价内容</td>
+          <td >评价标准</td>
+          <td >分值</td>
+          <td >得分</td>
+        </tr>
+        <tr>
+          <td ></td>
+          <td ></td>
+          <td >
+          <span>10</span><span>9</span><span>8</span><span>7</span><span>6</span><span>5</span><span>4</span><span>3</span><span>2</span><span>1</span>
+          </td>
+          <td ></td>
+        </tr>
+        <tr>
+          <td rowspan="2">老师对课程的设计</td>
+          <td>紧扣培训主题</td>
+          <td>
+            <span class="10"><div></div></span
+            ><span class="9"><div></div></span
+            ><span class="8"><div></div></span
+            ><span class="7"><div></div></span
+            ><span class="6"><div></div></span
+            ><span class="5"><div></div></span
+            ><span class="4"><div></div></span
+            ><span class="3"><div></div></span
+            ><span class="2"><div></div></span
+            ><span class="1"><div></div></span>
+          </td>
+          <td class="math" id="math1"></td>
+        </tr>
+        <tr>
+          <td>内容充实、逻辑清楚</td>
+          <td>
+            <span class="10"><div></div></span
+            ><span class="9"><div></div></span
+            ><span class="8"><div></div></span
+            ><span class="7"><div></div></span
+            ><span class="6"><div></div></span
+            ><span class="5"><div></div></span
+            ><span class="4"><div></div></span
+            ><span class="3"><div></div></span
+            ><span class="2"><div></div></span
+            ><span class="1"><div></div></span>
+          </td>
+          <td class="math" id="math2"></td>
+        </tr>
+        <tr>
+          <td rowspan="2">培训讲师</td>
+          <td>课程准备充足，概念清晰,内容丰富,表述形式多样</td>
+          <td>
+            <span class="10"><div></div></span
+            ><span class="9"><div></div></span
+            ><span class="8"><div></div></span
+            ><span class="7"><div></div></span
+            ><span class="6"><div></div></span
+            ><span class="5"><div></div></span
+            ><span class="4"><div></div></span
+            ><span class="3"><div></div></span
+            ><span class="2"><div></div></span
+            ><span class="1"><div></div></span>
+          </td>
+          <td class="math" id="math3"></td>
+        </tr>
+        <tr>
+          <td>能够针对参训人员特点安排课堂活动，互动性强</td>
+          <td>
+            <span class="10"><div></div></span
+            ><span class="9"><div></div></span
+            ><span class="8"><div></div></span
+            ><span class="7"><div></div></span
+            ><span class="6"><div></div></span
+            ><span class="5"><div></div></span
+            ><span class="4"><div></div></span
+            ><span class="3"><div></div></span
+            ><span class="2"><div></div></span
+            ><span class="1"><div></div></span>
+          </td>
+          <td class="math" id="math4"></td>
+        </tr>
+        <tr>
+          <td rowspan="6">培训效果</td>
+          <td>培训内容与你的期望相符合</td>
+          <td>
+            <span class="10"><div></div></span
+            ><span class="9"><div></div></span
+            ><span class="8"><div></div></span
+            ><span class="7"><div></div></span
+            ><span class="6"><div></div></span
+            ><span class="5"><div></div></span
+            ><span class="4"><div></div></span
+            ><span class="3"><div></div></span
+            ><span class="2"><div></div></span
+            ><span class="1"><div></div></span>
+          </td>
+          <td class="math" id="math5"></td>
+        </tr>
+        <tr>
+          <td>提供有实际意义的案例，对工作的启发性较大</td>
+          <td>
+            <span class="10"><div></div></span
+            ><span class="9"><div></div></span
+            ><span class="8"><div></div></span
+            ><span class="7"><div></div></span
+            ><span class="6"><div></div></span
+            ><span class="5"><div></div></span
+            ><span class="4"><div></div></span
+            ><span class="3"><div></div></span
+            ><span class="2"><div></div></span
+            ><span class="1"><div></div></span>
+          </td>
+          <td class="math" id="math6"></td>
+        </tr>
+        <tr>
+          <td>能对参训人员的疑问作出专业的解答</td>
+          <td>
+            <span class="10"><div></div></span
+            ><span class="9"><div></div></span
+            ><span class="8"><div></div></span
+            ><span class="7"><div></div></span
+            ><span class="6"><div></div></span
+            ><span class="5"><div></div></span
+            ><span class="4"><div></div></span
+            ><span class="3"><div></div></span
+            ><span class="2"><div></div></span
+            ><span class="1"><div></div></span>
+          </td>
+          <td class="math" id="math7"></td>
+        </tr>
+        <tr>
+          <td>获得适用的新知识，而且可以应用到工作中</td>
+          <td>
+            <span class="10"><div></div></span
+            ><span class="9"><div></div></span
+            ><span class="8"><div></div></span
+            ><span class="7"><div></div></span
+            ><span class="6"><div></div></span
+            ><span class="5"><div></div></span
+            ><span class="4"><div></div></span
+            ><span class="3"><div></div></span
+            ><span class="2"><div></div></span
+            ><span class="1"><div></div></span>
+          </td>
+          <td class="math" id="math8"></td>
+        </tr>
+        <tr>
+          <td>拓宽了知识面或新的思路</td>
+          <td>
+            <span class="10"><div></div></span
+            ><span class="9"><div></div></span
+            ><span class="8"><div></div></span
+            ><span class="7"><div></div></span
+            ><span class="6"><div></div></span
+            ><span class="5"><div></div></span
+            ><span class="4"><div></div></span
+            ><span class="3"><div></div></span
+            ><span class="2"><div></div></span
+            ><span class="1"><div></div></span>
+          </td>
+          <td class="math" id="math9"></td>
+        </tr>
+        <tr>
+          <td>值得我来听，并且愿意向其他同事推荐</td>
+          <td>
+            <span class="10"><div></div></span
+            ><span class="9"><div></div></span
+            ><span class="8"><div></div></span
+            ><span class="7"><div></div></span
+            ><span class="6"><div></div></span
+            ><span class="5"><div></div></span
+            ><span class="4"><div></div></span
+            ><span class="3"><div></div></span
+            ><span class="2"><div></div></span
+            ><span class="1"><div></div></span>
+          </td>
+          <td class="math" id="math0"></td>
+        </tr>
+        <tr>
+          <td colspan="3">总得分</td>
+          <td class="mathAll"></td>
+        </tr>
+      </table>
+    </div>
+    <div class="messageDiv form-inline">
+        <p>您在本次培训中的收获和体会：</p>
+        <textarea name="" id="harvest" cols="120" rows="4" class="form-control" placeholder="最多200字" maxlength="200"></textarea>
+    </div>
+    <div class="adviceDiv form-inline">
+        <p>您对后续组织此类培训的意见和建议：</p>
+        <textarea name="" id="advise" cols="120" rows="4" class="form-control" placeholder="最多200字" maxlength="200"></textarea>
+    </div>
+    <div class="subArea">
+    <p> 感谢您对本次课程的支持，您的成长是我们进步的动力！</p>
+      <p>
+            <button class="submitBtn">确认</button>
+            <button class="changeBtn">修改</button>
+      </p>
+    </div>
+    </div>
+  <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+  <script type="text/javascript" src="http://cdn.bootcss.com/layer/3.1.0/layer.js"></script>
+  <script type="text/javascript" src="http://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="../js/wangEditor.js"></script>
+  <script type="text/javascript" src="../js/change.js?ver=20181016"></script>
+  <script type="text/javascript" src="../js/assess.js?ver=20181016"></script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+.mainCenter{background-color: #eee;padding: 40px 20px;}
+.cover{position:absolute;left: 0px;right: 0;bottom: 0;top: 0;background-color: #000;opacity:0.3 ;z-index: 20;display: none;}
+.title{font-size: 30px;text-align: center;font-weight: bold;}
+#addCourseForm label{height: 50px;display:block;}
+#addCourseForm label span:nth-child(1){display: inline-block;width: 10px;color: #f00;}
+#addCourseForm label span:nth-child(2){display: inline-block;width: 80px;}
+#addCourseForm label input,#addCourseForm label select{height: 30px;padding: 0 10px;}
+#addCourseForm label select{width: 190px;}
+.courseMain{font-size: 20px;margin-top: 20px;}
+.submitArea{width: 100%;text-align: center;margin: 20px 0;}
+.submitBtn{background-color: #29e;padding: 15px 30px;font-size: 25px;border: none;border-radius: 5px;outline: none;color: #fff;}
+.videoLabelTable{display: none;margin: 20px;}
+.videoLabelLeft{width: 110px;}
+.videoLabelLeft p{cursor: pointer;background-color: #29e;color: #fff;height: 30px;line-height: 30px;text-align: center;}
+.videoLabelRight{width: 480px;margin-left: 20px;}
+.videoLabelRight span{display: inline-block;width: 120px;height: 30px;line-height: 30px;}
+#addCourseForm .matchObj{display: none;}
+.departmentTable{display: none;}
+.LectureIntroduce span{vertical-align: top;}
+#LectureIntroduceInput{width: 500px;height: 100px;}
+#addCourseForm .uploadFile{display: none;}
+#file{display: inline-block;}

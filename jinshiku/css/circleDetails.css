@@ -1,0 +1,10 @@
+.main{width: 100%;margin-bottom: 70px;}
+.mainCenter{padding: 20px 10px;}
+/*.contain{width: 1200px;margin: 20px auto;}*/
+.circleTitle{text-align: center;font-size: 30px;font-weight: bold;}
+#Circle{background-color: #fff;color: #29e;}
+@media (max-width: 500px){
+  .topArea{display: none;}
+  .navTitle>ul>li{width: 30%;}
+}
+#circleD{margin-bottom: 20px;}

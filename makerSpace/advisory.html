@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1"/>
+		<link rel="icon" href="img/logo.png" type="image/x-icon"/>
+		<link rel="stylesheet" href="css/reset.css"/>
+		<link rel="stylesheet" href="layui/css/layui.css" media="all"/>
+		<link rel="stylesheet" type="text/css" href="css/advisory.css?v=20190616"/>
+		<title>咨询师认证</title>
+	</head>
+	<body>
+		<div class="content">
+			<div class="seek w1000">
+				<p>咨询师认证</p>
+			</div>
+			<div class="w1000 lius">
+				<input type="button" class="layui-btn load chooseImg" value="图片" id="pics"/>
+				<p class="list">请上传头像</p>
+			</div>
+			<input id="headImg" name="file" accept="image/*" type="file" style="display: none;"/>
+			<div class="preImg" style="display: none;">
+				<img src=" " alt="" id="showImg"/>
+				<img src=" " class="realImg"/>
+			</div>
+			<div class="means w1000">
+				<p class="ras">* 个人资料完善程度决定与咨询需求方的匹配程度，资料越完善越容易匹配到咨询项目，请您认证完善个人资料</p>
+				<form class="layui-form" action="">
+					<div class="layui-form-item">
+						<label class="layui-form-label">
+							<span class="isa">*</span>
+							咨询师定位
+						</label>
+						<div class="layui-input-block">
+							<input type="text" name="title" lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input ass" id="ass"/>
+						</div>
+					</div>
+					<div class="layui-form-item">
+						<label class="layui-form-label">
+							<span class="isa">*</span>
+							擅长行业
+						</label>
+						<div class="layui-input-inline industry">
+							<select name="quiz3" class="city" id="ation" lay-verify="required">
+								<option value="">请选择</option>
+							</select>
+						</div>
+						<div class="layui-input-inline industry">
+							<select name="quiz3" class="city" id="ation_1">
+								<option value="">请选择</option>
+							</select>
+						</div>
+						<div class="layui-input-inline industry">
+							<select name="quiz3" class="city" id="ation_2">
+								<option value="">请选择</option>
+							</select>
+						</div>
+						<div class="layui-input-inline industry">
+							<select name="quiz3" class="city" id="ation_3">
+								<option value="">请选择</option>
+							</select>
+						</div>
+						<div class="layui-input-inline industry">
+							<select name="quiz3" class="city" id="ation_4">
+								<option value="">请选择</option>
+							</select>
+						</div>
+						<p class="xoc">( 最多选5个 )</p>
+					</div>
+					<div class="layui-form-item">
+						<label class="layui-form-label">
+							<span class="isa">*</span>
+							擅长领域
+						</label>
+						<div class="layui-input-inline realm">
+							<select name="quiz3" id="lingyu" lay-filter="lingyu" lay-verify="required">
+								<option value="">请选择 ( 只能选一项 )</option>
+							</select>
+						</div>
+					</div>
+					<div class="layui-form-item">
+						<label class="layui-form-label">
+							<span class="isa">*</span>
+							擅长领域细分
+						</label>
+						<div class="layui-input-inline realm">
+							<select name="quiz3" id="xifen" lay-filter="xifen">
+								<option value="">请选择 ( 最多选一项 )</option>
+							</select>
+						</div>
+					</div>
+					<div class="layui-form-item">
+						<label class="layui-form-label">
+							<span class="isa">*</span>
+							常驻地
+						</label>
+						<div class="layui-input-inline residence">
+							<select name="quiz3" id="xcxv" lay-filter="xcxv" lay-verify="required">
+								<option value="">请输入</option>
+							</select>
+						</div>
+						<div class="layui-input-inline residence">
+							<select name="quiz3" id="province" lay-filter="province">
+								<option value="">	</option>
+							</select>
+						</div>
+					</div>
+					<div class="layui-form-item">
+						<label class="layui-form-label">
+							<span class="isa">*</span>
+							咨询模式
+						</label>
+						<div class="site-demo-button" style="margin-bottom: 0;">
+							<div class="layui-input-block" id="news">
+								<input type="radio" name="sex" value="1" title="间歇式咨询 ( 定期驻厂 )" checked="" lay-filter="test"/>
+								<input type="radio" name="sex" value="2" title="驻厂式咨询 ( 长期驻厂 )" lay-filter="test"/>
+								<input type="radio" name="sex" value="0" title="不限" lay-filter="test"/>
+							</div>
+						</div>
+					</div>
+					<div class="layui-form-item">
+						<label class="layui-form-label">
+							<span class="isa">*</span>
+							师资费用
+						</label>
+						<div class="site-demo-button" style="margin-bottom: 0;">
+							<p class="lis" id="lis_1">
+								间歇式咨询:
+								<input type="text" class="intermit" id="lxx" value="0"/>
+								<span>元/天</span>
+								( 实际收益
+								<span id="xcc">0</span>
+								元
+								<i class="sdds">!</i>
+								)
+							</p>
+							<p class="lis" id="lis_2">
+								驻厂式咨询:
+								<input type="text" class="intermit" id="lxxs" value="0"/>
+								<span>元/天</span>
+								( 实际收益
+								<span id="xccs">0</span>
+								元
+								<i class="sdds">!</i>
+								)
+							</p>
+						</div>
+					</div>
+					<div class="layui-form-item">
+						<label class="layui-form-label">
+							<span class="isa">*</span>
+							岗位类别
+						</label>
+						<div class="layui-input-block">
+							<input type="text" name="title" lay-verify="required" placeholder="请输入岗位类别" autocomplete="off" class="layui-input ass" id="gangwei"/>
+						</div>
+					</div>
+					<div class="layui-form-item">
+						<label class="layui-form-label">
+							<span class="isa">*</span>
+							工作背景
+						</label>
+						<div class="layui-input-block business">
+							<ul>
+								<li>
+									<input type="radio" name="sexs" value="世界500强企业" title="世界500强企业" checked=""/>
+								</li>
+								<li>
+									<input type="radio" name="sexs" value="中国500强企业" title="中国500强企业"/>
+								</li>
+								<li>
+									<input type="radio" name="sexs" value="大型国有企业" title="大型国有企业"/>
+								</li>
+								<li>
+									<input type="radio" name="sexs" value="大型民有企业" title="大型民有企业"/>
+								</li>
+								<li class="excursion">
+									<input type="radio" name="sexs" value="知名日/韩企业" title="知名日/韩企业"/>
+								</li>
+								<li class="excursion">
+									<input type="radio" name="sexs" value="港/澳/台企业" title="港/澳/台企业"/>
+								</li>
+								<li class="excursion">
+									<input type="radio" name="sexs" value="欧美外资企业" title="欧美外资企业"/>
+								</li>
+								<li class="excursion">
+									<input type="radio" name="sexs" value="国外工作" title="国外工作"/>
+								</li>
+								<li class="excursion">
+									<input type="radio" name="sexs" value="其他" title="其他"/>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<p class="foots">
+						<span class="isa">*</span>
+						号为必填项，请认真填写，未填写将无法通过认证，未认证咨询师无法申请/投递项目；您的信息将被严格保密，仅供申请/匹配项目时使用
+					</p>
+					<div class="layui-form-item">
+						<div class="layui-btn refer" lay-submit lay-filter="formDemo" id="refer">下一步</div>
+					</div>
+				</form>
+			</div>
+		</div>
+		<script type="text/javascript" src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+		<script src="layui/layui.js"></script>
+        <script src="js/layer.js" type="text/javascript" charset="utf-8" async defer></script>
+		<script src="js/advisory.js?v=20190816"></script>
+	</body>
+</html>

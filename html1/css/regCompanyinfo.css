@@ -1,0 +1,25 @@
+.regcomTitle{height: 60px;position: fixed;width: 100%;line-height: 60px;padding: 0 40px;border-bottom: 1px solid #29e;box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);z-index: 99999;background-color: #fff;text-align: center;font-size: 25px;}
+.regCom{width: 1000px;padding: 30px 0 30px 30px;background-color: #ddd;margin: 0 auto;}
+.regCom form{margin-top: 60px;}
+.regCom label>span{width: 150px;display: inline-block;color: #828282}
+.regCom select{width: 196px;}
+.regCom>input{width: 200px;display: inline-block;padding: 0 10px;}
+.regCom .quhaoval{width: 60px;}
+.regBtn{padding: 8px 25px;background-color: #29e;margin-left: 300px;font-size: 20px;color: #fff;border: none;border-radius: 5px;outline: none;}
+.regCom label .tips{height: 25px;display: inline-block;width: 250px;margin-left: 20px;color: #f00;}
+.regCom label .tips2{height: 25px;display: inline-block;margin-left: 20px;color: #f00;width: 300px;}
+.regCom label .tips3{height: 25px;display: inline-block;margin-left: 20px;color: #f00;width: 300px;}
+.regCom label .tips4{height: 25px;display: inline-block;margin-left: 20px;color: #f00;width: 300px;}
+#hangye1,#hangye2{width: 236px;text-align: center;}
+.regCom label .buchong{width: 300px;}
+#comInfo>p{font-size: 20px;font-weight: bolder;}
+#comInfo>.promise{font-size: 12px;color: gray}
+#comInfo>div{margin: 10px 0;min-height: 100px;}
+#comInfo>div div:nth-child(1) span{width: 200px;display: inline-block;font-weight: bolder;color: #828282}
+#comInfo>div div:nth-child(2){width: 400px;text-align: center;}
+#comInfo>div div:nth-child(2) img{width: 90%;border-radius: 10px;}
+.imglist1,.imglist2,.imglist3,.imglist4,.imglist5，.imglist6,.imglist7{text-align: center;}
+.imglist1 input,.imglist2 input,.imglist3 input,.imglist4 input,.imglist5 input,.imglist6 input,.imglist7 input{background-color: #29e;border: none;border-radius: 5px;padding: 10px 15px;color: #fff;outline: none;margin-bottom: 10px;}
+#comInfo>div div:nth-child(1) .regTips{color: #f00;font-size: 14px;}
+#comInfo label .quhaoval{width: 80px;}
+.imgTips{text-align: center;color: #f00;font-weight: 400}

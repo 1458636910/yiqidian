@@ -1,0 +1,14 @@
+.top{width: 100%;height: 60px;border-bottom: 1px solid #29e;box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);padding:0px 30px;line-height: 50px;margin-bottom: 5px;}
+.top img{height: 50px;width: 50px;margin: 5px;}
+.top span{font-size: 25px;line-height: 60px;}
+.main{margin: 100px auto;width: 800px;background-color: #efe;padding: 40px 20px}
+.main label{font-size: 18px;font-weight: 100}
+.main label span:nth-child(1){display: inline-block;width: 80px;color: #AA9F95;}
+.main label span:nth-child(2){line-height: 25px;}
+.main label #moneyVal{font-size: 18px;font-weight: bolder;color: #f00;}
+p{text-align: center;}
+.payFace{height: 46px;width: 130px; background-color: #29e;color: #fff;border: none;border-radius: 5px;outline: none;font-size: 16px;}
+.payArea img{cursor: pointer;margin: 0 10px;width: 150px;height: 52px;}
+.weixinPayDiv>div>img{width: 200px;height: 200px;margin: 50px 100px;}
+.weixinPayDiv{display: none;text-align: center;}
+.payVal{color: orange;font-weight: bolder;}

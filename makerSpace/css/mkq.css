@@ -1,0 +1,38 @@
+a{text-decoration: none;color: #000;}
+ul,li{list-style: none;}
+i{font-style: normal;}
+b{font-weight: 600;}
+strong{font-weight: 600;margin-left: 5px;}    
+.box {width: 920px;margin: 60px auto;border-radius: 5px;}
+.header{width: 100%;display: inline-block;margin-left: 60px;}
+.header p{float: left;font-size: 18px;margin-right: 70px;position: relative;width: 72px;text-align: center;cursor: pointer;}
+.header p span {width: 45px;height: 4px;background: #00A0E8;display: inline-block;position: absolute;bottom: -10px;left: 13px;}
+.on{font-weight: 700;}
+#main2{display: none;}
+.register{width: 270px;margin-top: 40px;margin-left: 60px;border-right: 1px solid #E6E6E6;display: inline-block;padding-right: 32px;float: left;}
+.register .register_1{font-size: 15px;color: #EF8619;text-align: center;}
+.register .register_2{width: 87px;margin: 0 auto;padding-top: 104px;padding-bottom: 101px;}
+.register .register_2 #sign{color: #27A6EB;background: url(../img/1.png) no-repeat;width: 100%;height: 100%;text-align: center;line-height: 87px;cursor: pointer;transition: 0.3s;background-size:87px!important;}
+.register .register_2 #sign:hover{transform: scale(1.1);}
+.register ul li{width: 100%;color: #333333;float: left;line-height: 25px;font-weight: 600;cursor: pointer;}
+.register ul .let_1{background: url(../img/3.png) no-repeat left;padding-right: 20px;}
+.register ul .let_2{background: url(../img/2.png) no-repeat left;padding-right: 20px;}
+.register ul li span{float: right;color: #999999;font-size: 12px;}
+.register ul li i{float: right;color: #999999;font-size: 12px;margin-right: 5px;}
+.datetime{width: 273px;display: inline-block;float: left;margin-left: 46px;margin-top: 45px;}
+.datetime ul{margin-top: 30px;display: inline-block;}
+.datetime ul li{color: #F1841B;line-height: 25px;font-size: 12px;}
+#container{height: 100%;display: none;}
+.operat{color: #333333;cursor: pointer;}
+.clock{width: 100%;display: inline-block;}
+.clock p{float: left;width: 50%;color: #333333;}
+.clock .clock_1{width: 100%;color: #A9A9A9;margin-top: 20px;}
+.main_line{float: right;margin-bottom: 20px;}
+#test1 #layui-laydate1{height: 278px!important;}
+#main0 .layui-laydate-footer .laydate-footer-btns .laydate-btns-confirm{display: none;}
+#main0 .layui-laydate-footer .laydate-footer-btns .laydate-btns-clear{display: none;}
+.layui-timeline-axis {color: #00A0E8!important;}
+.layui-timeline-axis:hover {color: #FF5722!important;}
+.btnd{width: 60px;height: 30px;background: none;outline: none;border: 1px solid #A9A9A9;cursor: pointer;}
+
+

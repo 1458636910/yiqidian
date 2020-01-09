@@ -1,0 +1,359 @@
+<link rel="stylesheet" type="text/css" href="css/applyForm.css"/>
+<div class="sqDiv">
+    <ul>
+        <li>
+            <span>姓名：</span>
+            <span class="name"> </span>
+        </li>
+        <li>
+            <span>工号：</span>
+            <span class="code"> </span>
+        </li>
+        <li>
+            <span>部门：</span>
+            <span class="depart">   </span>
+        </li>
+        <li>
+            <span>职位：</span>
+            <span class="job">  </span>
+        </li>
+    </ul>
+    <form action="">
+        <label for="">
+            <span>漏打卡原因：</span>
+            <span>
+                <textarea type="text" class="reason form-control" placeholder="请输入漏打卡原因"/>  </textarea>
+            </span>
+        </label>
+        <label for="">
+            <span>选择时间：</span>
+            <span>
+                <input type="text" class="timeStart form-control" placeholder="请选择时间"/>
+            </span>
+        </label>
+        <label for="">
+            <span>证明人：</span>
+            <span>
+                <input type="text" class="checkName form-control" placeholder="请选择证明人"/>
+            </span>
+        </label>
+        <label for="">
+            <span>审核人：</span>
+            <span class="checkName2">   </span>
+        </label>
+        <label>
+            <span class="submit">提交</span>
+        </label>
+    </form>
+</div>
+<p class="btnArea">
+    <span class="goback">
+        <img src="img/goback.png" alt=""/>
+        返回
+    </span>
+</p>
+<div class="tableBox2">
+    <p class="dateop">
+        <span>选择日期：</span>
+        <input class="chooseDate form-control" type="text" placeholder="请选择日期"/>
+    </p>
+    <table id="clockTable">
+    </table>
+</div>
+<div class="tableBox">
+    <table id="checkTable">
+    </table>
+    <span class="nameNext ">下一页</span>
+</div>
+<script>
+$(document).ready(function() {
+    var applyPage = 0;
+    setTimeout(function() {
+        $.post(http_head + "getUserDetailByuserGuid.ashx", {
+            "userGuid": userGuid
+        }, function(data) {
+            var data = JSON.parse(data);
+            $(".name").text(data.items.realName);
+            $(".code").text(data.items.jovNumber);
+            $(".depart").text(data.items.depart);
+            $(".job").text(data.items.post);
+        })
+    }, 350);
+    // 证明人
+    function loadTable(data){
+        $("#checkTable").bootstrapTable({
+            data:data,
+            columns:[{ 
+                checkbox: true 
+            },{
+                field: "upname",
+                title: "姓名",
+                align: 'center',
+                valign: 'middle'
+            }, ],
+            singleSelect:true,
+            onCheck:function(row){
+                $(".checkName").val(row.upname)    
+            },
+        })
+    };
+    function loadFirst(page){
+        $.post(http_head+"Com/Com_User_ByCompany.ashx",{
+            "companyId":companyId,
+            "page":page
+        },function(data){
+            var data = JSON.parse(data);
+            if(data.status == 200){
+                if(data.items.BusinessCardList.length>0){
+                    layer.msg("加载完成", {
+                        time: 1200
+                    });
+                }else{
+                    layer.msg("暂无数据", {
+                        time: 1200
+                    })
+                };
+                loadTable(data.items.BusinessCardList);
+                $("#checkTable").bootstrapTable('load', data.items.BusinessCardList);
+                applyPage = data.items.page;
+                if (data.items.BusinessCardList.length >= 15) {
+                    $('.nameNext').fadeIn()
+                } else {
+                    $('.nameNext').hide()
+                }
+            }
+        })
+    };
+    function loadNext(page){
+        $.post(http_head+"Com/Com_User_ByCompany.ashx",{
+            "companyId":companyId,
+            "page":page
+        },function(data){
+            var data = JSON.parse(data);
+            if(data.status == 200){
+                if(data.items.BusinessCardList.length>0){
+                    layer.msg("加载完成", {
+                        time: 1200
+                    });
+                }else{
+                    layer.msg("暂无数据", {
+                        time: 1200
+                    })
+                };
+                loadTable(data.items.BusinessCardList);
+                $("#checkTable").bootstrapTable('append', data.items.BusinessCardList);
+                applyPage = data.items.page;
+                if (data.items.BusinessCardList.length >= 15) {
+                    $('.nameNext').fadeIn()
+                } else {
+                    $('.nameNext').hide()
+                }
+            }
+
+        })
+    };
+    $('.nameNext').on("click",function(){
+        loadNext(applyPage)
+    });
+    loadFirst(applyPage);
+    $(".checkName").focus(function(){
+        
+        layer.open({
+            type:1,
+            area: ['450px', '600px'],
+            title: ['证明人选择', 'font-size:18px;text-align: center;'],
+            content: $(".tableBox"),
+            btn: '确定',
+            yes: function(index, layero) {
+                layer.close(index)
+            }
+        })
+    });
+    // 迟到时间
+    var myDate = new Date;
+    var year = myDate.getFullYear(); //获取当前年
+    var mon = myDate.getMonth() + 1; //获取当前月
+    var date = myDate.getDate()-1; //获取当前日
+    var dateTime = year + "-" + mon + "-" + date;
+    $(".chooseDate").val(dateTime);
+    var this_time;
+
+    function loadTimeTable(data){
+        $("#clockTable").bootstrapTable({
+            data:data,
+            columns:[{ 
+                checkbox: true 
+            },{
+                field: "clockTime",
+                title: "规定时间",
+                align: 'center',
+                valign: 'middle'
+            },{
+                field: "createTime",
+                title: "打卡时间",
+                align: 'center',
+                valign: 'middle',
+                formatter: datetime
+            },{
+                title: "状态",
+                align: 'center',
+                valign: 'middle',
+                formatter: status,
+            }],
+            singleSelect:true,
+            onCheck:function(row){
+                console.log(row)
+                var date = dateTime+" "+row.clockTime;
+                $(".timeStart").val(date);  
+                this_time = row.clockTime;
+            },
+        });
+        function datetime(e,value,row,index){
+            var time;
+            if(value.createTime){
+                time = value.createTime
+            }else{
+                time = "---"
+            }
+            return '<sapn class="yesterday">'+time+'</span>'
+        };
+        function status(e,value,row,index){
+            var this_statu = value.status;
+            var statu;
+            if(this_statu == 0){
+                statu = "正常"
+            }else if(this_statu == 1){
+                statu = "迟到"
+            }else if(this_statu == 2){
+                statu = "早退"
+            }else if(this_statu == -1){
+                statu = "待打卡"
+            }else if(this_statu == -2){
+                statu = "漏打卡"
+            }else if(this_statu == -3){
+                statu = "未开启打卡"
+            }
+            return '<sapn class="codeStatu">'+statu+'</span>'
+        };
+
+    };
+
+    function loadDate(date){
+        $.post(http_head+"Clocks/Get_Clock.ashx",{
+            "userGuid":userGuid,
+            "companyId":companyId,
+            "date":date
+        },function(data){
+            var data = JSON.parse(data);
+            if(data.status == 200){
+                if(data.items.length>0){
+                    layer.msg("加载完成", {
+                        time: 1200
+                    });
+                }else{
+                    layer.msg("暂无数据", {
+                        time: 1200
+                    })
+                };
+                loadTimeTable(data.items);
+                $("#clockTable").bootstrapTable('load', data.items);
+            }
+        })
+    };
+    loadDate(dateTime);
+    // 日期选择
+    laydate.render({
+        elem: '.chooseDate',
+        type: 'date',
+        trigger: 'click',
+        done:function(value,date,endDate){
+            $(".chooseDate").val(value);
+            loadDate(value);
+            dateTime = value;
+        }
+    });
+
+    $(".timeStart").focus(function(){
+        layer.open({
+            type:1,
+            area: ['450px', '600px'],
+            title: ['迟到时间选择', 'font-size:18px;text-align: center;'],
+            content: $(".tableBox2"),
+            btn: '确定',
+            yes: function(index, layero) {
+                layer.close(index)
+            }
+        })
+    });
+    // 审核人
+    setTimeout(function() {
+        $.post(http_head + "Com/Get_User_Leader.ashx", {
+            "userGuid": userGuid,
+            "companyId": companyId
+        }, function(data) {
+            var data = JSON.parse(data);
+            if (data.status == 200) {
+                $(".checkName2").text(data.items)
+            }
+        })
+    }, 450);
+
+    // 提交
+    $(".submit").on("click", function() {
+        
+        if ($(".timeStart").val().length > 0 && $(".reason").val().length > 0 && $(".checkName").val().length > 0) {
+            $.post(http_head + "Sickleaves/Add_MissClock.ashx", {
+                "userGuid": userGuid,
+                "choseDate": $(".timeStart").val(),
+                "times": this_time,
+                "reason": $(".reason").val(),
+                "witness":$(".checkName").val()
+            }, function(data) {
+                var data = JSON.parse(data);
+                console.log(data)
+                if (data.status == 200) {
+                	var ii = layer.load(2, {
+					  shade: [0.2,'#000'] //0.1透明度的白色背景
+					});
+					var Text=setTimeout(function(){
+				      layer.close(ii);
+				      layer.msg('提交成功', {
+						time: 1000,
+					  });
+					  
+					  clearTimeout(Text)
+				    }, 1000);
+				    setTimeout(function(){
+				    	layer.closeAll();
+				    	$("#dataTable").replaceWith('<div id="dataTable"></div>');
+                   	  	$("#dataTable").load("ldksq.html");
+				    })
+                }
+            })
+        }else{
+        	var ii = layer.load(2, {
+			  shade: [0.2,'#000'] //0.1透明度的白色背景
+			});
+			var Text=setTimeout(function(){
+		      layer.close(ii);
+		      layer.msg('请完善信息', {
+				time: 1000,
+			  });
+			  clearTimeout(Text)
+		    }, 1000);
+        }
+    });
+
+    // 返回
+    $(".goback").hover(function() {
+        $(this).children("img").attr("src", "img/goback-b.png")
+    }, function() {
+        $(this).children("img").attr("src", "img/goback.png")
+    });
+    $(".goback").on("click", function() {
+        $("#dataTable").replaceWith('<div id="dataTable"></div>');
+        $("#dataTable").load("ldksq.html");
+    });
+    
+})
+</script>

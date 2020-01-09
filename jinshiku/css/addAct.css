@@ -1,0 +1,199 @@
+.contain {
+	width: 1000px;
+	margin: 50px auto;
+	background-color: #eee;
+	padding: 30px;
+	box-shadow: 1px 3px 5px 1px rgba(0, 0, 0, 0.1);
+}
+
+.demandTable label {
+	display: flex;
+	align-items: center;
+	position: relative;
+	margin-top: 20px;
+}
+.demandTable label textarea{
+	width: 100%!important;
+}
+.demandTable label select{
+	width: 198px;
+}
+.demandTable label input{
+	width: 198px;
+}
+.demandTable label>span:nth-child(1) {
+	display: inline-block;
+	width: 10px;
+	color: #f00;
+}
+
+.demandTable label>span:nth-child(2) {
+	display: inline-block;
+	width: 100px;
+	min-width: 100px;
+	font-weight: 100;
+	color: #969aa3;
+}
+
+.actTitle{
+	height: 40px;
+	line-height: 30px;
+	border-bottom: 1px solid #888;
+	font-size: 20px;
+	font-weight: 600;
+	display: block;
+	margin-bottom: 20px;
+}
+.demandTable form p:nth(2),.demandTable form p:nth(3){
+	margin-top: 20px;
+}
+/* 插件样式修改 */
+.hyitems,.hyitems2{
+	width: 198px;
+	position: relative;
+}
+.selectivity-dropdown {
+	color: #656565;
+	overflow: hidden;
+	position: absolute;
+	left: 0 !important;
+	top: 39px !important;
+}
+.selectivity-single-result-container{
+	padding-left: 6px;
+}
+.selectivity-single-selected-item{
+	color: #555;
+}
+.selectivity-single-select{
+	padding: 3px ;
+	background-color: white;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+}
+.selectivity-single-select-input{
+	width: 190px!important;
+}
+
+/* ////////////////////////////// */
+.teachAreaTable {
+	display: none;
+	margin: 20px;
+}
+
+.tableLeft {
+	width: 160px;
+	height: 330px;
+	overflow-y: auto;
+	margin-top: 20px;
+}
+
+.tableLeft::-webkit-scrollbar {
+	display: none
+}
+
+.tableLeft p {
+	cursor: pointer;
+	background-color: #29e;
+	color: #fff;
+	height: 30px;
+	line-height: 30px;
+	text-align: center;
+}
+
+.tableRight {
+	width: 560px;
+	margin-left: 20px;
+	margin-top: 13px;
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.tableRight label {
+	display: inline-block;
+	width: 180px;
+	height: 30px;
+	line-height: 30px;
+}
+.tableRight label input{
+	
+}
+
+.infoLabel label {
+	vertical-align: top;
+}
+.address{
+	width: 326px!important
+}
+
+.title{
+	margin-top: 30px;
+}
+.sub{
+    width: 120px;
+	margin: 30px auto;
+}
+.actSort{
+	width: 100%!important;
+}
+.unit{
+	position: absolute;
+	left: 286px;
+}
+.chooseImg{
+	width: 86px!important;
+}
+.preImg{
+	max-width: 200px;
+    margin: 10px 0 20px 110px;
+    border: 1px dashed silver;
+    padding: 10px;
+    display: inline-block;
+    overflow: hidden;
+    text-align: center;
+    vertical-align: middle;
+	background-color: white;
+}
+#showImg{
+	display: block;
+    max-width: 100%;
+    height: auto;
+}
+.realImg{
+	display: none;
+}
+#editor,#editor2{
+	width: 100%;
+	background-color: white;
+}
+.ms{
+	align-items: flex-start!important;
+}
+.demandTable label label input{
+	width: 30px;
+	margin-top: 0;
+}
+.demandTable label label{
+	margin-right: 30px;
+}
+.money{
+	/* display: none; */
+}
+.priceInput{
+	display: none;
+}
+.lastLab{
+	margin-bottom: 30px;
+}
+.docs-methods{
+	height: 34px;
+	display: flex;
+    align-items: center;
+}
+#reset{
+	height: 32px;
+}
+.sr-only{
+	height: 0!important;
+	margin-top: 0!important;
+}

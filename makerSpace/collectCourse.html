@@ -1,0 +1,199 @@
+<!-- <link rel="stylesheet" type="text/css" href="css/collectCourse.css?20190607"/> -->
+<style type="text/css">
+	.cancle{
+		display: none;
+		margin-top: 60px;
+		text-align: center;
+		color: red;
+	}
+	#cltTable thead
+	{   background-color: #e4e4e4;
+	    font-weight: bold;
+	 }
+	 .cltDiv{
+	 	margin-top: 30px
+	 }
+	  .cltPic{
+	         width: 160px;
+	 }
+	 .inner{
+	    padding-bottom:0
+	}
+	.lookCourse{
+	    height: 238px;
+	    display: block;
+	    line-height: 238px;
+	}
+	#cltTable tbody tr td:nth-child(2){
+	   cursor:pointer;
+	   padding:0
+	}
+	#cltTable tbody tr td:nth-child(2):hover{
+	   background-color:#00a2e8;
+	   color:white
+	}
+	.layui-layer-wrap{
+	   margin-top: 50px;
+	   text-align: center;
+	}
+</style>
+<div class="cltDiv">
+	<table id="cltTable">
+		<thead>
+			<tr>
+				<th data-field="courseImg">	</th>
+				<th data-field="courseName">	</th>
+				<th data-field="courseType">	</th>
+				<th data-field="lectureName">	</th>
+				<th data-field="option">	</th>
+			</tr>
+		</thead>
+	</table>
+	<br/>
+	<p class="clearfix">
+		<button class="cltNext ">下一页</button>
+	</p>
+	<!-- 取消收藏 -->
+	<div class="cancle">
+		<p>确定取消收藏?</p>
+	</div>
+</div>
+<script type="text/javascript" charset="utf-8">
+	var coursePage;
+	loadCourseFirst(0)
+	function loadCourseFirst(page) {
+		$.post(http_head + 'Makerspacey/MakerCollection/Get_MakerProductCollection.ashx', {
+			"userGuid": userGuid,
+			"page": page
+		}, function(data) {
+			var dataCourse = JSON.parse(data)
+			coursePage = dataCourse.page
+			loadTable(dataCourse.items);
+			$("#cltTable").bootstrapTable('load', dataCourse.items);
+
+			if (dataCourse.items.length >= 10) {
+					$('.cltNext').show()
+				} else {
+					$('.cltNext').hide()
+				}
+		});
+	};
+	function loadCourseNext(page) {
+		$.post(http_head + 'Makerspacey/MakerCollection/Get_MakerProductCollection.ashx', {
+			"userGuid": userGuid,
+			"page": page
+		}, function(data) {
+			var dataCourse = JSON.parse(data)
+			coursePage = dataCourse.page
+			loadTable(dataCourse.items);
+			$("#cltTable").bootstrapTable('append', dataCourse.items);
+
+			if (dataCourse.items.length >= 10) {
+					$('.cltNext').show()
+				} else {
+					$('.cltNext').hide()
+				}
+		});
+	}
+	$('.cltNext').click(function() {
+		loadCourse(coursePage)
+	});
+
+	function loadTable(data) {
+		$('#cltTable').bootstrapTable({
+			data: data,
+			columns: [{
+					field: 'courseImg',
+					title: '图片',
+					align: 'center',
+					valign: 'middle',
+					formatter: img2Formatter
+				},
+				{
+					
+					align: 'center',
+					title: '主题',
+					valign: 'middle',
+					formatter: courseName,
+					events: viewCourse
+				},
+				{
+					field: 'courseType',
+					align: 'center',
+					title: '类型',
+					valign: 'middle'
+				},
+				{
+					field: 'lectureName',
+					align: 'center',
+					title: '讲师',
+					valign: 'middle'
+				},
+				{
+					field: 'option',
+					align: 'center',
+					title: '操作',
+					valign: 'middle',
+					formatter: CourseFormatter,
+					events: CourseEvents
+				}
+			]
+		});
+
+		function img2Formatter(e, value, row, index) {
+			var imgUrl = value.courseImg.replace(/.png/, "min.png")
+			return [
+				'<img class="cltPic" src="' + imgUrl + '" alt="">'
+			].join('');
+		};
+
+		function CourseFormatter(e, value, row, index) {
+			return [
+				'<a class="cancleCourse"  title="取消收藏">',
+				'<span id="cancleCourse">取消收藏</span>',
+				'</a>',
+				
+			].join('');
+		};
+		function courseName(e,value,row,index){
+			return '<span class="lookCourse">'+value.courseName+'</span>'
+		}
+	};
+	window.CourseEvents = {
+		'click .cancleCourse': function(e, value, row, index) {
+			layer.open({
+				type: 1,
+				area: ['300px', '220px'],
+				title: ['取消收藏', 'font-size:18px;text-align: center;'],
+				content: $(".cancle"),
+				btn: '确定',
+				yes: function(index, layero) {
+					$.post(http_head + 'Makerspacey/MakerCollection/Cancle_MakerCollection.ashx', {
+						"collectId": row.Id,
+						"userGuid": userGuid,
+					}, function(data) {
+						console.log(data)
+						var dataDel = JSON.parse(data);
+						if (dataDel.status == 200) {
+							layer.msg('取消成功', {
+								time: 1000,
+							})
+							loadCourseFirst(0)
+						} else {
+							layer.msg(dataDel.msg, {
+								time: 1000,
+							})
+						}
+					});
+					layer.close(index)
+				}
+			})
+		}
+	};
+	window.viewCourse = {
+		'click .lookCourse': function(e,value,row,index){
+            console.log(row)
+			window.open("http://www.jinshiku.com/html/courseDetails.html?id="+row.courseId)
+		}
+	}
+</script>

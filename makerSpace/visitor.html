@@ -1,0 +1,355 @@
+<!-- <link rel="stylesheet" type="text/css" href="css/visitor.css?v=20190608"/> -->
+<style type="text/css">
+	#visitorList tr td img{
+	    width: 45px;
+	    height: 45px;
+	    border-radius: 22.5px;
+	    margin-right: 15px;
+	    cursor: pointer;
+	}
+	.table-hover > tbody > tr:hover > td,
+
+.table-hover > tbody > tr:hover > th {
+		cursor:auto;
+	background-color: #fff;
+
+}
+.table-hover > tbody > tr:hover > td .bubble,
+
+.table-hover > tbody > tr:hover > th .bubble{
+
+	 border-top: 14px solid #f5f5f5;
+
+}
+.personInfo:hover{
+	background-color: #ebf6fe;
+	cursor:pointer;
+}
+	.visitorLoadNext{
+		width: 280px;
+		height: 50px;
+		line-height: 50px;
+		background-color: #29e;
+		color: #fff;
+		text-align: center;
+		border: none;
+		border-radius: 40px;
+		outline: none;
+		margin: 2.5%;
+		display: none;
+	}
+	#visitorList{border: none;}
+	#visitorList thead{
+	    display: none!important;
+	}
+	#visitorList tbody tr {
+	    /*margin-top: 10px;*/
+	   /*border: 1px solid #fff;*/
+	    display: block;
+	    cursor:pointer
+	}
+	#visitorList tbody tr td {
+	    display: block;
+	    border: 1px solid #fff;
+	}
+	#visitorList tr td div > .vcontent p {
+	    line-height: 40px;
+	    /*margin-bottom: 10px;*/
+	    text-align: center;
+	    color: #333;
+	    font-weight: 700;
+	}
+	.vcontent{
+	 		position: relative;
+             top:0px;
+             left:0px;
+             width: 160px;
+            height: 40px;
+             /*background: #088cb7;*/
+            border: 1px solid #2299ee;
+             -moz-border-radius: 10px;
+             -webkit-border-radius: 10px;
+            border-radius: 10px;
+	}
+	.vcontent:before{
+			position: absolute;
+            content: "";
+             width: 0;
+             height: 0;
+             right: 43%;
+             top: 38px;
+             border-left: 7px solid transparent;
+             border-right: 7px solid transparent;
+             border-top: 14px solid #2299ee;
+             border-bottom: 7px solid transparent;
+	}
+	.bubble{
+		 position: absolute;
+            content: "";
+             width: 0;
+             height: 0;
+             right: 43%;
+             top: 36px;
+             border-left: 7px solid transparent;
+             border-right: 7px solid transparent;
+             border-top: 14px solid #fff;
+             border-bottom: 7px solid transparent;
+	}
+	.changebubble{
+		 border-top: 14px solid #ededed;
+	}
+	#visitorList tr td div > div p{
+	    margin: 0;
+	    text-align: left;
+	}
+	
+	#visitorList tr td div > .vcontent
+	{
+	    margin-top:0
+	}
+	.personInfo{
+		margin-left: 100px;
+		margin-top: 15px;
+	    display: flex;
+	    height: 80px;
+	    padding: 10px;
+	}
+	.lyData{
+		line-height: 30px;
+	}
+	.allVisitorDiv{
+	    margin-top:10px
+	}
+	.lastoneImg{
+		display: flex;
+		flex-wrap: wrap;
+		margin-left: 120px;
+		margin-top: 5px;
+	}
+	.visitorImg{
+		width: 50px;
+		height: 50px;
+		margin: 10px 8px;
+		/*border: 1px solid #000000;*/
+		border-radius: 10px;
+		cursor: pointer;
+	}
+	.moreUser{
+		float: right;
+		color:#2299ee
+	}
+	.personName{
+		font-size: 16px;
+		margin-right: 30px;
+		font-weight: bold;
+	}
+	.roundRadius{
+		width: 20px;
+		height: 20px;
+		border-radius: 50%;
+		background: #2299ee;
+		margin-top: 4px;
+		margin-left: 74px;
+		float: left;
+		border: 1px solid #a7d6f8;
+		box-shadow:0 0 12px #2299ee;
+	}
+	.dashed1{
+		position: absolute;
+		width: 2px;
+		height: 75px;
+		border: 1px dashed #2299ee;
+		left: 96px;
+		margin-top: 20px;
+	}
+	.moreUserblock{
+		position: relative;
+	}
+	.vck{
+		height: 122px;
+	}
+	.left10{
+		left: 13px;
+	}
+	.left9{
+		margin-left: 87px;
+		float: left;
+	}
+	.dashed2{
+		height: 170px;
+	}
+	.vcontent .moreUser1{
+		line-height: 40px;
+	    /*margin-bottom: 10px;*/
+	    text-align: center;
+	    color: #333;
+	    font-weight: 700;
+	    text-indent:16px;
+	    letter-spacing:16px;
+	}
+	.left10{
+		margin-top: 10px;
+	}
+	.moreCaller{
+		margin-left: 125px;
+		margin-top: 20px;
+		color: #333;
+		font-weight: 600;
+	}
+	.moreBottom{
+		width: 100%;
+		height: 300px;
+	}
+	.rightMore{
+		width: 100%;
+		
+	}
+</style>
+<div class="allVisitorDiv clearfix">
+    <table id="visitorList">
+        <thead>
+            <tr>
+                <th data-field="iphoto">    </th>
+                <!-- <th data-field="option"></th> -->
+            </tr>
+        </thead>
+    </table>
+    <!--<br/>-->
+    <!--<p class="clearfix">
+        <span class="visitorLoadNext pull-right">下一页</span>
+    </p>-->
+    <div class="moreBottom">
+    	<div class="moreUserblock">
+	    	<div class="vcontent left10">
+		    	<p class="moreUser1">更多</p>
+		    	<div class="bubble"></div>
+		    </div>
+		    <div class="roundRadius left9"></div>
+		    <div class="dashed1 dashed2"></div>
+	    </div>
+	    <div class="rightMore">
+	    	<p class="moreCaller">
+		    	以下访客也访问了您的主页
+		    	<a class="moreUser" href="javascript:void(0)">查看更多访客</a>
+		    </p>
+		    <div class="lastoneImg">
+		    	
+		    </div>
+	    </div>
+	    
+    </div>
+    
+</div>
+<script type="text/javascript" >
+    // 加载全部访客
+    var visitorPage;
+    var arr_visitor = [];
+    loadVisitorFirst(0)
+    loadVistorImg(0)
+    function loadVistorImg(page){
+    	var arr_visitorimg=[]
+    	$.post(http_head + 'Makerspacey/MakerVisitor/Get_MakerVisitor.ashx', {
+            "makerGuid": userGuid,
+            "page": page
+     }).then(res=>{
+     	var dataVisitorimg=JSON.parse(res)
+     	for(var i=0;i<dataVisitorimg.items.length;i++){
+     		if(dataVisitorimg.items[i].iphoto.search('http://47.94.173.253:8008/')==-1){
+     			dataVisitorimg.items[i].iphoto=dataVisitorimg.items[i].iphoto.split("http://47.94.173.253:8008")[1]
+     		}
+     		var str='<img src='+dataVisitorimg.items[i].iphoto+' id='+dataVisitorimg.items[i].creater+' class="visitorImg" title="点击访问ta的创客空间" onClick="replaceUser(id)" />'
+     		$('.lastoneImg').append(str)
+     	}
+//   	console.log(arr_visitorimg)
+     })
+    }
+    $('.moreUser').click(function(){
+    	layer.msg('更多请联系客服');
+    })
+    function replaceUser(id){
+    	 window.open("http://www.eqidd.com/changke/index_start.html?userGuid=" + id)
+    }
+    function loadVisitorFirst(page) {
+        arr_visitor = []
+        $.post(http_head + 'Makerspacey/MakerVisitor/Get_MakerVisitor.ashx', {
+            "makerGuid": userGuid,
+            "page": page
+        }, function(data) {
+            var dataVisitor = JSON.parse(data);
+//			console.log(dataVisitor)
+            for (var i = 0; i < 3; i++) {
+                arr_visitor.push(dataVisitor.items[i])
+            }
+            if (arr_visitor.length > 0) {
+                loadVisitorTable(arr_visitor);
+                $("#visitorList").bootstrapTable('load', arr_visitor);
+            } else {}
+            visitorPage = dataVisitor.page;
+            if (dataVisitor.items.length > 9) {
+                $('.visitorLoadNext').fadeIn()
+            } else {
+                $('.visitorLoadNext').hide()
+            }
+        });
+    };
+
+    function loadVisitorNext(page) {
+        arr_visitor = []
+        $.post(http_head + 'Makerspacey/MakerVisitor/Get_MakerVisitor.ashx', {
+            "makerGuid": userGuid,
+            "page": page
+        }, function(data) {
+            var dataVisitor = JSON.parse(data);
+            for (var i = 0; i < dataVisitor.items.length; i++) {
+                arr_visitor.push(dataVisitor.items[i])
+            }
+            if (arr_visitor.length > 0) {
+                layer.msg("加载完成", {
+                    time: 1200
+                });
+                loadVisitorTable(arr_visitor);
+                $("#visitorList").bootstrapTable('append', arr_visitor);
+            } else {
+                layer.msg("已无更多", {
+                    time: 1200
+                })
+            }
+            visitorPage = dataVisitor.page;
+            if (dataVisitor.items.length > 9) {
+                $('.visitorLoadNext').fadeIn()
+            } else {
+                $('.visitorLoadNext').hide()
+            }
+        });
+    };
+    $('.visitorLoadNext').click(function() {
+        loadVisitorNext(visitorPage)
+    });
+    // 访客全部表格
+    function loadVisitorTable(data) {
+        $('#visitorList').bootstrapTable({
+            data: data,
+            columns: [{
+                field: 'iphoto',
+                align: 'center',
+                valign: 'middle',
+                formatter: imgVisotorFormatter,
+                events: optionVisitorEvents
+            }]
+        });
+
+        function imgVisotorFormatter(e, value, row, index) {
+            var time1 = value.createTime.split("T")[0];
+            var time2 = value.createTime.split("T")[1];
+            var time3 = time2.split(".")[0];
+            var time4 = time1 + "  " + time3
+            return '<div class="vck" title="点击访问ta的创客空间"> <div class="vcontent" ><p>' + time4 + '</p><div class="bubble"></div></div> <div class="roundRadius"></div> <div class="dashed1"></div> <div class="personInfo clearfix"><img src="' + value.iphoto + '" alt="" class="pull-left photo"/> <div class="lyData"> <span class="personName">' + value.staffName + '</span><span><span>' + value.departName + '</span>  <span>' + value.postName + '</span></span><p><span>' + value.useroption + '</span></p></div></div></div>';
+        };
+    }
+    window.optionVisitorEvents = {
+        'click .personInfo': function (e, value, row, index) {
+            window.open("http://www.eqidd.com/changke/index_start.html?userGuid=" + row.creater)
+        }
+        
+    }
+</script>

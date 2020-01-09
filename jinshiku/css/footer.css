@@ -1,0 +1,21 @@
+.newLinkArea{width: 100%;background-color: #232830;color: #fff;border: 1px solid #000;padding: 0 0 10px 0;}
+.footer{width: 1200px;margin: 0 auto;height: 223px;}
+.footerDet{width: 100%;height: 222px;padding: 30px 0;}
+.footerDet>div{height: 158px;}
+.footFirstDiv{width: 275px;border-right: 1px solid #656f80}
+.footFirstDiv img{width: 223px;margin: 44px 26px;height: 70px;}
+.footSecendDiv{width: 600px;border-right: 1px solid #656f80}
+.footSecendDiv ul{width: 100%;padding: 30px 20px 40px 90px;}
+.footSecendDiv ul li{width: 25%;}
+.footSecendDiv ul li .title{font-size: 16px;color: #fff;height: 30px;line-height: 30px;}
+.footSecendDiv ul li div a{height: 28px;line-height: 28px;color: #8892a2;font-size: 14px;text-decoration: none;}
+.footThirdDiv{width: 325px;}
+.footThirdDiv>div{width: 113px;margin-left: 45px;padding-top: 10px;height: 113px;}
+.footThirdDiv>div img{width: 113px;height: 113px;}
+.footThirdDiv>div p{margin-top: 15px;width: 100%;text-align: center;font-size: 14px;color: #e4e4e4;}
+.beianhaoDiv{width: 100%;height: 57px;background-color: #12171c;line-height: 57px;}
+.beianhaoDiv>div{width: 1200px;margin: 0 auto;}
+.beianhaoDiv>div p{margin-bottom: 0;color: #838993;font-size: 14px}
+.footSecendDiv ul li div a:hover{
+	  color: white;
+}

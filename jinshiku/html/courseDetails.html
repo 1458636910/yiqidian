@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="zh">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="_blank">
+		<meta http-equiv="Cache-Control" content="no-cache">
+		<link rel="icon" href="../image/eqdLogo.png" type="image/x-icon"/>
+		<title>课程详情</title>
+		<link rel="stylesheet" href="../css/reset.css">
+		<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap-table/1.11.1/bootstrap-table.min.css">
+		<link rel="stylesheet" href="../css/skin/default/layer.css">
+		<link rel="stylesheet" href="../css/newTitle.css?v=20190607">
+		<link rel="stylesheet" href="../css/courseDetails.css?ver=20191017">
+	</head>
+	<body>
+		<div class="navTitle">
+			<ul class="clearfix">
+				<p class="pull-left">欢迎来到易企学！</p>
+				<li class="pull-left">
+					<a  target="_blank" class="hold">易企购</a>
+				</li>
+				<li class="pull-left">
+					<a href="http://www.jinshiku.com" target="_blank">易企学</a>
+				</li>
+				<li class="pull-left">
+					<a href="http://www.eqidd.com/yqy/index.html" target="_blank">易企阅</a>
+				</li>
+				<li class="pull-left">
+					<a  target="_blank" class="hold">易企聘</a>
+				</li>
+				<li class="pull-left">
+					<a  target="_blank" class="gock">创客空间</a>
+				</li>
+				<li class="pull-left">
+					<a href="http://www.eqidd.com/comSpace/eqd2.html" target="_blank">企业空间</a>
+				</li>
+				<li class="pull-left">
+					<a href="http://www.eqidd.com/tuiguang.html" target="_blank">推广页</a>
+				</li>
+				<span class="kf">
+					服务热线：400-1789-528
+				</span>
+				<div class="pull-right">
+					<li class="pull-left loginBtn">
+						<a id="loginBtn"> </a>
+					</li>
+					<li class="pull-left regBtn">
+						<a id="regBtn" target="_blank"> </a>
+					</li>
+					<li class="pull-left download">
+						<a href="http://www.eqidd.com/html/download.html" target="_blank">APP 下载</a>
+					</li>
+					<li class="pull-left introduce">
+						<a href="http://www.eqidd.com/" target="_blank">易企点介绍</a>
+					</li>
+					<p class="userOption">后台管理</p>
+				</div>
+			</ul>
+		</div>
+		<div class="topArea">
+			<div class="search contain clearfix">
+				<div class="searchLeft pull-left">
+                    <img src="../image/eqxLogo.jpg"/>
+                </div>
+				<div class="searchCenter pull-left">
+					<div class="clearfix">
+						<select name="" id="selectType" class="pull-left">
+							<option value="2">选课程</option>
+							<option value="5">找活动</option>
+							<option value="1">找讲师</option>
+							<option value="3">找需求</option>
+							<option value="4">品文章</option>
+						</select>
+						<input type="text" class="pull-left" id="inputSearch">
+						<button class="pull-left" id="searchBtn"><span class="glyphicon glyphicon-search"></span>搜索</button>
+						<span class="pull-left and">或</span>
+						<button class="pull-left" id="demandBtn"><span class="glyphicon glyphicon-pencil"></span>发布需求</button>
+					</div>
+				</div>
+			</div>
+			<div class="ulList">
+				<ul class="mainFountion clearfix">
+					<li class="pull-left" id="front"><a href="../index.html">首页</a></li>
+					<li class="pull-left" id="teacherLi"><a href="teacherIndex.html">讲师</a><img class="hot" src="../image/hot0.png" alt=""></li>
+					<li class="pull-left" id="consultant"><a href="">咨询师</a></li>
+					<li class="pull-left" id="mechanism"><a href="organization.html">机构</a></li>
+					<li class="pull-left" id="courseLi"><a href="lookCourseList.html">课程</a></li>
+					<li class="pull-left"><a href="lookActivity.html">活动</a></li>
+					<li class="pull-left" id="demandSquare"><a href="lookDemandList.html">需求广场</a><img class="hot" src="../image/hot0.png" alt=""></li>
+					
+				</ul>
+			</div>
+		</div>
+		<!-- 分享模块 -->
+		<!-- <div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_qzone" data-cmd="qzone"></a><a href="#" class="bds_tsina" data-cmd="tsina"></a><a href="#" class="bds_sqq" data-cmd="sqq"></a><a href="#" class="bds_tieba" data-cmd="tieba"></a><a href="#" class="bds_weixin" data-cmd="weixin"></a></div>
+				<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"1","bdSize":"24"},"share":{},"image":{"viewList":["fbook","twi","linkedin","qzone","tsina","douban","weixin","evernotecn"],"viewText":"分享到：","viewSize":"16"}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='/static/api/js/share.js'];</script> -->
+		<div class="main">
+			<div class="showDiv">
+				<div class="clearfix courseShow">
+					<div class="courseDetailsDiv pull-left">
+						<div class="courseInfoDiv">
+							<p class="courseTitle"></p>
+							<div class="clearfix">
+								<p class="pull-left"><span>课程类别 : </span><span class="clabel"></span></p>
+								<p class="pull-left"><span>授课对象 : </span><span class="courseObjecter"></span></p>
+							</div>
+							<div class="clearfix">
+								<p class="pull-left"><span>作者 : </span><span class="writer"></span></p>
+								<p class="pull-left"><span>背景 : </span><span class="courseBackground"></span></p>
+							</div>
+							<div class="clearfix">
+								<p class="pull-left"><span>价格 : </span><span id="coursePrice"></span>元/天</p>
+								<p class="pull-left bg"><span>时长 : </span><span id="courseDay"></span>天</p>
+							</div>
+							<div class="courseOutline">
+								<p><span>课程大纲 : </span></p>
+								<div class="outLineDetails">
+								</div>
+							</div>
+							<!-- 课程图片 -->
+							<div class="courseImg">
+								<p><span>课程图片 : </span></p>
+								<ul class="clearfix imgShow">
+								</ul>
+							</div>
+						</div>
+						<div class="courseOthersDiv">
+							<ul class="clearfix">
+								<li class="pull-left" id="videoBtn">相关视频</li>
+								<li class="pull-left" id="commentBtn">课程评价</li>
+							</ul>
+							<!-- 相关视频 -->
+							<div class="courseVideoDiv">
+								相关视频模块开发中，亲
+							</div>
+							<!-- 课程评价 -->
+							<div class="courseCommentDiv">
+								课程评价模块开发中，亲
+							</div>
+						</div>
+					</div>
+					<div class="otherCourseDiv pull-right">
+						<div class="lanuchDemandDiv">
+							<p>我是企业管理人，也要发需求</p>
+							<button id="sendDemand"><span class="glyphicon glyphicon-send"></span>立即发布需求</button>
+						</div>
+						<!-- 推荐课程 -->
+						<div class="courseTuijianDiv">
+							<div class="courseTuijianTitle">
+								<p class="clearfix"><a class="pull-left">课程推荐</a><a class="pull-right promotion">我也要出现在这里>></a></p>
+							</div>
+							<div class="tuijianCourseDiv">
+								<ul id="tuijianCourse"></ul>
+							</div>
+						</div>
+						<!-- 最新课程 -->
+						<div class="newCourseDiv">
+							<div class="newCourseTitle">
+								<p class="clearfix"><a class="pull-left">最新课程</a></p>
+							</div>
+							<div class="newCourseShowdiv">
+								<ul id="newCourseUl"></ul>
+							</div>
+						</div>
+						<!-- 相关的讲师 -->
+						<div class="mateLecturerDiv">
+							<div class="matelecturertitle">
+								<p class="clearfix"><a class="pull-left">相关讲师</a><a class="pull-right promotion">我也要出现在这里>></a></p>
+							</div>
+							<div id="matelecturerDiv">
+								<ul id="mateLecturer"></ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="foot"></div>
+		<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+		<script type="text/javascript" src="http://cdn.bootcss.com/layer/3.1.0/layer.js"></script>
+		<script type="text/javascript" src="http://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="http://cdn.bootcss.com/bootstrap-table/1.11.1/bootstrap-table.js"></script>
+		<script type="text/javascript" src="../js/bootstrap-table-zh-CN.min.js"></script>
+		<script type="text/javascript" src="../js/public.js?ver=20191016"></script>
+		<script type="text/javascript" src="../js/change.js?ver=20191017"></script>
+		<script type="text/javascript" src="../js/courseDetails.js?ver=20191016"></script>
+	</body>
+</html>

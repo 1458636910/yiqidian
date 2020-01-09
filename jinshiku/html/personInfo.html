@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<link rel="icon" href="../image/jinLogo.png" type="image/x-icon" />
+		<title>个人信息</title>
+		<link rel="stylesheet" href="../css/reset.css">
+		<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<link rel="stylesheet" href="../css/skin/default/layer.css">
+		<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap-table/1.11.1/bootstrap-table.min.css">
+		<link rel="stylesheet" href="../css/newTitle.css?ver=20181016">
+		<link rel="stylesheet" href="../css/personInfo.css?ver=20181016">
+	</head>
+	<body>
+		<div class="navTitle">
+			<ul class="clearfix">
+				<li class="pull-left"><a href="http://www.eqidd.com/yqy/article.html" target="_blank">易企阅</a></li>
+				<li class="pull-left"><a href="http://www.jinshiku.com" target="_blank">金师库</a></li>
+				<li class="pull-left"><a href="http://www.eqidd.com/createrSpace/html/personInfo.html" target="_blank">创客空间</a></li>
+				<li class="pull-left"><a href="http://www.eqidd.com/comSpace/com.html" target="_blank">企业空间</a></li>
+				<li class="pull-left"><a href="http://www.eqidd.com/html/download.html" target="_blank">下载</a></li>
+				<li class="pull-left"><a href="http://www.eqidd.com/html/feedback.html" target="_blank">反馈</a></li>
+				<li class="pull-right loginBtn"><a id="loginBtn">登录</a></li>
+				<li class="pull-right regBtn"><a id="regBtn" href="http://www.eqidd.com/html/reg.html" target="_blank">注册</a></li>
+				<li class="pull-right quitOut">退出</li>
+				<li class="pull-right infoBtn"><span class="loginName"></span><a href="../../createrSpace/html/personInfo.html"
+					 target="_blank">个人中心</a></li>
+			</ul>
+		</div>
+		<div class="main clearfix">
+			<div class="topT clearfix">
+				<img src="" alt="" class="pull-left">
+				<div class="teainfoDiv pull-left">
+					<p><span>姓名 : </span><span class="tName"></span></p>
+					<p><span>性别 : </span><span class="tSex"></span></p>
+					<p><button class="changePhoto">修改头像</button></p>
+				</div>
+			</div>
+			<div class="changephotoTable form-inline">
+				<label><input name="file2" type="file" accept="" class="choose" id="file2"></label><br>
+				<input name="token" type="hidden" />
+			</div>
+			<div class="mainText clearfix">
+				<div class="mainTextLeft pull-left">
+					<img src="../image/user_001.gif" alt="">
+					<ul>
+						<li class="info" id="info">讲师信息</li>
+						<li class="circle" id="circle">文章管理</li>
+						<li class="course" id="course">培训课程</li>
+						<li class="photo" id="photo">培训照片</li>
+						<li class="video" id="video">培训视频</li>
+						<li class="need" id="need">企业需求</li>
+					</ul>
+				</div>
+				<div class="mainTextRight pull-left">
+					<!-- 个人信息 -->
+					<div class="infoDiv">
+						<div class="top">
+							<a>讲师认证信息</a>
+							<span class="tips">(信息如需修改，请联系易企点管理人员)</span>
+						</div>
+						<div class="conformInfo">
+							<form action="" id="infoTable" novalidate class="form-inline">
+								<label for=""><span>手机 : </span><input type="text" class="form-control phone"></label><br>
+								<label for=""><span>助理手机 : </span><input type="text" class="form-control assistantPhone"></label><br>
+								<label for=""><span>助理姓名 : </span><input type="text" class="form-control assistantName"></label><br>
+								<label for=""><span>邮箱 : </span><input type="text" class="form-control email"></label><br>
+								<label for=""><span>QQ : </span><input type="text" class="form-control qq"></label><br>
+								<label for=""><span>微信 : </span><input type="text" class="form-control wechat"></label><br>
+								<label for="" class="oldArea"><span>常驻地址 : </span>
+									<input id="province" name="province" class="form-control">
+									<input id="city" name="city" class="form-control">
+									<!-- <input type="button" value="修改" id="changeArea"> -->
+								</label><br>
+								<label for="" class="newArea"><span class="">常驻地址 : </span>
+									<select id="s_province" name="s_province" class="form-control"></select>  
+									<select id="s_city" name="s_city" class="form-control" value=""></select>  
+									<select id="s_county" name="s_county" class="form-control"></select>
+								</label><br>
+								<label for=""><span>研究领域 : </span><input type="text" class="form-control ResearchField"></label><br>
+								<label for=""><span>课程价格(元/天) : </span><input type="text" class="form-control cooperativePrice"></label><br>
+								<label for=""><span>课程 : </span>
+									<textarea cols="80" rows="3" class="form-control courses"></textarea>
+								</label><br><br>
+								<label for=""><span>授课风格 : </span>
+									<textarea cols="80" rows="3" class="form-control TeachStyle"></textarea>
+								</label><br>
+								<label for=""><span>讲师简介 : </span></label><br>
+								<div id="editor" class="personalProfile"></div><br>
+								<label for=""><span>客户案例 : </span></label><br>
+								<div id="editor2" class="personalProfile"></div><br>
+								<label for=""><span>曾服务过的企业 : </span></label><br>
+								<div id="editor3" class="personalProfile"></div><br>
+							</form>
+							<!-- <p class="subArea"><button id="subFormBtn">修改</button></p> -->
+						</div>
+						<div class="infoLabelTable clearfix">
+							<input type="text" class="form-control" id="labelInfo">
+							<div class="infoLabelLeft pull-left"></div>
+							<div class="infoLabelRight pull-left"></div>
+						</div>
+					</div>
+					<!-- 文章 -->
+					<div class="circleDiv">
+						<div class="top">
+							<a>文章信息</a>
+							<button class="pull-right addCourse"><a href="addCircle.html" target="_blank">发布新文章</a></button>
+						</div>
+						<div class="col-lg-12">
+							<table id="circleList">
+								<thead>
+									<tr>
+										<th data-field="title">文章标题</th>
+										<th data-field="Label">文章类别</th>
+										<th data-field="createTime">创建时间</th>
+										<th data-field="option">查看详情</th>
+									</tr>
+								</thead>
+							</table>
+							<button class="loadMore">阅读更多</button>
+							<button class="noMoreBtn">已全部加载</button>
+						</div>
+						<div class="deleteCircle">
+							确定删除该文章
+						</div>
+					</div>
+					<!-- 课程 -->
+					<div class="courseDiv">
+						<div class="top">
+							<a>课程信息</a>
+							<button class="pull-right addCourse"><a href="addTeacherCourse.html" target="_blank">发布新课程</a></button>
+						</div>
+						<div class="col-lg-12">
+							<table id="courseListTable">
+								<thead>
+									<tr>
+										<th data-field="courseTheme">课程主题</th>
+										<th data-field="courseType">课程类型</th>
+										<th data-field="objecter">课程对象</th>
+										<th data-field="createTime">创建时间</th>
+										<th data-field="option">操作</th>
+									</tr>
+								</thead>
+							</table>
+							<br>
+							<button class="loadMore">阅读更多</button>
+							<button class="noMoreBtn">已全部加载</button>
+						</div>
+						<div class="deleteCourseTable">
+							确定删除该课程
+						</div>
+						<div class="addCourseVideoTable">
+							<p class="clearfix"><button class="addNewVideoBtn pull-right"><a href="updataVideo.html" target="_blank">上传视频</a></button></p>
+							<table id="addvideoListTable">
+								<thead>
+									<tr>
+										<th data-checkbox="checkbox">选择</th>
+										<th data-field="videoImage">视频截图</th>
+										<th data-field="videoTitle">视频名称</th>
+									</tr>
+								</thead>
+							</table>
+							<button class="loadMoreMin">阅读更多</button>
+							<button class="noMoreMin">已全部加载</button>
+						</div>
+					</div>
+					<!-- 相册 -->
+					<div class="photoDiv clearfix">
+						<div class="top">
+							<a>相册信息</a>
+						</div>
+						<div class="imgArea pull-left">
+							<button class="newphoto">新建相册</button>
+						</div>
+						<div class="imgDetails pull-left clearfix">
+
+						</div>
+						<div class="addphotoTable form-inline">
+							<label><input name="file" type="file" accept="" class="choose" id="file" multiple="multiple"></label><br>
+							<input name="token" type="hidden" />
+						</div>
+						<div class="changeListTable form-inline">
+							<span>相片名</span><input type="text" class="form-control newtitleVal">
+						</div>
+						<div class="deleteListTable">
+							确定删除该相册及其里面的相片
+						</div>
+						<div class="deleteImgTable">
+							<p>确定删除这张照片？</p>
+						</div>
+						<div class="addListTable form-inline">
+							<span>相片名</span><input type="text" class="form-control titleVal">
+						</div>
+						<div class="changeListNameTable form-inline">
+							<span>相册名</span><input type="text" class="form-control titleVal">
+						</div>
+					</div>
+					<!-- 视频 -->
+					<div class="videoDiv">
+						<div class="top clearfix">
+							<a>视频信息</a>
+							<button class="pull-right uploadVideo"><a href="updataVideo.html" target="_blank">发布新视频</a></button>
+						</div>
+						<div class="col-lg-12">
+							<table id="videoListTable">
+								<thead>
+									<tr>
+										<th data-field="videoImage">视频截图</th>
+										<th data-field="videoTitle">视频名称</th>
+										<th data-field="label">视频类别</th>
+										<th data-field="option">操作</th>
+									</tr>
+								</thead>
+							</table>
+							<br>
+							<button class="loadMore">阅读更多</button>
+							<button class="noMoreBtn">已全部加载</button>
+						</div>
+						<div class="deleteVideoTable">
+							确定删除该视频
+						</div>
+						<div class="changeVideoTable">
+							<form action="" class="form-horizontal">
+								<div class="form-group">
+									<label for="videoTitle" class="col-sm-2 control-label">视频标题 :</label>
+									<div class="col-sm-10">
+										<input type="text" class="form-control" id="inputVideoTitle" placeholder="视频标题">
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="videoLabel" class="col-sm-2 control-label">视频标签 :</label>
+									<div class="col-sm-10">
+										<input type="text" class="form-control" id="inputVideoLabel" placeholder="视频标签">
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="videoTitle" class="col-sm-2 control-label">视频描述 :</label>
+									<div class="col-sm-10">
+										<textarea class="form-control" rows="3" id="inputVideoDescribe"></textarea>
+									</div>
+								</div>
+							</form>
+						</div>
+						<div class="videoLabelTable clearfix">
+							<input type="text" class="form-control" id="labelA">
+							<div class="videoLabelLeft pull-left"></div>
+							<div class="videoLabelRight pull-left"></div>
+						</div>
+					</div>
+					<!-- 需求 -->
+					<div class="needDiv">
+						<div class="col-lg-12">
+							<table id="needListTable">
+								<thead>
+									<tr>
+										<th data-field="theTheme">主题</th>
+										<th data-field="theCategory">类别</th>
+										<th data-field="time">时间</th>
+										<th data-field="budgetedExpense">预算(元)</th>
+										<th data-field="option">操作</th>
+									</tr>
+								</thead>
+							</table>
+							<br>
+							<button class="loadMore">阅读更多</button>
+							<button class="noMoreBtn">已全部加载</button>
+						</div>
+						<div class="needTable">
+							<p><span>名字 : </span><span class="theTheme"></span></p>
+							<p><span>预算 : </span><span class="budgetedExpense"></span></p>
+							<p><span>时间 : </span><span class="theTheme"></span></p>
+							<p><span>地址 : </span><span class="theplace"></span></p>
+							<p><span>其他 : </span><span class="otherDemand"></span></p>
+							<p><span>分类 : </span><span class="theCategory"></span></p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+		<script type="text/javascript" src="http://cdn.bootcss.com/layer/3.1.0/layer.js"></script>
+		<script type="text/javascript" src="http://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="http://cdn.bootcss.com/bootstrap-table/1.11.1/bootstrap-table.js"></script>
+		<script type="text/javascript" src="../js/bootstrap-table-zh-CN.min.js"></script>
+		<script type="text/javascript" src="../js/wangEditor.js"></script>
+		<script type="text/javascript" src="../js/public.js?ver=20181016"></script>
+		<script type="text/javascript" src="../js/change.js?ver=20181016"></script>
+		<script type="text/javascript" src="../js/personInfo.js?ver=20181016"></script>
+		<script class="resources library" src="../js/area.js" type="text/javascript"></script>
+		<script type="text/javascript">
+			_init_area();
+		</script>
+		<script type="text/javascript">
+			var Gid = document.getElementById;
+			var showArea = function() {
+				Gid('show').innerHTML = "<h3>省" + Gid('s_province').value + " - 市" +
+					Gid('s_city').value + " - 县/区" +
+					Gid('s_county').value + "</h3>"
+				Gid('s_county').setAttribute('onchange', 'showArea()');
+			}
+		</script>
+	</body>
+</html>
